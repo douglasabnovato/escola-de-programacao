@@ -169,18 +169,6 @@ estruturar projetos escaláveis
 aplicar boas práticas
 entregar soluções robustas
 
-## 🔴🟠 Empregabilidade
-
-Um plano prático com as atividades:
-
-    - Simulação de entrevistas
-    - Code review simulado
-    - Pull request revisado
-    - Projeto em equipe
-    - Soft skills técnicas
-    - Escrita técnica
-    - Comunicação técnica
-
 ## ⚠️ Metodologia da jornada
 
 Vamos entender a progressão pedagógica com a ordem sugerida de ensino e práticas
@@ -190,6 +178,7 @@ Vamos entender a progressão pedagógica com a ordem sugerida de ensino e práti
     - Coerência estratégica 
     - Jornada evolutiva em frontend, backend, fullstack
     - Empregabilidade   
+    - Comunidade
 
 ### Tecnologias Utilizadas 
 
@@ -220,6 +209,14 @@ Podendo ter módulos adicionais para especialização.
 Especificar os desafios de cada nível.
 Detalhes os métodos de avaliação.
 
+Uma metodologia Avaliação 360°
+
+ - Presença Nas Aulas
+ - Interações nos canais
+ - Conclusão de Projetos
+ - Consistência no Github
+ - Workflow no Github
+
 ### Desde o Início
 
     - Git desde o básico
@@ -227,9 +224,41 @@ Detalhes os métodos de avaliação.
     - Deploy desde o iniciante
     - Portfólio construído progressivamente
 
-### Fatores Importantes
+####  Engajamento
 
-  - Carga horária
-  - Preço
-  - Perfil de aluno
-  - Taxa de evasão
+Integrar o aluno a comunidade de tecnologia da região
+
+Realizar atividades para fortalecer o acompanhamento da fixação do conteúdo
+
+Nossa preocupação é a Taxa de evasão. Nosso compromisso é te acompanhar nessa jornada.
+
+Realização de Bootcamps temáticos para criação de soluções completas.
+
+Agenda com servidor no Discord, Grupo no Whatsapp e Workflow no Github.
+
+#### 🔴🟠 Empregabilidade
+
+Um plano prático com as atividades:
+
+    - Simulação de entrevistas
+    - Code review simulado
+    - Pull request revisado
+    - Projeto em equipe
+    - Soft skills técnicas
+    - Escrita técnica
+    - Comunicação técnica 
+
+### Perfil do aluno
+
+    - Carga horária semanal 2h? 5h? 5h?
+    - Idade 16–20? 
+    - Adulto em transição de carreira? 
+    - Preço: Pessoa com alto ticket?  
+    - Já trabalha e quer migrar? 
+    - Desde o Zero? 
+    - A formação: Presencial, Gravado, Online ao vivo
+
+#### "Ao final da ByteClass, o aluno é capaz de "
+#### "A transformação principal que a ByteClass entrega é "
+
+###### Feito e Conduzido por @douglasabnovato em ByteClass
