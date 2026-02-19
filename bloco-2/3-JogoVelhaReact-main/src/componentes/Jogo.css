@@ -1,0 +1,56 @@
+.tela{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.jogo {
+    background-color: #ccc;
+    border: 2px solid #000;
+    border-radius: 20px;
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.tabuleiro{
+    flex : 0.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.linhaJogo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reiniciarJogo{
+    background-color: #ccc;
+    border-top: solid 1px #000;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding-top: 5px ;
+    padding-bottom: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.reiniciarJogo:hover {
+    color: white;
+    background-color: #555555;
+    border-radius: 20px;
+    font-size: large;
+    transition: 0.3s;
+   
+}
+

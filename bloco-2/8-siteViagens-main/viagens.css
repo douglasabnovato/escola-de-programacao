@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Layout principal: body divide em conteúdo e lateral */
+body {
+    display: flex;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Conteúdo principal à esquerda */
+.body {
+    width: 75%;
+    padding: 30px;
+    overflow-y: auto; /* para rolar se conteúdo grande */
+}
+
+/* Imagens dentro da área de conteúdo */
+.body .conteiner img {
+    width: 670px;
+    height: 400px;
+    float: left;
+    margin: 0 20px 0px 0; 
+    padding: 0;
+}
+
+/* Container geral */
+.conteiner {
+    font-size: 20px;
+}
+
+/* Espaçamento entre elementos de texto e imagens */
+h1, title {
+    color: red;
+    font-size: 35px;
+    margin-bottom: 20px; /* aumento do espaçamento */
+}
+
+h2 {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: green;
+    font-size: 28px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 20px;
+    margin-bottom: 20px; /* espaçamento padrão */
+}
+
+/* Remove espaçamento entre <p> consecutivos */
+p + p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ul, li {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Lateral direita com imagem de fundo e navegação */
+.lateral {
+    position: fixed; /* mantém fixo na lateral */
+    top: 0;
+    right: 0;
+    width: 25%;
+    height: 100vh;
+    overflow-y: auto; /* para rolar se conteúdo alto */
+    background: transparent; /* para garantir */
+    z-index: 10;
+}
+
+/* Imagem de fundo na lateral */
+.lateral img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Navegação sobre a imagem */
+.lateral nav {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4); /* Escurece imagem */
+    padding: 20px;
+}
+
+.lateral ul {
+    list-style: none;
+    margin: 15px 0; /* margem vertical entre itens da lista */
+    padding: 0;
+}
+
+.lateral li a {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.lateral li a:hover {
+    color: yellow;
+}
+
+/* Responsivo para telas menores */
+/* Mantém layout lado a lado, mas ajusta tamanhos para telas pequenas */
+@media (max-width: 768px) {
+    body {
+        flex-direction: row; /* manter lado a lado */
+        min-height: 100vh;
+    }
+
+    .body {
+        width: 75%;
+        padding: 15px; /* menos padding para telas pequenas */
+        overflow-y: auto;
+        height: 100vh; /* ocupar altura toda da tela */
+    }
+
+    .lateral {
+        position: fixed;
+        width: 25%;
+        height: 100vh;
+        overflow-y: auto;
+        top: 0;
+        right: 0;
+    }
+
+    .lateral img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    .lateral nav {
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 15px;
+    }
+
+    .lateral li a {
+        font-size: 1rem;
+    }
+
+    .body .conteiner img {
+        width: 100%;
+        height: auto;
+        float: none;
+        margin: 20px 0 40px 0;
+    }
+
+    h1, h2, h3, h4, p, ul, li {
+        margin-bottom: 20px;
+    }
+}

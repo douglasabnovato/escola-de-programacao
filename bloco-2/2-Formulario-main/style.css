@@ -1,0 +1,90 @@
+﻿@charset "UTF-8";
+
+h1{
+    text-align: center;
+}
+
+fieldset{
+    border-color: gray;
+    margin: 20px;
+}
+
+legend{
+    color: #888888;
+    font: bold 13pt sans-serif;
+}
+
+fieldset#sexo{
+    width: 150px;
+}
+
+fieldset#aluno{
+    background: url(./midia/icone-contato.png) no-repeat 95% 95%;
+    width: 400px;
+    height: 250px;
+}
+
+input:hover, input:focus{
+    background-color: #dddddd;
+}
+
+input{
+    font: 13pt normal sans-serif;
+    background-color: rgba(255,255,255,.8);
+}
+
+fieldset#endereco{
+    background: url("./midia/icone-endereco.png") no-repeat 95% 95%;
+    width: 400px;
+    height: 250px;
+}
+
+input, select{
+    font: 13pt normal sans-serif;
+    background-color: rgba(255,255,255,.8);
+}
+
+fieldset#institucionais{
+    background: url("./midia/icone-institucionais.png") no-repeat 95% 95%;
+    width: 400px;
+    height: 250px;
+}
+
+fieldset#adicionais{
+    background: url("./midia/icone-mensagem.png") no-repeat 95% 95%;
+    width: 400px;
+    height: 250px;
+}
+
+fieldset#avaliacao{
+    background: url(./midia/icone-avaliacao.png) no-repeat 95% 95%;
+}
+
+input, select, textarea{
+    font: 13pt normal sans-serif;
+    background-color: rgba(255,255,255,.8);
+}
+
+input:hover, input:focus,
+select:hover, select:focus, 
+textarea:hover, textarea:focus{
+background-color: #dddddd;
+}
+
+form{
+    width: 940px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+fieldset#avaliacao{
+    background: url(./midia/icone-avaliacao.png) no-repeat 95% 95%;
+    width: 900px;
+}
+
+div#dEnviar{
+    display: flex;
+    width: 940px;
+    justify-content: center;
+}

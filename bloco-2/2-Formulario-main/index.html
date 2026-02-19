@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="style.css" />
+	<title>Cadastro de Alunos</title>
+</head>
+
+<body>
+	<h1>Cadastro de Alunos</h1>
+	<form>
+		<fieldset id="aluno">
+			<legend>Dados do Aluno</legend>
+			<p>Nome:<input id="cNome" type="text" name="tNome" size="20" placeholder="Nome Completo" maxlength="30"></p>
+			<p>Data de nascimento:<input type="date" id="cData" name="tData"></p>
+			<fieldset id="sexo">
+				<legend>Sexo</legend>
+				<input type="radio" value="M" name="tSexo" id="cMasc" checked><label for="cMasc">-Masculino</label><br>
+				<input type="radio" value="F" name="tSexo" id="cFem"><label for="cFem">-Feminino</label>
+			</fieldset>
+		</fieldset>
+
+		<fieldset id="endereco">
+			<legend>Endereço do Aluno</legend>
+			<p>
+				<label for="cRua">Logradouro:</label>
+				<input type="text" name="tRua" id="cRua" size="13" maxlength="80" placeholder="Rua, Avenida, etc">
+			</p>
+			<p>
+				<label for="cBairro">Bairro:</label>
+				<input type="text" name="tBairro" id="cBairro" size="13" maxlength="80" placeholder="Seu Bairro">
+			</p>
+			<p>
+				<label for="cCidade">Cidade:</label>
+				<input type="text" list="cidades" name="tCidade" id="cCidade" size="13" maxlength="40"
+					placeholder="Sua Cidade">
+				<datalist id="cidades">
+					<option value="Boa vista"></option>
+					<option value="Iracema"></option>
+					<option value="Pacaraima"></option>
+					<option value="Rorainópolis"></option>
+					<option value="Caracaraí"></option>
+					<option value="Cantá"></option>
+				</datalist>
+			</p>
+			<p>
+				<label for="cEst">Estado:</label>
+				<select name="tEst" id="cEst">
+					<optgroup label="Região Norte">
+						<option value="RR" selected>Roraima</option>
+					</optgroup>
+					<optgroup label="Região Nordeste">
+						<option value="CE">Ceará</option>
+						<option value="BA">Bahia</option>
+						<option value="PE">Pernambuco</option>
+						<option value="SE">Sergipe</option>
+					</optgroup>
+				</select>
+			</p>
+			<p>
+				<label for="cCEP">CEP:</label>
+				<input type="text" name="tCEP" id="cCEP" size="9" maxlength="9" placeholder="_____-___">
+			</p>
+		</fieldset>
+		<fieldset id="institucionais">
+			<legend>Dados Institucionais</legend>
+			<p>
+				<label for="cMat">Matrícula:</label>
+				<input type="text" name="cMat" id="tMat" size="10" maxlength="10" placeholder="Sua Matrícula">
+			</p>
+			<p>
+				<label for="cEmail">E-mail:</label>
+				<input type="email" name="tEmail" id="cEmail" size="20" maxlength="40">
+			</p>
+			<p>
+				<label for="cCEmail">Confirme o E-mail:</label>
+				<input type="email" name="tCEmail" id="cCEmail" size="20" maxlength="40">
+			</p>
+			<p>
+				<label for="cSenha">Senha:</label>
+				<input type="password" name="tSenha" id="cSenha" maxlength="8" size="8" placeholder="8 dígitos">
+			</p>
+			<p>
+				<label for="cConSenha">Confirme a Senha:</label>
+				<input type="password" name="tConSenha" id="cConSenha" size="8"
+				maxlength="8" placeholder="8 dígitos">
+			</p>
+		</fieldset>
+		<fieldset id="adicionais">
+			<legend>Informações Adicionais</legend>
+			<p>
+				<input type="checkbox" name="tPed" id="cPed" value="pedido" checked>
+				<label for="cPed">Desejo receber novidades por e-mail</label>
+			</p>
+			<p>
+				<label for="cCor">Cor preferida:</label>
+				<input type="color" name="tCor" id="cCor" value="#0000FF">
+			</p>
+			<p>
+				<label for="cEsp">Esporte Favorito:</label>
+				<select name="tEspe" id="cEsp">
+					<option value="Futsal">Futsal</option>
+					<option value="Volei">Vôlei</option>
+					<option value="Handebol">Handebol</option>
+					<option value="Outro">Outro</option>
+				</select>
+			</p>
+		</fieldset>
+		<fieldset id="avaliacao">
+			<legend>Avaliação da disciplina</legend>
+			<p>
+				<label for="cDif">Grau de dificuldade desta disciplina:</label>
+				Min. <input type="range" name="tDif" id="cDif" min="0" max="10" step="2"> Max.
+			</p>
+			<p>
+				<label for="cSug">Sugestões:</label>
+				<textarea name="tSug" id="cSug" rows="5" cols="45" placeholder="Deixe aqui sua sugestão."></textarea>
+			</p>
+		</fieldset>
+		<div id="dEnviar">
+			<input type="image" name="rEnviar" id="cEnviar" src="./midia/botao-enviar.png">
+		</div>
+	</form>
+</body>
+
+</html>

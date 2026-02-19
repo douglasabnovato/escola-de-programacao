@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-color: #f1f1f1;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-block: 36px;
+  gap: 6px;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-block: 4px;
+  padding-inline: 2px;
+  width: 320px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.board .title {
+  background-color: #1abc9c;
+  color: white; 
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+} 
+
+.board ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  min-height: 332px;
+  padding: 4px;
+  list-style-type: none;
+  gap: 8px 12px;
+}
+
+.board ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px; 
+  padding: 8px 12px;
+  background-color: rgba(232, 225, 225, 0.873);
+  box-shadow: 2px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/*
+
+.board li:hover {
+  cursor: move;
+  background-color: rgba(200, 200, 200, 0.5);
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.board .todo-list .remove {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 12px;
+  color: #c3c3c3;
+}
+
+.board .todo-list .remove:hover {
+  cursor: pointer;
+  background-color: lightcoral;
+}
+
+.board .add-card {
+  background-color: rgba(200, 200, 200, 0.8);
+  border-radius: 2px;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+  margin: 4px 4px;
+}
+
+.board .add-card:hover {
+  background-color: rgba(192, 182, 182, 0.95);
+  cursor: pointer;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.board .add-card p {
+  font-size: 16px;
+  padding: 15px 10px;
+  font-weight: 100;
+}
+*/

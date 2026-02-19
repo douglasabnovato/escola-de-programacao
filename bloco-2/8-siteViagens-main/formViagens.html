@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form Viagens</title>
+    <link rel="stylesheet" href="formViagens.css">
+    <script src="viagens.js"></script>
+</head>
+
+<body>
+    <div id="form-container">
+        <div>
+            <h1>Formulário Viagens</h1>
+            <form id="form" action="https://jkorpela.fi/cgi-bin/echo.cgi" method="POST">
+
+                <label>
+                    Deixe aqui sua opinião e lugares que você gostaria de ver no nosso site!<br>
+                    <textarea id="opiniao" name="opiniao" rows="7" cols=80 placeholder="Deixe aqui sua opinião..."
+                        oninput="validaOpiniao()"></textarea>
+                </label><br>
+                <span class="span-required" id="span-opiniao">O comentário deve conter no mínimo 10 caracteres</span>
+                <br>
+                <br>
+                <label>
+                    Deixe aqui algumas informações sobre você!<br>
+                    Nome:<br>
+                    <input id="nome" type="text" name="nome" placeholder="Digite seu nome" oninput="validaNome()"><br>
+                    <span class="span-required" id="span-nome">O nome deve conter no mínimo 5 caracteres</span>
+                </label><br>
+
+                <label>
+                    Email:<br>
+                    <input id="email" type="email" name="email" placeholder="Digite seu melhor email"
+                        oninput="validaEmail()"><br>
+                    <span class="span-required" id="span-email">Digite um email válido</span>
+                </label><br>
+
+                <label for="phone">Telefone:</label><br>
+                <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX" oninput="formataTelefone()"><br>
+                <span class="span-required" id="span-phone">Digite um telefone válido</span>
+                <br>
+
+                Indicaria o nosso site para um amigo?:<br>
+                <input type="radio" id="sim" name="indicacao" value="sim" onclick="validaIndicacao()">
+                <label for="sim">Sim</label>
+                <input type="radio" id="nao" name="indicacao" value="nao" onclick="validaIndicacao()">
+                <label for="nao">Não</label><br>
+                <br>
+                Em quais desses lugares você já foi?:<br>
+                <label><input type="checkbox" name="jaFoi" value="rio">Rio de Janeiro</label>
+                <label><input type="checkbox" name="jaFoi" value="fortaleza">Fortaleza</label>
+                <label><input type="checkbox" name="jaFoi" value="florianopolis">Florianopolis</label>
+                <label><input type="checkbox" name="jaFoi" value="aires">Buenos Aires</label>
+                <label><input type="checkbox" name="jaFoi" value="bariloche">Bariloche</label><br>
+                <br>
+                A quais desses lugares você gostaria de ir?:<br>
+                <label><input type="checkbox" name="vaiIr" value="rio">Rio de Janeiro</label>
+                <label><input type="checkbox" name="vaiIr" value="fortaleza">Fortaleza</label>
+                <label><input type="checkbox" name="vaiIr" value="florianopolis">Florianopolis</label>
+                <label><input type="checkbox" name="vaiIr" value="aires">Buenos Aires</label>
+                <label><input type="checkbox" name="vaiIr" value="bariloche">Bariloche</label><br>
+                <br>
+                <label><br>
+                    <input type="submit" id="btn-submit" name="btn-submit" disabled></label>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

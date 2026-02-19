@@ -1,0 +1,6 @@
+.rodape {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-top: solid 1px #000;
+    flex: 0.2;
+}

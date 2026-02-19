@@ -1,9 +1,0 @@
-# Pílulas
-
-Escrever um roteiro para explicar e demonstrar como fazer uma tarefa específica em cinco passos.
-
-Gravar esse roteiro compartilhando a tela em um vídeo de quatro a cinco minutos.
-
-## Layout Semântico
-
-## Calculadora

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f1f1f1;
+    } 
+  </style>
+  <title>Trello Mini Kanban</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <a href="../../index.html">Home</a>
+    <a href="../../formulario-login/index.html">Formulário Login</a>
+    <a href="../../home-instagram/index.html">Home Instagram</a>
+    <a href="../../uma-lampada/index.html">Uma Lâmpada</a>
+    <a href="../../desafios-codigo/index.html">Desafios Código</a>
+    <a href="../../curso-em-video/index.html">Curso em Vídeo</a>
+    <a href="../../dio-spread/index.html">DIO + Spread</a>
+    <a href="../../jogo-da-memoria/index.html">Jogo da Memória</a>
+    <a href="../../jogo-da-velha/index.html">Jogo da Velha</a>
+    <a href="../../jogo-lost-decade/index.html">Jogo lost decade</a>
+    <a href="../../jogo-pedra-papel-e-tesoura/index.html">Jogo Pedra Papel e Tesoura</a>
+    <a href="../../jogo-da-cobra/index.html">Jogo da Cobra</a>
+    <a class="active" class="active dropbtn" href="#driven-aplicacoes">Driven Aplicação</a>
+  </div>
+
+  <div class="header content-header">
+    <a href="#default" class="logo"><img src="../assets/logo.jpg" width="100px" alt="" /></a>
+    <div class="header-right">
+      <a href="../index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+      <a class="active" href="#"><i class="fa fa-fw fa-envelope"></i>Kanban Board</a>
+      <a href="./date-stopwatch.html"><i class="fa fa-fw fa-user"></i>Date StopWatch</a>
+    </div>
+  </div>
+
+  <div class="container content" id="home" style="padding-left: 20px">
+    <header>
+      <h1>Kanban Board</h1>
+    </header>
+    <main>
+      <div class="board">
+        <h3 class="title">À Fazer</h3>
+        <ul id="a-fazer" class="todo-list" ondrop="drop(event, this.id)" ondragover="over(event)"></ul>
+        <div class="add-card" onclick="addCard(this)">
+          <p>Adicionar tarefa</p>
+        </div>
+      </div>
+      <div class="board">
+        <h3 class="title">Fazendo</h3>
+        <ul id="fazendo" class="todo-list" ondrop="drop(event, this.id)" ondragover="over(event)"></ul>
+        <div class="add-card" onclick="addCard(this)">
+          <p>Adicionar tarefa</p>
+        </div>
+      </div>
+      <div class="board">
+        <h3 class="title">Feito</h3>
+        <ul id="feito" class="todo-list" ondrop="drop(event, this.id)" ondragover="over(event)"></ul>
+        <div class="add-card" onclick="addCard(this)">
+          <p>Adicionar tarefa</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../javascript/kanban-board.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <img src="midia/imgCabecalho.jpg" alt="Cabeçalho One Piece">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#episodios">Episódios</a></li>
+                <li><a href="#comentarios">Comentários</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="carrossel-wrapper">
+            <h1 id="home">One Piece</h1>
+
+            <div class="carrossel-conteudo">
+                <button class="botao anterior">&#10094;</button>
+                <div class="carrossel-container">
+                    <div class="midia" id="carrossel">
+                        <video controls autoplay loop muted>
+                            <source src="midia/Zoro.mp4" type="video/mp4">
+                            Seu navegador não suporta o vídeo.
+                        </video>
+
+                        <video controls autoplay loop muted>
+                            <source src="midia/Luffy.mp4" type="video/mp4">
+                            Seu navegador não suporta o vídeo.
+                        </video>
+
+                        <video controls autoplay loop muted>
+                            <source src="midia/Sanji.mp4" type="video/mp4">
+                            Seu navegador não suporta o vídeo.
+                        </video>
+
+                        <video controls autoplay loop muted>
+                            <source src="midia/Buggy.mp4" type="video/mp4">
+                            Seu navegador não suporta o vídeo.
+                        </video>
+                    </div>
+                </div>
+                <button class="botao proximo">&#10095;</button>
+            </div>
+        </section>
+        <section>
+            <h2 id="episodios">Episódios</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">1ª Temporada</th>
+                    </tr>
+                    <tr>
+                        <th>Episódio</th>
+                        <th>Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>E01</td>
+                        <td>O Amanhacer de uma Aventura</td>
+                    </tr>
+                    <tr>
+                        <td>E02</td>
+                        <td>O Homem do Chapéu de Palha</td>
+                    </tr>
+                    <tr>
+                        <td>E03</td>
+                        <td>O Contador de Histórias</td>
+                    </tr>
+                    <tr>
+                        <td>E04</td>
+                        <td>Os Piratas Estão Vindo</td>
+                    </tr>
+                    <tr>
+                        <td>E05</td>
+                        <td>Venha Comer no Baratie!</td>
+                    </tr>
+                    <tr>
+                        <td>E06</td>
+                        <td>O Chefe e o Faz-Tudo</td>
+                    </tr>
+                    <tr>
+                        <td>E07</td>
+                        <td>A Garota com a Tautuagem de Peixe-Serra</td>
+                    </tr>
+                    <tr>
+                        <td>E08</td>
+                        <td>O Mais Procurado de East Blue</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <section>
+        <h2 id="comentarios">Comentários</h2>
+
+        <form id="form-comentario" action="#" method="post">
+            <label for="nome">Nome:</label><br>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome"><br><br>
+
+            <label for="comentario">Comentário:</label><br>
+            <textarea id="comentario" name="comentario" rows="5" cols="40" placeholder="Escreva seu comentário aqui..."
+                required></textarea><br><br>
+
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div id="comentarios-lista"></div>
+        
+    </section>
+    <footer>
+        <h2 id="sobre">Sobre</h2>
+        <p>One Piece é uma série criada por Eiichiro Oda. Acompanha as aventuras do pirata Monkey D. Luffy e sua
+            tripulação.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
