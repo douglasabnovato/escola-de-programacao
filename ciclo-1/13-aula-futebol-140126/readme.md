@@ -1,4 +1,13 @@
 📖 Roteiro de Aula Atualizado: Relíquia Amarela
+
+📚 Nível: Intermediário — Dominando a Manipulação do DOM
+
+🟢 Conceito Chave: Arquitetura de Dados e SPA (Single Page Application)
+
+🎯 Tema Central: Transformando Objetos JS em Interfaces Visuais de Colecionador.
+
+📅 Data: 18 de Março de 2026
+
 🏗️ Etapa 1: O Esqueleto e a Troca de Contexto (HTML5)
 Arquitetura de Contêiner: Uso de <header>, <main> e <footer>.
 
