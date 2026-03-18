@@ -1,116 +1,74 @@
-📖 Roteiro de Aula: Relíquia Amarela — O Álbum Digital
-Guia oficial para instrutores e alunos da ByteClass para o projeto de encerramento do Mês 1.
+📖 Roteiro de Aula Atualizado: Relíquia Amarela
+🏗️ Etapa 1: O Esqueleto e a Troca de Contexto (HTML5)
+Arquitetura de Contêiner: Uso de <header>, <main> e <footer>.
 
-Este roteiro detalha a construção da aplicação em 4 etapas lógicas, focando na transição do conteúdo estático para a inteligência de dados com JavaScript.
+O "Palco" Dinâmico: Criação da <div id="palco">. Explicação de como um único elemento ID serve de âncora para múltiplas interfaces (Home e Álbum).
 
-🏗️ Etapa 1: O Esqueleto Semântico (HTML5)
-Nesta fase, construímos o "estádio" da aplicação. O foco é a semântica e a preparação dos pontos de manipulação.
+Navegação por Eventos: Implementação de botões com onclick que passam argumentos ('1970', '2002') para uma função mestre.
 
-Tags Estruturais: Uso de header, main e footer para uma arquitetura limpa.
+🎨 Etapa 2: Estética e Proporções de Design (CSS3)
+Dualidade de Layout:
 
-Interatividade Inicial: Criação de botões de controle com o atributo onclick para disparar as funções.
+Home (Banner): Proporção 16:9 (horizontal) para os álbuns fechados.
 
-Ponto de Injeção: Criação da <div id="palco"></div>. É neste container vazio que o JavaScript "colará" as figurinhas dinamicamente.
+Álbum (Figurinha): Proporção 3:4 (vertical) para os bustos dos jogadores.
 
-🎨 Etapa 2: A Estética da Figurinha (CSS3)
-Transformamos elementos genéricos em objetos de colecionador baseados no design de 2002.
+Física de Colecionador: Uso de rotate() e scale() no hover para simular a pegada de uma figurinha física.
 
-Layout Responsivo: Implementação de CSS Grid com auto-fill para que o álbum se ajuste a qualquer tela.
+Animações de Entrada: Implementação de @keyframes fadeIn para que a troca de seleção não seja "seca", mas sim uma transição suave.
 
-Design de Objeto: Uso de box-shadow e border-radius curtos para simular o papel da figurinha.
+🧠 Etapa 3: Inteligência de Dados e Normalização (JS)
+Dicionário de Dados: Estruturação do bancoDados como um objeto de objetos, permitindo acesso instantâneo via chave (ex: bancoDados[ano]).
 
-Micro-interações: Adição de efeitos de hover com transform: scale() para dar feedback visual de profundidade.
+Sanitização de Strings (The Clean Rule): Aprofundamento na função gerarCaminhoImagem. Como tratar acentos (normalize("NFD")) e espaços para que o código "adivinhe" o nome do arquivo no disco.
 
-Paleta de Cores: Contraste entre o fundo Dark Mode e os cards em off-white (#fdfdfd).
+Iteração Semântica: Uso de forEach associado ao createElement e appendChild em vez de apenas strings puras, para melhor manipulação de nós do DOM.
 
-🧠 Etapa 3: Logística de Dados (JavaScript)
-A parte crítica: transformar o Manifesto de Carga (objetos) em elementos visuais.
+🚀 Etapa 4: Ciclo de Navegação e Resiliência (UX Sênior)
+Gerenciamento de Estado: Criação da função voltarHome(). Ensinar o aluno que uma SPA (Single Page Application) precisa saber "limpar a mesa" antes de servir o próximo prato.
 
-Modelagem de Dados: Organização de nomes, posições e clubes em Arrays de Objetos.
+Fallback de Imagem: Uso do evento onerror para garantir que o álbum nunca exiba um "ícone de imagem quebrada", mantendo o profissionalismo.
 
-Normalização de Strings: Criação da função gerarCaminhoImagem para remover acentos e espaços, garantindo que o código encontre os arquivos na pasta assets/.
+Scroll de Experiência: Uso de window.scrollTo para guiar o olhar do usuário após a ação de clique.
 
-Automação de Loop: Uso do método .forEach() para percorrer a lista de 11 titulares e renderizar os cards automaticamente.
+⚽ README.md (Versão Douglas Novato 2026)
+🏆 Relíquia Amarela — Álbum Digital de Colecionador
+Projeto de conclusão do Mês 1 (Nível Básico) da formação Fullstack na ByteClass.
 
-🚀 Etapa 4: UX e Refinamento Técnico
-Ajustes de senioridade que garantem a resiliência da aplicação.
+O Relíquia Amarela é uma experiência interativa que celebra a história da Seleção Brasileira. Mais do que um site, é um motor de renderização dinâmica que transforma dados técnicos em uma galeria visual de craques.
 
-Caminhos Dinâmicos: Concatenação de strings para buscar fotos em assets/jogadores/ de forma automatizada.
+🚀 Diferenciais Técnicos
+Este projeto aplica conceitos que vão além do básico de HTML/CSS:
 
-Tratamento de Erros: Uso do atributo onerror nas imagens para exibir um placeholder caso a foto oficial não seja encontrada.
+Navegação Single Page (SPA): A interface alterna entre a Home e os Álbuns sem nenhum recarregamento de página, utilizando manipulação cirúrgica do DOM.
 
-Estado Visual: Atualização dinâmica do banner do Header e das frases históricas conforme a seleção escolhida.
+Algoritmo de Normalização: Implementação de lógica para conversão de nomes reais em caminhos de ativos (assets), lidando com acentuação e espaços via RegEx e Normalização Unicode.
 
-🏁 Checkpoint de Avaliação
-Ao concluir o roteiro, o aluno deve demonstrar domínio sobre:
+Design Adaptativo: Grid System que alterna entre proporções horizontais (banners) e verticais (cards de jogadores) conforme o contexto da aplicação.
 
-Escalabilidade: Por que gerenciar 22 jogadores em um único arquivo JS é melhor que 22 arquivos HTML.
+🧠 Aprendizados ByteClass
+Sob a mentoria do instrutor Douglas Novato, os pilares desenvolvidos foram:
 
-Lógica: Como a função de normalização resolve o conflito entre nomes reais e nomes de arquivos.
+Manipulação de DOM de Alto Nível: Criação de elementos em tempo real e gestão de eventos.
 
-Semântica: A escolha correta de tags para acessibilidade e SEO.
+Tratamento de Erros em Runtime: Implementação de placeholders dinâmicos para falhas de carregamento de mídia.
 
-Este roteiro faz parte da metodologia ByteClass e do Desafio Douglas 2026.
----
+Arquitetura de Dados: Organização de informações complexas em objetos aninhados para fácil manutenção.
 
-**README.md**
+🎨 Identidade Visual
+Background: #0b0e14 (Foco total no conteúdo)
 
-# ⚽ Relíquia Amarela — Álbum Digital de Colecionador
+Cards: #fdfdfd (Textura de papel fotográfico)
 
-> Projeto de conclusão do **Mês 1 (Nível Básico)** da formação Fullstack na **ByteClass**.
+Tipografia: Focada em legibilidade e estilo clássico de álbuns de banca de jornal.
 
-Este projeto é uma aplicação web interativa que simula um álbum de figurinhas histórico da Seleção Brasileira, permitindo alternar entre o esquadrão de **1970** e a "Família Scolari" de **2002**.
+🛠️ Instalação
+Bash
 
----
+# Clone o repositório
 
-## 🚀 Tecnologias Utilizadas
+git clone https://github.com/[SEU-USUARIO]/reliquia-amarela.git
 
-Para este desafio, apliquei os fundamentos de desenvolvimento web moderno:
+# Execute com Live Server para garantir o carregamento dos assets
 
-- **HTML5 Semântico:** Uso de tags como `header`, `main`, `footer` e `article` para melhor indexação e acessibilidade.
-- **CSS3 Customizado:** Implementação de um design inspirado no álbum de figurinhas de 2002, utilizando **CSS Grid**, **Flexbox** e variáveis nativas.
-- **JavaScript (ES6+):** \* Manipulação dinâmica do DOM.
-  - Tratamento de strings para automação de caminhos de imagem.
-  - Renderização de interface baseada em objetos de dados.
-
----
-
-## 🧠 Desafios Técnicos & Aprendizados
-
-Durante a 4ª semana de aula com o instrutor **Douglas Novato**, os principais focos foram:
-
-1.  **Normalização de Dados:** Criei uma função que limpa nomes de jogadores (remove acentos e espaços) para buscar fotos automaticamente na pasta `assets/`.
-2.  **Estado da Interface:** O site não recarrega para mudar de ano; o JavaScript limpa o "palco" e reconstrói a escalação em milissegundos.
-3.  **Clean Architecture:** Organização do código seguindo os princípios de separação de responsabilidades (HTML para estrutura, CSS para estilo, JS para lógica).
-
----
-
-## 🎨 Design System
-
-O projeto utiliza as cores oficiais da CBF com uma abordagem **Dark Mode** para garantir o conforto visual:
-
-- **Fundo:** `#0b0e14` (Dark profundo)
-- **Cards:** `#fdfdfd` (Off-white estilo papel de figurinha)
-- **Destaques:** `#FFDF00` (Amarelo Canário) e `#009B3A` (Verde Bandeira)
-
----
-
-## 🛠️ Como executar o projeto
-
-1. Clone este repositório:
-   ```bash
-   git clone [https://github.com/](https://github.com/)[SEU-USUARIO]/reliquia-amarela.git
-   ```
-2. Abra o arquivo `index.html` em seu navegador ou utilize a extensão **Live Server** do VS Code.
-
----
-
-## 👨‍🎓 Autor
-
-- **Nome:** [SEU NOME AQUI]
-- **Turma:** ByteClass 2026 - Track Frontend
-- **LinkedIn:** [SEU LINK]
-
----
-
-_Este projeto faz parte do ecossistema **learnTECH** e do **Desafio Douglas 2026**._
+Este projeto integra o ecossistema learnTECH e o Desafio Douglas 2026.
