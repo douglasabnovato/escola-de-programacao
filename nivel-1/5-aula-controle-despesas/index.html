@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass - Gestão de Logística</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="aula-header">
+      <h1>🎬 Aula: Controle de Fretes e Despesas</h1>
+      <p>
+        📚 Nível: Iniciante/Intermediário — Manipulação de Dados e LocalStorage
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="saldo-container">
+        <h3>Saldo Atual da Viagem</h3>
+        <h1 id="saldo">R$ 0.00</h1>
+      </section>
+
+      <section class="form-container">
+        <form id="form">
+          <input
+            type="text"
+            id="desc"
+            placeholder="Descrição (ex: Frete Soja, Diesel...)"
+            required
+          />
+          <input
+            type="number"
+            id="valor"
+            placeholder="Valor (R$)"
+            step="0.01"
+            required
+          />
+          <select id="tipo">
+            <option value="entrada">Entrada (Frete)</option>
+            <option value="saida">Saída (Despesa)</option>
+          </select>
+          <button type="submit">Registrar no Manifesto</button>
+        </form>
+      </section>
+
+      <section class="lista-container">
+        <h3>Histórico da Rota</h3>
+        <ul id="lista" class="lista"></ul>
+      </section>
+    </main>
+
+    <footer class="aula-footer">
+      <p>Instrutor Douglas Novato</p>
+      <p>ByteClass - 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
