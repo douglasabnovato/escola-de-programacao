@@ -10,3 +10,13 @@ Aulas
     - roteiro de aula
     - código de projeto
     - conteúdos escritos
+
+### Nível 1 :
+
+- Aula 1 a 4: slideshow
+
+- Aula 5 a 8: controle de despesas
+
+- Aula 9 a 12: movie maker
+
+- Aula 13 a 16: futebol
