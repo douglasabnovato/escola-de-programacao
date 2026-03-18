@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass - Relíquia Amarela</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div id="header-bg" class="header-banner">
+        <div class="overlay">
+          <h1>Relíquia Amarela</h1>
+          <p>Coleção Histórica de Craques</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div id="palco">
+        <div id="grade-boas-vindas">
+          <div class="mensagem-inicial">
+            <h2>Abra o seu álbum...</h2>
+            <p>
+              Selecione uma era para colar as figurinhas dos campeões e reviver
+              as conquistas históricas da nossa seleção.
+            </p>
+            <nav class="menu-selecao">
+              <button onclick="convocar('1970')">Esquadrão de 1970</button>
+              <button onclick="convocar('2002')">Família Scolari 2002</button>
+            </nav>
+          </div>
+
+          <div class="carrossel-coringa">
+            <div class="slot-coringa slot-1">
+              <img
+                src="./assets/banners/album-caricatura-1970.jpg"
+                alt="Álbum 1970"
+              />
+            </div>
+            <div class="slot-coringa slot-2">
+              <img
+                src="./assets/banners/album-caricatura-2002.jpg"
+                alt="Álbum 2002"
+              />
+            </div>
+            <div class="slot-coringa slot-3">
+              <img
+                src="./assets/banners/jogadores-1970-2002.jpg"
+                alt="Destaques"
+              />
+            </div>
+            <div class="slot-coringa slot-4">
+              <img src="./assets/banners/selecoes-1970-2002.jpg" alt="Lendas" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="main-footer">
+      <div class="links-oficiais">
+        <a href="https://www.cbf.com.br" target="_blank">CBF Oficial</a> |
+        <a href="https://www.fifa.com/pt/fifaplus" target="_blank">FIFA Plus</a>
+      </div>
+      <div class="byteclass-footer">
+        <p><strong>Instrutor:</strong> Douglas Novato</p>
+        <p>ByteClass - Formação Fullstack 2026</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
