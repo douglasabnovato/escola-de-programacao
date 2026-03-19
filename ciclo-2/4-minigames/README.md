@@ -25,6 +25,7 @@ contendo três jogos clássicos: **Jogo da Forca**, **Jogo da Velha** e **Quebra
 
 ## 🛠️ Estrutura de Pastas
 
+````markdown
 learn-tech/ (raiz)
 ├── index.html <-- O Shell Principal
 ├── src/
@@ -49,6 +50,7 @@ learn-tech/ (raiz)
 │ │ ├── velha.html, velha.js, velha.css
 │ └── quebra-cabeca/
 │ └── quebra-cabeca.html, quebra-cabeca.js, quebra-cabeca.css
+```` 
 
 ### 📂 Análise da Estrutura de Governança
 
