@@ -1,0 +1,200 @@
+/**
+ * main.css - Core Layout learnTECH
+ * Padrões: Mobile-First, CSS Grid, Neo-Brutalism.
+ */
+
+/* 1. Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* 2. Layout Estrutural (Grid) */
+.app-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--brand-primary);
+  border-bottom: var(--border-thick);
+  z-index: 10;
+}
+
+.app-header h1 {
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.app-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 280px 1fr; /* Sidebar um pouco mais larga para ícones */
+  gap: var(--spacing-xl);
+  padding: var(--spacing-lg) 5%;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 3. Menu Lateral (Navigation) */
+.menu-lateral {
+  background: var(--bg-card);
+  border: var(--border-thick);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-flat);
+  height: fit-content;
+  position: sticky;
+  top: 100px; /* Mantém o menu visível ao scrollar */
+}
+
+.menu-lateral h3 {
+  margin-bottom: var(--spacing-md);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.menu-lateral ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--text-dark);
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 4px 4px 0px var(--brand-secondary);
+  background: #333;
+}
+
+/* Estágio Ativo (Gerenciado pelo Router.js) */
+.nav-link.active {
+  background-color: var(--brand-secondary);
+  color: var(--text-dark);
+  border: 2px solid var(--text-dark);
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0px var(--text-dark);
+}
+
+.nav-link.active .nav-icon {
+  transform: scale(1.2);
+}
+
+/* 4. Container de Conteúdo (Área dos Jogos) */
+.conteudo-jogo {
+  background: var(--bg-card);
+  border: var(--border-thick);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-flat);
+  min-height: 600px;
+  position: relative;
+  transition: opacity var(--transition-smooth);
+  overflow: hidden; /* Garante que elementos de jogo não vazem */
+}
+
+/* 5. Componentes Globais (Reutilizáveis) */
+.btn-primary {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--btn-color);
+  border: var(--border-thick);
+  border-radius: var(--border-radius-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-flat);
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-hover);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px var(--text-dark);
+}
+
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* Utilitário para Badges/Status */
+.badge-info {
+  background: var(--text-dark);
+  color: var(--text-light);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
+}
+
+.badge-info span {
+  color: var(--brand-secondary);
+  font-weight: bold;
+}
+
+/* 6. Footer */
+.app-footer {
+  padding: var(--spacing-lg);
+  text-align: center;
+  font-weight: var(--font-weight-med);
+  font-size: 0.8rem;
+  border-top: 1px solid #ddd;
+  margin-top: auto;
+}
+
+/* 7. Responsividade (Override) */
+@media (max-width: 900px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-md);
+  }
+
+  .menu-lateral {
+    position: static;
+    order: -1;
+  }
+
+  .menu-lateral ul {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .nav-link {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.85rem;
+  }
+
+  .conteudo-jogo {
+    padding: var(--spacing-md);
+    min-height: auto;
+  }
+}

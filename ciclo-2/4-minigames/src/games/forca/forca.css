@@ -1,0 +1,245 @@
+/**
+ * forca.css - Design Neo-Brutalista learnTECH
+ * Foco: Layout Grid, Sombra Sólida, Animações de Feedback.
+ */
+
+/* Container Principal do Jogo */
+.forca-game-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  position: relative;
+}
+
+/* --- Layout Principal (Grid 2 Colunas em Desktop) --- */
+.game-layout {
+  display: grid;
+  grid-template-columns: 1fr; /* Padrão Mobile: Uma coluna */
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+/* Desktop Breakpoint (Acima de 800px) */
+@media (min-width: 800px) {
+  .game-layout {
+    grid-template-columns: 280px 1fr; /* Sidebar fixa e Conteúdo flexível */
+  }
+}
+
+/* --- Lado Esquerdo: Caixa da Forca --- */
+.caixa-forca {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-md);
+  background: var(--bg-card);
+  border: var(--border-thick); /* Borda Grossa Neo-Brutalista */
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-flat); /* Sombra Sólida */
+}
+
+.forca-canvas {
+  width: 100%;
+  max-width: 200px;
+}
+
+.forca-canvas img {
+  width: 100%;
+  height: auto;
+  user-select: none;
+  /* Animação para quando a imagem muda (opcional, via JS) */
+  transition: transform 0.2s ease;
+}
+
+/* Classe de animação de erro (adicione via JS ao errar) */
+.forca-canvas.erro-shake img {
+  animation: shake 0.4s ease-in-out;
+}
+
+.game-title {
+  font-size: var(--fs-h2);
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin-top: var(--spacing-sm);
+}
+
+/* --- Lado Direito: Caixa do Jogo --- */
+.caixa-jogo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Exibição da Palavra (Placeholders) */
+.exibicao-palavra {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.letra {
+  width: clamp(30px, 5vw, 45px); /* Responsividade clamp */
+  height: clamp(35px, 6vw, 50px);
+  border-bottom: 4px solid var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  color: transparent; /* Esconde a letra */
+  transition: color 0.3s ease;
+}
+
+/* Estado quando a letra é adivinhada (Animação de Acerto) */
+.letra.adivinhada {
+  color: var(--text-dark);
+  animation: popIn 0.3s ease-out forwards;
+}
+
+/* Painel de Informações (Dica e Erros) */
+.game-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  background: var(--text-dark);
+  color: var(--text-light);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+}
+
+.game-info h4 {
+  font-weight: var(--font-weight-med);
+}
+
+.error-counter b {
+  color: var(--color-error); /* Cor de erro do Design System */
+}
+
+/* --- Teclado Virtual Neo-Brutalista --- */
+.teclado {
+  display: grid;
+  /* Grid dinâmico que se ajusta ao tamanho da tela */
+  grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.btn-teclado {
+  padding: var(--spacing-sm);
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-bold);
+  background: var(--btn-color);
+  border: var(--border-thick);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 4px 4px 0px var(--text-dark); /* Sombra Sólida Neo */
+}
+
+.btn-teclado:hover:not(:disabled) {
+  background: var(--btn-hover);
+  transform: translate(-2px, -2px); /* Efeito de levitar */
+  box-shadow: 6px 6px 0px var(--text-dark);
+}
+
+.btn-teclado:active:not(:disabled) {
+  transform: translate(2px, 2px); /* Efeito de apertar */
+  box-shadow: 2px 2px 0px var(--text-dark);
+}
+
+.btn-teclado:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background: var(--text-muted);
+}
+
+/* --- Modal de Fim de Jogo (Correção de Layout) --- */
+.modal-jogo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(5px); /* Efeito Glassmorphism Neo */
+  display: none; /* Escondido por padrão */
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-radius: var(--border-radius-md);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Classe de controle do JS para mostrar o modal */
+.modal-jogo.mostrar {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border: var(--border-thick);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  box-shadow: var(--shadow-modal);
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+/* Animação do conteúdo do modal ao abrir */
+.modal-jogo.mostrar .modal-content {
+  transform: scale(1);
+}
+
+.modal-img {
+  max-width: 120px;
+  height: auto;
+}
+
+.modal-title {
+  font-size: var(--fs-h2);
+  text-transform: uppercase;
+}
+
+/* --- KEYFRAMES (As Animações CSS) --- */
+
+/* Animação de Acerto: A letra "pula" */
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Animação de Erro: Tremidinha na forca */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}

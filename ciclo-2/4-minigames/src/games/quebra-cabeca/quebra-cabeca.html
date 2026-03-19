@@ -1,0 +1,35 @@
+<section class="puzzle-game-container">
+  <header class="game-header-info">
+    <h2 class="game-title">Quebra-Cabeça Numérico</h2>
+    <div class="status-painel">
+      <p id="movimentos" class="badge-info">Movimentos: <span>0</span></p>
+    </div>
+  </header>
+
+  <div class="game-layout-puzzle">
+    <main class="puzzle-board-container">
+      <div id="puzzle-grid" class="grid-puzzle"></div>
+
+      <div class="controles-puzzle">
+        <button id="embaralhar" class="btn-primary">
+          Novo Jogo / Embaralhar
+        </button>
+      </div>
+    </main>
+
+    <aside class="instrucoes-container">
+      <h3>Como Jogar</h3>
+      <p>
+        Ordene os números de 1 a 8. Clique em uma peça adjacente ao espaço vazio
+        para movê-la.
+      </p>
+      <div class="objetivo-preview">
+        <span>1</span><span>2</span><span>3</span> <span>4</span><span>5</span
+        ><span>6</span> <span>7</span><span>8</span
+        ><span class="empty-preview"></span>
+      </div>
+    </aside>
+  </div>
+
+  <audio id="som-vitoria" src="src/assets/audio/victory.mp3"></audio>
+</section>

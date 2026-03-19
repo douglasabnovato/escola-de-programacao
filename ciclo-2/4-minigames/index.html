@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>learnTECH | Mini Games Elite</title>
+    <link rel="stylesheet" href="src/assets/css/variables.css" />
+    <link rel="stylesheet" href="src/assets/css/main.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Mini Jogos learnTECH</h1>
+    </header>
+
+    <main class="app-layout">
+      <aside class="menu-lateral">
+        <nav>
+          <ul>
+            <li>
+              <a href="#" data-route="forca" class="nav-link">
+                <span class="nav-icon">🪓</span> Forca
+              </a>
+            </li>
+            <li>
+              <a href="#" data-route="velha" class="nav-link">
+                <span class="nav-icon">❌</span> Jogo da Velha
+              </a>
+            </li>
+            <li>
+              <a href="#" data-route="quebra-cabeca" class="nav-link">
+                <span class="nav-icon">🧩</span> Quebra-Cabeça
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section id="game-container" class="conteudo-jogo">
+        <div class="welcome-screen">
+          <h2>Selecione um desafio no menu lateral</h2>
+          <p>Nível: ByteClass Bootcamp</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 learnTECH Ecosystem - CTO: Douglas Novato</p>
+    </footer>
+
+    <script type="module" src="src/core/router.js"></script>
+  </body>
+</html>

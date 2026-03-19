@@ -1,0 +1,28 @@
+<section class="jogo-velha-container">
+  <header class="game-header-info">
+    <h2 class="game-title">Jogo da Velha</h2>
+    <div class="status-painel">
+      <p id="vez-jogador" class="badge-info">Vez do Jogador: <span>X</span></p>
+    </div>
+  </header>
+
+  <div class="game-layout-velha">
+    <main class="tabuleiro-container">
+      <div id="tabuleiro" class="grid-velha"></div>
+
+      <div class="controles-velha">
+        <button id="reiniciar" class="btn-primary">Reiniciar Partida</button>
+      </div>
+    </main>
+
+    <aside class="historico-container">
+      <h3>Histórico de Jogadas</h3>
+      <div id="historico" class="lista-jogadas">
+        <p class="empty-state">Inicie o jogo para ver o histórico</p>
+      </div>
+    </aside>
+  </div>
+
+  <audio id="som-vitoria" src="src/assets/audio/victory.mp3"></audio>
+  <audio id="som-derrota" src="src/assets/audio/lost.mp3"></audio>
+</section>

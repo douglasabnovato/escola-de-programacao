@@ -1,0 +1,65 @@
+/**
+ * variables.css - Design Tokens learnTECH
+ * Foco: Consistência, Acessibilidade e Manutenção.
+ */
+
+:root {
+  /* --- Color Palette (Neo-Brutalism & Modern UI) --- */
+  --brand-primary: #da1a5a;
+  --brand-secondary: #e96088;
+  --brand-accent: #d94373;
+
+  --bg-main: #da1a5a; /* Fundo da aplicação */
+  --bg-card: #f9dfe7; /* Fundo dos containers de jogo */
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+
+  --text-dark: #000000;
+  --text-light: #ffffff;
+  --text-muted: #333333;
+
+  /* --- Feedback Colors --- */
+  --color-success: #2ecc71;
+  --color-error: #e74c3c;
+  --color-warning: #f1c40f;
+
+  /* --- Typography --- */
+  --font-main: "Open Sans", sans-serif;
+  --font-weight-reg: 400;
+  --font-weight-med: 500;
+  --font-weight-bold: 700;
+
+  /* --- Spacing & Sizing --- */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+
+  /* Clamp para Tipografia Responsiva (Fluida) */
+  --fs-h1: clamp(1.5rem, 5vw, 2.5rem);
+  --fs-h2: clamp(1.2rem, 4vw, 1.8rem);
+  --fs-body: clamp(0.9rem, 2vw, 1rem);
+
+  /* --- Effects & Borders --- */
+  --border-radius-sm: 4px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 20px;
+  --border-radius-round: 50%;
+
+  --border-thick: 2px solid var(--text-dark);
+  --border-thin: 1px solid var(--text-dark);
+
+  /* Shadow Neo-Brutalist (Eleva o UX) */
+  --shadow-flat: 4px 4px 0px var(--text-dark);
+  --shadow-pressed: 2px 2px 0px var(--text-dark);
+  --shadow-modal: 0px 10px 30px rgba(0, 0, 0, 0.3);
+
+  /* --- Transitions --- */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s ease-in-out;
+}
+
+/* Dark Mode Preference (Opcional - Preparado para Escala) */
+@media (prefers-color-scheme: dark) {
+  /* Aqui poderíamos redefinir variáveis para tema escuro no futuro */
+}

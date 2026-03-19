@@ -1,0 +1,87 @@
+/**
+ * quebra-cabeca.css - Grid Dinâmico learnTECH
+ */
+
+.game-layout-puzzle {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+}
+
+.grid-puzzle {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  background: var(--text-dark);
+  border: var(--border-thick);
+  padding: 10px;
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-sm);
+}
+
+.peca-puzzle {
+  background: var(--brand-secondary);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  transition:
+    transform 0.1s ease,
+    background 0.2s;
+  user-select: none;
+}
+
+.peca-puzzle:hover {
+  background: var(--brand-accent);
+}
+
+/* Espaço Vazio */
+.peca-puzzle.vazio {
+  background: var(--bg-card);
+  cursor: default;
+}
+
+.peca-puzzle.vazio:hover {
+  background: var(--bg-card);
+}
+
+.objetivo-preview {
+  display: grid;
+  grid-template-columns: repeat(3, 25px);
+  gap: 5px;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.objetivo-preview span {
+  width: 25px;
+  height: 25px;
+  background: var(--text-dark);
+  color: white;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-preview {
+  background: #ccc !important;
+}
+
+@media (max-width: 800px) {
+  .game-layout-puzzle {
+    grid-template-columns: 1fr;
+  }
+  .grid-puzzle {
+    width: 280px;
+    height: 280px;
+  }
+}
