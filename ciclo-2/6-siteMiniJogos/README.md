@@ -23,3 +23,9 @@ contendo três jogos clássicos: **Jogo da Forca**, **Jogo da Velha** e **Quebra
 - **HTML5** – Estrutura do site
 - **CSS3** – Estilização e layout
 - **JavaScript (Vanilla JS)** – Lógica do jogo e carregamento dinâmico
+
+
+## 🛠️ WorkFlow Git
+
+main - tudo funcionando
+feature/versao-2-aulas - desenvolvendo
