@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Web</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div
+      class="calculator"
+      data-first-value=""
+      data-operator=""
+      data-mod-value=""
+      data-previous-key-type=""
+    >
+      <div class="calculator__display-container">
+        <div class="display__formula"></div>
+        <div class="calculator__display">0</div>
+      </div>
+
+      <div class="calculator__keys">
+        <button data-action="clear">AC</button>
+        <button class="key--operator" data-action="divide">÷</button>
+        <button class="key--operator" data-action="multiply">×</button>
+        <button data-action="delete">⌫</button>
+
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="key--operator" data-action="subtract">−</button>
+
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="key--operator" data-action="add">+</button>
+
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="key--equal" data-action="calculate">=</button>
+
+        <button>0</button>
+        <button data-action="decimal">.</button>
+        <button data-action="percentage">%</button>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

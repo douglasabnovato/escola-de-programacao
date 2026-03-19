@@ -1,0 +1,138 @@
+/* --- CSS: IDENTIDADE VISUAL EMERALD TECH --- */
+:root {
+  --deep-green: #061a10;
+  --emerald: #2ecc71;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-soft: #a0aec0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+}
+
+body {
+  background: radial-gradient(
+    circle at top,
+    #0b3d26 0%,
+    var(--deep-green) 100%
+  );
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.calculator {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  width: 90%;
+  max-width: 360px;
+  padding: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Visor de Duas Camadas */
+.calculator__display-container {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: right;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.display__formula {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  margin-bottom: 4px;
+  height: 1.2rem;
+  overflow: hidden;
+}
+
+.calculator__display {
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--emerald);
+  text-shadow: 0 0 15px rgba(46, 204, 113, 0.2);
+  word-wrap: break-word;
+}
+
+/* Grid de Botões */
+.calculator__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+button {
+  height: 64px;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.94);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.key--operator {
+  background: rgba(46, 204, 113, 0.1) !important;
+  color: var(--emerald);
+  font-weight: bold;
+}
+
+.is-depressed {
+  background: var(--emerald) !important;
+  color: var(--deep-green) !important;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+}
+
+.key--equal {
+  background: var(--emerald) !important;
+  color: var(--deep-green) !important;
+  grid-column: 4;
+  grid-row: 4 / 6;
+  height: 100%;
+  font-weight: bold;
+}
+
+button[data-action="clear"] {
+  color: #ff5e57;
+}
+
+/* Responsividade para telas menores */
+@media (max-height: 700px) {
+  .calculator {
+    padding: 16px;
+  }
+  button {
+    height: 50px;
+  }
+}
