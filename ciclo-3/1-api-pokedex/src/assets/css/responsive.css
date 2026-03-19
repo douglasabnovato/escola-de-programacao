@@ -1,0 +1,86 @@
+/* ==========================================================================
+   ESTRATÉGIA RESPONSIVA - learnTECH / byteclass
+   ========================================================================== */
+
+/* 1. Ajustes para Tablets e Telas Médias (até 768px) */
+@media (max-width: 768px) {
+  .container,
+  .container-lista {
+    width: 95%;
+    padding: 15px;
+    margin: 10px auto;
+  }
+
+  .pokemon-grid {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 15px;
+  }
+}
+
+/* 2. Ajustes para Smartphones (até 480px) */
+@media (max-width: 480px) {
+  /* Página Principal (index.html) */
+  .header-pokedex h1 {
+    font-size: 1.5rem;
+  }
+
+  .busca-container {
+    grid-template-columns: 1fr; /* Input e Botão empilham */
+  }
+
+  #btn-pesquisar {
+    width: 100%;
+  }
+
+  .btn-navegacao {
+    grid-template-columns: 1fr; /* Botões Anterior/Próximo empilham */
+    gap: 10px;
+  }
+
+  /* Página de Listagem (lista.html) */
+  .header-lista h1 {
+    font-size: 1.3rem;
+  }
+
+  .pokemon-grid {
+    grid-template-columns: 1fr 1fr; /* Força 2 colunas fixas para melhor UX */
+    gap: 10px;
+  }
+
+  .pokemon-card-lista {
+    width: 100%; /* Card ocupa toda a largura da coluna do grid */
+    padding: 10px;
+  }
+
+  .pokebola-container img {
+    width: 50px; /* Diminui a pokébola para sobrar espaço */
+  }
+
+  /* Ajuste de Tipografia Global */
+  body {
+    font-size: 14px;
+  }
+}
+
+/* 3. Ajustes para Telas Muito Pequenas (até 320px - ex: iPhone SE antigo) */
+@media (max-width: 320px) {
+  .header-pokedex h1 {
+    font-size: 1.2rem;
+  }
+
+  .type-badge {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+}
+
+/* 4. Otimização para modo Paisagem (Landscape) em celulares */
+@media (max-height: 500px) and (orientation: landscape) {
+  body {
+    align-items: flex-start; /* Permite scroll se a altura for pequena */
+  }
+
+  .container {
+    margin-top: 20px;
+  }
+}

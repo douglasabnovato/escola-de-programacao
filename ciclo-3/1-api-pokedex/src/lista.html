@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explorador de Base - PokéDex</title>
+
+    <link rel="stylesheet" href="./assets/css/style-lista.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container-lista">
+      <header class="header-lista">
+        <button
+          class="btn-voltar"
+          onclick="window.location.href = './../index.html'"
+        >
+          ⬅ Voltar
+        </button>
+        <h1>Explorador de Base</h1>
+        <p>Captura apenas os Pokémon no primeiro estágio de evolução.</p>
+      </header>
+
+      <section class="status-exploracao">
+        <p id="contador-pokemon">Carregando espécies...</p>
+      </section>
+
+      <main id="grid-pokebolas" class="pokemon-grid">
+        <div id="loading-lista">
+          <div class="spinner"></div>
+          <p>Procurando Pokémon selvagens...</p>
+        </div>
+      </main>
+    </div>
+
+    <script src="./assets/js/script-lista.js"></script>
+  </body>
+</html>

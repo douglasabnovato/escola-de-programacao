@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex Dinâmica - learnTECH</title>
+
+    <link rel="stylesheet" href="./src/assets/css/style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="menu-global">
+        <button
+          id="btn-ir-lista"
+          class="btn-secundario"
+          onclick="window.location.href = './src/lista.html'"
+        >
+          Explorar Pokébolas ➔
+        </button>
+      </nav>
+
+      <header class="header-pokedex">
+        <h1>Pokédex Artigo Tech</h1>
+        <p>Descobre os teus Pokémon favoritos em tempo real.</p>
+      </header>
+
+      <section class="busca-container">
+        <input
+          type="text"
+          id="input-pesquisar"
+          placeholder="Nome ou ID do Pokémon"
+        />
+        <button id="btn-pesquisar">Buscar</button>
+      </section>
+
+      <main id="poke-app">
+        <div id="mensagem-loading" class="hiden">
+          <p>A capturar dados...</p>
+        </div>
+
+        <div id="pokemon-info" class="hiden">
+          <div class="card-pokedex">
+            <img src="" id="pokemon-imagem" alt="Imagem do Pokémon" />
+            <h2 id="pokemon-nome">---</h2>
+            <p id="pokemon-id">#000</p>
+            <div id="pokemon-tipos" class="tipos-container"></div>
+          </div>
+        </div>
+
+        <nav class="btn-navegacao">
+          <button id="btn-anterior">Anterior</button>
+          <button id="btn-proximo">Próximo</button>
+        </nav>
+
+        <div id="mensagem-erro" class="hiden">
+          <p>⚠️ Pokémon não encontrado!</p>
+        </div>
+      </main>
+    </div>
+
+    <script src="./src/assets/js/main.js"></script>
+  </body>
+</html>
