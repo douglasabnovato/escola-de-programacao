@@ -1,3 +1,5 @@
+//forca.js
+
 function iniciarJogoDaForca() {
     const exibicaoPalavra = document.querySelector(".exibicao-palavra");
     const textoErros = document.querySelector(".texto-erros b");

@@ -1,3 +1,5 @@
+//word-list.js
+
 const wordList = [
     { word: "violao", hint: "Um instrumento musical com cordas." },
     { word: "oxigenio", hint: "Um gás incolor e inodoro essencial para a vida." },

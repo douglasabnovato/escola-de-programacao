@@ -1,3 +1,5 @@
+//script.js
+
 async function carregarJogo(jogo) {
   const container = document.getElementById("conteudo-jogo");
 

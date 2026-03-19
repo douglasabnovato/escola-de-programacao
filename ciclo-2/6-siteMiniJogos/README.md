@@ -1,4 +1,4 @@
-# 🎮 Site de Mini Jogos
+# 🎮 Jogos para Experimentar
 
 Este é um projeto de site de mini jogos desenvolvido com **HTML**, **CSS** e **JavaScript puro**, 
 contendo três jogos clássicos: **Jogo da Forca**, **Jogo da Velha** e **Quebra-Cabeça**.
