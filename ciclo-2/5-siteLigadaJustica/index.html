@@ -1,58 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Lateral de Heróis</title>
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Justice League | ByteClass Elite</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <nav id="menu" class="closed">
-        <ul>
-            <li class="menu-item" data-hero="Home">☰</li>
-            <li class="menu-item" data-hero="Batman" onclick="changeSlide(0)"><img src="imagens/batman.jpg" alt="batman" class="img"></li>
-            <li class="menu-item" data-hero="Superman" onclick="changeSlide(1)"><img src="imagens/superman.jpg" alt="superman" class="img"></li>
-            <li class="menu-item" data-hero="Flash" onclick="changeSlide(2)"><img src="imagens/flash.jpg" alt="flash" class="img"></li>
-            <li class="menu-item" data-hero="Mulher Maravilha" onclick="changeSlide(3)"><img src="imagens/mulherMaravilha.jpg" alt="mulherMaravilha" class="img"></li>
-            <li class="menu-item" data-hero="Lanterna Verde" onclick="changeSlide(4)"><img src="imagens/lanternaVerde.jpg" alt="lanternaVerde" class="img"></li>
-            <li class="menu-item" data-hero="Arqueiro Verde" onclick="changeSlide(5)"><img src="imagens/arqueiroVerde.jpg" alt="arqueiroVerde" class="img"></li>
-            <li class="menu-item" data-hero="Aquaman" onclick="changeSlide(6)"><img src="imagens/aquaman.jpg" alt="aquaman" class="img"></li>
-            <li class="menu-item" data-hero="Ciborgue" onclick="changeSlide(7)"><img src="imagens/ciborgue.jpg" alt="ciborgue" class="img"></li>
-            <li class="menu-item" data-hero="Shazam" onclick="changeSlide(8)"><img src="imagens/shazam.png" alt="shazam" class="img"></li>
-        </ul>
+      <ul id="menuList">
+        <li class="menu-item active" data-hero="Home">
+          <span class="menu-icon">☰</span>
+        </li>
+
+        <li class="menu-item" data-hero="Batman">
+          <img src="imagens/batman.jpg" alt="Batman" />
+        </li>
+        <li class="menu-item" data-hero="Superman">
+          <img src="imagens/superman.jpg" alt="Superman" />
+        </li>
+        <li class="menu-item" data-hero="Flash">
+          <img src="imagens/flash.jpg" alt="Flash" />
+        </li>
+        <li class="menu-item" data-hero="Mulher Maravilha">
+          <img src="imagens/mulherMaravilha.jpg" alt="Mulher Maravilha" />
+        </li>
+        <li class="menu-item" data-hero="Lanterna Verde">
+          <img src="imagens/lanternaVerde.jpg" alt="Lanterna Verde" />
+        </li>
+        <li class="menu-item" data-hero="Arqueiro Verde">
+          <img src="imagens/arqueiroVerde.jpg" alt="Arqueiro Verde" />
+        </li>
+        <li class="menu-item" data-hero="Aquaman">
+          <img src="imagens/aquaman.jpg" alt="Aquaman" />
+        </li>
+        <li class="menu-item" data-hero="Ciborgue">
+          <img src="imagens/ciborgue.jpg" alt="Ciborgue" />
+        </li>
+        <li class="menu-item" data-hero="Shazam">
+          <img src="imagens/shazam.png" alt="Shazam" />
+        </li>
+      </ul>
     </nav>
 
-    <div id="content">
-        <h1 id="homeH1">Sejam bem-vindos a Liga da Justiça!!!</h1>
-        <p id="homeP">
-            A Liga da Justiça é uma das mais icônicas equipes de super-heróis da DC, reunindo personagens que simbolizam
-            valores como justiça, coragem e sacrifício. Desde sua criação nos anos 60 até as adaptações em filmes e
-            séries, a liga enfrenta ameaças que nenhum herói pode combater sozinho, cativando fãs ao redor do mundo.
-            Neste espaço, vamos explorar alguns dos personagens que compõem essa equipe lendária e descobrir
-            curiosidades fascinantes sobre eles!
-        </p>
-        <div class="carousel">
-            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-            <div class="carousel-images">
-                <img src="imagens/liga.jpg" alt="liga" class="active">
-                <img src="imagens/liga1.jpg" alt="liga1">
-                <img src="imagens/liga2.jpg" alt="liga2">
-                <img src="imagens/liga3.jpg" alt="liga3">
-                <img src="imagens/liga4.jpg" alt="liga4">
-            </div>
-            <button class="next" onclick="moveSlide(1)">&#10095;</button>
-            <div class="carousel-indicators">
-                <button type="button" onclick="changeSlide(0)" class="active"></button>
-                <button type="button" onclick="changeSlide(1)"></button>
-                <button type="button" onclick="changeSlide(2)"></button>
-                <button type="button" onclick="changeSlide(3)"></button>
-                <button type="button" onclick="changeSlide(4)"></button>
-            </div>
-        </div>
-        
-        </div>
-    </div>
+    <main id="content"></main>
 
-    <script src="index.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
