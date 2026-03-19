@@ -3,7 +3,6 @@
  * Padrões: ES6 Modules, Encapsulamento, Clean Code.
  */
 
-// Importação da lista de palavras (Agora como módulo também)
 import { wordList } from "./word-list.js";
 
 // Estado do Jogo (Privado ao módulo)
@@ -15,29 +14,27 @@ let state = {
   maxErros: 6,
 };
 
-// Referências do DOM (Iniciadas no init)
+// Referências do DOM
 let nodes = {};
 
 /**
- * Inicializador do Jogo (Chamado pelo Router)
+ * Inicializador do Jogo
  */
 export function init() {
   cacheSelectors();
   bindEvents();
   novoJogo();
-  console.log("[Forca]: Módulo inicializado.");
+  console.log("[Forca]: Interface Neo-Brutalista Ativa.");
 }
 
-/**
- * Mapeia os elementos do DOM para evitar buscas repetitivas (Performance)
- */
 function cacheSelectors() {
   nodes = {
     exibicao: document.querySelector(".exibicao-palavra"),
-    erros: document.querySelector(".texto-erros b"),
+    erros: document.querySelector(".error-counter b"),
     dica: document.querySelector(".texto-dica b"),
     teclado: document.querySelector(".teclado"),
     imagem: document.querySelector(".caixa-forca img"),
+    caixaImagem: document.querySelector(".caixa-forca"),
     modal: document.querySelector(".modal-jogo"),
     btnReset: document.querySelector(".jogar-novamente"),
     somVitoria: document.getElementById("som-vitoria"),
@@ -46,32 +43,38 @@ function cacheSelectors() {
 }
 
 function bindEvents() {
-  nodes.btnReset.addEventListener("click", novoJogo);
+  nodes.btnReset.onclick = () => novoJogo();
 }
 
+/**
+ * Reseta o jogo e seleciona nova palavra
+ */
 function novoJogo() {
-  // Reset de Estado
   const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
+
   state.palavraAtual = word.toLowerCase();
   state.dica = hint;
   state.letrasCorretas = [];
   state.contadorErros = 0;
 
-  // Atualização de UI
+  // UI Reset
   nodes.modal.classList.remove("mostrar");
   nodes.dica.innerText = state.dica;
   nodes.erros.innerText = `0 / ${state.maxErros}`;
-  nodes.imagem.src = `src/games/forca/assets/hangman-0.svg`;
+  nodes.imagem.src = `src/assets/img/games/forca/hangman-0.svg`;
 
-  // Renderiza placeholders das letras
+  // Renderiza slots (Lidando com espaços se houver)
   nodes.exibicao.innerHTML = state.palavraAtual
     .split("")
-    .map(() => `<li class="letra"></li>`)
+    .map((char) => `<li class="letra ${char === " " ? "espaco" : ""}"></li>`)
     .join("");
 
   renderTeclado();
 }
 
+/**
+ * Cria o teclado virtual
+ */
 function renderTeclado() {
   nodes.teclado.innerHTML = "";
   const letras = "qwertyuiopasdfghjklzxcvbnm".split("");
@@ -85,12 +88,15 @@ function renderTeclado() {
   });
 }
 
+/**
+ * Lógica de Validação
+ */
 function validarJogada(botao, letra) {
   botao.disabled = true;
-  botao.classList.add("clicado");
 
   if (state.palavraAtual.includes(letra)) {
-    // Acerto: Atualiza letras no DOM
+    botao.classList.add("correto"); // Classe para CSS (ex: fundo verde/neon)
+
     [...state.palavraAtual].forEach((char, index) => {
       if (char === letra) {
         state.letrasCorretas.push(char);
@@ -100,46 +106,47 @@ function validarJogada(botao, letra) {
       }
     });
   } else {
-    // Erro: Atualiza imagem e contador
+    // ERRO: Ativa animação 'shake' definida no CSS
     state.contadorErros++;
-    nodes.imagem.src = `src/games/forca/assets/hangman-${state.contadorErros}.svg`;
+    botao.classList.add("errado"); // Classe para CSS (ex: fundo cinza/riscado)
+
+    nodes.caixaImagem.classList.add("erro-shake");
+    setTimeout(() => nodes.caixaImagem.classList.remove("erro-shake"), 400);
+
+    nodes.imagem.src = `src/assets/img/games/forca/hangman-${state.contadorErros}.svg`;
     nodes.erros.innerText = `${state.contadorErros} / ${state.maxErros}`;
   }
 
-  verificarFimDeJogo();
+  verificarFim();
 }
 
-function verificarFimDeJogo() {
-  const venceu = state.palavraAtual
-    .split("")
-    .every((l) => state.letrasCorretas.includes(l));
-
+function verificarFim() {
+  // Ignora espaços na contagem de vitória
+  const letrasUnicas = [...new Set(state.palavraAtual.replace(/\s/g, ""))];
+  const venceu = letrasUnicas.every((l) => state.letrasCorretas.includes(l));
   const perdeu = state.contadorErros >= state.maxErros;
 
   if (venceu || perdeu) {
-    exibirModal(venceu);
+    exibirResultado(venceu);
   }
 }
 
-function exibirModal(vitoria) {
-  const titulo = nodes.modal.querySelector("h4");
-  const mensagem = nodes.modal.querySelector("p");
-  const img = nodes.modal.querySelector("img");
+function exibirResultado(vitoria) {
+  const modalMsg = nodes.modal.querySelector(".modal-message b");
+  const modalTitle = nodes.modal.querySelector(".modal-title");
+  const modalImg = nodes.modal.querySelector(".modal-img");
 
-  titulo.innerText = vitoria ? "Parabéns!" : "Fim de Jogo!";
-  img.src = vitoria
+  modalTitle.innerText = vitoria ? "SISTEMA ONLINE!" : "CRITICAL ERROR!";
+  modalImg.src = vitoria
     ? "src/assets/img/shared/victory.gif"
     : "src/assets/img/shared/lost.gif";
-  mensagem.innerHTML = vitoria
-    ? `Você descobriu a palavra: <b>${state.palavraAtual.toUpperCase()}</b>`
-    : `A palavra correta era: <b>${state.palavraAtual.toUpperCase()}</b>`;
 
+  modalMsg.innerText = state.palavraAtual.toUpperCase();
   nodes.modal.classList.add("mostrar");
 
-  // Play Audio (Tratamento de erro para navegadores que bloqueiam autoplay)
   const som = vitoria ? nodes.somVitoria : nodes.somDerrota;
-  som.currentTime = 0;
-  som
-    .play()
-    .catch(() => console.log("Áudio bloqueado pelo navegador até interação."));
+  if (som) {
+    som.currentTime = 0;
+    som.play().catch(() => console.warn("Audio autoplay blocked."));
+  }
 }
