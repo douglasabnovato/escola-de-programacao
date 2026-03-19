@@ -1,0 +1,236 @@
+/* ==========================================================================
+   1. DESIGN TOKENS & RESET
+   ========================================================================== */
+:root {
+  --bg-color: #f0f0f0;
+  --primary-color: #ffcc00; /* Amarelo Pokémon */
+  --secondary-color: #3b4cca; /* Azul Pokémon */
+  --accent-color: #ff0000; /* Vermelho (Erro) */
+  --dark-color: #000000;
+  --border-thick: 3px solid #000;
+  --shadow-flat: 5px 5px 0px #000;
+  --shadow-active: 2px 2px 0px #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 15px;
+}
+
+/* ==========================================================================
+   2. LAYOUT PRINCIPAL (RESPONSIVO)
+   ========================================================================== */
+.container {
+  background: #fff;
+  width: 100%;
+  max-width: 450px;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-flat);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Navegação Global (Link para Lista) */
+.menu-global {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-secundario {
+  background-color: var(--dark-color);
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0px var(--primary-color);
+  transition: all 0.1s;
+}
+
+.btn-secundario:active {
+  box-shadow: none;
+  transform: translate(4px, 4px);
+}
+
+/* ==========================================================================
+   3. ELEMENTOS DE UI (BUSCA)
+   ========================================================================== */
+.header-pokedex {
+  text-align: center;
+}
+
+.header-pokedex h1 {
+  font-family: "Comic Neue", cursive;
+  font-size: clamp(1.5rem, 8vw, 2rem);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.busca-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+#input-pesquisar {
+  width: 100%;
+  padding: 12px;
+  border: var(--border-thick);
+  font-size: 1rem;
+  outline: none;
+}
+
+#btn-pesquisar {
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  border: var(--border-thick);
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 0.1s ease;
+}
+
+#btn-pesquisar:active {
+  transform: translate(3px, 3px);
+}
+
+/* ==========================================================================
+   4. CARD DO POKÉMON & ANIMAÇÕES
+   ========================================================================== */
+.card-pokedex {
+  border: var(--border-thick);
+  background-color: #fff;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 320px;
+  animation: bounceIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#pokemon-imagem {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  image-rendering: pixelated;
+  margin-bottom: 15px;
+}
+
+#pokemon-nome {
+  text-transform: capitalize;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+#pokemon-id {
+  font-weight: bold;
+  color: #666;
+}
+
+.tipos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.type-badge {
+  padding: 6px 16px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #eee;
+}
+
+/* ==========================================================================
+   5. NAVEGAÇÃO
+   ========================================================================== */
+.btn-navegacao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.btn-navegacao button {
+  padding: 12px;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: var(--border-thick);
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 3px 3px 0px #000;
+  transition: all 0.1s;
+}
+
+.btn-navegacao button:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+/* ==========================================================================
+   6. ESTADOS DE CONTROLO (HIDEN / FEEDBACK)
+   ========================================================================== */
+.hiden {
+  display: none !important;
+}
+
+#mensagem-loading,
+#mensagem-erro {
+  text-align: center;
+  font-weight: bold;
+  padding: 30px;
+  border: var(--border-thick);
+}
+
+#mensagem-erro {
+  color: var(--accent-color);
+  background-color: #fff1f1;
+}
+
+/* ==========================================================================
+   7. KEYFRAMES & RESPONSIVIDADE ADICIONAL
+   ========================================================================== */
+@keyframes bounceIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .btn-navegacao {
+    grid-template-columns: 1fr;
+  }
+
+  #pokemon-imagem {
+    max-width: 140px;
+  }
+}
