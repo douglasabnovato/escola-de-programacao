@@ -1,0 +1,328 @@
+/* BYTECLASS DESIGN SYSTEM - ONE PIECE EDITION 
+   Foco: Modern UX, Glassmorphism, Responsividade Fluida
+*/
+
+:root {
+  /* Paleta de Cores (Dark Mode Premium) */
+  --bg-dark: #050505;
+  --bg-card: #121212;
+  --accent: #e63946; /* Vermelho Luffy */
+  --accent-gold: #c5a059; /* Ouro One Piece */
+  --text-main: #f5f5f5;
+  --text-dim: #a0a0a0;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  /* Variáveis de Estrutura */
+  --header-height: 80px;
+  --nav-height: 60px;
+  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset e Configurações Globais */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Utilitários de Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: fadeInDown 0.8s var(--transition);
+}
+
+.section-header h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  background: linear-gradient(to bottom, #fff, #666);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- CABEÇALHO E NAVEGAÇÃO --- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-banner {
+  height: var(--header-height);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+  transform: scale(1.1);
+  animation: kenBurns 20s infinite alternate;
+}
+
+nav {
+  height: var(--nav-height);
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  align-items: center;
+}
+
+nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+nav a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+nav a i {
+  color: var(--accent-gold);
+}
+
+/* --- CARROSSEL HERO --- */
+.carrossel-hero {
+  margin-top: calc(var(--header-height) + var(--nav-height) + 40px);
+  padding-bottom: 80px;
+}
+
+.carrossel-master {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.carrossel-view {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.midia-track {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Botões do Carrossel */
+.botao {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.botao:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
+/* Indicadores (Dots) */
+.carrossel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: var(--glass-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dot.active {
+  background: var(--accent-gold);
+  width: 30px;
+  border-radius: 5px;
+}
+
+/* --- FORMULÁRIO DE COMENTÁRIOS --- */
+.form-section {
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 80px;
+  border: 1px solid var(--glass-border);
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Label Animada */
+.input-group label {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: var(--text-dim);
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+form input:focus + label,
+form input:valid + label,
+form textarea:focus + label,
+form textarea:valid + label {
+  top: -12px;
+  left: 10px;
+  font-size: 0.75rem;
+  background: var(--bg-card);
+  padding: 0 8px;
+  color: var(--accent-gold);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
+}
+
+/* --- ANIMAÇÕES --- */
+@keyframes kenBurns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  header {
+    position: relative;
+  }
+  .carrossel-hero {
+    margin-top: 0;
+  }
+
+  nav {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    height: 70px;
+    z-index: 2000;
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+  nav a {
+    font-size: 0.7rem;
+    flex-direction: column;
+  }
+
+  .carrossel-master .botao {
+    display: none;
+  } /* Esconde setas no mobile */
+}

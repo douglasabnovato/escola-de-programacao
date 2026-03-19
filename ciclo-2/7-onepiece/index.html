@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>One Piece | Trilha Grand Line | ByteClass</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header id="main-header">
+      <div class="header-banner">
+        <img src="midia/imgCabecalho.jpg" alt="Cabeçalho One Piece Banner" />
+        <div class="banner-overlay"></div>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="#home"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li>
+            <a href="#episodios"><i class="fas fa-tv"></i> Episódios</a>
+          </li>
+          <li>
+            <a href="#comentarios"
+              ><i class="fas fa-comments"></i> Comentários</a
+            >
+          </li>
+          <li>
+            <a href="#sobre"><i class="fas fa-info-circle"></i> Sobre</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="carrossel-hero container">
+        <div class="section-header">
+          <h1>One Piece</h1>
+          <p>A aventura, a tripulação e o sonho do Rei dos Piratas.</p>
+        </div>
+
+        <div class="carrossel-master">
+          <button class="botao anterior" aria-label="Vídeo Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+
+          <div class="carrossel-view">
+            <div class="midia-track" id="carrossel">
+              <video loop muted controls poster="midia/liga.jpg">
+                <source src="midia/Zoro.mp4" type="video/mp4" />
+              </video>
+
+              <video loop muted controls poster="midia/liga1.jpg">
+                <source src="midia/Luffy.mp4" type="video/mp4" />
+              </video>
+
+              <video loop muted controls poster="midia/liga2.jpg">
+                <source src="midia/Sanji.mp4" type="video/mp4" />
+              </video>
+
+              <video loop muted controls poster="midia/liga3.jpg">
+                <source src="midia/Buggy.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+
+          <button class="botao proximo" aria-label="Próximo Vídeo">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div class="carrossel-dots" id="carrossel-dots"></div>
+      </section>
+
+      <section id="episodios" class="container">
+        <div class="section-header">
+          <h2>Episódios</h2>
+        </div>
+        <div class="table-wrapper">
+          <table class="fl-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Código</th>
+                <th>Nome do Episódio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fas fa-check-circle watched"></i></td>
+                <td>E01</td>
+                <td>O Amanhacer de uma Aventura</td>
+              </tr>
+              <tr>
+                <td><i class="fas fa-check-circle watched"></i></td>
+                <td>E02</td>
+                <td>O Homem do Chapéu de Palha</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-circle"></i></td>
+                <td>E03</td>
+                <td>O Contador de Histórias</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-circle"></i></td>
+                <td>E04</td>
+                <td>Os Piratas Estão Vindo</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-circle"></i></td>
+                <td>E05</td>
+                <td>Venha Comer no Baratie!</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-circle"></i></td>
+                <td>E06</td>
+                <td>O Chefe e o Faz-Tudo</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-circle"></i></td>
+                <td>E07</td>
+                <td>A Garota com a Tautuagem de Peixe-Serra</td>
+              </tr>
+              <tr>
+                <td><i class="far fa-circle"></i></td>
+                <td>E08</td>
+                <td>O Mais Procurado de East Blue</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="comentarios" class="container form-section">
+        <div class="section-header">
+          <h2>Comentários</h2>
+        </div>
+
+        <form id="form-comentario">
+          <div class="input-group">
+            <input type="text" id="nome" name="nome" required />
+            <label for="nome">Seu Nome de Pirata</label>
+          </div>
+
+          <div class="input-group">
+            <textarea
+              id="comentario"
+              name="comentario"
+              rows="4"
+              required
+            ></textarea>
+            <label for="comentario">Sua mensagem para a tripulação...</label>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            Enviar Mensagem <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+
+        <div id="comentarios-lista" class="comentarios-feed"></div>
+      </section>
+    </main>
+
+    <footer id="sobre">
+      <div class="footer-content container">
+        <img
+          src="midia/imgOnePiece.jpg"
+          alt="Logo One Piece Oficial"
+          class="footer-logo"
+        />
+
+        <p>
+          One Piece é uma obra-prima de Eiichiro Oda. Este site é um projeto
+          educativo da <strong>ByteClass</strong>.
+        </p>
+
+        <div class="social-links">
+          <a href="#" aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Github"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
