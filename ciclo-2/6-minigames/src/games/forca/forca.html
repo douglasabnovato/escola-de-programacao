@@ -1,0 +1,43 @@
+<section class="forca-game-container">
+  <div class="modal-jogo">
+    <div class="modal-content">
+      <img
+        src="src/assets/img/shared/victory.gif"
+        alt="Resultado"
+        class="modal-img"
+      />
+      <h4 class="modal-title">Fim de Jogo!</h4>
+      <p class="modal-message">A palavra correta era: <b>---</b></p>
+      <button class="jogar-novamente btn-primary">Jogar Novamente</button>
+    </div>
+  </div>
+
+  <div class="game-layout">
+    <aside class="caixa-forca">
+      <div class="forca-canvas">
+        <img
+          src="src/games/forca/assets/hangman-0.svg"
+          draggable="false"
+          alt="Status da Forca"
+        />
+      </div>
+      <h2 class="game-title">Jogo da Forca</h2>
+    </aside>
+
+    <main class="caixa-jogo">
+      <ul class="exibicao-palavra"></ul>
+
+      <div class="game-info">
+        <h4 class="texto-dica">Dica: <b>---</b></h4>
+        <h4 class="texto-erros">
+          Erros: <span class="error-counter"><b>0 / 6</b></span>
+        </h4>
+      </div>
+
+      <div class="teclado"></div>
+    </main>
+  </div>
+
+  <audio id="som-vitoria" src="src/assets/audio/victory.mp3"></audio>
+  <audio id="som-derrota" src="src/assets/audio/lost.mp3"></audio>
+</section>
