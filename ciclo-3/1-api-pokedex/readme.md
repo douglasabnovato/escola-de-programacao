@@ -1,76 +1,103 @@
-# 🎓 Roteiro de Aula: Pokédex Dinâmica (Consumo de API)
+# 📱 PokéDex Dinâmica - Ciclo 2 (byteclass)
 
-Este módulo marca a transição para o desenvolvimento de aplicações vivas. Vamos construir uma Pokédex que consome dados da **PokéAPI**, aplicando conceitos de **Async/Await**, **Manipulação de DOM** e **UX Moderna**.
+Bem-vindo ao projeto **PokéDex Dinâmica**, um marco no **Ciclo 2** da nossa trilha de formação. Aqui, deixamos o conteúdo estático para trás e entramos no mundo das **Aplicações Vivas**, conectando o nosso Frontend a dados reais através da **PokéAPI**.
 
----
-
-## 🏗️ 1. Planejamento e Estrutura (HTML Semântico)
-O foco é preparar o "palco" para dados que serão carregados dinamicamente.
-
-- [ ] **Container Principal**: Criar a estrutura base que centraliza a Pokédex na tela.
-- [ ] **Header e Busca**: Implementar o campo de entrada (`input`) e o botão de busca (`button`).
-- [ ] **Display de Dados**: 
-    - [ ] `<img>` com ID para a foto do Pokémon.
-    - [ ] `<h2>` para o nome e `<p>` para o ID/Tipo.
-- [ ] **Navegação**: Criar os botões "Anterior" e "Próximo" para percorrer a lista.
-- [ ] **Estados de Interface**: Criar containers para mensagens de "Carregando" e "Erro 404".
-
-
+> **Status do Projeto:** 🚀 Concluído (v2.0)  
+> **Tecnologias:** HTML5, CSS3 (Neo-Brutalismo), JavaScript (ES6+)
 
 ---
 
-## 📐 2. Layout e Identidade Visual (CSS Moderno)
-Aplicando as técnicas de posicionamento e os Design Tokens da learnTECH.
+## 🏗️ Arquitetura do Projeto
 
-- [ ] API PokeAPI (3 partes): https://www.youtube.com/watch?v=Zr9SMQH4M_A
-- [ ] **CSS Grid Layout**: Organizar a Pokédex em áreas definidas (`header`, `search`, `display`, `nav`).
-- [ ] **Responsividade**: Garantir que a Pokédex seja funcional em telas de smartphones e desktops.
-- [ ] **Estética Neo-Brutalista**: 
-    - [ ] Bordas espessas (`border: 3px solid #000`).
-    - [ ] Sombras sólidas (`box-shadow: 5px 5px 0px #000`).
-- [ ] **Classe de Controle**: Implementar a classe `.hiden { display: none; }` para o gerenciamento de estado via JS.
+O projeto segue a estrutura de governança da **learnTECH**, priorizando a modularidade e organização profissional:
 
+```text
+1-api-pokedex/
+├── index.html              # Página Principal (Busca Individual)
+├── lista.html              # Explorador de Base (Sistema de Reveal)
+└── src/
+    └── assets/
+        ├── css/
+        │   ├── style.css       # Design System Neo-Brutalista
+        │   ├── lista.css       # Layout de Grid e Animações de Reveal
+        │   └── responsive.css  # Media Queries e Mobile-First
+        ├── images/
+        │   └── pokeball.png    # Assets estáticos
+        └── js/
+            ├── main.js         # Lógica de consumo e navegação (Index)
+            └── lista.js        # Filtro de 1º estágio e eventos de clique
+```
 
-
----
-
-## 🧠 3. Lógica de Programação (JavaScript & API)
-Transformando o JSON da PokéAPI em uma interface interativa.
-
-- [ ] **Variáveis de Estado**: Criar um contador global para rastrear qual Pokémon está sendo exibido.
-- [ ] **Função de Consumo (`fetch`)**:
-    - [ ] Implementar `async` e `await` para buscar dados em `https://pokeapi.co/api/v2/pokemon/`.
-    - [ ] Utilizar `try/catch` para capturar erros de conexão ou busca.
-- [ ] **Renderização**: 
-    - [ ] Injetar o nome, imagem (sprites) e tipos no DOM.
-    - [ ] Formatar o ID (ex: #001) para melhorar a UX.
-- [ ] **Interatividade**: Vincular os botões de navegação e o campo de busca às funções de busca.
+🧠 Objetivos de Aprendizado1. Consumo de API (Async/Await)Aprendemos a transformar o fluxo assíncrono em algo simples de ler, utilizando fetch, async e await para buscar dados em https://pokeapi.co/api/v2/.2. Manipulação Avançada de DOMInjeção dinâmica de elementos, criação de badges de tipos e gerenciamento de estados de interface (loading, erro, revelado).3. UX & Estética Neo-BrutalistaAplicação de uma identidade visual forte com:Bordas espessas (3px solid #000).Sombras sólidas sem desfoque.Micro-interações: O efeito de "saída da Pokébola" usando filtros de brilho e escala.🚀 Funcionalidades ChaveBusca em Tempo Real: Pesquise por nome ou ID oficial.Navegação Inteligente: Botões para percorrer a PokéDex sequencialmente.Explorador de Base (Exclusivo): Uma segunda página que filtra apenas Pokémon de primeiro estágio.Sistema de Reveal: Os Pokémon na listagem começam escondidos em Pokébolas e são revelados com animação de luz ao clicar.Totalmente Responsivo: Design adaptado para qualquer tamanho de tela via responsive.css.⚖️ Governança e Clean CodePadronização de IDs: Uso de padStart(3, '0') para exibir IDs como #001.Tratamento de Erros: Implementação de try/catch para evitar quebras silenciosas.Modularização: CSS e JS separados por responsabilidade de página.🛠️ Como ExecutarClone o repositório para a sua máquina.Certifique-se de manter a estrutura da pasta src/assets.Abra o arquivo index.html utilizando a extensão Live Server no VS Code.O browser deve apontar para http://127.0.0.1:5500/index.html.📱 Engajamento (WhatsApp)MomentoObjetivoMensagemVésperaAntecipação"Preparado para capturar dados reais? Amanhã vamos conectar nosso código à PokéAPI! ⚡"1h antesAquecimento"Falta 1 hora! Já escolheu seus Pokémon favoritos para testarmos? 🎮"15min antesChecklist"VS Code aberto e café na mão? Em 15 min vamos transformar JSON em interface. 🔥"InícioChamada Final"Estamos AO VIVO! Link liberado para dominarmos APIs na prática! 💻"
 
 
+## 👨‍🏫 Roteiro de Aula: Pokédex & Consumo de APIs
+Bloco 1: O "Esqueleto" e a Hierarquia (15 min)
+O objetivo é garantir que o aluno entenda onde cada arquivo mora para evitar erros de 404.
 
----
+Abertura: Explicar o que é uma API Rest e como a PokéAPI entrega dados em JSON.
 
-## 🚀 4. UX e Animações (O Diferencial)
-Elevando o nível do projeto para um padrão profissional.
+Prática: Criar a estrutura de pastas conforme o padrão:
 
-- [ ] **Skeleton Loading**: Mostrar um estado visual de carregamento enquanto a API responde.
-- [ ] **Animações de Entrada**: Usar `@keyframes` para fazer o Pokémon aparecer com um leve "fade-in" ou "bounce".
-- [ ] **Troca de Cores**: Alterar a cor de fundo do card dinamicamente com base no tipo do Pokémon (Fogo = Vermelho, Água = Azul).
+/src/assets/css
 
----
+/src/assets/js
 
-## ⚖️ 5. Governança ByteClass
-- [ ] **Modularização**: Separar a lógica de busca da lógica de atualização da tela.
-- [ ] **Clean Code**: Funções curtas e nomes de variáveis semânticos.
-- [ ] **Check de BU**: Garantir que os assets e cores seguem o manual de marca da learnTECH.
+/src/assets/images
 
----
+Check de Governança: Validar se os caminhos no <link> e <script> no index.html estão apontando corretamente para dentro de ./assets/....
 
-## 📱 Scripts de Engajamento (WhatsApp)
+Bloco 2: CSS Neo-Brutalista e Design Tokens (30 min)
+Transformar o layout simples em uma interface com a identidade visual da learnTECH.
 
-| Momento | Gatilho | Mensagem |
-| :--- | :--- | :--- |
-| **Véspera** | Antecipação | "Preparado para capturar dados reais? Amanhã vamos conectar nosso código à PokéAPI e criar uma Pokédex profissional! ⚡" |
-| **1h antes** | Aquecimento | "Falta 1 hora! Já explorou o site pokeapi.co? Escolha seus favoritos para testarmos hoje. 🎮" |
-| **15min antes** | Checklist | "VS Code aberto e café na mão? Em 15 min vamos transformar JSON em uma interface épica. 🔥" |
-| **Início** | Chamada Final | "Estamos AO VIVO! Vamos dominar o consumo de APIs na prática. Link liberado! 💻" |
+Conceito: Explicar o uso de variáveis CSS (:root) para cores e bordas.
+
+Técnica:
+
+Uso de clamp() para fontes responsivas.
+
+Criação da classe .hiden { display: none !important; } para controle de estado.
+
+Desafio Rápido: Pedir para os alunos alterarem a cor da variável --primary-color e verem o impacto global.
+
+Bloco 3: O Coração Assíncrono - main.js (45 min)
+Momento crítico da aula. Vamos sair do function comum para o async/await.
+
+Explicação Visual: Como o navegador "espera" a resposta da API sem travar a tela.
+
+Codificação Guiada:
+
+Implementar o fetch() simples.
+
+Refatorar para async/await.
+
+Adicionar o try/catch para tratamento de erro (Simular erro digitando um nome de Pokémon que não existe).
+
+Dica de Mentor: Mostrar o console.log(data) para que o aluno veja a árvore do objeto JSON antes de injetar no HTML.
+
+Bloco 4: A Segunda Tela e o Efeito "Reveal" (40 min)
+Aplicação prática de lógica de negócios e animações avançadas.
+
+Navegação: Implementar o botão de transição para a lista.html.
+
+Lógica de Filtragem:
+
+Explicar por que usamos o endpoint pokemon-species (verificar evolves_from_species === null).
+
+A "Mágica" do CSS:
+
+Configurar o @keyframes flashLight.
+
+Sincronizar o setTimeout() do JS (300ms) com o auge do brilho do CSS.
+
+Bloco 5: Revisão e Publicação (20 min)
+Responsividade: Testar o projeto no "Inspetor de Elementos" em modo mobile.
+
+Deploy: Instruir o uso do GitHub Pages, reforçando que o index.html deve estar acessível para o serviço funcionar.
+
+🎯 Dicas de Suporte (Checklist para o Instrutor)
+Caminhos Relativos: 90% dos erros dos alunos serão 404 Not Found. Reitere que se o HTML está na src, ele não precisa escrever src/ no caminho.
+
+MIME Type Error: Se o aluno receber este erro, explique que o caminho do JS está errado e o servidor está devolvendo um HTML de erro no lugar do script.
+
+Sprites: Lembre-os que nem todos os Pokémon têm o GIF animado (gerações novas). O código deve ter o fallback para a imagem estática.
