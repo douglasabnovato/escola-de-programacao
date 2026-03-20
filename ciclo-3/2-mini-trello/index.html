@@ -1,22 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Mini Trello</title>
-    <link rel="stylesheet" href="./src/assets/css/style.css">
-</head>
-<body>
+    <meta
+      name="description"
+      content="Gerenciador de tarefas estilo Trello com foco em produtividade e organização visual."
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./src/assets/css/style.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
     <header class="header">
-        <h1>Mini Trello</h1>
+      <div class="header__content">
+        <h1 class="header__title">Mini Trello</h1>
+      </div>
     </header>
 
-    <main class="board" id="board">
+    <!-- MAIN APP -->
+    <main class="app">
+      <!-- BOARD -->
+      <section class="board" id="board" aria-label="Quadro de tarefas">
+        <!-- LISTAS DINÂMICAS ENTRAM AQUI -->
+
+        <!-- ADD LIST -->
         <div class="add-list-container">
-            <button class="add-list-btn" id="add-list-btn">+ Adicionar outra lista</button>
+          <button
+            class="add-list-btn"
+            id="add-list-btn"
+            aria-label="Adicionar nova lista"
+          >
+            + Adicionar outra lista
+          </button>
         </div>
+      </section>
     </main>
 
+    <!-- TEMPLATE (IMPORTANTE PRA ESCALA) -->
+
+    <!-- TEMPLATE LIST -->
+    <template id="list-template">
+      <div class="list">
+        <div class="list-header"></div>
+
+        <div class="cards-container"></div>
+
+        <button class="add-card-btn">+ Adicionar um cartão</button>
+      </div>
+    </template>
+
+    <!-- TEMPLATE CARD -->
+    <template id="card-template">
+      <div class="card" draggable="true"></div>
+    </template>
+
+    <!-- SCRIPT -->
     <script src="./src/assets/js/script.js"></script>
-</body>
+  </body>
 </html>
