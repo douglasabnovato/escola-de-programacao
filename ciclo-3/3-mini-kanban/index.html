@@ -1,22 +1,25 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trello Mini Kanban</title>
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <title>Trello Mini Kanban</title>
-    <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
-    <div id="home" class="container content">
-      <header>
-        <h1>Trello Mini Kanban</h1>
-        <p>Organize o seu trabalho</p>
+    <div class="container">
+      <header class="hero">
+        <div class="overlay">
+          <div class="header-text">
+            <h1><i class="fa fa-tasks"></i> Trello Mini Kanban</h1>
+            <p>Organize o seu trabalho</p>
+          </div>
+        </div>
       </header>
 
       <main>
@@ -27,12 +30,11 @@
             class="todo-list"
             ondrop="drop(event, this.id)"
             ondragover="over(event)"
-          >  
-          </ul> 
+          ></ul>
           <div class="add-card" onclick="addCard(this)">
-            <p>Adicionar tarefa</p>
+            <p>+ Adicionar tarefa</p>
           </div>
-        </div> 
+        </div>
 
         <div class="board">
           <h3 class="title">Fazendo</h3>
@@ -43,7 +45,7 @@
             ondragover="over(event)"
           ></ul>
           <div class="add-card" onclick="addCard(this)">
-            <p>Adicionar tarefa</p>
+            <p>+ Adicionar tarefa</p>
           </div>
         </div>
 
@@ -56,12 +58,67 @@
             ondragover="over(event)"
           ></ul>
           <div class="add-card" onclick="addCard(this)">
-            <p>Adicionar tarefa</p>
+            <p>+ Adicionar tarefa</p>
           </div>
         </div>
       </main>
     </div>
+    <!-- Modal para criação de tarefa -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Nova Tarefa</h2>
+        <input type="text" id="taskInput" placeholder="Digite a tarefa..." />
+        <div class="modal-actions">
+          <button onclick="confirmTask()">Adicionar</button>
+          <button onclick="closeModal()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-top">
+        <!-- Coluna Esquerda -->
+        <div class="footer-left">
+  <div class="footer-brand">
+    <img src="./assets/logo.png" alt="Logo LearnTECH" class="footer-logo" />
+    <div class="footer-text">
+      <h3 class="footer-title">LearnTECH</h3>
+      <p class="footer-tagline">Transformando ideias em tecnologia que encanta.</p>
+    </div>
+  </div>
+</div>
 
-    <script src="./script.js"></script>
+
+        <!-- Coluna Central -->
+        <div class="footer-center">
+          <h4>Recursos</h4>
+          <ul>
+            <li>
+              <a href="https://example.com" target="_blank">Documentação</a>
+            </li>
+            <li><a href="https://example.com" target="_blank">Tutoriais</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna Direita -->
+        <div class="footer-right">
+          <h4>Redes Sociais</h4>
+          <div class="social-icons">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda linha -->
+      <div class="footer-bottom">
+        <p>
+          &copy; <span id="year"></span> LearnTECH — Todos os direitos
+          reservados
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
