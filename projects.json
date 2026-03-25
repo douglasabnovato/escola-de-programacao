@@ -57,7 +57,7 @@
     "id": 7,
     "title": "Home Instagram",
     "description": "Réplica do layout responsivo do Instagram.",
-    "path": "./home-instagram/index.html",
+    "path": "./instagram-home-desktop/index.html",
     "category": "UI/UX",
     "icon": "fab fa-instagram",
     "featured": false

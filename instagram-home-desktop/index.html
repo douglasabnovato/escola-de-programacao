@@ -1,0 +1,232 @@
+ <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="../public/favicon.ico" />
+    <title>Instagram Nexus | learnTECH</title>
+    <style>
+        /* DESIGN SYSTEM NEXUS */
+        :root {
+            --corAzul: #199bd9;
+            --corVermelho: #e62319;
+            --corAmarelo: #fccf2f;
+            --corFundo: #c8e1eb;
+            --corTexto: #0d0d0d;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: "Lato", sans-serif;
+        }
+
+        body {
+            background-color: var(--corFundo);
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* WRAPPER PRINCIPAL (SEM SIDEBAR) */
+        .instagram-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            max-width: 1000px;
+            height: 95vh;
+            gap: 2rem;
+        }
+
+        .instagram-phone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+        }
+
+        .instagram-phone img {
+            height: 40rem;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.1));
+        }
+
+        .instagram-continue {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 50%;
+            gap: 1.5rem;
+        }
+
+        /* ESTILO GROUP NEXUS (GLASSMORPHISM) */
+        .group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #ffffff;
+            width: 100%;
+            padding: 2.5rem 0;
+            border: 2px solid var(--corAzul); /* Borda Nexus */
+            border-radius: 12px;
+            box-shadow: 4px 4px 0px var(--corAmarelo); /* Shadow Nexus */
+        }
+
+        .instagram-logo {
+            height: 3.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-photo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--corAzul);
+            margin-bottom: 1.5rem;
+            width: 140px;
+            height: 140px;
+        }
+
+        .profile-photo img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* BOTÃO DE LOGIN NEXUS */
+        .instagram-login {
+            background-color: var(--corAzul);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .instagram-login:hover {
+            background-color: var(--corVermelho);
+            transform: scale(1.05);
+        }
+
+        .instagram-logout {
+            color: var(--corAzul);
+            margin-top: 1.5rem;
+            font-weight: bold;
+        }
+
+        .not-account {
+            color: rgb(120, 120, 120);
+            margin: 0.5rem 0;
+        }
+
+        .link-blue {
+            color: var(--corAzul);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .get-the-app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1rem 0;
+        }
+
+        .get-app {
+            margin-bottom: 1rem;
+            font-weight: bold;
+            color: var(--corTexto);
+        }
+
+        .download {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .app-download {
+            height: 3rem;
+            width: 10rem;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: 0.3s;
+        }
+
+        .app-download:nth-child(1) {
+            background-image: url("./assets/phone-button-1.png");
+        }
+
+        .app-download:nth-child(2) {
+            background-image: url("./assets/phone-button-2.png");
+        }
+
+        .app-download:hover {
+            transform: translateY(-5px);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 1024px) {
+            .instagram-wrapper { width: 90%; }
+        }
+
+        @media (max-width: 850px) {
+            .instagram-phone { display: none; }
+            .instagram-continue { width: 80%; }
+        }
+
+        @media (max-width: 450px) {
+            .instagram-continue { width: 100%; padding: 1rem; }
+            .group { border: 2px solid var(--corAzul); }
+        }
+    </style>
+</head>
+<body>
+    <main class="instagram-wrapper">
+        <section class="instagram-phone">
+            <img src="./assets/phone-2.png" alt="celular de demonstração Nexus" />
+        </section>
+        
+        <section class="instagram-continue">
+            <div class="group">
+                <img src="./assets/instagram-logo-2.png" class="instagram-logo" alt="logo instagram" />
+                
+                <div class="profile-photo">
+                    <img src="./assets/perfil-instagram.jpg" alt="perfil @douglasabnovato" />
+                </div>
+
+                <a href="#" class="instagram-login">Continuar como Douglas</a>
+                <a href="#" class="instagram-logout">Remover conta</a>
+            </div>
+
+            <div class="group">
+                <p class="not-account">Não é @douglasabnovato?</p>
+                <p class="not-account">
+                    <span class="link-blue">Alternar contas</span> ou <span class="link-blue">Inscrever-se</span>
+                </p>
+            </div>
+
+            <div class="get-the-app">
+                <p class="get-app">Baixe o aplicativo</p>
+                <div class="download">
+                    <a href="#" class="app-download"></a>
+                    <a href="#" class="app-download"></a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
