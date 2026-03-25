@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Curso em Vídeo",
-    "description": "Práticas de algoritmos e fundamentos de JavaScript.",
+    "description": "Fundamentos de algoritmos e lógica com foco em sintaxe JavaScript.",
     "path": "./curso-em-video/index.html",
     "category": "Estudos",
     "icon": "fas fa-graduation-cap",
@@ -11,16 +11,16 @@
   {
     "id": 2,
     "title": "Desafios de Código",
-    "description": "Exercícios de lógica de programação e algoritmos.",
+    "description": "Resolução de problemas lógicos e algoritmos de diversos níveis.",
     "path": "./desafios-codigo/index.html",
     "category": "Lógica",
-    "icon": "fas fa-code",
+    "icon": "fas fa-terminal",
     "featured": false
   },
   {
     "id": 3,
     "title": "DIO + Spread",
-    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "description": "Repositório central de desafios e projetos do Bootcamp.",
     "path": "./dio-spread/index.html",
     "category": "Bootcamp",
     "icon": "fas fa-certificate",
@@ -29,25 +29,25 @@
   {
     "id": 4,
     "title": "Driven Aplicações",
-    "description": "Desenvolvimento de aplicações estruturadas.",
+    "description": "Criação de Web Apps estruturados com foco em arquitetura.",
     "path": "./driven-aplicacoes/index.html",
     "category": "Formação",
-    "icon": "fas fa-laptop-code",
+    "icon": "fas fa-layer-group",
     "featured": false
   },
   {
     "id": 5,
     "title": "Formulário de Login",
-    "description": "Interface de acesso com validação de campos.",
+    "description": "Estudo de validação de campos, UX de acesso e estados de input.",
     "path": "./formulario-login/index.html",
     "category": "Web Core",
-    "icon": "fas fa-user-lock",
+    "icon": "fas fa-user-shield",
     "featured": false
   },
   {
     "id": 6,
     "title": "Game Mario Bros",
-    "description": "Animações e mecânicas de pulo com CSS e JS.",
+    "description": "Engine simples de jogo usando colisões e animações CSS keyframes.",
     "path": "./game-mario-bros/index.html",
     "category": "Games",
     "icon": "fas fa-gamepad",
@@ -56,7 +56,7 @@
   {
     "id": 7,
     "title": "Home Instagram",
-    "description": "Réplica do layout responsivo do Instagram.",
+    "description": "Recriação da UI do Instagram com foco em Grid e Flexbox responsivo.",
     "path": "./instagram-home-desktop/index.html",
     "category": "UI/UX",
     "icon": "fab fa-instagram",
@@ -65,25 +65,25 @@
   {
     "id": 8,
     "title": "Jogo da Cobra",
-    "description": "Clássico Snake Game com controle de direção.",
+    "description": "Mecânica de movimentação por grid e crescimento de array (corpo).",
     "path": "./jogo-da-cobra/index.html",
     "category": "Games",
-    "icon": "fas fa-snake",
+    "icon": "fas fa-long-arrow-alt-up",
     "featured": true
   },
   {
     "id": 9,
     "title": "Jogo da Memória",
-    "description": "Lógica de comparação e flip cards.",
+    "description": "Manipulação dinâmica do DOM para comparação de estados e lógica de pares.",
     "path": "./jogo-da-memoria/index.html",
     "category": "Games",
-    "icon": "fas fa-brain",
+    "icon": "fas fa-th",
     "featured": false
   },
   {
     "id": 10,
     "title": "Jogo da Velha",
-    "description": "Tic-Tac-Toe com validação de vitória.",
+    "description": "Lógica matricial para validação de vitória e alternância de jogadores.",
     "path": "./jogo-da-velha/index.html",
     "category": "Games",
     "icon": "fas fa-times",
@@ -92,7 +92,7 @@
   {
     "id": 11,
     "title": "Jogo Lost Decade",
-    "description": "RPG simples em Canvas 2D.",
+    "description": "Renderização e controle de personagens em Canvas 2D.",
     "path": "./jogo-lost-decade/index.html",
     "category": "Games",
     "icon": "fas fa-dungeon",
@@ -101,17 +101,17 @@
   {
     "id": 12,
     "title": "Pedra, Papel e Tesoura",
-    "description": "Jokenpô contra a máquina.",
+    "description": "Aplicação de lógica aleatória (Math.random) em Jokenpô.",
     "path": "./jogo-pedra-papel-e-tesoura/index.html",
     "category": "Games",
-    "icon": "fas fa-hand-rock",
+    "icon": "fas fa-hand-scissors",
     "featured": false
   },
   {
     "id": 13,
-    "title": "Receita JS",
-    "description": "Manipulação de listas e DOM.",
-    "path": "./js-receita/index.html",
+    "title": "Receitas Deliciosas",
+    "description": "Renderização de conteúdo estático e estilização de cards culinários.",
+    "path": "./receitas/index.html",
     "category": "Prática",
     "icon": "fas fa-utensils",
     "featured": false
@@ -119,8 +119,8 @@
   {
     "id": 14,
     "title": "Rocketseat",
-    "description": "Desafios de HTML e CSS da trilha Explorer.",
-    "path": "./rocketseat/index.html",
+    "description": "Projetos de introdução ao desenvolvimento com HTML da trilha Explorer.",
+    "path": "./rocketseat-challenges/index.html",
     "category": "Desafios",
     "icon": "fas fa-rocket",
     "featured": false
@@ -128,7 +128,7 @@
   {
     "id": 15,
     "title": "Uma Lâmpada",
-    "description": "Interatividade simples de troca de estados.",
+    "description": "Exemplo básico de manipulação de eventos e troca de src de imagem.",
     "path": "./uma-lampada/index.html",
     "category": "Fundamental",
     "icon": "fas fa-lightbulb",
@@ -136,47 +136,47 @@
   },
   {
     "id": 16,
-    "title": "DIO + Spread - Contador",
-    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "title": "DIO + Contador",
+    "description": "Manipulação de estado numérico e condições de limite.",
     "path": "./dio-spread-contador/index.html",
     "category": "Bootcamp",
-    "icon": "fas fa-certificate",
+    "icon": "fas fa-sort-numeric-up",
     "featured": false
   },
   {
     "id": 17,
-    "title": "DIO + Spread Estacionamento",
-    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "title": "DIO + Estacionamento",
+    "description": "Lógica de controle de pátio com registro de entrada e saída.",
     "path": "./dio-spread-estacionamento/index.html",
     "category": "Bootcamp",
-    "icon": "fas fa-certificate",
+    "icon": "fas fa-parking",
     "featured": false
   },
   {
     "id": 18,
-    "title": "DIO + Spread Flex Box",
-    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "title": "DIO + Flex Box",
+    "description": "Protótipo focado em alinhamento de containers flexíveis.",
     "path": "./dio-spread-flex-box/index.html",
     "category": "Bootcamp",
-    "icon": "fas fa-certificate",
+    "icon": "fas fa-vector-square",
     "featured": false
   },
   {
     "id": 19,
-    "title": "DIO + Spread Operadores",
-    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "title": "DIO + Operadores",
+    "description": "Testes de lógica de comparação e aritmética básica em JS.",
     "path": "./dio-spread-operadores/index.html",
     "category": "Bootcamp",
-    "icon": "fas fa-certificate",
+    "icon": "fas fa-calculator",
     "featured": false
   },
   {
     "id": 20,
-    "title": "DIO + Spread ToDo List",
-    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "title": "DIO + ToDo List",
+    "description": "Aplicação CRUD básica para gerenciamento de tarefas diárias.",
     "path": "./dio-spread-todolist/index.html",
     "category": "Bootcamp",
-    "icon": "fas fa-certificate",
+    "icon": "fas fa-list-check",
     "featured": false
   }
 ]
