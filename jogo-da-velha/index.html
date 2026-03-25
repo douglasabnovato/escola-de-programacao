@@ -1,115 +1,380 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../public/favicon.ico"
-    />
-    <link rel="manifest" href="../public/manifest.json" />
-    <title>Javascript</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Tic-Tac-Toe Nexus | learnTECH</title>
     <style>
-      body {
-        margin: 0;
-        font-family: "Lato", sans-serif;
-      }
-
-      .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 200px;
-        background-color: #f1f1f1;
-        position: fixed;
-        height: 100%;
-        overflow: auto;
-      }
-
-      .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-      }
-
-      .sidebar a.active {
-        background-color: #04aa6d;
-        color: white;
-      }
-
-      .sidebar a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-      }
-
-      div.content {
-        margin-left: 200px;
-        padding: 1px 16px;
-        height: 100vh;
-      }
-
-      @media screen and (max-width: 700px) {
-        .sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
+        /* DESIGN SYSTEM NEXUS - [cite: 2025-12-31] */
+        :root {
+            --corAzul: #199bd9;
+            --corVermelho: #e62319;
+            --corAmarelo: #fccf2f;
+            --corFundo: #0d0d0d;
+            --corCard: #1a1a1a;
+            --corOverlay: rgba(13, 13, 13, 0.9);
         }
-        .sidebar a {
-          float: left;
-        }
-        div.content {
-          margin-left: 0;
-        }
-      }
 
-      @media screen and (max-width: 400px) {
-        .sidebar a {
-          text-align: center;
-          float: none;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
         }
-      }
+
+        body {
+            background-color: var(--corFundo);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & STATUS */
+        .status-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .status-container h1 {
+            color: var(--corAzul);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px var(--corAmarelo);
+        }
+
+        .turn-indicator {
+            background: var(--corCard);
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 2px solid var(--corAzul);
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(25, 155, 217, 0.3);
+        }
+
+        .icon-small {
+            width: 25px;
+            height: 25px;
+        }
+
+        /* TABULEIRO RESPONSIVO */
+        .tabuleiro {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 90vw;
+            max-width: 400px;
+            aspect-ratio: 1/1;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 15px;
+            border: 4px solid var(--corAzul);
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+        }
+
+        .espaco {
+            background-color: var(--corFundo);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .espaco:hover {
+            background-color: #1a1a1a;
+            box-shadow: inset 0 0 15px var(--corAzul);
+        }
+
+        /* ÍCONES X E O EM CSS */
+        .icon-x, .icon-o {
+            width: 60%;
+            height: 60%;
+            display: none;
+            position: relative;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .icon-x::before, .icon-x::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background-color: var(--corVermelho);
+            top: 50%;
+            border-radius: 5px;
+        }
+        .icon-x::before { transform: rotate(45deg); }
+        .icon-x::after { transform: rotate(-45deg); }
+
+        .icon-o {
+            border: 5px solid var(--corAmarelo);
+            border-radius: 50%;
+        }
+
+        /* BOTÃO REINICIAR */
+        .controls {
+            margin-top: 2rem;
+        }
+
+        .btn-nexus {
+            background: var(--corVermelho);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 4px 4px 0 var(--corAmarelo);
+            transition: 0.1s;
+        }
+
+        .btn-nexus:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0 0 0;
+        }
+
+        /* MODAL NEXUS SYSTEM */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--corOverlay);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--corCard);
+            width: 90%;
+            max-width: 450px;
+            border: 3px solid var(--corAzul);
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(25, 155, 217, 0.4);
+            animation: modalEntry 0.3s ease-out;
+        }
+
+        @keyframes modalEntry {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: var(--corAzul);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .modal-body {
+            padding: 30px 20px;
+            color: #ddd;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-modal {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-modal.primary {
+            background-color: var(--corAmarelo);
+            color: #000;
+            box-shadow: 3px 3px 0 var(--corAzul);
+        }
+
+        .btn-modal.secondary {
+            background-color: transparent;
+            color: #888;
+            border: 1px solid #444;
+        }
+
+        @media (max-width: 400px) {
+            .status-container h1 { font-size: 1.5rem; }
+        }
     </style>
-  </head>
-  <body>
-    <div class="sidebar">
-      <a href="../index.html">Home</a>
-      <a href="../formulario-login/index.html">Formulário Login</a>
-      <a href="../home-instagram/index.html">Home Instagram</a>
-      <a href="../uma-lampada/index.html">Uma Lâmpada</a>
-      <a href="../desafios-codigo/index.html">Desafios Código</a>
-      <a href="../curso-em-video/index.html">Curso em Vídeo</a>
-      <a href="../dio-spread/index.html">DIO + Spread</a>
-      <a href="../driven-aplicacoes/index.html">Driven Aplicações</a>
-      <a href="../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
-      <a href="../jogo-da-memoria/index.html">Jogo da Memória</a>
-      <a class="active" href="#jogo-da-velha">Jogo da Velha</a>
-      <a href="../jogo-lost-decade/index.html">Jogo lost decade</a>
-      <a href="../jogo-pedra-papel-e-tesoura/index.html"
-        >Jogo Pedra Papel e Tesoura</a
-      >
-      <a href="../jogo-da-cobra/index.html">Jogo da Cobra</a>
-      <a href="../game-mario-bros/index.html">Jogo Mario Bros</a>
+</head>
+<body>
+
+    <div class="status-container">
+        <h1>Tic-Tac-Toe Nexus</h1>
+        <div class="turn-indicator">
+            <span>VEZ DE:</span>
+            <div id="turn-icon-x" class="icon-small icon-x" style="display:block"></div>
+            <div id="turn-icon-o" class="icon-small icon-o" style="display:none"></div>
+        </div>
     </div>
-    <div class="content">
-      <div id="mostrador">
-        <p>Vez do Jogador :</p>
-        <img src="./images/x.png" alt="vez do Jogador" />
-      </div>
-      <div class="tabuleiro">
-        <div id="a1" class="espaco" jogada=""></div>
-        <div id="a2" class="espaco" jogada=""></div>
-        <div id="a3" class="espaco" jogada=""></div>
-        <div id="b1" class="espaco" jogada=""></div>
-        <div id="b2" class="espaco" jogada=""></div>
-        <div id="b3" class="espaco" jogada=""></div>
-        <div id="c1" class="espaco" jogada=""></div>
-        <div id="c2" class="espaco" jogada=""></div>
-        <div id="c3" class="espaco" jogada=""></div>
-      </div>
+
+    <div class="tabuleiro" id="board">
+        <div class="espaco" data-index="0"></div>
+        <div class="espaco" data-index="1"></div>
+        <div class="espaco" data-index="2"></div>
+        <div class="espaco" data-index="3"></div>
+        <div class="espaco" data-index="4"></div>
+        <div class="espaco" data-index="5"></div>
+        <div class="espaco" data-index="6"></div>
+        <div class="espaco" data-index="7"></div>
+        <div class="espaco" data-index="8"></div>
     </div>
-    <script type="text/javascript" src="./main.js"></script>
-  </body>
+
+    <div class="controls">
+        <button class="btn-nexus" onclick="resetGame()">Reiniciar Core</button>
+    </div>
+
+    <div id="nexusModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">SISTEMA NEXUS</h2>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Aguardando resultado...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal secondary" onclick="closeModal()">Fechar</button>
+                <button class="btn-modal primary" onclick="confirmAction()">Jogar Novamente</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const spaces = document.querySelectorAll('.espaco');
+        const turnIconX = document.getElementById('turn-icon-x');
+        const turnIconO = document.getElementById('turn-icon-o');
+        const modal = document.getElementById("nexusModal");
+        const modalMessage = document.getElementById("modalMessage");
+        const modalTitle = document.getElementById("modalTitle");
+        
+        let currentPlayer = 'X';
+        let gameState = ["", "", "", "", "", "", "", "", ""];
+        let gameActive = true;
+
+        const winningConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+
+        function handleSpaceClick(e) {
+            const clickedSpace = e.currentTarget;
+            const clickedIndex = parseInt(clickedSpace.getAttribute('data-index'));
+
+            if (gameState[clickedIndex] !== "" || !gameActive) return;
+
+            gameState[clickedIndex] = currentPlayer;
+            
+            // Renderiza o ícone
+            const icon = document.createElement('div');
+            icon.className = currentPlayer === 'X' ? 'icon-x' : 'icon-o';
+            icon.style.display = 'block';
+            clickedSpace.appendChild(icon);
+
+            checkResult();
+        }
+
+        function checkResult() {
+            let roundWon = false;
+            for (let condition of winningConditions) {
+                const [a, b, c] = condition;
+                if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
+                    roundWon = true;
+                    break;
+                }
+            }
+
+            if (roundWon) {
+                gameActive = false;
+                showModal("VITÓRIA CONFIRMADA", `O Player <strong>${currentPlayer}</strong> dominou o setor!`);
+                return;
+            }
+
+            if (!gameState.includes("")) {
+                gameActive = false;
+                showModal("EMPATE TÉCNICO", "O sistema entrou em equilíbrio total.");
+                return;
+            }
+
+            // Troca de turno
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            updateTurnUI();
+        }
+
+        function updateTurnUI() {
+            if (currentPlayer === 'X') {
+                turnIconX.style.display = 'block';
+                turnIconO.style.display = 'none';
+            } else {
+                turnIconX.style.display = 'none';
+                turnIconO.style.display = 'block';
+            }
+        }
+
+        function showModal(title, msg) {
+            modalTitle.innerText = title;
+            modalMessage.innerHTML = msg;
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        function confirmAction() {
+            resetGame();
+            closeModal();
+        }
+
+        function resetGame() {
+            currentPlayer = 'X';
+            gameState = ["", "", "", "", "", "", "", "", ""];
+            gameActive = true;
+            spaces.forEach(s => s.innerHTML = "");
+            updateTurnUI();
+        }
+
+        spaces.forEach(s => s.addEventListener('click', handleSpaceClick));
+
+        // Fechar ao clicar fora
+        window.onclick = (e) => { if (e.target == modal) closeModal(); }
+    </script>
+</body>
 </html>

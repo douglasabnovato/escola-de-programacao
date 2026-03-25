@@ -1,155 +1,236 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../public/favicon.ico"
-    />
-    <link rel="manifest" href="../public/manifest.json" />
-    <title>Javascript</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Memory Nexus | learnTECH</title>
     <style>
-      body {
-        margin: 0;
-        font-family: "Lato", sans-serif;
-      }
-
-      .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 200px;
-        background-color: #f1f1f1;
-        position: fixed;
-        height: 100%;
-        overflow: auto;
-      }
-
-      .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-      }
-
-      .sidebar a.active {
-        background-color: #04aa6d;
-        color: white;
-      }
-
-      .sidebar a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-      }
-
-      div.content {
-        margin-left: 200px;
-        padding: 1px 16px;
-        height: 100vh;
-      }
-
-      @media screen and (max-width: 700px) {
-        .sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
+        /* DESIGN SYSTEM NEXUS */
+        :root {
+            --corAzul: #199bd9;
+            --corVermelho: #e62319;
+            --corAmarelo: #fccf2f;
+            --corVerde: #44af35;
+            --corFundo: #0d0d0d;
         }
-        .sidebar a {
-          float: left;
-        }
-        div.content {
-          margin-left: 0;
-        }
-      }
 
-      @media screen and (max-width: 400px) {
-        .sidebar a {
-          text-align: center;
-          float: none;
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
         }
-      }
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--corFundo);
+            color: white;
+            font-family: "Lato", sans-serif;
+        }
+
+        .header-nexus {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header-nexus h1 {
+            font-size: 2.5rem;
+            color: var(--corAzul);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px var(--corAmarelo);
+        }
+
+        /* TABULEIRO NEXUS */
+        .memory-game {
+            width: 640px;
+            height: 640px;
+            display: flex;
+            flex-wrap: wrap;
+            perspective: 1000px;
+            background: rgba(25, 155, 217, 0.1);
+            padding: 10px;
+            border: 4px solid var(--corAzul);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(252, 207, 47, 0.3);
+        }
+
+        .memory-card {
+            width: calc(25% - 10px);
+            height: calc(33.333% - 10px);
+            margin: 5px;
+            position: relative;
+            transform: scale(1);
+            transform-style: preserve-3d;
+            transition: transform .5s;
+            cursor: pointer;
+        }
+
+        .memory-card:active {
+            transform: scale(0.97);
+            transition: transform .2s;
+        }
+
+        .memory-card.flip {
+            transform: rotateY(180deg);
+        }
+
+        /* FACES DAS CARTAS NEXUS */
+        .front-face,
+        .back-face {
+            width: 100%;
+            height: 100%;
+            padding: 15px;
+            position: absolute;
+            border-radius: 8px;
+            backface-visibility: hidden;
+            border: 2px solid var(--corAzul);
+        }
+
+        .back-face {
+            background: var(--corAzul); /* Cor sólida Nexus */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .front-face {
+            background: #fff;
+            transform: rotateY(180deg);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     </style>
-  </head>
-  <body>
-    <div class="sidebar">
-      <a href="../index.html">Home</a>
-      <a href="../formulario-login/index.html">Formulário Login</a>
-      <a href="../home-instagram/index.html">Home Instagram</a>
-      <a href="../uma-lampada/index.html">Uma Lâmpada</a>
-      <a href="../desafios-codigo/index.html">Desafios Código</a>
-      <a href="../curso-em-video/index.html">Curso em Vídeo</a>
-      <a href="../dio-spread/index.html">DIO + Spread</a>
-      <a href="../driven-aplicacoes/index.html">Driven Aplicações</a>
-      <a href="../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
-      <a class="active" href="#jogo-da-memoria">Jogo da Memória</a>
-      <a href="../jogo-da-velha/index.html">Jogo da Velha</a>
-      <a href="../jogo-lost-decade/index.html">Jogo lost decade</a>
-      <a href="../jogo-pedra-papel-e-tesoura/index.html"
-        >Jogo Pedra Papel e Tesoura</a
-      >
-      <a href="../jogo-da-cobra/index.html">Jogo da Cobra</a>
-      <a href="../game-mario-bros/index.html">Jogo Mario Bros</a>
-    </div>
-    <div class="content">
-      <section class="memory-game">
+</head>
+<body>
+
+    <header class="header-nexus">
+        <h1>Memory Nexus</h1>
+    </header>
+
+    <main class="memory-game">
         <div class="memory-card" data-framework="aurelia">
-          <img class="front-face" src="img/aurelia.svg" alt="Aurelia" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/aurelia.svg" alt="Aurelia" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
         <div class="memory-card" data-framework="aurelia">
-          <img class="front-face" src="img/aurelia.svg" alt="Aurelia" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/aurelia.svg" alt="Aurelia" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
 
         <div class="memory-card" data-framework="vue">
-          <img class="front-face" src="img/vue.svg" alt="Vue" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/vue.svg" alt="Vue" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
         <div class="memory-card" data-framework="vue">
-          <img class="front-face" src="img/vue.svg" alt="Vue" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/vue.svg" alt="Vue" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
 
         <div class="memory-card" data-framework="angular">
-          <img class="front-face" src="img/angular.svg" alt="Angular" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/angular.svg" alt="Angular" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
         <div class="memory-card" data-framework="angular">
-          <img class="front-face" src="img/angular.svg" alt="Angular" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/angular.svg" alt="Angular" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
 
         <div class="memory-card" data-framework="ember">
-          <img class="front-face" src="img/ember.svg" alt="Ember" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/ember.svg" alt="Ember" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
         <div class="memory-card" data-framework="ember">
-          <img class="front-face" src="img/ember.svg" alt="Ember" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/ember.svg" alt="Ember" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
 
         <div class="memory-card" data-framework="backbone">
-          <img class="front-face" src="img/backbone.svg" alt="Backbone" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/backbone.svg" alt="Backbone" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
         <div class="memory-card" data-framework="backbone">
-          <img class="front-face" src="img/backbone.svg" alt="Backbone" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/backbone.svg" alt="Backbone" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
 
         <div class="memory-card" data-framework="react">
-          <img class="front-face" src="img/react.svg" alt="React" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/react.svg" alt="React" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
         <div class="memory-card" data-framework="react">
-          <img class="front-face" src="img/react.svg" alt="React" />
-          <img class="back-face" src="img/js-badge.svg" alt="JS Badge" />
+            <img class="front-face" src="img/react.svg" alt="React" />
+            <div class="back-face"><img src="img/js-badge.svg" alt="JS"></div>
         </div>
-      </section>
-    </div>
-    <script type="text/javascript" src="./main.js"></script>
-  </body>
+    </main>
+
+    <script>
+        /**
+         * LÓGICA MEMORY NEXUS
+         */
+        const cards = document.querySelectorAll(".memory-card");
+
+        let hasFlippedCard = false;
+        let lockBoard = false;
+        let firstCard, secondCard;
+
+        function flipCard() {
+            if (lockBoard) return;
+            if (this === firstCard) return;
+
+            this.classList.add("flip");
+
+            if (!hasFlippedCard) {
+                hasFlippedCard = true;
+                firstCard = this;
+                return;
+            }
+
+            secondCard = this;
+            checkForMatch();
+        }
+
+        function checkForMatch() {
+            let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+            isMatch ? disableCards() : unflipCards();
+        }
+
+        function disableCards() {
+            firstCard.removeEventListener("click", flipCard);
+            secondCard.removeEventListener("click", flipCard);
+            resetBoard();
+        }
+
+        function unflipCards() {
+            lockBoard = true;
+            setTimeout(() => {
+                firstCard.classList.remove("flip");
+                secondCard.classList.remove("flip");
+                resetBoard();
+            }, 1000); // Tempo reduzido para 1s para melhor UX Nexus
+        }
+
+        function resetBoard() {
+            [hasFlippedCard, lockBoard] = [false, false];
+            [firstCard, secondCard] = [null, null];
+        }
+
+        (function shuffle() {
+            cards.forEach((card) => {
+                let randomPos = Math.floor(Math.random() * 12);
+                card.style.order = randomPos;
+            });
+        })();
+
+        cards.forEach((card) => card.addEventListener("click", flipCard));
+    </script>
+</body>
 </html>
