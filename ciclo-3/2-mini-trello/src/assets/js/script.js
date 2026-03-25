@@ -1,278 +1,303 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const board = document.getElementById('board');
-    const addListBtn = document.getElementById('add-list-btn');
-    let draggedCard = null; // Variável para armazenar o cartão que está sendo arrastado
+document.addEventListener("DOMContentLoaded", () => {
+  const board = document.getElementById("board");
+  const addListBtn = document.getElementById("add-list-btn");
 
-    // --- Funções Auxiliares ---
+  let draggedCard = null;
+  let draggedList = null;
 
-    // Função para gerar um ID único
-    function generateUniqueId() {
-        return 'id-' + Date.now() + Math.random().toString(16).substr(2, 5);
-    }
+  // ========================
+  // UTIL
+  // ========================
+  const generateId = () =>
+    "id-" + Date.now() + Math.random().toString(16).slice(2);
 
-    // Função para criar um novo cartão
-    function createCardElement(text, cardId) {
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.setAttribute('draggable', 'true'); // Torna o cartão arrastável
-        card.dataset.cardId = cardId || generateUniqueId(); // Atribui um ID ao cartão
-        card.textContent = text;
+  const saveBoard = () => {
+    const data = [];
 
-        // Eventos de Drag and Drop para o cartão
-        card.addEventListener('dragstart', (e) => {
-            draggedCard = card;
-            setTimeout(() => {
-                card.classList.add('dragging'); // Adiciona classe para estilização durante o arrasto
-            }, 0); // Pequeno atraso para a classe ser aplicada após o clone visual do drag
+    document.querySelectorAll(".list").forEach((list) => {
+      const listData = {
+        id: list.dataset.id,
+        title: list.querySelector(".list-header").textContent,
+        cards: [],
+      };
+
+      list.querySelectorAll(".card").forEach((card) => {
+        listData.cards.push({
+          id: card.dataset.id,
+          text: card.textContent,
         });
+      });
 
-        card.addEventListener('dragend', () => {
-            draggedCard.classList.remove('dragging');
-            draggedCard = null;
-        });
-
-        // Edição de cartão (simples: transforma em textarea)
-        card.addEventListener('click', (e) => {
-            if (e.target.tagName === 'DIV' && !e.target.querySelector('textarea')) {
-                const currentText = card.textContent;
-                const textarea = document.createElement('textarea');
-                textarea.value = currentText;
-                textarea.classList.add('card-edit-input');
-                card.innerHTML = '';
-                card.appendChild(textarea);
-                textarea.focus();
-
-                textarea.addEventListener('blur', () => {
-                    card.textContent = textarea.value.trim() || 'Novo cartão';
-                });
-
-                textarea.addEventListener('keypress', (event) => {
-                    if (event.key === 'Enter') {
-                        textarea.blur();
-                    }
-                });
-            }
-        });
-
-        return card;
-    }
-
-    // Função para criar uma nova lista
-    function createListElement(titleText, listId) {
-        const list = document.createElement('div');
-        list.classList.add('list');
-        list.dataset.listId = listId || generateUniqueId(); // Atribui um ID à lista
-
-        const listHeader = document.createElement('div');
-        listHeader.classList.add('list-header');
-        listHeader.textContent = titleText;
-
-        const cardsContainer = document.createElement('div');
-        cardsContainer.classList.add('cards-container');
-
-        const addCardBtn = document.createElement('button');
-        addCardBtn.classList.add('add-card-btn');
-        addCardBtn.textContent = '+ Adicionar um cartão';
-
-        list.append(listHeader, cardsContainer, addCardBtn);
-
-        // --- Eventos da Lista ---
-
-        // Edição do título da lista
-        listHeader.addEventListener('click', () => {
-            const currentText = listHeader.textContent;
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.value = currentText;
-            input.classList.add('list-header-input');
-            listHeader.replaceWith(input);
-            input.focus();
-
-            const saveTitle = () => {
-                const newTitle = input.value.trim() || 'Título da Lista';
-                listHeader.textContent = newTitle;
-                input.replaceWith(listHeader);
-            };
-
-            input.addEventListener('blur', saveTitle);
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    saveTitle();
-                }
-            });
-        });
-
-        // Adicionar Cartão - Botão
-        addCardBtn.addEventListener('click', () => {
-            addCardBtn.style.display = 'none'; // Esconde o botão
-
-            const form = document.createElement('div');
-            form.classList.add('add-card-form');
-
-            const textarea = document.createElement('textarea');
-            textarea.placeholder = 'Digite um título para este cartão...';
-            textarea.rows = 3;
-
-            const addBtn = document.createElement('button');
-            addBtn.textContent = 'Adicionar cartão';
-
-            const cancelBtn = document.createElement('button');
-            cancelBtn.classList.add('cancel-btn');
-            cancelBtn.textContent = 'X';
-
-            form.append(textarea, addBtn, cancelBtn);
-            list.insertBefore(form, addCardBtn); // Insere o formulário antes do botão
-
-            textarea.focus();
-
-            // Adicionar Cartão - Lógica
-            addBtn.addEventListener('click', () => {
-                const cardText = textarea.value.trim();
-                if (cardText) {
-                    const newCard = createCardElement(cardText);
-                    cardsContainer.appendChild(newCard);
-                    textarea.value = ''; // Limpa o campo
-                    textarea.focus();
-                }
-            });
-
-            // Cancelar Adição de Cartão
-            cancelBtn.addEventListener('click', () => {
-                form.remove();
-                addCardBtn.style.display = 'block'; // Mostra o botão novamente
-            });
-        });
-
-        // --- Drag and Drop para Listas (Target de Drop) ---
-        cardsContainer.addEventListener('dragover', (e) => {
-            e.preventDefault(); // Permite o drop
-            const afterElement = getDragAfterElement(cardsContainer, e.clientY);
-            const currentCard = draggedCard;
-
-            if (currentCard && currentCard.parentElement !== cardsContainer) {
-                // Se o cartão veio de outra lista, move-o
-                if (afterElement == null) {
-                    cardsContainer.appendChild(currentCard);
-                } else {
-                    cardsContainer.insertBefore(currentCard, afterElement);
-                }
-            } else if (currentCard) {
-                // Se o cartão está na mesma lista, reordena
-                if (afterElement == null) {
-                    cardsContainer.appendChild(currentCard);
-                } else {
-                    cardsContainer.insertBefore(currentCard, afterElement);
-                }
-            }
-        });
-
-        return list;
-    }
-
-    // Função auxiliar para determinar onde inserir o elemento arrastado
-    function getDragAfterElement(container, y) {
-        const draggableElements = [...container.querySelectorAll('.card:not(.dragging)')];
-
-        return draggableElements.reduce((closest, child) => {
-            const box = child.getBoundingClientRect();
-            const offset = y - box.top - box.height / 2;
-            if (offset < 0 && offset > closest.offset) {
-                return { offset: offset, element: child };
-            } else {
-                return closest;
-            }
-        }, { offset: Number.NEGATIVE_INFINITY }).element;
-    }
-
-
-    // --- Lógica Principal ---
-
-    // Adicionar Nova Lista - Botão
-    addListBtn.addEventListener('click', () => {
-        addListBtn.style.display = 'none'; // Esconde o botão
-
-        const form = document.createElement('div');
-        form.classList.add('add-list-form');
-
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.placeholder = 'Digite o título da lista...';
-
-        const addBtn = document.createElement('button');
-        addBtn.textContent = 'Adicionar lista';
-
-        const cancelBtn = document.createElement('button');
-        cancelBtn.classList.add('cancel-btn');
-        cancelBtn.textContent = 'X';
-
-        form.append(input, addBtn, cancelBtn);
-        board.insertBefore(form, addListBtn.parentElement); // Insere o formulário antes do contêiner do botão
-
-        input.focus();
-
-        // Adicionar Lista - Lógica
-        addBtn.addEventListener('click', () => {
-            const listTitle = input.value.trim();
-            if (listTitle) {
-                const newList = createListElement(listTitle);
-                board.insertBefore(newList, form); // Insere a nova lista antes do formulário
-                form.remove();
-                addListBtn.style.display = 'block'; // Mostra o botão novamente
-            }
-        });
-
-        // Cancelar Adição de Lista
-        cancelBtn.addEventListener('click', () => {
-            form.remove();
-            addListBtn.style.display = 'block'; // Mostra o botão novamente
-        });
+      data.push(listData);
     });
 
-    // --- Drag and Drop para o Quadro (Reordenar Listas) ---
-    board.addEventListener('dragover', (e) => {
-        e.preventDefault(); // Permite o drop
-        if (draggedCard && draggedCard.classList.contains('card')) {
-            // Se um cartão está sendo arrastado sobre o board (fora de um cards-container), não faz nada para evitar bagunça
-            return;
-        }
+    localStorage.setItem("mini-trello", JSON.stringify(data));
+  };
 
-        const afterElement = getDragAfterElement(board, e.clientX, true); // True para indicar que é horizontal
-        const currentList = draggedCard && draggedCard.closest('.list');
+  const loadBoard = () => {
+    const data = JSON.parse(localStorage.getItem("mini-trello")) || [];
+    data.forEach((list) => {
+      const listEl = createList(list.title, list.id);
+      board.insertBefore(listEl, addListBtn.parentElement);
 
-        if (currentList && currentList.parentElement === board) { // Apenas reordena se for uma lista do board
-            if (afterElement == null) {
-                board.insertBefore(currentList, addListBtn.parentElement); // Move para o final antes do botão add-list
-            } else {
-                board.insertBefore(currentList, afterElement);
-            }
-        }
+      list.cards.forEach((card) => {
+        const cardEl = createCard(card.text, card.id);
+        listEl.querySelector(".cards-container").appendChild(cardEl);
+      });
+    });
+  };
+
+  // ========================
+  // CARD
+  // ========================
+  function createCard(text, id = generateId()) {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.draggable = true;
+    card.dataset.id = id;
+    card.textContent = text;
+
+    // DRAG
+    card.addEventListener("dragstart", () => {
+      draggedCard = card;
+      card.classList.add("dragging");
     });
 
-    // Adapta getDragAfterElement para reordenar listas horizontalmente
-    function getDragAfterElement(container, x, isHorizontal = false) {
-        const draggableElements = [...container.querySelectorAll('.list:not(.dragging)')];
+    card.addEventListener("dragend", () => {
+      draggedCard = null;
+      card.classList.remove("dragging");
+      saveBoard();
+    });
 
-        if (!isHorizontal) { // Se for vertical (para cartões)
-            return draggableElements.reduce((closest, child) => {
-                const box = child.getBoundingClientRect();
-                const offset = x - box.top - box.height / 2; // Aqui seria y
-                if (offset < 0 && offset > closest.offset) {
-                    return { offset: offset, element: child };
-                } else {
-                    return closest;
-                }
-            }, { offset: Number.NEGATIVE_INFINITY }).element;
-        } else { // Se for horizontal (para listas)
-            return draggableElements.reduce((closest, child) => {
-                const box = child.getBoundingClientRect();
-                const offset = x - box.left - box.width / 2;
-                if (offset < 0 && offset > closest.offset) {
-                    return { offset: offset, element: child };
-                } else {
-                    return closest;
-                }
-            }, { offset: Number.NEGATIVE_INFINITY }).element;
+    // EDIT
+    card.addEventListener("click", () => {
+      if (card.querySelector("textarea")) return;
+
+      const textarea = document.createElement("textarea");
+      textarea.value = card.textContent;
+
+      card.innerHTML = "";
+      card.appendChild(textarea);
+      textarea.focus();
+
+      const save = () => {
+        card.textContent = textarea.value.trim() || "Novo cartão";
+        saveBoard();
+      };
+
+      textarea.addEventListener("blur", save);
+      textarea.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") textarea.blur();
+      });
+    });
+
+    return card;
+  }
+
+  // ========================
+  // LIST
+  // ========================
+  function createList(title, id = generateId()) {
+    const list = document.createElement("div");
+    list.className = "list";
+    list.dataset.id = id;
+    list.draggable = true;
+
+    const header = document.createElement("div");
+    header.className = "list-header";
+    header.textContent = title;
+
+    const cardsContainer = document.createElement("div");
+    cardsContainer.className = "cards-container";
+
+    const addCardBtn = document.createElement("button");
+    addCardBtn.className = "add-card-btn";
+    addCardBtn.textContent = "+ Adicionar cartão";
+
+    list.append(header, cardsContainer, addCardBtn);
+
+    // DRAG LIST
+    list.addEventListener("dragstart", () => {
+      draggedList = list;
+      list.classList.add("dragging");
+    });
+
+    list.addEventListener("dragend", () => {
+      draggedList = null;
+      list.classList.remove("dragging");
+      saveBoard();
+    });
+
+    // EDIT TITLE
+    header.addEventListener("click", () => {
+      const input = document.createElement("input");
+      input.value = header.textContent;
+
+      header.replaceWith(input);
+      input.focus();
+
+      const save = () => {
+        header.textContent = input.value.trim() || "Lista";
+        input.replaceWith(header);
+        saveBoard();
+      };
+
+      input.addEventListener("blur", save);
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") save();
+      });
+    });
+
+    // ADD CARD
+    addCardBtn.addEventListener("click", () => {
+      const textarea = document.createElement("textarea");
+      const addBtn = document.createElement("button");
+      const cancelBtn = document.createElement("button");
+
+      addBtn.textContent = "Adicionar";
+      cancelBtn.textContent = "X";
+
+      const form = document.createElement("div");
+      form.className = "add-card-form";
+
+      form.append(textarea, addBtn, cancelBtn);
+      list.insertBefore(form, addCardBtn);
+
+      addCardBtn.style.display = "none";
+      textarea.focus();
+
+      addBtn.onclick = () => {
+        if (!textarea.value.trim()) return;
+
+        const card = createCard(textarea.value);
+        cardsContainer.appendChild(card);
+
+        textarea.value = "";
+        textarea.focus();
+        saveBoard();
+      };
+
+      cancelBtn.onclick = () => {
+        form.remove();
+        addCardBtn.style.display = "block";
+      };
+    });
+
+    // DROP CARDS
+    cardsContainer.addEventListener("dragover", (e) => {
+      e.preventDefault();
+
+      const after = getCardAfter(cardsContainer, e.clientY);
+
+      if (!draggedCard) return;
+
+      if (after == null) {
+        cardsContainer.appendChild(draggedCard);
+      } else {
+        cardsContainer.insertBefore(draggedCard, after);
+      }
+    });
+
+    return list;
+  }
+
+  // ========================
+  // DRAG HELPERS
+  // ========================
+  function getCardAfter(container, y) {
+    const elements = [...container.querySelectorAll(".card:not(.dragging)")];
+
+    return elements.reduce(
+      (closest, el) => {
+        const box = el.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+          return { offset, element: el };
+        } else {
+          return closest;
         }
+      },
+      { offset: Number.NEGATIVE_INFINITY },
+    ).element;
+  }
+
+  function getListAfter(x) {
+    const elements = [...document.querySelectorAll(".list:not(.dragging)")];
+
+    return elements.reduce(
+      (closest, el) => {
+        const box = el.getBoundingClientRect();
+        const offset = x - box.left - box.width / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+          return { offset, element: el };
+        } else {
+          return closest;
+        }
+      },
+      { offset: Number.NEGATIVE_INFINITY },
+    ).element;
+  }
+
+  // ========================
+  // ADD LIST
+  // ========================
+  addListBtn.addEventListener("click", () => {
+    const input = document.createElement("input");
+    const addBtn = document.createElement("button");
+    const cancelBtn = document.createElement("button");
+
+    addBtn.textContent = "Adicionar";
+    cancelBtn.textContent = "X";
+
+    const form = document.createElement("div");
+    form.className = "add-list-form";
+
+    form.append(input, addBtn, cancelBtn);
+
+    board.insertBefore(form, addListBtn.parentElement);
+    addListBtn.style.display = "none";
+
+    input.focus();
+
+    addBtn.onclick = () => {
+      if (!input.value.trim()) return;
+
+      const list = createList(input.value);
+      board.insertBefore(list, form);
+
+      form.remove();
+      addListBtn.style.display = "block";
+
+      saveBoard();
+    };
+
+    cancelBtn.onclick = () => {
+      form.remove();
+      addListBtn.style.display = "block";
+    };
+  });
+
+  // ========================
+  // DRAG LIST BOARD
+  // ========================
+  board.addEventListener("dragover", (e) => {
+    e.preventDefault();
+
+    if (!draggedList) return;
+
+    const after = getListAfter(e.clientX);
+
+    if (after == null) {
+      board.insertBefore(draggedList, addListBtn.parentElement);
+    } else {
+      board.insertBefore(draggedList, after);
     }
+  });
+
+  // ========================
+  // INIT
+  // ========================
+  loadBoard();
 });
-    

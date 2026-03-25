@@ -1,18 +1,10 @@
-# Site de Viagens
+# Viajar
 
-Este é um site simples de viagens, feito com HTML, CSS e JavaScript. O objetivo é ajudar o usuário a explorar destinos turísticos, 
-com informações e imagens para inspirar novas aventuras.
+## QA - Aperfeiçoamentos
 
-## Funcionalidades
-
-- Página inicial com apresentação dos destinos
-- Seções para informações detalhadas sobre cada local
-- Galeria de imagens de viagens
-- Menu de navegação simples e responsivo
-- Interatividade básica com JavaScript
-
-## Tecnologias Utilizadas
-
-- HTML5
-- CSS3
-- JavaScript 
+- [x] 1. temos 3 opções no menu
+- [x] 2. para cada opção, temos 5 destinos, estado
+- [x] 3. quero que apareça 3 cards de cidades para cada estado
+- [x] 4. barra de busca
+- [x] 5. exibição de card dinamicamente conforme card em html e conteúdos em javascript
+- [x] 6. Menu (Nacional, Internacional, Aventura): (Nacional: 5 estados na opção do menu, Internacional: 5 estados na opção do menu, Aventura: 5 estados na opção do menu). Quando eu clicar na opção do menu, exibe 3 cards com o nome da cidade em destaque o que é o maior de destaque daquela cidade.
