@@ -1,99 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../public/favicon.ico"
-    />
-    <link rel="manifest" href="../public/manifest.json" />
-    <title>Javascript</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Lost Decade Nexus | learnTECH</title>
     <style>
-      body {
-        margin: 0;
-        font-family: "Lato", sans-serif;
-      }
-
-      .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 200px;
-        background-color: #f1f1f1;
-        position: fixed;
-        height: 100%;
-        overflow: auto;
-      }
-
-      .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-      }
-
-      .sidebar a.active {
-        background-color: #04aa6d;
-        color: white;
-      }
-
-      .sidebar a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-      }
-
-      div.content {
-        margin-left: 200px;
-        padding: 1px 16px;
-        height: 100vh;
-      }
-
-      @media screen and (max-width: 700px) {
-        .sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
+        /* DESIGN SYSTEM NEXUS [cite: 2025-12-31] */
+        :root {
+            --corAzul: #199bd9;
+            --corVermelho: #e62319;
+            --corAmarelo: #fccf2f;
+            --corFundo: #0d0d0d;
+            --corCard: #1a1a1a;
         }
-        .sidebar a {
-          float: left;
-        }
-        div.content {
-          margin-left: 0;
-        }
-      }
 
-      @media screen and (max-width: 400px) {
-        .sidebar a {
-          text-align: center;
-          float: none;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
         }
-      }
+
+        body {
+            background-color: var(--corFundo);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .header-nexus {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-nexus h1 {
+            color: var(--corAzul);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px var(--corAmarelo);
+        }
+
+        /* CONTAINER DO JOGO RESPONSIVO */
+        #content {
+            border: 4px solid var(--corAzul);
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(25, 155, 217, 0.3);
+            background-color: #000;
+            line-height: 0; /* Remove espaço extra abaixo do canvas */
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 11px;
+        }
+
+        .footer-info {
+            margin-top: 20px;
+            color: #888;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .header-nexus h1 { font-size: 1.5rem; }
+        }
     </style>
-  </head>
-  <body>
-    <div class="sidebar">
-      <a href="../index.html">Home</a>
-      <a href="../formulario-login/index.html">Formulário Login</a>
-      <a href="../home-instagram/index.html">Home Instagram</a>
-      <a href="../uma-lampada/index.html">Uma Lâmpada</a>
-      <a href="../desafios-codigo/index.html">Desafios Código</a>
-      <a href="../curso-em-video/index.html">Curso em Vídeo</a>
-      <a href="../dio-spread/index.html">DIO + Spread</a>
-      <a href="../driven-aplicacoes/index.html">Driven Aplicações</a>
-      <a href="../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
-      <a href="../jogo-da-memoria/index.html">Jogo da Memória</a>
-      <a href="../jogo-da-velha/index.html">Jogo da Velha</a>
-      <a class="active" href="#jogo-lost-decade">Jogo lost decade</a>
-      <a href="../jogo-pedra-papel-e-tesoura/index.html"
-        >Jogo Pedra Papel e Tesoura</a
-      >
-      <a href="../jogo-da-cobra/index.html">Jogo da Cobra</a>
-      <a href="../game-mario-bros/index.html">Jogo Mario Bros</a>
+</head>
+<body>
+
+    <div class="header-nexus">
+        <h1>Lost Decade Games</h1>
     </div>
-    <div id="content" class="content"></div>
+
+    <div id="content"></div>
+
+    <div class="footer-info">
+        Use as setas para mover o herói no sistema Nexus
+    </div>
+
     <script src="./main.js"></script>
-  </body>
+</body>
 </html>

@@ -25,6 +25,12 @@
 - [x] 4. Babel
 - [x] 5. Renderizar o Jogo
 
+#### To Do
+
+- Pegar moeda
+- enquanto o adversário tenta de matar
+- a cada 5 moedas, cada moeda ganha 7 pontos, o adversário fica mais rápido
+
 ---
 
 - Fonte do projeto: [Estevan Maito](https://www.youtube.com/channel/UCIUOmAsotrzdK8VsZuHfVHw) e [Lost Decade Game](http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/)
