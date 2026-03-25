@@ -1,10 +1,12 @@
+/* _estilo.scss */
+
 @import 'padrao-cores';
 @import 'animacoes';
 @import 'modal';
 
 @font-face {
     font-family: 'mario';
-    src: url('../fonts/SuperMario256.ttf');
+    src: url('./../fonts/SuperMario256.ttf');
 }
 
 * {
