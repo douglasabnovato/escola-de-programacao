@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./public/favicon.ico" rel="SHORTCUT ICON" />
+    <title>Receita</title>
+    <link rel="stylesheet" href="./style.css" />
+  
+    <style>
+      body {
+        margin: 0;
+        font-family: "Lato", sans-serif;
+      }
+  
+      .sidebar {
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+      }
+  
+      .sidebar a {
+        display: block;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+      }
+  
+      .sidebar a.active {
+        background-color: #04aa6d;
+        color: white;
+      }
+  
+      .sidebar a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+      }
+  
+      div.content {
+        margin-left: 200px;
+        padding: 1px 16px;
+        height: 100vh;
+      }
+  
+      @media screen and (max-width: 700px) {
+        .sidebar {
+          width: 100%;
+          height: auto;
+          position: relative;
+        }
+  
+        .sidebar a {
+          float: left;
+        }
+  
+        div.content {
+          margin-left: 0;
+        }
+      }
+  
+      @media screen and (max-width: 400px) {
+        .sidebar a {
+          text-align: center;
+          float: none;
+        }
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="sidebar">
+      <a href="../index.html">Home</a>
+      <a href="../formulario-login/index.html">Formulário Login</a>
+      <a href="../home-instagram/index.html">Home Instagram</a>
+      <a href="../uma-lampada/index.html">Uma Lâmpada</a>
+      <a href="../desafios-codigo/index.html">Desafios Código</a>
+      <a href="../curso-em-video/index.html">Curso em Vídeo</a>
+      <a href="../dio-spread/index.html">DIO + Spread</a>
+      <a href="../driven-aplicacoes/index.html">Driven Aplicações</a>
+      <a href="../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
+      <a href="../jogo-da-memoria/index.html">Jogo da Memória</a>
+      <a href="../jogo-da-velha/index.html">Jogo da Velha</a>
+      <a href="../jogo-lost-decade/index.html">Jogo lost decade</a>
+      <a href="../jogo-pedra-papel-e-tesoura/index.html">Jogo Pedra Papel e Tesoura</a>
+      <a href="../jogo-da-cobra/index.html">Jogo da Cobra</a>
+      <a href="../game-mario-bros/index.html">Jogo Mario Bros</a>
+      <a class="active" href="#">Receita</a>
+    </div>
+    <div class="content">
+    <header class="top">
+      <h1><b>Receita</b></h1>
+    </header>
+    <main>
+      <figure>
+        <img
+          src="./assets/waffle-classic.jpeg"
+          alt="Texto descritivo da imagem"
+        />
+        <figcaption>
+          <h2>Waffle Clássico</h2>
+          Qual o país de origem do Waffle? Bélgica Na Idade Média, na região de
+          Ducado de Brabante, atual Bélgica, um cozinheiro local utilizou a
+          massa que era a matéria prima da hóstia para produzir com uma prensa
+          de ferro o que viria a ser o Waffle
+        </figcaption>
+      </figure>
+      <section>
+        <header>
+          <h2 class="ingredients-title card-title card-header" tabindex="0">
+            <div class="ico-svg ico-orange svg-big">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <defs>
+                  <clipPath id="b">
+                    <rect width="24" height="24"></rect>
+                  </clipPath>
+                </defs>
+                <g id="a" clip-path="url(#b)">
+                  <g transform="translate(2 2)">
+                    <path
+                      d="M158.4,279.684a3.226,3.226,0,0,0,3.223,3.223h1.18a3.226,3.226,0,0,0,3.223-3.223V277H158.4Zm1.172-1.512h5.281v1.512a2.053,2.053,0,0,1-2.051,2.051h-1.18a2.056,2.056,0,0,1-2.051-2.051Z"
+                      transform="translate(-152.212 -266.18)"
+                    ></path>
+                    <path
+                      d="M204,216.2h4.063v1.172H204Z"
+                      transform="translate(-196.031 -207.755)"
+                    ></path>
+                    <path
+                      d="M19.145,15.555a.315.315,0,0,1-.316-.316V11.273A1.49,1.49,0,0,0,17.34,9.785H16.5v-1.9L14.668,4.875V0h-3.7V2.313a.969.969,0,1,1-1.937,0V0H5.34V4.875L3.5,7.883v1.9H2.66a1.49,1.49,0,0,0-1.488,1.488v3.965a.315.315,0,0,1-.316.316H0v1.172H.855a1.49,1.49,0,0,0,1.488-1.488V11.273a.315.315,0,0,1,.316-.316H3.5V20H16.5V10.957h.836a.315.315,0,0,1,.316.316v3.965a1.49,1.49,0,0,0,1.488,1.488H20V15.555Zm-3.812,3.273H4.668V8.211L6.5,5.2V1.172H7.855V2.313a2.141,2.141,0,1,0,4.281,0V1.172h1.352V5.2l1.836,3.008V18.828Z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            Ingredientes
+          </h2>
+        </header>
+        <aside class="card">
+          <ul>
+            <li>2 xícaras (chá) de farinha de trigo</li>
+            <li>2 colher (sopa) de açúcar</li>
+            <li>2 colheres (chá) de fermento em pó</li>
+            <li>1/2 colher (chá) de sal</li>
+            <li>2 colheres amido de milho</li>
+            <li>3 ovos batidos</li>
+            <li>4 colheres (sopa) de manteiga sem sal derretida</li>
+            <li>1 e 3/4 de xícara (chá) de leite</li>
+            <li>1 colher (sopa) de essência de baunilha</li>
+          </ul>
+        </aside>
+      </section>
+      <section>
+        <header>
+          <h2 class="directions-title card-title card-header" tabindex="0">
+            <div class="ico-svg ico-orange svg-big">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <defs>
+                  <clipPath id="b">
+                    <rect width="24" height="24"></rect>
+                  </clipPath>
+                </defs>
+                <g id="a" clip-path="url(#b)">
+                  <g transform="translate(2 4)">
+                    <g transform="translate(1.955)">
+                      <path
+                        d="M46.543,2.128a1.43,1.43,0,0,0,.163-.657,1.471,1.471,0,0,0-2.943,0,1.446,1.446,0,0,0,.163.657C40.411,2.307,37.2,3.205,37.2,4.771a.418.418,0,0,0,.42.42H52.849a.422.422,0,0,0,.42-.42C53.269,3.205,50.069,2.3,46.543,2.128ZM45.256.846a.62.62,0,1,1-.62.62A.621.621,0,0,1,45.256.846ZM38.34,4.367c.778-.7,3.311-1.44,6.915-1.44v.016c3.6,0,6.138.741,6.915,1.419H38.34Z"
+                        transform="translate(-37.2)"
+                      ></path>
+                    </g>
+                    <g transform="translate(3.468 7.22)">
+                      <path
+                        d="M66.42,137.4a.422.422,0,0,0-.42.42v4.519a.42.42,0,1,0,.841,0V137.82A.418.418,0,0,0,66.42,137.4Z"
+                        transform="translate(-66 -137.4)"
+                      ></path>
+                    </g>
+                    <g transform="translate(0 5.707)">
+                      <path
+                        d="M19.58,110.224H18.024v-1.2a.422.422,0,0,0-.42-.42H2.417a.422.422,0,0,0-.42.42v1.2H.42a.42.42,0,1,0,0,.841H2v6.206a2.377,2.377,0,0,0,2.585,2.522H15.476A2.345,2.345,0,0,0,18,117.271v-6.206H19.58a.42.42,0,1,0,0-.841Zm-2.4,7.047a1.508,1.508,0,0,1-1.682,1.682H4.572a1.56,1.56,0,0,1-1.745-1.682v-7.83H17.183Z"
+                        transform="translate(0 -108.6)"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            Modo de Preparo
+          </h2>
+        </header>
+        <aside class="card">
+          <ol>
+            <li>
+              Peneire em um recipiente a farinha de trigo, o açúcar, o amido, o
+              fermento e o sal. Reserve.
+            </li>
+            <li>
+              Em outro recipiente misture os ovos batidos com o leite, a
+              manteiga derretida e a essência de baunilha.
+            </li>
+            <li>
+              Despeje sobre a mistura de farinha e rapidamente incorpore os
+              ingredientes.
+            </li>
+            <li>
+              Aqueça o aparelho para Waffles. Coloque uma concha rasa de massa e
+              espalhe até cobrir o molde do aparelho, feche a tampa e deixe
+              assar até a massa ficar bem dourada.
+            </li>
+            <li>
+              Retire com espátulas de silicone. Sirva com mel, frutas ou geleia.
+            </li>
+          </ol>
+        </aside>
+      </section>
+      <section>
+        <header>
+          <h2 class="ingredients-title card-title card-header" tabindex="0">
+            <div class="ico-svg ico-orange svg-big">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <defs>
+                  <clipPath id="b">
+                    <rect width="24" height="24"></rect>
+                  </clipPath>
+                </defs>
+                <g id="a" clip-path="url(#b)">
+                  <g transform="translate(2 2)">
+                    <path
+                      d="M158.4,279.684a3.226,3.226,0,0,0,3.223,3.223h1.18a3.226,3.226,0,0,0,3.223-3.223V277H158.4Zm1.172-1.512h5.281v1.512a2.053,2.053,0,0,1-2.051,2.051h-1.18a2.056,2.056,0,0,1-2.051-2.051Z"
+                      transform="translate(-152.212 -266.18)"
+                    ></path>
+                    <path
+                      d="M204,216.2h4.063v1.172H204Z"
+                      transform="translate(-196.031 -207.755)"
+                    ></path>
+                    <path
+                      d="M19.145,15.555a.315.315,0,0,1-.316-.316V11.273A1.49,1.49,0,0,0,17.34,9.785H16.5v-1.9L14.668,4.875V0h-3.7V2.313a.969.969,0,1,1-1.937,0V0H5.34V4.875L3.5,7.883v1.9H2.66a1.49,1.49,0,0,0-1.488,1.488v3.965a.315.315,0,0,1-.316.316H0v1.172H.855a1.49,1.49,0,0,0,1.488-1.488V11.273a.315.315,0,0,1,.316-.316H3.5V20H16.5V10.957h.836a.315.315,0,0,1,.316.316v3.965a1.49,1.49,0,0,0,1.488,1.488H20V15.555Zm-3.812,3.273H4.668V8.211L6.5,5.2V1.172H7.855V2.313a2.141,2.141,0,1,0,4.281,0V1.172h1.352V5.2l1.836,3.008V18.828Z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            Informações Adicionais
+          </h2>
+        </header>
+        <aside class="card">
+          <p>
+            O Lorem Ipsum é um texto modelo da indústria tipográfica e de
+            impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por
+            estas indústrias desde o ano de 1500, quando uma misturou os
+            caracteres de um texto para criar um espécime de livro. Este texto
+            não só sobreviveu 5 séculos, mas também o salto para a tipografia
+            electrónica, mantendo-se essencialmente inalterada. Foi popularizada
+            nos anos 60 com a disponibilização das folhas de Letraset, que
+            continham passagens com Lorem Ipsum, e mais recentemente com os
+            programas de publicação como o Aldus PageMaker que incluem versões
+            do Lorem Ipsum.
+          </p>
+          <p>
+            O Lorem Ipsum é um texto modelo da indústria tipográfica e de
+            impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por
+            estas indústrias desde o ano de 1500, quando uma misturou os
+            caracteres de um texto para criar um espécime de livro. Este texto
+            não só sobreviveu 5 séculos, mas também o salto para a tipografia
+            electrónica, mantendo-se essencialmente inalterada. Foi popularizada
+            nos anos 60 com a disponibilização das folhas de Letraset, que
+            continham passagens com Lorem Ipsum, e mais recentemente com os
+            programas de publicação como o Aldus PageMaker que incluem versões
+            do Lorem Ipsum.
+          </p>
+        </aside>
+      </section>
+      <footer>Feito com 💗 por <a href="https://github.com/douglasabnovato">douglasabnovato</a></footer>
+    </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mario Nexus Edition | learnTECH</title>
+    <style>
+      /* ==========================================================================
+           ESTILO NEXUS PARA O JOGO DO MARIO
+           ========================================================================== */
+      :root {
+        --primary: #ff5722;
+        --bg: #080808;
+        --surface: rgba(255, 255, 255, 0.05);
+        --text: #f0f0f0;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg);
+        font-family:
+          "Arial", sans-serif; /* Fallback para quando o Mario font não carregar */
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* CENÁRIO DO JOGO (BOX LIMITADO) */
+      .game-board {
+        width: 100%;
+        max-width: 1200px;
+        height: 500px;
+        border-bottom: 20px solid #44af35;
+        background: linear-gradient(#199bd9, #87ceeb);
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+      }
+
+      /* ELEMENTOS DO JOGO */
+      .pipe {
+        position: absolute;
+        bottom: 0;
+        right: -80px;
+        width: 80px;
+      }
+      .mario {
+        position: absolute;
+        bottom: 0;
+        left: 50px;
+        width: 150px;
+      }
+      .clouds {
+        position: absolute;
+        top: 100px;
+        right: -500px;
+        width: 500px;
+      }
+
+      /* ANIMAÇÕES */
+      .jump {
+        animation: mario-jump 500ms ease-out;
+      }
+      .pipe-animation {
+        animation: pipe-move 1.5s infinite linear;
+      }
+      .clouds-animation {
+        animation: clouds-move 20s infinite linear;
+      }
+
+      @keyframes pipe-move {
+        from {
+          right: -80px;
+        }
+        to {
+          right: 100%;
+        }
+      }
+
+      @keyframes mario-jump {
+        0% {
+          bottom: 0;
+        }
+        40% {
+          bottom: 180px;
+        }
+        50% {
+          bottom: 180px;
+        }
+        60% {
+          bottom: 180px;
+        }
+        100% {
+          bottom: 0;
+        }
+      }
+
+      @keyframes clouds-move {
+        from {
+          right: -500px;
+        }
+        to {
+          right: 100%;
+        }
+      }
+
+      /* OVERLAYS (MODAL) */
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        flex-direction: column;
+        color: white;
+        text-align: center;
+      }
+
+      .btn-start {
+        padding: 15px 40px;
+        background: var(--primary);
+        border: none;
+        color: white;
+        font-size: 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-board">
+      <img src="./img/clouds.png" class="clouds clouds-animation" />
+      <img src="./img/mario.gif" class="mario" />
+      <img src="./img/pipe.png" class="pipe" />
+
+      <div class="overlay" id="menu">
+        <h1>MARIO NEXUS</h1>
+        <button class="btn-start" onclick="startGame()">INICIAR DESAFIO</button>
+      </div>
+    </div>
+
+    <script>
+      const mario = document.querySelector(".mario");
+      const pipe = document.querySelector(".pipe");
+      const menu = document.getElementById("menu");
+
+      const jump = () => {
+        mario.classList.add("jump");
+        setTimeout(() => {
+          mario.classList.remove("jump");
+        }, 500);
+      };
+
+      const startGame = () => {
+        menu.style.display = "none";
+        pipe.classList.add("pipe-animation");
+
+        const loop = setInterval(() => {
+          const pipePosition = pipe.offsetLeft;
+          const marioPosition = +window
+            .getComputedStyle(mario)
+            .bottom.replace("px", "");
+
+          if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
+            pipe.style.animation = "none";
+            pipe.style.left = `${pipePosition}px`;
+
+            mario.style.animation = "none";
+            mario.style.bottom = `${marioPosition}px`;
+
+            mario.src = "./img/mario-game-over.png";
+            mario.style.width = "75px";
+            mario.style.marginLeft = "50px";
+
+            clearInterval(loop);
+            alert("GAME OVER! Tente novamente.");
+            location.reload();
+          }
+        }, 10);
+      };
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowUp" || e.key === " ") jump();
+      });
+    </script>
+  </body>
+</html>

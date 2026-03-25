@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "title": "Curso em Vídeo",
+    "description": "Práticas de algoritmos e fundamentos de JavaScript.",
+    "path": "./curso-em-video/index.html",
+    "category": "Estudos",
+    "icon": "fas fa-graduation-cap",
+    "featured": false
+  },
+  {
+    "id": 2,
+    "title": "Desafios de Código",
+    "description": "Exercícios de lógica de programação e algoritmos.",
+    "path": "./desafios-codigo/index.html",
+    "category": "Lógica",
+    "icon": "fas fa-code",
+    "featured": false
+  },
+  {
+    "id": 3,
+    "title": "DIO + Spread",
+    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "path": "./dio-spread/index.html",
+    "category": "Bootcamp",
+    "icon": "fas fa-certificate",
+    "featured": false
+  },
+  {
+    "id": 4,
+    "title": "Driven Aplicações",
+    "description": "Desenvolvimento de aplicações estruturadas.",
+    "path": "./driven-aplicacoes/index.html",
+    "category": "Formação",
+    "icon": "fas fa-laptop-code",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": "Formulário de Login",
+    "description": "Interface de acesso com validação de campos.",
+    "path": "./formulario-login/index.html",
+    "category": "Web Core",
+    "icon": "fas fa-user-lock",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "Game Mario Bros",
+    "description": "Animações e mecânicas de pulo com CSS e JS.",
+    "path": "./game-mario-bros/index.html",
+    "category": "Games",
+    "icon": "fas fa-gamepad",
+    "featured": true
+  },
+  {
+    "id": 7,
+    "title": "Home Instagram",
+    "description": "Réplica do layout responsivo do Instagram.",
+    "path": "./home-instagram/index.html",
+    "category": "UI/UX",
+    "icon": "fab fa-instagram",
+    "featured": false
+  },
+  {
+    "id": 8,
+    "title": "Jogo da Cobra",
+    "description": "Clássico Snake Game com controle de direção.",
+    "path": "./jogo-da-cobra/index.html",
+    "category": "Games",
+    "icon": "fas fa-snake",
+    "featured": true
+  },
+  {
+    "id": 9,
+    "title": "Jogo da Memória",
+    "description": "Lógica de comparação e flip cards.",
+    "path": "./jogo-da-memoria/index.html",
+    "category": "Games",
+    "icon": "fas fa-brain",
+    "featured": false
+  },
+  {
+    "id": 10,
+    "title": "Jogo da Velha",
+    "description": "Tic-Tac-Toe com validação de vitória.",
+    "path": "./jogo-da-velha/index.html",
+    "category": "Games",
+    "icon": "fas fa-times",
+    "featured": false
+  },
+  {
+    "id": 11,
+    "title": "Jogo Lost Decade",
+    "description": "RPG simples em Canvas 2D.",
+    "path": "./jogo-lost-decade/index.html",
+    "category": "Games",
+    "icon": "fas fa-dungeon",
+    "featured": false
+  },
+  {
+    "id": 12,
+    "title": "Pedra, Papel e Tesoura",
+    "description": "Jokenpô contra a máquina.",
+    "path": "./jogo-pedra-papel-e-tesoura/index.html",
+    "category": "Games",
+    "icon": "fas fa-hand-rock",
+    "featured": false
+  },
+  {
+    "id": 13,
+    "title": "Receita JS",
+    "description": "Manipulação de listas e DOM.",
+    "path": "./js-receita/index.html",
+    "category": "Prática",
+    "icon": "fas fa-utensils",
+    "featured": false
+  },
+  {
+    "id": 14,
+    "title": "Rocketseat",
+    "description": "Desafios de HTML e CSS da trilha Explorer.",
+    "path": "./rocketseat/index.html",
+    "category": "Desafios",
+    "icon": "fas fa-rocket",
+    "featured": false
+  },
+  {
+    "id": 15,
+    "title": "Uma Lâmpada",
+    "description": "Interatividade simples de troca de estados.",
+    "path": "./uma-lampada/index.html",
+    "category": "Fundamental",
+    "icon": "fas fa-lightbulb",
+    "featured": false
+  },
+  {
+    "id": 16,
+    "title": "DIO + Spread - Contador",
+    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "path": "./dio-spread-contador/index.html",
+    "category": "Bootcamp",
+    "icon": "fas fa-certificate",
+    "featured": false
+  },
+  {
+    "id": 17,
+    "title": "DIO + Spread Estacionamento",
+    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "path": "./dio-spread-estacionamento/index.html",
+    "category": "Bootcamp",
+    "icon": "fas fa-certificate",
+    "featured": false
+  },
+  {
+    "id": 18,
+    "title": "DIO + Spread Flex Box",
+    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "path": "./dio-spread-flex-box/index.html",
+    "category": "Bootcamp",
+    "icon": "fas fa-certificate",
+    "featured": false
+  },
+  {
+    "id": 19,
+    "title": "DIO + Spread Operadores",
+    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "path": "./dio-spread-operadores/index.html",
+    "category": "Bootcamp",
+    "icon": "fas fa-certificate",
+    "featured": false
+  },
+  {
+    "id": 20,
+    "title": "DIO + Spread ToDo List",
+    "description": "Projetos do Bootcamp focado em desenvolvimento fullstack.",
+    "path": "./dio-spread-todolist/index.html",
+    "category": "Bootcamp",
+    "icon": "fas fa-certificate",
+    "featured": false
+  }
+]

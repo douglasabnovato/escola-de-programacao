@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafios de Código | Nexus</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fira+Code&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ==========================================================================
+           DESIGN SYSTEM NEXUS
+           ========================================================================== */
+      :root {
+        --primary: #ff5722; /* Laranja Neon */
+        --bg: #080808; /* Preto Profundo */
+        --surface: #121212;
+        --text: #f0f0f0;
+        --code-green: #4caf50;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* CONTAINER CENTRAL */
+      .nexus-terminal {
+        text-align: center;
+        max-width: 500px;
+        padding: 2rem;
+      }
+
+      h2 {
+        font-family: "Fira Code", monospace;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+        letter-spacing: -1px;
+      }
+
+      .subtitle {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 3rem;
+      }
+
+      /* ANIMAÇÃO CSS: NEXUS CORE LOADER */
+      .loader-wrapper {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+      }
+
+      /* Anel Externo */
+      .ring-outer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 2px solid rgba(255, 87, 34, 0.1);
+        border-top: 2px solid var(--primary);
+        border-radius: 50%;
+        animation: rotate 2s linear infinite;
+      }
+
+      /* Anel Interno */
+      .ring-inner {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border: 2px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 2px solid #ff8a65;
+        border-radius: 50%;
+        animation: rotate 1.5s linear infinite reverse;
+      }
+
+      /* Núcleo Pulsante */
+      .core {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        height: 12px;
+        background-color: var(--primary);
+        border-radius: 50%;
+        box-shadow:
+          0 0 25px var(--primary),
+          0 0 10px var(--primary);
+        animation: pulse 1.2s ease-in-out infinite;
+      }
+
+      /* STATUS LOG ANIMADO */
+      .status-log {
+        margin-top: 3rem;
+        font-family: "Fira Code", monospace;
+        font-size: 0.85rem;
+        color: var(--code-green);
+        min-height: 1.2em;
+      }
+
+      .status-log::before {
+        content: "> ";
+        opacity: 0.5;
+      }
+
+      /* KEYFRAMES */
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(0.9);
+          opacity: 0.6;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.3);
+          opacity: 1;
+        }
+      }
+
+      /* BACKGROUND DECOR (Glow sutil) */
+      .glow-bg {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 87, 34, 0.05) 0%,
+          transparent 70%
+        );
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glow-bg"></div>
+
+    <main class="nexus-terminal">
+      <h2>JAVASCRIPT_ENGINE</h2>
+      <p class="subtitle">Desafios de Código Ativos</p>
+
+      <div class="loader-wrapper">
+        <div class="ring-outer"></div>
+        <div class="ring-inner"></div>
+        <div class="core"></div>
+      </div>
+
+      <div id="status" class="status-log">Iniciando processamento...</div>
+    </main>
+
+    <script>
+      /**
+       * LÓGICA DE STATUS E EXECUÇÃO
+       */
+      const statusElement = document.getElementById("status");
+      const logs = [
+        "Carregando desafios...",
+        "Lógica de múltiplos verificada.",
+        "Processando números primos.",
+        "Escutando Console (F12)...",
+        "Scripts operacionais.",
+      ];
+
+      let index = 0;
+      function updateStatus() {
+        statusElement.innerText = logs[index];
+        index = (index + 1) % logs.length;
+      }
+
+      // Troca o texto do log a cada 2.5 segundos
+      setInterval(updateStatus, 2500);
+
+      // Aqui você pode manter a chamada para seus arquivos de lógica originais
+      console.log("Nexus Engine: Desafios de Código carregados com sucesso.");
+    </script>
+  </body>
+</html>

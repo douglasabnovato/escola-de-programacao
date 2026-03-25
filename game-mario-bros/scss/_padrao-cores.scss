@@ -1,0 +1,17 @@
+$corAzul: #199BD9;
+$corAmarelo: #FCCF2F;
+$corVermelho: #E62319;
+$corVerde: #44AF35;
+$corPreto: #000;
+
+// scss/_padrao-cores.scss
+$nexus-bg: #0d1117; // Dark mode do GitHub/Nexus
+$nexus-accent: #238636; // Verde learnTECH
+$mario-red: #E62319;
+
+// Aplicando ao modal de Game Over
+.modal-game-over {
+    background-color: rgba($nexus-bg, 0.95);
+    border: 2px solid $mario-red;
+    backdrop-filter: blur(10px); // Efeito Glassmorphism
+}

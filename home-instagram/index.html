@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="../public/favicon.ico" />
+    <link rel="manifest" href="../public/manifest.json" />
+    <title>Javascript</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: "Lato", sans-serif;
+        font-size: 14px;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+      }
+
+      .sidebar a {
+        display: block;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+      }
+
+      .sidebar a.active {
+        background-color: #04aa6d;
+        color: white;
+      }
+
+      .sidebar a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+      }
+
+      div.content {
+        margin-left: 200px;
+        padding: 1px 16px;
+        height: 1000px;
+      }
+
+      @media screen and (max-width: 700px) {
+        .sidebar {
+          width: 100%;
+          height: auto;
+          position: relative;
+        }
+        .sidebar a {
+          float: left;
+        }
+        div.content {
+          margin-left: 0;
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        .sidebar a {
+          text-align: center;
+          float: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <a href="../index.html">Home</a>
+      <a href="../formulario-login/index.html">Formulário Login</a>
+      <a class="active" href="#home-instagram">Home Instagram</a>
+      <a href="../uma-lampada/index.html">Uma Lâmpada</a>
+      <a href="../desafios-codigo/index.html">Desafios Código</a>
+      <a href="../curso-em-video/index.html">Curso em Vídeo</a>
+      <a href="../dio-spread/index.html">DIO + Spread</a>
+      <a href="../driven-aplicacoes/index.html">Driven Aplicações</a>
+      <a href="../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
+      <a href="../jogo-da-memoria/index.html">Jogo da Memória</a>
+      <a href="../jogo-da-velha/index.html">Jogo da Velha</a>
+      <a href="../jogo-lost-decade/index.html">Jogo lost decade</a>
+      <a href="../jogo-pedra-papel-e-tesoura/index.html"
+        >Jogo Pedra Papel e Tesoura</a
+      >
+      <a href="../jogo-da-cobra/index.html">Jogo da Cobra</a>
+      <a href="../game-mario-bros/index.html">Jogo Mario Bros</a>
+    </div>
+    <div class="content">
+      <div class="instagram-wrapper">
+        <div class="instagram-phone">
+          <img src="./assets/phone-2.png" alt="celular" />
+        </div>
+        <div class="instagram-continue">
+          <div class="group">
+            <img
+              src="./assets/instagram-logo-2.png"
+              class="instagram-logo"
+              alt="logo do instagram"
+            />
+            <div class="profile-photo">
+              <img src="./assets/perfil-instagram.jpg" alt="foto de perfil" />
+            </div>
+            <a href="#" class="instagram-login"
+              >Continue como @douglasabnovato</a
+            >
+            <a href="#" class="instagram-logout">Remover conta</a>
+          </div>
+          <div class="group">
+            <p class="not-account">Não é @douglasabnovato</p>
+            <p class="not-account">
+              <span class="link-blue">Alternar contas</span>
+              ou
+              <span class="link-blue">Inscrever-se</span>
+            </p>
+          </div>
+          <div class="get-the-app">
+            <p class="get-app">Baixe o aplicativo</p>
+            <div class="download">
+              <a href="#" class="app-download"></a>
+              <a href="#" class="app-download"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

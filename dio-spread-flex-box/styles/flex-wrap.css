@@ -1,0 +1,39 @@
+.flex-wrap .flex-container{
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    border: 2px solid black;
+    max-width: 310px;
+}
+
+.flex-wrap .item{
+    font-size: 24px;
+    height: 50%;
+    text-align: center;
+    min-width: 100px;
+    line-height: 50px;
+}
+
+.flex-wrap .nowrap{
+    flex-wrap: nowrap;
+}
+
+.flex-wrap .wrap{
+    flex-wrap: wrap;
+}
+
+.flex-wrap .wrap-reverse{
+    flex-wrap: wrap-reverse;
+}
+
+.flex-wrap .blue{
+    background-color: blue;
+}
+
+.flex-wrap .green{
+    background-color: lightgreen;
+}
+
+.flex-wrap .orange{
+    background-color: orangered;
+}
