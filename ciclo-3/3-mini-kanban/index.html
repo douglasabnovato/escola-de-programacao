@@ -1,67 +1,85 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Kanban</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <title>Trello Mini Kanban</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./src/assets/css/style.css" />
   </head>
-
   <body>
-    <div id="home" class="container content">
-      <header>
-        <h1>Trello Mini Kanban</h1>
-        <p>Organize o seu trabalho</p>
+    <div class="app-container">
+      <header class="app-header">
+        <div class="brand">
+          <h1>Mini<span>Kanban</span></h1>
+          <p>Agile Task Manager</p>
+        </div>
       </header>
 
-      <main>
-        <div class="board">
-          <h3 class="title">À Fazer</h3>
-          <ul
-            id="a-fazer"
-            class="todo-list"
-            ondrop="drop(event, this.id)"
-            ondragover="over(event)"
-          >  
-          </ul> 
-          <div class="add-card" onclick="addCard(this)">
-            <p>Adicionar tarefa</p>
+      <main class="kanban-board">
+        <section class="column">
+          <div class="column-header">
+            <h3><i class="fas fa-list-ul"></i> À Fazer</h3>
+            <span class="count" id="count-todo">0</span>
           </div>
-        </div> 
-
-        <div class="board">
-          <h3 class="title">Fazendo</h3>
           <ul
-            id="fazendo"
-            class="todo-list"
-            ondrop="drop(event, this.id)"
-            ondragover="over(event)"
+            id="todo"
+            class="task-list"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)"
           ></ul>
-          <div class="add-card" onclick="addCard(this)">
-            <p>Adicionar tarefa</p>
+          <div class="add-action" onclick="showInput(this)">
+            <i class="fas fa-plus"></i> Adicionar tarefa
           </div>
-        </div>
+        </section>
 
-        <div class="board">
-          <h3 class="title">Feito</h3>
-          <ul
-            id="feito"
-            class="todo-list"
-            ondrop="drop(event, this.id)"
-            ondragover="over(event)"
-          ></ul>
-          <div class="add-card" onclick="addCard(this)">
-            <p>Adicionar tarefa</p>
+        <section class="column">
+          <div class="column-header">
+            <h3><i class="fas fa-spinner fa-spin"></i> Fazendo</h3>
+            <span class="count" id="count-doing">0</span>
           </div>
-        </div>
+          <ul
+            id="doing"
+            class="task-list"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)"
+          ></ul>
+          <div class="add-action" onclick="showInput(this)">
+            <i class="fas fa-plus"></i> Adicionar tarefa
+          </div>
+        </section>
+
+        <section class="column">
+          <div class="column-header">
+            <h3><i class="fas fa-check-double"></i> Feito</h3>
+            <span class="count" id="count-done">0</span>
+          </div>
+          <ul
+            id="done"
+            class="task-list"
+            ondrop="drop(event)"
+            ondragover="allowDrop(event)"
+          ></ul>
+          <div class="add-action" onclick="showInput(this)">
+            <i class="fas fa-plus"></i> Adicionar tarefa
+          </div>
+        </section>
       </main>
-    </div>
 
-    <script src="./script.js"></script>
+      <footer class="app-footer">
+        <div class="footer-content">
+          <p>
+            &copy; 2026 byteclass Software House. Todos os direitos reservados.
+          </p>
+          <div class="status">
+            System Status: <span class="pulse"></span> Online
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="./src/assets/js/script.js"></script>
   </body>
 </html>
