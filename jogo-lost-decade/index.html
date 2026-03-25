@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lost Decade Nexus | learnTECH</title>
+    <style>
+        /* DESIGN SYSTEM NEXUS [cite: 2025-12-31] */
+        :root {
+            --corAzul: #199bd9;
+            --corVermelho: #e62319;
+            --corAmarelo: #fccf2f;
+            --corFundo: #0d0d0d;
+            --corCard: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+
+        body {
+            background-color: var(--corFundo);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .header-nexus {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-nexus h1 {
+            color: var(--corAzul);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px var(--corAmarelo);
+        }
+
+        /* CONTAINER DO JOGO RESPONSIVO */
+        #content {
+            border: 4px solid var(--corAzul);
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(25, 155, 217, 0.3);
+            background-color: #000;
+            line-height: 0; /* Remove espaço extra abaixo do canvas */
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 11px;
+        }
+
+        .footer-info {
+            margin-top: 20px;
+            color: #888;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .header-nexus h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-nexus">
+        <h1>Lost Decade Games</h1>
+    </div>
+
+    <div id="content"></div>
+
+    <div class="footer-info">
+        Use as setas para mover o herói no sistema Nexus
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jokenpô Nexus | learnTECH</title>
+    <style>
+        /* DESIGN SYSTEM NEXUS [cite: 2025-12-31] */
+        :root {
+            --corAzul: #199bd9;
+            --corVermelho: #e62319;
+            --corAmarelo: #fccf2f;
+            --corFundo: #0d0d0d;
+            --corCard: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+
+        body {
+            background-color: var(--corFundo);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        #titulo {
+            color: var(--corAzul);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px var(--corAmarelo);
+            text-align: center;
+        }
+
+        /* PLACAR E CONTAINER */
+        #placar {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 850px;
+            background: var(--corCard);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid #333;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+        }
+
+        .perfil {
+            flex: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #jogador { border-bottom: 4px solid var(--corAzul); padding-bottom: 20px; }
+        #computador { border-bottom: 4px solid var(--corVermelho); padding-bottom: 20px; }
+
+        .nome-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .pontos {
+            font-size: 4rem;
+            font-weight: 900;
+            color: white;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        #versus {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--corAmarelo);
+            font-style: italic;
+        }
+
+        /* OPÇÕES DE ESCOLHA */
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .escolha-btn {
+            background: #252525;
+            border: 2px solid transparent;
+            padding: 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            opacity: 0.3;
+        }
+
+        .escolha-btn img {
+            width: 60px;
+            height: 60px;
+            display: block;
+        }
+
+        /* ESTADO SELECIONADO */
+        .selecionado {
+            opacity: 1 !important;
+            background: #333 !important;
+            border-color: var(--corAzul) !important;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--corAzul);
+        }
+
+        #computador .selecionado {
+            border-color: var(--corVermelho) !important;
+            box-shadow: 0 0 15px var(--corVermelho);
+        }
+
+        /* MENSAGENS */
+        #mensagens {
+            margin-top: 30px;
+            padding: 20px 50px;
+            background: var(--corCard);
+            border-radius: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            border-left: 6px solid #444;
+            min-width: 350px;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            #placar { flex-direction: column; padding: 20px; }
+            #versus { margin: 15px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="titulo">Jokenpô Nexus</h1>
+
+    <div id="placar">
+        <div class="perfil" id="jogador">
+            <div class="nome-label">Operador</div>
+            <div id="jogador-pontos" class="pontos">0</div>
+            <ul id="jogador-escolha">
+                <li>
+                    <button class="escolha-btn" id="jogador-escolha-1" onclick="jogar(1)">
+                        <img src="images/pedra.png" alt="pedra" />
+                    </button>
+                </li>
+                <li>
+                    <button class="escolha-btn" id="jogador-escolha-2" onclick="jogar(2)">
+                        <img src="images/papel.png" alt="papel" />
+                    </button>
+                </li>
+                <li>
+                    <button class="escolha-btn" id="jogador-escolha-3" onclick="jogar(3)">
+                        <img src="images/tesoura.png" alt="tesoura" />
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div id="versus">VS</div>
+
+        <div class="perfil" id="computador">
+            <div class="nome-label">Nexus Core</div>
+            <div id="computador-pontos" class="pontos">0</div>
+            <ul id="computador-escolha">
+                <li>
+                    <div class="escolha-btn" id="computador-escolha-1">
+                        <img src="images/pedra.png" alt="pedra" />
+                    </div>
+                </li>
+                <li>
+                    <div class="escolha-btn" id="computador-escolha-2">
+                        <img src="images/papel.png" alt="papel" />
+                    </div>
+                </li>
+                <li>
+                    <div class="escolha-btn" id="computador-escolha-3">
+                        <img src="images/tesoura.png" alt="tesoura" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="mensagens">Aguardando Comando...</div>
+
+    <script>
+        "use strict";
+
+        let jogadorPontuacao = 0;
+        let computadorPontuacao = 0;
+        let computadorEscolhaAnterior = 0;
+        let repeticaoJogada = 0;
+
+        function jogar(escolha) {
+            const jogadorEscolha = escolha;
+            let computadorEscolha = Math.floor(Math.random() * 3) + 1;
+
+            // Lógica de Prevenção de Repetição do Core
+            if (computadorEscolhaAnterior === computadorEscolha) {
+                repeticaoJogada++;
+                if (repeticaoJogada > 2) {
+                    computadorEscolha = (computadorEscolha % 3) + 1;
+                    repeticaoJogada = 0;
+                }
+            } else {
+                repeticaoJogada = 0;
+            }
+            computadorEscolhaAnterior = computadorEscolha;
+
+            // Lógica de Ganhador
+            let ganhador = -1; // 0: Empate, 1: Jogador, 2: Computador
+
+            if (jogadorEscolha === computadorEscolha) {
+                ganhador = 0;
+            } else if (
+                (jogadorEscolha === 1 && computadorEscolha === 3) ||
+                (jogadorEscolha === 2 && computadorEscolha === 1) ||
+                (jogadorEscolha === 3 && computadorEscolha === 2)
+            ) {
+                ganhador = 1;
+            } else {
+                ganhador = 2;
+            }
+
+            // Atualização da UI (Nexus Pattern)
+            const allBtns = document.querySelectorAll('.escolha-btn');
+            allBtns.forEach(btn => btn.classList.remove('selecionado'));
+
+            document.getElementById(`jogador-escolha-${jogadorEscolha}`).classList.add('selecionado');
+            document.getElementById(`computador-escolha-${computadorEscolha}`).classList.add('selecionado');
+
+            const msgElement = document.getElementById("mensagens");
+            
+            if (ganhador === 0) {
+                msgElement.innerHTML = "Sistemas em Empate";
+                msgElement.style.borderLeftColor = "var(--corAmarelo)";
+            } else if (ganhador === 1) {
+                msgElement.innerHTML = "Vitória do Operador";
+                msgElement.style.borderLeftColor = "var(--corAzul)";
+                jogadorPontuacao++;
+            } else {
+                msgElement.innerHTML = "Nexus Core Venceu";
+                msgElement.style.borderLeftColor = "var(--corVermelho)";
+                computadorPontuacao++;
+            }
+
+            document.getElementById("jogador-pontos").innerHTML = jogadorPontuacao;
+            document.getElementById("computador-pontos").innerHTML = computadorPontuacao;
+        }
+    </script>
+</body>
+</html>

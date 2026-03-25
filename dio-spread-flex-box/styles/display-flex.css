@@ -1,0 +1,11 @@
+.dispay-flex .flex{
+    max-width: 300px;
+    padding: 10px;
+    border: 2px solid black;
+    display: flex;
+}
+
+.dispay-flex .item{
+    background-color: aqua;
+    margin: 5px;
+}

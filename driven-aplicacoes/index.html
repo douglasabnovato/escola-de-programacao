@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driven Apps | Nexus Hub</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Fira+Code&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <style>
+      /* ==========================================================================
+           DESIGN SYSTEM NEXUS
+           ========================================================================== */
+      :root {
+        --primary: #ff5722;
+        --primary-hover: #ff8a65;
+        --bg: #080808;
+        --surface: #121212;
+        --card: #1c1c1c;
+        --text: #f0f0f0;
+        --text-dim: #888;
+        --border: rgba(255, 255, 255, 0.08);
+        --glass: rgba(255, 255, 255, 0.03);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* HEADER & NAV */
+      header {
+        background: var(--surface);
+        padding: 1rem 2rem;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        font-family: "Fira Code", monospace;
+        color: var(--primary);
+        font-weight: bold;
+        font-size: 1.2rem;
+        text-decoration: none;
+      }
+
+      nav button {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text-dim);
+        padding: 0.6rem 1.2rem;
+        margin-left: 0.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 0.9rem;
+      }
+
+      nav button:hover,
+      nav button.active {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: rgba(255, 87, 34, 0.05);
+      }
+
+      /* MAIN CONTENT */
+      main {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .app-view {
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+      .app-view.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* --------------------------------------------------------------------------
+           COMPONENTE: KANBAN
+           -------------------------------------------------------------------------- */
+      .kanban-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .board {
+        background: var(--surface);
+        border-radius: 12px;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .board h3 {
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--primary);
+        font-size: 1rem;
+        text-transform: uppercase;
+      }
+
+      .todo-list {
+        list-style: none;
+        flex-grow: 1;
+      }
+
+      .todo-list li {
+        background: var(--card);
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: move;
+      }
+
+      .todo-list li:hover {
+        border-color: var(--primary);
+      }
+
+      .btn-add-task {
+        width: 100%;
+        padding: 0.8rem;
+        background: var(--glass);
+        border: 1px dashed var(--border);
+        color: var(--text-dim);
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+
+      .btn-add-task:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      /* --------------------------------------------------------------------------
+           COMPONENTE: STOPWATCH
+           -------------------------------------------------------------------------- */
+      .stopwatch-card {
+        background: var(--surface);
+        border-radius: 20px;
+        padding: 3rem;
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        border: 1px solid var(--border);
+      }
+
+      .stopwatch-display {
+        font-family: "Fira Code", monospace;
+        font-size: 3rem;
+        color: var(--primary);
+        margin: 2rem 0;
+        text-shadow: 0 0 20px rgba(255, 87, 34, 0.3);
+      }
+
+      .config-group {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      input[type="date"] {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        color: white;
+        padding: 0.5rem;
+        border-radius: 6px;
+      }
+
+      .btn-action {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.6rem 1.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .btn-reset {
+        background: #444;
+        color: white;
+        border: none;
+        padding: 0.6rem 1.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .remove-task {
+        color: #ff4444;
+        cursor: pointer;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">> DRIVEN_APPS</a>
+      <nav>
+        <button onclick="showApp('home')" id="btn-home" class="active">
+          Home
+        </button>
+        <button onclick="showApp('kanban')" id="btn-kanban">
+          Kanban Board
+        </button>
+        <button onclick="showApp('stopwatch')" id="btn-stopwatch">
+          Date StopWatch
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <div id="view-home" class="app-view active">
+        <h1>Bem-vindo ao Nexus Driven</h1>
+        <p style="color: var(--text-dim); margin-top: 1rem">
+          Selecione uma ferramenta acima para começar a gerenciar sua
+          produtividade.
+        </p>
+      </div>
+
+      <div id="view-kanban" class="app-view">
+        <div class="kanban-container">
+          <div class="board">
+            <h3>À Fazer</h3>
+            <ul
+              id="a-fazer"
+              class="todo-list"
+              ondrop="drop(event, this.id)"
+              ondragover="over(event)"
+            ></ul>
+            <button class="btn-add-task" onclick="addCard('a-fazer')">
+              + Adicionar Tarefa
+            </button>
+          </div>
+          <div class="board">
+            <h3>Fazendo</h3>
+            <ul
+              id="fazendo"
+              class="todo-list"
+              ondrop="drop(event, this.id)"
+              ondragover="over(event)"
+            ></ul>
+            <button class="btn-add-task" onclick="addCard('fazendo')">
+              + Adicionar Tarefa
+            </button>
+          </div>
+          <div class="board">
+            <h3>Feito</h3>
+            <ul
+              id="feito"
+              class="todo-list"
+              ondrop="drop(event, this.id)"
+              ondragover="over(event)"
+            ></ul>
+            <button class="btn-add-task" onclick="addCard('feito')">
+              + Adicionar Tarefa
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="view-stopwatch" class="app-view">
+        <div class="stopwatch-card">
+          <h2>Contagem Regressiva</h2>
+          <div class="stopwatch-display" id="timer-display">
+            00d 00h 00m 00s
+          </div>
+          <div class="config-group">
+            <input type="date" id="target-date" value="2026-12-31" />
+            <button class="btn-action" onclick="startTimer()">INICIAR</button>
+            <button class="btn-reset" onclick="stopTimer()">RESETAR</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      /* ==========================================================================
+           ROTEAMENTO SIMPLES
+           ========================================================================== */
+      function showApp(appId) {
+        document
+          .querySelectorAll(".app-view")
+          .forEach((v) => v.classList.remove("active"));
+        document
+          .querySelectorAll("nav button")
+          .forEach((b) => b.classList.remove("active"));
+
+        document.getElementById(`view-${appId}`).classList.add("active");
+        document.getElementById(`btn-${appId}`).classList.add("active");
+      }
+
+      /* ==========================================================================
+           LÓGICA: KANBAN
+           ========================================================================== */
+      function addCard(ulId) {
+        const text = prompt("Qual é a tarefa?");
+        if (!text) return;
+        const board = document.getElementById(ulId);
+        const id = new Date().getTime();
+
+        const li = document.createElement("li");
+        li.id = id;
+        li.draggable = true;
+        li.ondragstart = drag;
+        li.innerHTML = `<p>${text}</p><span class="remove-task" onclick="this.parentElement.remove()">×</span>`;
+
+        board.appendChild(li);
+      }
+
+      function drag(event) {
+        event.dataTransfer.setData("cardId", event.target.id);
+      }
+      function over(event) {
+        event.preventDefault();
+      }
+      function drop(event, targetId) {
+        event.preventDefault();
+        const cardId = event.dataTransfer.getData("cardId");
+        document
+          .getElementById(targetId)
+          .appendChild(document.getElementById(cardId));
+      }
+
+      /* ==========================================================================
+           LÓGICA: STOPWATCH
+           ========================================================================== */
+      let timerInterval;
+
+      function startTimer() {
+        clearInterval(timerInterval);
+        const dateVal = document.getElementById("target-date").value;
+        const target = new Date(dateVal).getTime();
+
+        timerInterval = setInterval(() => {
+          const now = new Date().getTime();
+          const diff = target - now;
+
+          if (diff < 0) {
+            document.getElementById("timer-display").innerText =
+              "Tempo Esgotado!";
+            clearInterval(timerInterval);
+            return;
+          }
+
+          const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const h = Math.floor(
+            (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
+          const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+          document.getElementById("timer-display").innerText =
+            `${d}d ${h}h ${m}m ${s}s`;
+        }, 1000);
+      }
+
+      function stopTimer() {
+        clearInterval(timerInterval);
+        document.getElementById("timer-display").innerText = "00d 00h 00m 00s";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(252, 184, 184);
+}
+
+.top {
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
+    width: 100%;
+    padding: 70px 0;
+    margin: 0 auto 0;
+}
+
+@media (max-width: 540px) {
+    .top {
+        width: 540px;
+    }
+}
+
+main {
+    width: 540px;
+    margin: 1vh auto 0;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: #ff6a28;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.card-title {
+    margin-bottom: 0.75rem;
+}
+
+.ico-svg {
+    margin: 10px;
+}
+
+.ico-svg.ico-orange {
+    fill: #ff6a28;
+}
+
+.ico-svg {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.card-header {
+    border: 2px solid rgba(0, 0, 0, .125);
+}
+
+.card {
+    position: relative;
+    margin-bottom: 30px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    width: 100%;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+}
+
+aside ol {
+    padding: 10px 35px 5px 25px;
+}
+
+aside ul {
+    padding: 10px 35px 5px 25px;
+}
+
+aside li {
+    padding: 0px 0px 8px 0px;
+}
+
+aside p {
+    padding: 0px 0px 14px 0px;
+}
+
+figure {
+    position: relative;
+    max-width: 540px;
+    margin: 0 auto;
+    margin-block-end: 2em;
+}
+
+figure img {
+    vertical-align: middle;
+    max-width: 540px;
+}
+
+figcaption {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #1abc9c;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+}
+
+footer a {
+    text-decoration: none;
+}

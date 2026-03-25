@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mario Nexus Edition | learnTECH</title>
+    <style>
+      @font-face {
+        font-family: "mario";
+        src: url("./fonts/SuperMario256.ttf");
+      }
+
+      :root {
+        --corAzul: #199bd9;
+        --corVermelho: #e62319;
+        --corAmarelo: #fccf2f;
+        --corVerde: #44af35;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "mario", Arial, sans-serif;
+      }
+
+      body {
+        background-color: #080808;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .game-board {
+        width: 100%;
+        max-width: 1200px;
+        height: 500px;
+        border-bottom: 20px solid var(--corVerde);
+        background: linear-gradient(var(--corAzul), #87ceeb);
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+      }
+
+      .score-board {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        font-size: 24px;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        padding: 10px 20px;
+        border: 2px solid var(--corAzul);
+        border-radius: 8px;
+      }
+
+      .pipe {
+        position: absolute;
+        bottom: 0;
+        right: -80px;
+        width: 80px;
+      }
+      .mario {
+        position: absolute;
+        bottom: 0;
+        left: 50px;
+        width: 150px;
+      }
+      .clouds {
+        position: absolute;
+        top: 100px;
+        right: -500px;
+        width: 500px;
+      }
+
+      /* CLASSES DE ANIMAÇÃO */
+      .pipe-animation {
+        animation: pipe-move 1.5s infinite linear;
+      }
+      .clouds-animation {
+        animation: clouds-move 20s infinite linear;
+      }
+      .jump {
+        animation: mario-jump 600ms ease-out;
+      }
+
+      @keyframes pipe-move {
+        from {
+          right: -80px;
+        }
+        to {
+          right: 100%;
+        }
+      }
+      @keyframes mario-jump {
+        0% {
+          bottom: 0;
+        }
+        40% {
+          bottom: 180px;
+        }
+        60% {
+          bottom: 180px;
+        }
+        100% {
+          bottom: 0;
+        }
+      }
+      @keyframes clouds-move {
+        from {
+          right: -500px;
+        }
+        to {
+          right: 100%;
+        }
+      }
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* MODAIS */
+      .modal {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: none;
+        z-index: 100;
+      }
+
+      .modal.habilitar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-container {
+        width: 650px;
+        min-height: 400px;
+        border-radius: 30px;
+        padding: 50px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .modal-login {
+        background-image: url("./img/background.jpg");
+        background-size: cover;
+        box-shadow: 2px 2px 20px var(--corAmarelo);
+      }
+
+      .modal-game-over {
+        background-image: linear-gradient(var(--corAzul), rgb(231, 231, 231));
+        box-shadow: 2px 2px 20px var(--corVermelho);
+      }
+
+      .active {
+        display: flex;
+        animation: fade-up 1s forwards;
+      }
+
+      .titulo {
+        font-size: 36px;
+        color: white;
+        -webkit-text-stroke: 2px black;
+        margin-bottom: 20px;
+      }
+
+      .btn-modal {
+        background-color: var(--corVermelho);
+        border: none;
+        width: 350px;
+        height: 70px;
+        color: #fff;
+        font-size: 34px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+
+      .btn-red-tr:hover {
+        box-shadow:
+          7px 7px #8b130e,
+          -7px -7px #ff4a41;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-board">
+      <div class="score-board">SCORE: <span id="score">000</span></div>
+      <img src="./img/clouds.png" class="clouds" />
+      <img src="./img/mario.gif" class="mario" id="mario" />
+      <img src="./img/pipe.png" class="pipe" id="pipe" />
+
+      <div class="modal habilitar" id="overlay">
+        <div class="modal-container modal-login active" id="modalStart">
+          <h1 class="titulo">MARIO NEXUS</h1>
+          <button class="btn-modal btn-red-tr" onclick="startGame()">
+            INICIAR
+          </button>
+        </div>
+
+        <div class="modal-container modal-game-over" id="modalGameOver">
+          <img
+            src="./img/mario-game-over.png"
+            style="width: 200px; margin-bottom: 10px"
+          />
+          <h1 class="titulo" style="color: var(--corVermelho)">GAME OVER</h1>
+          <p
+            id="finalScore"
+            style="font-size: 28px; margin-bottom: 20px; color: black"
+          ></p>
+          <button class="btn-modal btn-red-tr" onclick="resetGame()">
+            JOGAR NOVAMENTE
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const mario = document.getElementById("mario");
+      const pipe = document.getElementById("pipe");
+      const clouds = document.querySelector(".clouds");
+      const overlay = document.getElementById("overlay");
+      const modalStart = document.getElementById("modalStart");
+      const modalGameOver = document.getElementById("modalGameOver");
+      const scoreSpan = document.getElementById("score");
+      const finalScoreSpan = document.getElementById("finalScore");
+
+      const audioPrincipal = new Audio("./audio/audio-principal.mp3");
+      const audioPulo = new Audio("./audio/audio-pulo.wav");
+      const audioGameOver = new Audio("./audio/audio-game-over.wav");
+      const audioMoeda = new Audio("./audio/audio-moeda.wav");
+      const audioVelocidade = new Audio("./audio/audio-velocidade.wav");
+
+      audioPrincipal.loop = true;
+      let score = 0;
+      let isGameOver = false;
+      let gameLoop;
+
+      const jump = () => {
+        if (isGameOver || mario.classList.contains("jump")) return;
+        mario.classList.add("jump");
+        audioPulo.play().catch(() => {});
+        setTimeout(() => mario.classList.remove("jump"), 600);
+      };
+
+      const startGame = () => {
+        overlay.classList.remove("habilitar");
+        modalStart.classList.remove("active");
+        modalGameOver.classList.remove("active");
+
+        isGameOver = false;
+        score = 0;
+        scoreSpan.innerText = "000";
+
+        audioPrincipal.currentTime = 0;
+        audioPrincipal.playbackRate = 1.0;
+        audioPrincipal.play().catch(() => {});
+
+        // Reativa animações
+        pipe.classList.add("pipe-animation");
+        clouds.classList.add("clouds-animation");
+
+        gameLoop = setInterval(() => {
+          const pipePosition = pipe.offsetLeft;
+          const marioPosition = +window
+            .getComputedStyle(mario)
+            .bottom.replace("px", "");
+
+          if (!isGameOver) {
+            score++;
+            scoreSpan.innerText = score.toString().padStart(3, "0");
+
+            if (score > 0 && score % 100 === 0)
+              audioMoeda.play().catch(() => {});
+            if (score === 500) {
+              audioVelocidade.play().catch(() => {});
+              audioPrincipal.playbackRate = 1.3;
+            }
+          }
+
+          if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
+            handleGameOver(pipePosition, marioPosition);
+          }
+        }, 10);
+      };
+
+      const handleGameOver = (pPos, mPos) => {
+        isGameOver = true;
+        clearInterval(gameLoop);
+
+        // Trava os elementos na posição da colisão
+        pipe.classList.remove("pipe-animation");
+        pipe.style.left = `${pPos}px`;
+
+        mario.classList.remove("jump");
+        mario.style.bottom = `${mPos}px`;
+        mario.src = "./img/mario-game-over.png";
+        mario.style.width = "75px";
+
+        audioPrincipal.pause();
+        audioGameOver.play().catch(() => {});
+
+        setTimeout(() => {
+          finalScoreSpan.innerText = `PONTOS: ${score}`;
+          overlay.classList.add("habilitar");
+          modalGameOver.classList.add("active");
+        }, 500);
+      };
+
+      const resetGame = () => {
+        // LIMPEZA CRÍTICA DE ESTADO
+        // Remove estilos inline que travam a animação CSS
+        pipe.style.left = "";
+        mario.style.bottom = "";
+        mario.src = "./img/mario.gif";
+        mario.style.width = "150px";
+
+        // Garante que as classes de animação sejam removidas antes de reiniciar
+        pipe.classList.remove("pipe-animation");
+        clouds.classList.remove("clouds-animation");
+
+        // Pequeno delay para o DOM processar a limpeza antes do novo loop
+        setTimeout(startGame, 50);
+      };
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowUp" || e.key === " ") jump();
+      });
+    </script>
+  </body>
+</html>

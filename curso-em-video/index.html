@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso em Vídeo | Nexus Edition</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* PALETA NEXUS */
+      :root {
+        --primary: #ff5722;
+        --bg: #080808;
+        --surface: #121212;
+        --card: #1c1c1c;
+        --text: #f0f0f0;
+        --border: rgba(255, 255, 255, 0.08);
+      }
+
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: "Inter", "Lato", sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        display: flex;
+        justify-content: center;
+      }
+
+      /* CONTAINER PRINCIPAL (Sem Sidebar) */
+      .content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+      }
+
+      /* ESTILO DOS CARDS */
+      section {
+        background: var(--card);
+        border-radius: 15px;
+        padding: 25px;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease;
+      }
+
+      section:hover {
+        border-color: var(--primary);
+      }
+
+      header h1 {
+        color: var(--primary);
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+      }
+
+      /* INPUTS E BOTÕES CUSTOMIZADOS */
+      input[type="number"],
+      select {
+        background: #2a2a2a;
+        border: 1px solid var(--border);
+        color: white;
+        padding: 8px;
+        border-radius: 5px;
+        margin: 5px 0;
+        width: 100%;
+      }
+
+      input[type="button"] {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 10px;
+        transition: opacity 0.2s;
+      }
+
+      input[type="button"]:hover {
+        opacity: 0.8;
+      }
+
+      /* DIVS INTERNAS */
+      .calculado,
+      .contado,
+      #response {
+        margin-top: 15px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        min-height: 50px;
+      }
+
+      .image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--primary);
+        margin-top: 10px;
+      }
+
+      /* AJUSTE ESPECÍFICO HORA DO DIA */
+      .day {
+        text-align: center;
+      }
+      #message {
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      @media (max-width: 600px) {
+        .content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body onload="toLoad()">
+    <div class="content">
+      <section>
+        <header><h1>Tabuada</h1></header>
+        <div>
+          <p>
+            Número: <input type="number" id="intabuada" placeholder="Ex: 5" />
+          </p>
+          <input type="button" value="Gerar Tabuada" onclick="toCalculate()" />
+        </div>
+        <div id="selectcalcular">
+          <select id="tabuada" size="6">
+            <option>Resultado...</option>
+          </select>
+        </div>
+      </section>
+
+      <section>
+        <header><h1>Contador</h1></header>
+        <div id="dados">
+          <p>Início: <input type="number" id="start" /></p>
+          <p>Fim: <input type="number" id="end" /></p>
+          <p>Passo: <input type="number" id="step" /></p>
+          <input type="button" value="Contar" onclick="toCount()" />
+        </div>
+        <div id="contar-dados">Aguardando contagem...</div>
+      </section>
+
+      <section>
+        <header><h1>Verificador de Idade</h1></header>
+        <div class="data">
+          <p>Ano Nascimento: <input type="number" id="txtyear" /></p>
+          <p>
+            <input type="radio" name="radsex" id="mas" checked /> Masculino
+            <input type="radio" name="radsex" id="fem" /> Feminino
+          </p>
+          <input type="button" value="Verificar" onclick="toCheck()" />
+        </div>
+        <div id="response" style="text-align: center">Resultado...</div>
+      </section>
+
+      <section class="day">
+        <header><h1>Hora do Dia</h1></header>
+        <div id="message">Carregando hora...</div>
+        <div id="photo">
+          <img id="image" class="image" src="" alt="Foto do dia" />
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // LÓGICA MANTIDA E OTIMIZADA PARA O DESIGN
+      function toLoad() {
+        var img = document.getElementById("image");
+        var msg = document.getElementById("message");
+        var hour = new Date().getHours();
+        msg.innerHTML = `Agora são <strong>${hour} horas</strong>.`;
+
+        if (hour >= 0 && hour < 12) {
+          img.src = "./assets/manha-1.jpeg";
+        } else if (hour >= 12 && hour < 18) {
+          img.src = "./assets/tarde-1.jpg";
+        } else {
+          img.src = "./assets/noite-1.jpg";
+        }
+      }
+
+      function toCalculate() {
+        let num = document.getElementById("intabuada");
+        let tab = document.getElementById("tabuada");
+        if (num.value.length == 0) return alert("Digite um número!");
+
+        let n = Number(num.value);
+        tab.innerHTML = "";
+        for (let c = 1; c <= 10; c++) {
+          let item = document.createElement("option");
+          item.text = `${n} x ${c} = ${n * c}`;
+          tab.appendChild(item);
+        }
+      }
+
+      function toCount() {
+        let start = document.getElementById("start");
+        let end = document.getElementById("end");
+        let step = document.getElementById("step");
+        let res = document.getElementById("contar-dados");
+
+        if (
+          start.value.length == 0 ||
+          end.value.length == 0 ||
+          step.value.length == 0
+        ) {
+          return alert("Faltam dados!");
+        }
+
+        res.innerHTML = "Contando: <br>";
+        let i = Number(start.value);
+        let f = Number(end.value);
+        let p = Number(step.value);
+        if (p <= 0) p = 1;
+
+        if (i < f) {
+          for (let c = i; c <= f; c += p) res.innerHTML += ` ${c} \u{1F449}`;
+        } else {
+          for (let c = i; c >= f; c -= p) res.innerHTML += ` ${c} \u{1F449}`;
+        }
+        res.innerHTML += ` \u{1F3C1}`;
+      }
+
+      function toCheck() {
+        let year = new Date().getFullYear();
+        let fyear = document.getElementById("txtyear");
+        let res = document.getElementById("response");
+
+        if (fyear.value.length == 0 || Number(fyear.value) > year)
+          return alert("Dados inválidos!");
+
+        let fsex = document.getElementsByName("radsex");
+        let age = year - Number(fyear.value);
+        let genre = fsex[0].checked ? "Homem" : "Mulher";
+        res.innerHTML = `Detectamos ${genre} com ${age} anos.`;
+      }
+    </script>
+  </body>
+</html>

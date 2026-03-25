@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Nexus | learnTECH</title>
+    <style>
+        /* DESIGN SYSTEM NEXUS */
+        :root {
+            --corAzul: #199bd9;
+            --corVermelho: #e62319;
+            --corAmarelo: #fccf2f;
+            --corVerde: #44af35;
+            --corFundo: #0d0d0d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Lato", sans-serif;
+        }
+
+        body {
+            background-color: var(--corFundo);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .header-nexus {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-nexus h1 {
+            font-size: 2.5rem;
+            color: var(--corAzul);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px var(--corAmarelo);
+        }
+
+        /* CONTAINER DO JOGO NEXUS */
+        .game-container {
+            position: relative;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 4px solid var(--corAzul);
+            border-radius: 15px;
+            box-shadow: 0 0 30px var(--corAmarelo);
+        }
+
+        canvas {
+            display: block;
+            background-color: #000;
+            border-radius: 8px;
+        }
+
+        .score-nexus {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            font-size: 1.5rem;
+            color: var(--corAmarelo);
+            font-weight: bold;
+        }
+
+        /* INSTRUÇÕES ABAIXO DO JOGO */
+        .controls-info {
+            margin-top: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-nexus">
+        <h1>Snake Nexus</h1>
+    </header>
+
+    <div class="game-container">
+        <div class="score-nexus">SCORE: <span id="scoreVal">0</span></div>
+        <canvas id="stage" width="600" height="600"></canvas>
+    </div>
+
+    <div class="controls-info">
+        Use as setas do teclado para navegar no ecossistema
+    </div>
+
+    <script>
+        /**
+         * ENGINE SNAKE NEXUS
+         * Integrada conforme especificações learnTECH
+         */
+        window.onload = function () {
+            const stage = document.getElementById("stage");
+            const ctx = stage.getContext("2d");
+            const scoreElement = document.getElementById("scoreVal");
+
+            document.addEventListener("keydown", keyPush);
+            
+            // VELOCIDADE DA COBRINHA (80ms para fluidez Nexus)
+            setInterval(game, 80);
+
+            const vel = 1; 
+            let vx = 0, vy = 0; // Velocidade inicial parada até o primeiro comando
+            let px = 10, py = 10; // Posição inicial
+            const tp = 30; // Tamanho da peça (30px)
+            const qp = 20; // Quantidade de peças (600/30 = 20)
+            let ax = 15, ay = 15; // Posição inicial da maçã
+
+            let trail = [];
+            let tail = 3;
+            let currentScore = 0;
+
+            function game() {
+                px += vx;
+                py += vy;
+
+                // Lógica de Borda Infinita (Wrap-around)
+                if (px < 0) px = qp - 1;
+                if (px > qp - 1) px = 0;
+                if (py < 0) py = qp - 1;
+                if (py > qp - 1) py = 0;
+
+                // 1. Limpar Tabuleiro (Preto Nexus)
+                ctx.fillStyle = "#000";
+                ctx.fillRect(0, 0, stage.width, stage.height);
+
+                // 2. Desenhar Grade de Fundo (Sutil)
+                ctx.strokeStyle = "#111";
+                for(let i=0; i<stage.width; i+=tp) {
+                    ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,stage.height); ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(0,i); ctx.lineTo(stage.width,i); ctx.stroke();
+                }
+
+                // 3. Desenhar Maçã (Vermelho Nexus)
+                ctx.fillStyle = "#e62319";
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = "#e62319";
+                ctx.fillRect(ax * tp, ay * tp, tp, tp);
+                ctx.shadowBlur = 0; // Reset shadow
+
+                // 4. Desenhar Cobrinha (Azul Nexus com degradê no rastro)
+                for (let i = 0; i < trail.length; i++) {
+                    // Cabeça é Amarela, rastro é Azul Nexus
+                    ctx.fillStyle = (i === trail.length - 1) ? "#fccf2f" : "#199bd9";
+                    ctx.fillRect(trail[i].x * tp, trail[i].y * tp, tp - 1, tp - 1);
+                    
+                    // Colisão com o próprio corpo
+                    if (trail[i].x == px && trail[i].y == py && (vx !== 0 || vy !== 0)) {
+                        vx = vy = 0;
+                        tail = 3;
+                        currentScore = 0;
+                        scoreElement.innerText = currentScore;
+                    }
+                }
+
+                trail.push({ x: px, y: py });
+                while (trail.length > tail) {
+                    trail.shift();
+                }
+
+                // Lógica de comer a maçã
+                if (ax == px && ay == py) {
+                    tail++;
+                    currentScore += 10;
+                    scoreElement.innerText = currentScore;
+                    ax = Math.floor(Math.random() * qp);
+                    ay = Math.floor(Math.random() * qp);
+                }
+            }
+
+            function keyPush(event) {
+                switch (event.keyCode) {
+                    case 37: // Esquerda
+                        if(vx !== vel) { vx = -vel; vy = 0; }
+                        break;
+                    case 38: // Cima
+                        if(vy !== vel) { vx = 0; vy = -vel; }
+                        break;
+                    case 39: // Direita
+                        if(vx !== -vel) { vx = vel; vy = 0; }
+                        break;
+                    case 40: // Baixo
+                        if(vy !== -vel) { vx = 0; vy = vel; }
+                        break;
+                }
+            }
+        };
+    </script>
+</body>
+</html>
