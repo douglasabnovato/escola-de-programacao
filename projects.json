@@ -2,61 +2,61 @@
   {
     "id": 1,
     "title": "Curso em Vídeo",
-    "description": "Fundamentos de algoritmos e lógica com foco em sintaxe JavaScript.",
+    "description": "Domínio de sintaxe JavaScript e fundamentos de lógica algorítmica.",
     "path": "./curso-em-video/index.html",
     "category": "Estudos",
-    "icon": "fas fa-graduation-cap",
+    "icon": "fas fa-laptop-code",
     "featured": false
   },
   {
     "id": 2,
     "title": "Desafios de Código",
-    "description": "Resolução de problemas lógicos e algoritmos de diversos níveis.",
+    "description": "Engine de resolução de problemas lógicos e complexidade de algoritmos.",
     "path": "./desafios-codigo/index.html",
-    "category": "Lógica",
     "icon": "fas fa-terminal",
+    "category": "Lógica",
     "featured": false
   },
   {
     "id": 3,
     "title": "DIO + Spread",
-    "description": "Repositório central de desafios e projetos do Bootcamp.",
+    "description": "Repositório avançado de desafios práticos do ecossistema Bootcamp.",
     "path": "./dio-spread/index.html",
     "category": "Bootcamp",
-    "icon": "fas fa-certificate",
+    "icon": "fas fa-microchip",
     "featured": false
   },
   {
     "id": 4,
     "title": "Driven Aplicações",
-    "description": "Criação de Web Apps estruturados com foco em arquitetura.",
+    "description": "Arquitetura de Web Apps escaláveis com foco em estruturação profissional.",
     "path": "./driven-aplicacoes/index.html",
     "category": "Formação",
-    "icon": "fas fa-layer-group",
+    "icon": "fas fa-cubes",
     "featured": false
   },
   {
     "id": 5,
     "title": "Formulário de Login",
-    "description": "Estudo de validação de campos, UX de acesso e estados de input.",
+    "description": "Segurança de dados no client-side, validação Regex e UX de autenticação.",
     "path": "./formulario-login/index.html",
     "category": "Web Core",
-    "icon": "fas fa-user-shield",
+    "icon": "fas fa-key",
     "featured": false
   },
   {
     "id": 6,
     "title": "Game Mario Bros",
-    "description": "Engine simples de jogo usando colisões e animações CSS keyframes.",
+    "description": "Lógica de colisão e manipulação de sprites com CSS Keyframes.",
     "path": "./game-mario-bros/index.html",
     "category": "Games",
     "icon": "fas fa-gamepad",
-    "featured": true
+    "featured": false
   },
   {
     "id": 7,
     "title": "Home Instagram",
-    "description": "Recriação da UI do Instagram com foco em Grid e Flexbox responsivo.",
+    "description": "Slicing de UI complexa utilizando CSS Grid e Flexbox Layout Engine.",
     "path": "./instagram-home-desktop/index.html",
     "category": "UI/UX",
     "icon": "fab fa-instagram",
@@ -65,61 +65,62 @@
   {
     "id": 8,
     "title": "Jogo da Cobra",
-    "description": "Mecânica de movimentação por grid e crescimento de array (corpo).",
+    "description": "Algoritmo de crescimento de array e gestão de coordenadas em grid.",
     "path": "./jogo-da-cobra/index.html",
     "category": "Games",
-    "icon": "fas fa-long-arrow-alt-up",
-    "featured": true
+    "icon": "fas fa-worm",
+    "featured": true,
+    "image": "./assets/thumbnails/snake-game.png"
   },
   {
     "id": 9,
     "title": "Jogo da Memória",
-    "description": "Manipulação dinâmica do DOM para comparação de estados e lógica de pares.",
+    "description": "State management manual e manipulação dinâmica de classes no DOM.",
     "path": "./jogo-da-memoria/index.html",
     "category": "Games",
-    "icon": "fas fa-th",
+    "icon": "fas fa-clone",
     "featured": false
   },
   {
     "id": 10,
     "title": "Jogo da Velha",
-    "description": "Lógica matricial para validação de vitória e alternância de jogadores.",
+    "description": "Implementação de lógica matricial para detecção de padrões de vitória.",
     "path": "./jogo-da-velha/index.html",
     "category": "Games",
-    "icon": "fas fa-times",
+    "icon": "fas fa-th-large",
     "featured": false
   },
   {
     "id": 11,
     "title": "Jogo Lost Decade",
-    "description": "Renderização e controle de personagens em Canvas 2D.",
+    "description": "Desenvolvimento de engine 2D com renderização em HTML5 Canvas.",
     "path": "./jogo-lost-decade/index.html",
     "category": "Games",
-    "icon": "fas fa-dungeon",
+    "icon": "fas fa-ghost",
     "featured": false
   },
   {
     "id": 12,
     "title": "Pedra, Papel e Tesoura",
-    "description": "Aplicação de lógica aleatória (Math.random) em Jokenpô.",
+    "description": "Lógica de decisão aleatória e fluxos condicionais de resultado.",
     "path": "./jogo-pedra-papel-e-tesoura/index.html",
     "category": "Games",
-    "icon": "fas fa-hand-scissors",
+    "icon": "fas fa-hand-back-fist",
     "featured": false
   },
   {
     "id": 13,
     "title": "Receitas Deliciosas",
-    "description": "Renderização de conteúdo estático e estilização de cards culinários.",
+    "description": "Arquitetura de componentes estáticos e estilização de cards responsivos.",
     "path": "./receitas/index.html",
     "category": "Prática",
-    "icon": "fas fa-utensils",
+    "icon": "fas fa-mortar-pestle",
     "featured": false
   },
   {
     "id": 14,
-    "title": "Rocketseat",
-    "description": "Projetos de introdução ao desenvolvimento com HTML da trilha Explorer.",
+    "title": "Rocketseat Explorer",
+    "description": "Fundamentos de semântica HTML e estruturação de projetos modernos.",
     "path": "./rocketseat-challenges/index.html",
     "category": "Desafios",
     "icon": "fas fa-rocket",
@@ -128,7 +129,7 @@
   {
     "id": 15,
     "title": "Uma Lâmpada",
-    "description": "Exemplo básico de manipulação de eventos e troca de src de imagem.",
+    "description": "Gestão de eventos de entrada (Event Listeners) e troca dinâmica de assets.",
     "path": "./uma-lampada/index.html",
     "category": "Fundamental",
     "icon": "fas fa-lightbulb",
@@ -137,34 +138,35 @@
   {
     "id": 16,
     "title": "DIO + Contador",
-    "description": "Manipulação de estado numérico e condições de limite.",
+    "description": "Controle de estado numérico e limites de execução lógica em tempo real.",
     "path": "./dio-spread-contador/index.html",
     "category": "Bootcamp",
-    "icon": "fas fa-sort-numeric-up",
-    "featured": false
+    "icon": "fas fa-plus-minus",
+    "featured": true,
+    "image": "./assets/thumbnails/counter-project.png"
   },
   {
     "id": 17,
     "title": "DIO + Estacionamento",
-    "description": "Lógica de controle de pátio com registro de entrada e saída.",
+    "description": "Simulação de sistema de gestão de pátio com registro de logs temporais.",
     "path": "./dio-spread-estacionamento/index.html",
     "category": "Bootcamp",
-    "icon": "fas fa-parking",
+    "icon": "fas fa-car-side",
     "featured": false
   },
   {
     "id": 18,
     "title": "DIO + Flex Box",
-    "description": "Protótipo focado em alinhamento de containers flexíveis.",
+    "description": "Deep dive em propriedades de alinhamento e distribuição de eixos CSS.",
     "path": "./dio-spread-flex-box/index.html",
     "category": "Bootcamp",
-    "icon": "fas fa-vector-square",
+    "icon": "fas fa-columns",
     "featured": false
   },
   {
     "id": 19,
     "title": "DIO + Operadores",
-    "description": "Testes de lógica de comparação e aritmética básica em JS.",
+    "description": "Análise de precedência aritmética e operadores de comparação binária.",
     "path": "./dio-spread-operadores/index.html",
     "category": "Bootcamp",
     "icon": "fas fa-calculator",
@@ -173,28 +175,28 @@
   {
     "id": 20,
     "title": "DIO + ToDo List",
-    "description": "Aplicação CRUD básica para gerenciamento de tarefas diárias.",
+    "description": "Aplicação de persistência básica e manipulação de listas dinâmicas.",
     "path": "./dio-spread-todolist/index.html",
     "category": "Bootcamp",
-    "icon": "fas fa-list-check",
+    "icon": "fas fa-check-double",
     "featured": false
   },
   {
     "id": 21,
     "title": "Sidebar Stack",
-    "description": "Uma sidebar com menu e seu conteúdos.",
+    "description": "Template de navegação lateral com persistência de estado e submenus.",
     "path": "./sidebar-stack/index.html",
     "category": "Template",
-    "icon": "fas fa-list-check",
+    "icon": "fas fa-bars-staggered",
     "featured": false
   },
   {
     "id": 22,
     "title": "Treinar JS",
-    "description": "Entender os fundamentos de JS.",
+    "description": "Sandbox para testes rápidos de ES6+ e novas funcionalidades do Node.js.",
     "path": "./treinar-js/index.html",
     "category": "Template",
-    "icon": "fas fa-list-check",
+    "icon": "fab fa-js",
     "featured": false
   }
 ]
