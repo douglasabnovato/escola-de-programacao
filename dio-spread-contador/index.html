@@ -1,128 +1,224 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../public/favicon.ico"
-    />
-    <link rel="manifest" href="../public/manifest.json" />
-    <title>Contador</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../public/favicon.ico" />
+    <title>Nexus Lab | Contador Estruturado</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-      body {
-        margin: 0;
-        font-family: "Lato", sans-serif;
-      }
-
-      .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 200px;
-        background-color: #f1f1f1;
-        position: fixed;
-        height: 100%;
-        overflow: auto;
-      }
-
-      .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-      }
-
-      .sidebar a.active {
-        background-color: #04aa6d;
-        color: white;
-      }
-
-      .sidebar a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-      }
-
-      div.content {
-        margin-left: 200px;
-        padding: 1px 16px;
-        height: 100vh;
-      }
-
-      .dropdown-content {
-        background-color: #dad6d6;
-      }
-
-      .dropdown-content a.active {
-        background-color: #79bba3;
-      }
-
-      @media screen and (max-width: 700px) {
-        .sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
+        :root {
+            --primary: #3498db;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --dark: #2c3e50;
+            --neutral: #ecf0f1;
+            --white: #ffffff;
+            --shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        .sidebar a {
-          float: left;
-        }
-        div.content {
-          margin-left: 0;
-        }
-      }
 
-      @media screen and (max-width: 400px) {
-        .sidebar a {
-          text-align: center;
-          float: none;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f7f6;
+            color: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .nexus-card {
+            background: var(--white);
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        header.card-header {
+            background: var(--dark);
+            color: var(--white);
+            padding: 25px;
+        }
+
+        header h2 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-panel {
+            padding: 15px;
+            background-color: #fdfdfd;
+            transition: background-color 0.4s ease;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .counter-container {
+            padding: 50px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        #currentNumber {
+            font-size: 3.5rem;
+            font-weight: 600;
+            min-width: 80px;
+            transition: color 0.3s;
+        }
+
+        .btn-round {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--neutral);
+            color: var(--dark);
+            font-size: 24px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .btn-round:hover:not(:disabled) {
+            transform: translateY(-2px);
+            background-color: #dfe6e9;
+        }
+
+        .btn-round:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn-round:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            filter: grayscale(1);
+        }
+
+        .btn-sub { color: var(--danger); border: 2px solid var(--danger); background: transparent; }
+        .btn-add { color: var(--success); border: 2px solid var(--success); background: transparent; }
+
+        .footer-info {
+            padding: 20px;
+            background: #fafafa;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+
+        .footer-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
     </style>
-  </head>
-  <body>
-    <div class="sidebar">
-      <a href="../../index.html">Home</a>
-      <a href="../../formulario-login/index.html">Formulário Login</a>
-      <a href="../../home-instagram/index.html">Home Instagram</a>
-      <a href="../../uma-lampada/index.html">Uma Lâmpada</a>
-      <a href="../../desafios-codigo/index.html">Desafios Código</a>
-      <a href="../../curso-em-video/index.html">Curso em Vídeo</a>
+</head>
 
-      <div class="dropdown">
-        <a class="active dropbtn" href="#diomaisspread">DIO + Spread</a>
-        <div class="dropdown-content">
-          <a class="active" href="#">Contador</a>
-          <a href="../estacionamento/index.html">Estacionamento</a>
-          <a href="../flex-box/index.html">Flex Box</a>
-          <a href="../operadores/index.html">Operadores</a>
-          <a href="../todolist/index.html">To Do List</a>
+<body>
+
+    <div class="nexus-card">
+        <header class="card-header">
+            <h2>DIO + Spread Project</h2>
+        </header>
+
+        <div id="statusPanel" class="status-panel">
+            <p id="statusText">Status: Iniciado</p>
         </div>
-      </div>
 
-      <a href="../../driven-aplicacoes/index.html">Driven Aplicações</a>
-      <a href="../../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
-      <a href="../../jogo-da-memoria/index.html">Jogo da Memória</a>
-      <a href="../../jogo-da-velha/index.html">Jogo da Velha</a>
-      <a href="../../jogo-lost-decade/index.html">Jogo lost decade</a>
-      <a href="../../jogo-pedra-papel-e-tesoura/index.html"
-        >Jogo Pedra Papel e Tesoura</a
-      >
-      <a href="../../jogo-da-cobra/index.html">Jogo da Cobra</a>
-      <a href="../../game-mario-bros/index.html">Jogo Mario Bros</a>
+        <main class="counter-container">
+            <button id="subtrair" class="btn-round btn-sub" aria-label="Subtrair">-</button>
+            
+            <span id="currentNumber">0</span>
+            
+            <button id="adicionar" class="btn-round btn-add" aria-label="Adicionar">+</button>
+        </main>
+
+        <footer class="footer-info">
+            <p>Limite operacional: -10 a 10</p>
+            <br>
+            <a href="../../index.html">← Voltar para ByteClass</a>
+        </footer>
     </div>
-    <div class="content">
-      <h2>DIO + Spread</h2>
-      <div id="bg-body">
-        <p>Status do Nosso contador:</p>
-      </div>
-      <div id="counter" class="counter">
-        <button name="subtrair" id="subtrair" onclick="decrement()">-</button>
-        <span id="currentNumber">0</span>
-        <button name="adicionar" id="adicionar" onclick="increment()">+</button>
-      </div>
-    </div>
-    <script src="./script.js"></script>
-  </body>
+
+    <script>
+        /**
+         * Nexus Logic: Contador com Limites e Feedback Visual
+         * Desenvolvido para o ecossistema learnTECH
+         */
+
+        // Seleção de elementos (Clean Code: const para imutabilidade de referência)
+        const btnSub = document.getElementById("subtrair");
+        const btnAdd = document.getElementById("adicionar");
+        const display = document.getElementById("currentNumber");
+        const statusPanel = document.getElementById("statusPanel");
+        const statusText = document.getElementById("statusText");
+
+        let count = 0;
+        const LIMIT = 10;
+
+        // Função para atualizar a interface (Single Responsibility Principle)
+        function updateUI() {
+            display.innerText = count;
+            
+            // Lógica de Cores do Contador
+            if (count < 0) {
+                display.style.color = "var(--danger)";
+                statusPanel.style.backgroundColor = "#ffecec";
+                statusText.innerText = "Status: Negativo";
+            } else if (count > 0) {
+                display.style.color = "var(--success)";
+                statusPanel.style.backgroundColor = "#ecffef";
+                statusText.innerText = "Status: Positivo";
+            } else {
+                display.style.color = "var(--dark)";
+                statusPanel.style.backgroundColor = "#fdfdfd";
+                statusText.innerText = "Status: Neutro";
+            }
+
+            // Gerenciamento de Estado dos Botões (State Handling)
+            btnSub.disabled = (count <= -LIMIT);
+            btnAdd.disabled = (count >= LIMIT);
+        }
+
+        // Handlers de Evento
+        function handleIncrement() {
+            if (count < LIMIT) {
+                count++;
+                updateUI();
+            }
+        }
+
+        function handleDecrement() {
+            if (count > -LIMIT) {
+                count--;
+                updateUI();
+            }
+        }
+
+        // Event Listeners (Padrão Nexus - Sem 'onclick' no HTML)
+        btnAdd.addEventListener("click", handleIncrement);
+        btnSub.addEventListener("click", handleDecrement);
+
+        // Inicialização
+        updateUI();
+
+    </script>
+</body>
 </html>

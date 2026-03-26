@@ -1,135 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../public/favicon.ico"
-    />
-    <link rel="manifest" href="../public/manifest.json" />
-    <title>Operadores</title>
-    <link rel="stylesheet" href="./styles.css" />
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Lab | Operadores JS</title>
     <style>
-      body {
-        margin: 0;
-        font-family: "Lato", sans-serif;
-      }
-
-      .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 200px;
-        background-color: #f1f1f1;
-        position: fixed;
-        height: 100%;
-        overflow: auto;
-      }
-
-      .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-      }
-
-      .sidebar a.active {
-        background-color: #04aa6d;
-        color: white;
-      }
-
-      .sidebar a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-      }
-
-      div.content {
-        margin-left: 200px;
-        padding: 1px 16px;
-        height: 100vh;
-      }
-
-      .dropdown-content {
-        background-color: #dad6d6;
-      }
-
-      .dropdown-content a.active {
-        background-color: #79bba3;
-      }
-
-      @media screen and (max-width: 700px) {
-        .sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
+        :root {
+            --nexus-primary: #04aa6d;
+            --nexus-bg: #f4f7f6;
+            --nexus-card: #ffffff;
+            --nexus-text: #2d3436;
+            --nexus-secondary: #636e72;
         }
-        .sidebar a {
-          float: left;
-        }
-        div.content {
-          margin-left: 0;
-        }
-      }
 
-      @media screen and (max-width: 400px) {
-        .sidebar a {
-          text-align: center;
-          float: none;
+        body { 
+            margin: 0; 
+            font-family: 'Lato', sans-serif; 
+            background: var(--nexus-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
-      }
+
+        /* Card de Atividade Centralizado */
+        .operator-card {
+            background: var(--nexus-card);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        header h1 { 
+            font-size: 1.8rem; 
+            color: var(--nexus-text); 
+            margin-bottom: 10px;
+        }
+
+        header p { 
+            color: var(--nexus-secondary); 
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .input-group { 
+            margin-bottom: 20px; 
+            text-align: left;
+        }
+
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            color: var(--nexus-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%; 
+            padding: 14px; 
+            border: 2px solid #edf2f7;
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        input:focus { border-color: var(--nexus-primary); }
+
+        button {
+            width: 100%; 
+            padding: 16px; 
+            background: var(--nexus-primary);
+            color: white; 
+            border: none; 
+            border-radius: 8px;
+            cursor: pointer; 
+            font-size: 1rem; 
+            font-weight: bold;
+            transition: transform 0.1s, opacity 0.2s;
+            margin-top: 10px;
+        }
+
+        button:active { transform: scale(0.98); }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f0fdf4;
+            border: 1px solid #dcfce7;
+            color: #166534;
+            border-radius: 8px;
+            display: none;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            text-align: left;
+        }
     </style>
-  </head>
-  <body>
-    <div class="sidebar">
-      <a href="../../index.html">Home</a>
-      <a href="../../formulario-login/index.html">Formulário Login</a>
-      <a href="../../home-instagram/index.html">Home Instagram</a>
-      <a href="../../uma-lampada/index.html">Uma Lâmpada</a>
-      <a href="../../desafios-codigo/index.html">Desafios Código</a>
-      <a href="../../curso-em-video/index.html">Curso em Vídeo</a>
+</head>
+<body>
 
-      <div class="dropdown">
-        <a class="active dropbtn" href="#diomaisspread">DIO + Spread</a>
-        <div class="dropdown-content">
-          <a href="../contador/index.html">Contador</a>
-          <a href="../estacionamento/index.html">Estacionamento</a>
-          <a href="../flex-box/index.html">Flex Box</a>
-          <a class="active" href="#operadores">Operadores</a>
-          <a href="../todolist/index.html">To Do List</a>
+    <main class="operator-card">
+        <header>
+            <h1>Operadores Nexus</h1>
+            <p>Análise lógica de igualdade e intervalos.</p>
+        </header>
+        
+        <div class="input-group">
+            <label for="num1">Primeiro Número</label>
+            <input type="number" id="num1" placeholder="Digite um valor">
         </div>
-      </div>
 
-      <a href="../../driven-aplicacoes/index.html">Driven Aplicações</a>
-      <a href="../../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
-      <a href="../../jogo-da-memoria/index.html">Jogo da Memória</a>
-      <a href="../../jogo-da-velha/index.html">Jogo da Velha</a>
-      <a href="../../jogo-lost-decade/index.html">Jogo lost decade</a>
-      <a href="../../jogo-pedra-papel-e-tesoura/index.html"
-        >Jogo Pedra Papel e Tesoura</a
-      >
-      <a href="../../jogo-da-cobra/index.html">Jogo da Cobra</a>
-      <a href="../../game-mario-bros/index.html">Jogo Mario Bros</a>
-    </div>
-    <div class="content">
-      <h2>DIO + Spread</h2>
-      <div class="container">
-        <h1>Operadores</h1>
-        <p>Atividade prática com operadores</p>
-        <ul>
-          <li>criar uma função que recebe dois números como parâmetro</li>
-          <li>verificar se os números são iguais</li>
-          <li>
-            verificar se a soma dos dois números é maior que 10 e menor que 20
-          </li>
-          <li>
-            retornar uma string: "os números são ou não iguais. A soma é soma. A
-            soma é maior ou menor que 10 e maior ou menor que 20."
-          </li>
-        </ul>
-      </div>
-    </div>
-    <script src="./main.js"></script>
-  </body>
+        <div class="input-group">
+            <label for="num2">Segundo Número</label>
+            <input type="number" id="num2" placeholder="Digite outro valor">
+        </div>
+
+        <button onclick="handleComparison()">Analisar Números</button>
+
+        <div id="result"></div>
+    </main>
+
+    <script>
+        /**
+         * Lógica de Operadores - ByteClass Pattern
+         */
+        function handleComparison() {
+            const n1 = Number(document.getElementById('num1').value);
+            const n2 = Number(document.getElementById('num2').value);
+            const resultDiv = document.getElementById('result');
+
+            // Validação simples
+            if (document.getElementById('num1').value === "" || document.getElementById('num2').value === "") {
+                alert("Por favor, preencha ambos os campos.");
+                return;
+            }
+
+            resultDiv.innerHTML = compareNumbers(n1, n2);
+            resultDiv.style.display = 'block';
+        }
+
+        function compareNumbers(a, b) {
+            const saoIguais = (a === b);
+            const soma = a + b;
+            
+            const parte1 = `Os números ${a} e ${b} ${saoIguais ? "" : "não"} são iguais.`;
+            const parte2 = `Sua soma é ${soma}, que é ${soma > 10 ? "maior" : "menor"} que 10 e ${soma < 20 ? "menor" : "maior"} que 20.`;
+
+            return `${parte1} ${parte2}`;
+        }
+    </script>
+</body>
 </html>

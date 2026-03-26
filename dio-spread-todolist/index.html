@@ -1,168 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../public/favicon.ico"
-    />
-    <link rel="manifest" href="../public/manifest.json" />
-    <title>To Do List</title>
-    <link rel="stylesheet" href="./style.css" />
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Lab | To-Do List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
     <style>
-      body {
-        margin: 0;
-        font-family: "Lato", sans-serif;
-      }
-
-      .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 200px;
-        background-color: #f1f1f1;
-        position: fixed;
-        height: 100%;
-        overflow: auto;
-      }
-
-      .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-      }
-
-      .sidebar a.active {
-        background-color: #04aa6d;
-        color: white;
-      }
-
-      .sidebar a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-      }
-
-      div.content {
-        margin-left: 200px;
-        padding: 1px 16px;
-        height: 100vh;
-      }
-
-      .dropdown-content {
-        background-color: #dad6d6;
-      }
-
-      .dropdown-content a.active {
-        background-color: #79bba3;
-      }
-
-      @media screen and (max-width: 700px) {
-        .sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
+        :root {
+            --nexus-primary: #04aa6d;
+            --nexus-bg: #f4f7f6;
+            --nexus-card: #ffffff;
+            --nexus-text: #2d3436;
+            --nexus-secondary: #636e72;
+            --nexus-accent: #3498db;
         }
-        .sidebar a {
-          float: left;
-        }
-        div.content {
-          margin-left: 0;
-        }
-      }
 
-      @media screen and (max-width: 400px) {
-        .sidebar a {
-          text-align: center;
-          float: none;
+        body { 
+            margin: 0; 
+            font-family: 'Open Sans', sans-serif; 
+            background: var(--nexus-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
-      }
+
+        /* Card Principal */
+        .todo-card {
+            background: var(--nexus-card);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        header { text-align: center; margin-bottom: 30px; }
+        header h1 { 
+            font-family: 'Lato', sans-serif;
+            font-size: 1.8rem; 
+            color: var(--nexus-text); 
+            margin: 0;
+        }
+        header p { color: var(--nexus-secondary); font-size: 0.9rem; }
+
+        /* Formulário de Entrada */
+        .input-group { 
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 15px; 
+            border: 2px solid #edf2f7;
+            border-radius: 8px; 
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus { border-color: var(--nexus-accent); }
+
+        button {
+            padding: 12px 20px; 
+            background: var(--nexus-primary);
+            color: white; 
+            border: none; 
+            border-radius: 8px;
+            cursor: pointer; 
+            font-weight: bold;
+            transition: transform 0.1s, opacity 0.2s;
+        }
+
+        button:hover { opacity: 0.9; }
+        button:active { transform: scale(0.95); }
+
+        /* Lista de Tarefas */
+        #tasks {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid var(--nexus-accent);
+            transition: all 0.2s;
+        }
+
+        .task-item:hover { background: #f1f5f9; }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: var(--nexus-primary);
+        }
+
+        label {
+            cursor: pointer;
+            color: var(--nexus-text);
+            font-size: 1rem;
+            flex: 1;
+        }
+
+        /* Estado de Concluído */
+        :checked + label {
+            text-decoration: line-through;
+            color: var(--nexus-secondary);
+            opacity: 0.6;
+        }
     </style>
-  </head>
-  <body>
-    <div class="sidebar">
-      <a href="../../index.html">Home</a>
-      <a href="../../formulario-login/index.html">Formulário Login</a>
-      <a href="../../home-instagram/index.html">Home Instagram</a>
-      <a href="../../uma-lampada/index.html">Uma Lâmpada</a>
-      <a href="../../desafios-codigo/index.html">Desafios Código</a>
-      <a href="../../curso-em-video/index.html">Curso em Vídeo</a>
+</head>
+<body>
 
-      <div class="dropdown">
-        <a class="active dropbtn" href="#diomaisspread">DIO + Spread</a>
-        <div class="dropdown-content">
-          <a href="../contador/index.html">Contador</a>
-          <a href="../estacionamento/index.html">Estacionamento</a>
-          <a href="../flex-box/index.html">Flex Box</a>
-          <a href="../operadores/index.html">Operadores</a>
-          <a class="active" href="#todolist">To Do List</a>
-        </div>
-      </div>
-
-      <a href="../../driven-aplicacoes/index.html">Driven Aplicações</a>
-      <a href="../../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
-      <a href="../../jogo-da-memoria/index.html">Jogo da Memória</a>
-      <a href="../../jogo-da-velha/index.html">Jogo da Velha</a>
-      <a href="../../jogo-lost-decade/index.html">Jogo lost decade</a>
-      <a href="../../jogo-pedra-papel-e-tesoura/index.html"
-        >Jogo Pedra Papel e Tesoura</a
-      >
-      <a href="../../jogo-da-cobra/index.html">Jogo da Cobra</a>
-      <a href="../../game-mario-bros/index.html">Jogo Mario Bros</a>
-    </div>
-    <div class="content">
-      <h2>DIO + Spread</h2>
-      <div class="container">
-        <h1>To-do list</h1>
-        <div id="list">
-          <form id="task-form">
+    <main class="todo-card">
+        <header>
+            <h1>Nexus To-do</h1>
+            <p>Gerencie suas metas na ByteClass</p>
+        </header>
+        
+        <form id="task-form" class="input-group">
             <input
-              id="task-input"
-              name="tarefa"
-              type="text"
-              placeholder="Digite aqui sua tarefa"
+                id="task-input"
+                name="tarefa"
+                type="text"
+                placeholder="O que precisa ser feito?"
+                required
             />
             <button type="submit">Adicionar</button>
-          </form>
-          <div id="tasks"></div>
-        </div>
-      </div>
-    </div>
+        </form>
+
+        <div id="tasks">
+            </div>
+    </main>
 
     <script>
-      const form = document.getElementById("task-form");
-      const taskList = document.getElementById("tasks");
+        const form = document.getElementById("task-form");
+        const taskList = document.getElementById("tasks");
 
-      form.onsubmit = function (e) {
-        e.preventDefault();
+        form.onsubmit = function (e) {
+            e.preventDefault();
+            const inputField = document.getElementById("task-input");
+            
+            if (inputField.value.trim() !== "") {
+                addTask(inputField.value);
+                form.reset();
+            }
+        };
 
-        const inputField = document.getElementById("task-input");
+        function addTask(description) {
+            const taskContainer = document.createElement("div");
+            taskContainer.classList.add("task-item");
 
-        addTask(inputField.value);
-        form.reset();
-      };
+            const id = "task-" + Date.now(); // ID único baseado no timestamp
 
-      function addTask(description) {
-        const taskContainer = document.createElement("div");
-        const newTask = document.createElement("input");
-        const taskLabel = document.createElement("label");
-        const taskDescriptionNode = document.createTextNode(description);
+            const newTask = document.createElement("input");
+            newTask.setAttribute("type", "checkbox");
+            newTask.setAttribute("id", id);
 
-        newTask.setAttribute("type", "checkbox");
-        newTask.setAttribute("name", description);
-        newTask.setAttribute("id", description);
+            const taskLabel = document.createElement("label");
+            taskLabel.setAttribute("for", id);
+            taskLabel.textContent = description;
 
-        taskLabel.setAttribute("for", description);
-        taskLabel.appendChild(taskDescriptionNode);
-
-        taskContainer.classList.add("task-item");
-        taskContainer.appendChild(newTask);
-        taskContainer.appendChild(taskLabel);
-
-        taskList.appendChild(taskContainer);
-      }
+            taskContainer.appendChild(newTask);
+            taskContainer.appendChild(taskLabel);
+            taskList.appendChild(taskContainer);
+        }
     </script>
-  </body>
+</body>
 </html>
