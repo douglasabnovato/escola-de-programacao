@@ -1,735 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../public/favicon.ico"
-    />
-    <link rel="manifest" href="../public/manifest.json" />
-    <title>Flex Box</title>    
-    <link rel="stylesheet" href="./styles/align-content.css" />
-    <link rel="stylesheet" href="./styles/align-items.css" />
-    <link rel="stylesheet" href="./styles/align-self.css" />    
-    <link rel="stylesheet" href="./styles/display-flex.css" />
-    <link rel="stylesheet" href="./styles/flex-basis.css" />
-    <link rel="stylesheet" href="./styles/flex-direction.css" />
-    <link rel="stylesheet" href="./styles/flex-flow.css" />
-    <link rel="stylesheet" href="./styles/flex-grow.css" />
-    <link rel="stylesheet" href="./styles/flex-shrink.css" />    
-    <link rel="stylesheet" href="./styles/flex-wrap.css" />
-    <link rel="stylesheet" href="./styles/flex.css" />
-    <link rel="stylesheet" href="./styles/justify-content.css" />
-    <link rel="stylesheet" href="./styles/order.css" />
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Lab | Flexbox Mastery</title>
     <style>
-      body {
-        margin: 0;
-        font-family: "Lato", sans-serif;
-      }
+        /* Design System Nexus */
+        :root {
+            --nexus-primary: #04aa6d;
+            --nexus-bg: #f4f7f6;
+            --item-bg: #3498db;
+            --container-bg: #dfe6e9;
+        }
 
-      .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 200px;
-        background-color: #f1f1f1;
-        position: fixed;
-        height: 100%;
-        overflow: auto;
-      }
+        body { margin: 0; font-family: 'Lato', sans-serif; display: flex; }
 
-      .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-      }
-
-      .sidebar a.active {
-        background-color: #04aa6d;
-        color: white;
-      }
-
-      .sidebar a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-      }
-
-      div.content {
-        margin-left: 200px;
-        padding: 1px 16px;
-        height: 100vh;
-      }
-
-      .dropdown-content {
-        background-color: #dad6d6;
-      }
-
-      @media screen and (max-width: 700px) {
+        /* Sidebar Customizada */
         .sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
+            width: 220px; background: #2d3436; height: 100vh;
+            position: fixed; color: white; overflow-y: auto;
         }
         .sidebar a {
-          float: left;
+            padding: 15px; text-decoration: none; color: #b2bec3;
+            display: block; border-bottom: 1px solid #636e72;
         }
-        div.content {
-          margin-left: 0;
+        .sidebar a.active { background: var(--nexus-primary); color: white; }
+
+        /* Área de Conteúdo */
+        .content { margin-left: 220px; padding: 40px; flex-grow: 1; background: var(--nexus-bg); }
+
+        /* Classes Utilitárias Flexbox (Onde a mágica acontece) */
+        .flex-container {
+            display: flex; background: var(--container-bg);
+            padding: 15px; border-radius: 8px; margin-bottom: 30px; gap: 10px;
         }
-      }
-
-      @media screen and (max-width: 400px) {
-        .sidebar a {
-          text-align: center;
-          float: none;
+        .item {
+            background: var(--item-bg); color: white; padding: 20px;
+            border-radius: 4px; text-align: center; font-weight: bold;
         }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="sidebar">
-      <a href="../../index.html">Home</a>
-      <a href="../../formulario-login/index.html">Formulário Login</a>
-      <a href="../../home-instagram/index.html">Home Instagram</a>
-      <a href="../../uma-lampada/index.html">Uma Lâmpada</a>
-      <a href="../../desafios-codigo/index.html">Desafios Código</a>
-      <a href="../../curso-em-video/index.html">Curso em Vídeo</a>
 
-      <div class="dropdown">
-        <a class="active dropbtn" href="#diomaisspread">DIO + Spread</a>
-        <div class="dropdown-content">
-          <a href="../contador/index.html">Contador</a>
-          <a href="../estacionamento/index.html">Estacionamento</a>
-          <a class="active" href="#flex-box">Flex Box</a>
-          <a href="../operadores/index.html">Operadores</a>
-          <a href="../todolist/index.html">To Do List</a>
-        </div>
-      </div>
-
-      <a href="../../driven-aplicacoes/index.html">Driven Aplicações</a>
-      <a href="../../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
-      <a href="../../jogo-da-memoria/index.html">Jogo da Memória</a>
-      <a href="../../jogo-da-velha/index.html">Jogo da Velha</a>
-      <a href="../../jogo-lost-decade/index.html">Jogo lost decade</a>
-      <a href="../../jogo-pedra-papel-e-tesoura/index.html"
-        >Jogo Pedra Papel e Tesoura</a
-      >
-      <a href="../../jogo-da-cobra/index.html">Jogo da Cobra</a>
-      <a href="../../game-mario-bros/index.html">Jogo Mario Bros</a>
-    </div>
-    <div class="content">
-      <h2>DIO + Spread</h2>
-      <p>Vamos a algumas tarefas interessantes</p>
-
-      <div class="align-self">
-        <h1>row</h1>
-    <section class="flex-container align-container">
-        <div class="item auto">AAA</div>
-        <div class="item auto">123</div>
-        <div class="item auto">Lorem Ipsum is therefore always free from repetition</div>
-        <div class="item auto">ITEM 4</div>
-    </section>
-
-    <section class="flex-container">
-        <div class="item center">AAA</div>
-        <div class="item start">123</div>
-        <div class="item stretch">Lorem Ipsum is therefore always free from repetition</div>
-        <div class="item end">ITEM 4</div>
-    </section>
-
-    <section class="flex-container">
-        <div class="item center">AAA</div>
-        <div class="item start">AAA</div>
-        <div class="item end">AAA</div>
-        <div class="item stretch">Lorem Ipsum is therefore always</div>
-    </section>
-
-    <h1>column</h1>
-
-    <section class="flex-container align-container direction">
-        <div class="item auto">AAA</div>
-        <div class="item auto">123</div>
-        <div class="item auto">Lorem Ipsum is therefore always free from repetition</div>
-        <div class="item auto">ITEM 4</div>
-    </section>
-
-    <section class="flex-container direction">
-        <div class="item center">AAA</div>
-        <div class="item start">123</div>
-        <div class="item stretch">Lorem Ipsum is therefore always free from repetition</div>
-        <div class="item end">ITEM 4</div>
-    </section>
-
-    <section class="flex-container direction">
-        <div class="item center">AAA</div>
-        <div class="item start">AAA</div>
-        <div class="item end">AAA</div>
-        <div class="item stretch">Lorem Ipsum is therefore always</div>
-    </section>
-      </div>
-
-      <div class="order">
-        <h1>row</h1>
-    <p>order: 0</p>
-    <div class="flex-container">
-        <div class="item">1</div>
-        <div class="item">2</div>
-        <div class="item">3</div>
-        <div class="item">4</div>
-        <div class="item">4n</div>
-        <div class="item">4m</div>
-    </div>
-
-    <p>order: diferentes</p>
-    <div class="flex-container">
-        <div class="item o3">1</div>
-        <div class="item o2">4</div>
-        <div class="item o3">4n</div>
-        <div class="item o1">4m</div>
-    </div>
-
-
-    <h1>column</h1>
-    <p>order: 0</p>
-    <div class="flex-container direction">
-        <div class="item">1</div>
-        <div class="item">2</div>
-        <div class="item">3</div>
-        <div class="item">4</div>
-        <div class="item">4n</div>
-        <div class="item">4m</div>
-    </div>
-
-    <p>order: diferentes</p>
-    <div class="flex-container direction">
-        <div class="item o3">7</div>
-        <div class="item o1">9</div>
-        <div class="item o3">1</div>
-        <div class="item o2">4</div>
-        <div class="item o3">4n</div>
-        <div class="item o1">4m</div>
-    </div>
-      </div>
-
-      <div class="flex">
+        /* Variações do Laboratório */
+        .direction-column { flex-direction: column; }
+        .justify-center { justify-content: center; }
+        .align-center { align-items: center; }
+        .wrap { flex-wrap: wrap; }
         
-    <p>flex: 1</p>
-    <div class="flex-container">
-        <div class="item flex-1">A</div>
-        <div class="item flex-1">BBB</div>
-        <div class="item flex-1">CC</div>
-        <div class="item flex-1">D</div>
-        <div class="item flex-1">EF</div>
-    </div>
+        /* Flex Grow/Shrink helpers */
+        .fg-1 { flex-grow: 1; }
+        .fg-2 { flex-grow: 2; }
+    </style>
+</head>
+<body>
 
-    <p>flex: mix</p>
-    <div class="flex-container">
-        <div class="item flex-1">A</div>
-        <div class="item flex-2">BBB</div>
-        <div class="item flex-2">CC</div>
-        <div class="item flex-1">D</div>
-        <div class="item flex-1">EF</div>
-    </div>
+    <nav class="sidebar">
+        <a href="#flex-direction">Flex Direction</a>
+        <a href="#flex-grow">Flex Grow & Basis</a>
+        <a href="#justify-content">Justify Content</a>
+        <a href="#align-items">Align Items</a>
+    </nav>
 
-    <p>width ignorado -> basis = 0</p>
+    <main class="content">
+        <h1>Flexbox Mastery Lab</h1>
+        <p>Explore os comportamentos dos elementos no eixo principal e transversal.</p>
 
-    <div class="flex-container">
-        <div class="item flex-1 largura">A</div>
-        <div class="item flex-1 largura">BBB</div>
-        <div class="item flex-1 largura">CC</div>
-        <div class="item flex-1 largura">D</div>
-        <div class="item flex-1 largura">EF</div>
-    </div>
-      </div>
-
-      <div class="flex-shrink">
-        <p>flex-shrink: 1</p>
-        <div class="flex-container">
-             <div class="item s-1 fg-1">A</div>
-             <div class="item s-1 fg-1">B</div>
-             <div class="item s-1 fg-1">C</div>
-             <div class="item s-1 fg-1">D</div>
-             <div class="item s-1 fg-1">E</div>
-        </div>
-        <div class="flex-container">
-            <div class="item s-1 fg-1">A</div>
-            <div class="item s-1 fg-1">The generated</div>
-            <div class="item s-1 fg-1">C</div>
-            <div class="item s-1 fg-1">D</div>
-       </div>
-    
-       <p>flex-shrink: 0 / basis: 100px</p>
-       <div class="flex-container">
-            <div class="item s-0 fg-1">A</div>
-            <div class="item s-0 fg-1">The generated</div>
-            <div class="item s-0 fg-1">C generated</div>
-            <div class="item s-0 fg-1">C generated</div>
-            <div class="item s-0 fg-1">D</div>
-        </div>
-    
-        <p>flex-shrink: mix / basis: 100px</p>
-        <div class="flex-container">
-            <div class="item s-1 fg-1">A</div>
-            <div class="item s-2 fg-1">The generated</div>
-            <div class="item s-2 fg-1">C</div>
-            <div class="item s-3 fg-1">D</div>
-       </div></div>
-
-<div class="flex-basis">
-  
-  <p>auto</p>
-  <div class="flex-container">
-      <div class="items bauto fg-1">A</div>
-      <div class="items bauto fg-1">BBB</div>
-      <div class="items bauto fg-1">C</div>
-      <div class="items bauto fg-2">DEF</div>
-  </div>
-
-  <p>0 (zero)</p>
-  <div class="flex-container">
-       <div class="items b-0 fg-1">AAAAAAAAA</div>
-      <div class="items b-0 fg-1">BBB</div>
-      <div class="items b-0 fg-1">C</div>
-      <div class="items b-0 fg-1">DEF</div>
-  </div>
-
-  <p>basis + width</p>
-  <div class="flex-container">
-      <div class="items w100 fg-2">AA</div>
-     <div class="items w100 fg-2">BBB</div>
-     <div class="items w100 fg-2">CCC</div>
-     <div class="items w100 fg-2">DEF</div>
- </div>
-</div>
-
-      <div class="flex-grow">
-        <p>flex-grow:0</p>
-        <div class="flex-container">
-          <div class="item fg-0">A</div>
-          <div class="item fg-0">B</div>
-          <div class="item fg-0">C</div>
-          <div class="item fg-0">D</div>
-        </div>
-
-        <p>flex-grow: 1</p>
-        <div class="flex-container">
-          <div class="item fg-1">A</div>
-          <div class="item fg-1">B</div>
-          <div class="item fg-1">C</div>
-          <div class="item fg-1">D</div>
-        </div>
-
-        <p>flex-grow: alternados</p>
-        <div class="flex-container">
-          <div class="item fg-1">A</div>
-          <div class="item fg-2">B</div>
-          <div class="item fg-2">C</div>
-          <div class="item fg-1">D</div>
-        </div>
-        <p>flex-grow: alternados</p>
-        <div class="flex-container">
-          <div class="item fg-2">AAAAAA</div>
-          <div class="item fg-2">BBB</div>
-          <div class="item fg-2">C</div>
-          <div class="item fg-2">D</div>
-        </div>
-      </div>
-
-      <div class="align-content">
-        <p>stretch</p>
-        <div class="container stretch">
-          <div class="item">Lorem Ipsum is therefore always free from</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore always free</div>
-          <div class="item">
-            Lorem Ipsum is therefore always free from repetition, injected
-            humour, or non-characteristic words etc.
-          </div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-        </div>
-
-        <p>center</p>
-        <div class="container center">
-          <div class="item">Lorem Ipsum is therefore always free from</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore always free</div>
-          <div class="item">
-            Lorem Ipsum is therefore from repetition, injected humour, or
-            non-characteristic
-          </div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-        </div>
-
-        <p>flex-start</p>
-        <div class="container flex-start">
-          <div class="item">Lorem Ipsum is therefore always free from</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore always free</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-        </div>
-
-        <p>flex-end</p>
-        <div class="container flex-end">
-          <div class="item">Lorem Ipsum is therefore always free from</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore always free</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-        </div>
-
-        <p>space-around</p>
-        <div class="container space-around">
-          <div class="item">Lorem Ipsum is therefore always free from</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore always free</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-        </div>
-
-        <p>space-between</p>
-        <div class="container space-between">
-          <div class="item">Lorem Ipsum is therefore always free from</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore always free</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-          <div class="item">Lorem Ipsum is therefore</div>
-        </div>
-      </div>
-
-      <div class="align-items">
-        <h1>row</h1>
-        <p>center</p>
-        <section class="container center">
-          <div class="item">Item 1</div>
-          <div class="item">Lorem ipsum dolor sit amet</div>
-          <div class="item">Item 3 mais algum texto. Lipsum</div>
+        <section id="flex-direction">
+            <h2>1. Flex Direction (Column)</h2>
+            <div class="flex-container direction-column">
+                <div class="item">Item 1</div>
+                <div class="item">Item 2</div>
+                <div class="item">Item 3</div>
+            </div>
         </section>
 
-        <p>stretch</p>
-        <section class="container stretch">
-          <div class="item">Item 1</div>
-          <div class="item">
-            Lorem ipsum dolor sit amet.Lorem ipsum dolor sit ametLorem ipsum
-            dolor sit ametLorem ipsum dolor sit amet
-          </div>
-          <div class="item">Item 3 mais algum texto. Lipsum</div>
+        <section id="flex-grow">
+            <h2>2. Flex Grow (Distribuição de Espaço)</h2>
+            <div class="flex-container">
+                <div class="item fg-1">Grow 1</div>
+                <div class="item fg-2">Grow 2</div>
+                <div class="item fg-1">Grow 1</div>
+            </div>
         </section>
 
-        <p>flex-start</p>
-        <section class="container start">
-          <div class="item">Item 1</div>
-          <div class="item">Lorem ipsum dolor sit amet</div>
-          <div class="item">Item 3 mais algum texto. Lipsum</div>
+        <section id="justify-content">
+            <h2>3. Justify Content (Eixo Principal - Horizontal)</h2>
+            <p>Distribuição de espaço usando <code>space-between</code>:</p>
+            <div class="flex-container" style="justify-content: space-between;">
+                <div class="item">Início</div>
+                <div class="item">Meio</div>
+                <div class="item">Fim</div>
+            </div>
+            <p>Alinhamento centralizado com <code>justify-content: center</code>:</p>
+            <div class="flex-container justify-center">
+                <div class="item">Item A</div>
+                <div class="item">Item B</div>
+            </div>
         </section>
 
-        <p>flex-end</p>
-        <section class="container end">
-          <div class="item">Item 1</div>
-          <div class="item">Lorem ipsum dolor sit amet</div>
-          <div class="item">Item 3 mais algum texto. Lipsum</div>
+        <section id="align-items">
+            <h2>4. Align Items (Eixo Transversal - Vertical)</h2>
+            <p>Alinhamento ao centro vertical em um container com altura definida:</p>
+            <div class="flex-container align-center" style="min-height: 200px;">
+                <div class="item">Item Centralizado</div>
+                <div class="item">Verticalmente</div>
+                <div class="item">No Nexus Lab</div>
+            </div>
         </section>
-
-        <p>baseline</p>
-        <section class="container baseline">
-          <div class="item"><br />Item 1</div>
-          <div class="item">Lorem ipsum dolor sit amet</div>
-          <div class="item">Item 3 mais algum texto. Lipsum</div>
-        </section>
-
-        <h1>column</h1>
-        <p>flex-start</p>
-        <section class="container start column">
-          <div class="item">Item 1</div>
-          <div class="item">Lorem ipsum dolor sit amet</div>
-          <div class="item">Item 3 mais algum texto. Lipsum</div>
-        </section>
-
-        <p>flex-end</p>
-        <section class="container end column">
-          <div class="item">Item 1</div>
-          <div class="item">Lorem ipsum dolor sit amet</div>
-          <div class="item">Item 3 mais algum texto. Lipsum</div>
-        </section>
-
-        <p>center</p>
-        <section class="container center column">
-          <div class="item">Item 1</div>
-          <div class="item">Item 3 mais algum texto. Lipsum</div>
-          <div class="item">Lorem ipsum dolor sit amet</div>
-        </section>
-
-        <p>baseline</p>
-        <section class="container baseline column">
-          <div class="item"><br />Item 1</div>
-          <div class="item">Lorem ipsum dolor sit amet</div>
-          <div class="item">Item 3 mais algum texto. Lipsum</div>
-        </section>
-
-        <p>alinhamento central à tela</p>
-        <section class="container central center">
-          <div class="item">
-            Lorem Ipsum is therefore always free from repetition.
-          </div>
-        </section>
-      </div>
-
-      <div class="justify-content">
-        <h1>row</h1>
-        <p>flex-start</p>
-        <section class="container flex-start">
-          <div class="item">1</div>
-          <div class="item">item 2</div>
-          <div class="item">outro item</div>
-        </section>
-
-        <p>flex-end</p>
-        <section class="container flex-end">
-          <div class="item">1</div>
-          <div class="item">item 2</div>
-          <div class="item">outro item</div>
-        </section>
-
-        <p>center</p>
-        <section class="container center">
-          <div class="item">1</div>
-          <div class="item">item 2</div>
-          <div class="item">outro item</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-        </section>
-
-        <p>space-between</p>
-        <section class="container space-between">
-          <div class="item">1</div>
-          <div class="item">item 2</div>
-          <div class="item">outro item</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-        </section>
-
-        <p>space-around</p>
-        <section class="container space-around">
-          <div class="item">1</div>
-          <div class="item">item 2</div>
-          <div class="item">outro item</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-        </section>
-
-        <h1>column</h1>
-
-        <p>flex-start (column)</p>
-        <section class="container flex-start column">
-          <div class="item">1</div>
-          <div class="item">item 2</div>
-          <div class="item">outro item</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-        </section>
-
-        <p>flex-end (column)</p>
-        <section class="container flex-end column">
-          <div class="item">1</div>
-          <div class="item">item 2</div>
-          <div class="item">outro item</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-        </section>
-
-        <p>center</p>
-        <section class="container center column">
-          <div class="item">1</div>
-          <div class="item">item 2</div>
-          <div class="item">outro item</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-        </section>
-
-        <p>space-between</p>
-        <section class="container space-between column">
-          <div class="item">1</div>
-          <div class="item">item 2</div>
-          <div class="item">outro item</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-        </section>
-
-        <p>space-around</p>
-        <section class="container space-around column">
-          <div class="item">1</div>
-          <div class="item">item 2</div>
-          <div class="item">outro item</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-        </section>
-      </div>
-
-      <div class="flex-flow">
-        <h1>default: row nowrap</h1>
-        <div class="flex-container default">
-          <div class="item">1</div>
-          <div class="item">2</div>
-          <div class="item">3</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-        </div>
-
-        <h1>wrap</h1>
-        <div class="flex-container wrap">
-          <div class="item">1</div>
-          <div class="item">2</div>
-          <div class="item">3</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-          <div class="item">6</div>
-        </div>
-
-        <h1>wrap-reverse</h1>
-        <div class="flex-container wrap-reverse">
-          <div class="item">1</div>
-          <div class="item">2</div>
-          <div class="item">3</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-          <div class="item">6</div>
-        </div>
-
-        <h1>row-reverse nowrap</h1>
-        <div class="flex-container r-nowrap">
-          <div class="item">1</div>
-          <div class="item">2</div>
-          <div class="item">3</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-          <div class="item">6</div>
-          <div class="item">7</div>
-        </div>
-
-        <h1>row-reverse wrap</h1>
-        <div class="flex-container r-wrap">
-          <div class="item">1</div>
-          <div class="item">2</div>
-          <div class="item">3</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-          <div class="item">6</div>
-          <div class="item">7</div>
-        </div>
-
-        <h1>row-reverse wrap-reverse</h1>
-        <div class="flex-container rr-wrap">
-          <div class="item">1</div>
-          <div class="item">2</div>
-          <div class="item">3</div>
-          <div class="item">4</div>
-          <div class="item">5</div>
-          <div class="item">6</div>
-          <div class="item">7</div>
-        </div>
-      </div>
-
-      <div class="dispay-flex">
-        <h3>Display Flex</h3>
-        <div class="flex">
-          <div class="item">item 1</div>
-          <div class="item">item 2</div>
-          <div class="item">item 3</div>
-          <div class="item">item 3</div>
-          <div class="item">item 3</div>
-          <div class="item">item 3</div>
-          <div class="item">item 3</div>
-          <div class="item">item 3</div>
-          <div class="item">item 3</div>
-        </div>
-      </div>
-
-      <div class="flex-wrap">
-        <div class="no wrap">
-          <h1>no wrap</h1>
-
-          <div class="flex-container nowrap">
-            <div class="item orange">1</div>
-            <div class="item green">2</div>
-            <div class="item blue">3</div>
-            <div class="item orange">4</div>
-          </div>
-        </div>
-
-        <div class="wrap">
-          <h1>wrap</h1>
-
-          <div class="flex-container wrap">
-            <div class="item green">1</div>
-            <div class="item blue">2</div>
-            <div class="item orange">3</div>
-            <div class="item orange">4</div>
-          </div>
-        </div>
-
-        <div class="wrap reverse">
-          <h1>wrap reverse</h1>
-
-          <div class="flex-container wrap-reverse">
-            <div class="item green">1</div>
-            <div class="item blue">2</div>
-            <div class="item orange">3</div>
-            <div class="item orange">4</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex-direction">
-        <h3>Flex Direction</h3>
-
-        <ul class="flex-container row">
-          <li class="flex-item">1</li>
-          <li class="flex-item">2</li>
-          <li class="flex-item">3</li>
-          <li class="flex-item">4</li>
-          <li class="flex-item">5</li>
-        </ul>
-
-        <ul class="flex-container row-reverse">
-          <li class="flex-item">1</li>
-          <li class="flex-item">2</li>
-          <li class="flex-item">3</li>
-          <li class="flex-item">4</li>
-          <li class="flex-item">5</li>
-        </ul>
-
-        <ul class="flex-container column">
-          <li class="flex-item">1</li>
-          <li class="flex-item">2</li>
-          <li class="flex-item">3</li>
-          <li class="flex-item">4</li>
-          <li class="flex-item">5</li>
-        </ul>
-
-        <ul class="flex-container column-reverse">
-          <li class="flex-item">1</li>
-          <li class="flex-item">2</li>
-          <li class="flex-item">3</li>
-          <li class="flex-item">4</li>
-          <li class="flex-item">5</li>
-        </ul>
-      </div>
-    </div>
-    <script src="./script.js"></script>
-  </body>
+    </main>
+</body>
 </html>

@@ -178,5 +178,23 @@
     "category": "Bootcamp",
     "icon": "fas fa-list-check",
     "featured": false
+  },
+  {
+    "id": 21,
+    "title": "Sidebar Stack",
+    "description": "Uma sidebar com menu e seu conteúdos.",
+    "path": "./sidebar-stack/index.html",
+    "category": "Template",
+    "icon": "fas fa-list-check",
+    "featured": false
+  },
+  {
+    "id": 22,
+    "title": "Treinar JS",
+    "description": "Entender os fundamentos de JS.",
+    "path": "./treinar-js/index.html",
+    "category": "Template",
+    "icon": "fas fa-list-check",
+    "featured": false
   }
 ]

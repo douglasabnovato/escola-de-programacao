@@ -1,101 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" type="image/x-icon" href="../public/favicon.ico" />
-  <link rel="manifest" href="../public/manifest.json" />
-  <title>Javascript</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: "Lato", sans-serif;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="../public/favicon.ico" />
+    <title>Nexus Lab | Lâmpada Interativa</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1abc9c;
+            --danger: #e74c3c;
+            --dark: #2c3e50;
+            --bg-body: #f0f2f5;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
 
-    .sidebar {
-      margin: 0;
-      padding: 0;
-      width: 200px;
-      background-color: #f1f1f1;
-      position: fixed;
-      height: 100%;
-      overflow: auto;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .sidebar a {
-      display: block;
-      color: black;
-      padding: 16px;
-      text-decoration: none;
-    }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    .sidebar a.active {
-      background-color: #04aa6d;
-      color: white;
-    }
+        .nexus-wrapper {
+            width: 100%;
+            max-width: 500px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            text-align: center;
+        }
 
-    .sidebar a:hover:not(.active) {
-      background-color: #555;
-      color: white;
-    }
+        header.project-header {
+            background: var(--dark);
+            color: var(--white);
+            padding: 30px 20px;
+        }
 
-    div.content {
-      margin-left: 200px;
-      padding: 1px 16px;
-      height: 100vh;
-    }
+        header h1 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-    @media screen and (max-width: 700px) {
-      .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-      }
+        header p {
+            font-weight: 300;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
 
-      .sidebar a {
-        float: left;
-      }
+        .lamp-display {
+            padding: 50px 20px;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-      div.content {
-        margin-left: 0;
-      }
-    }
+        .lamp-display img {
+            max-width: 220px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            -webkit-user-drag: none; /* Evita arrastar a imagem */
+        }
 
-    @media screen and (max-width: 400px) {
-      .sidebar a {
-        text-align: center;
-        float: none;
-      }
-    }
-  </style>
+        .lamp-display img:hover {
+            transform: scale(1.05);
+        }
+
+        .status-badge {
+            margin-top: 30px;
+            font-weight: 700;
+            padding: 8px 16px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            min-width: 200px;
+        }
+
+        .controls {
+            padding: 20px;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .btn-reset {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #16a085;
+            box-shadow: 0 4px 10px rgba(26, 188, 156, 0.3);
+        }
+
+        .btn-back {
+            background: transparent;
+            color: #95a5a6;
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        .btn-back:hover {
+            color: var(--dark);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .nexus-wrapper { border-radius: 0; height: 100vh; display: flex; flex-direction: column; }
+            .lamp-display { flex: 1; }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="sidebar">
-    <a href="../index.html">Home</a>
-    <a href="../formulario-login/index.html">Formulário Login</a>
-    <a href="../home-instagram/index.html">Home Instagram</a>
-    <a class="active" href="#uma-lampada">Uma Lâmpada</a>
-    <a href="../desafios-codigo/index.html">Desafios Código</a>
-    <a href="../curso-em-video/index.html">Curso em Vídeo</a>
-    <a href="../dio-spread/index.html">DIO + Spread</a>
-    <a href="../driven-aplicacoes/index.html">Driven Aplicações</a>
-    <a href="../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
-    <a href="../jogo-da-memoria/index.html">Jogo da Memória</a>
-    <a href="../jogo-da-velha/index.html">Jogo da Velha</a>
-    <a href="../jogo-lost-decade/index.html">Jogo lost decade</a>
-    <a href="../jogo-pedra-papel-e-tesoura/index.html">Jogo Pedra Papel e Tesoura</a>
-    <a href="../jogo-da-cobra/index.html">Jogo da Cobra</a>
-    <a href="../game-mario-bros/index.html">Jogo Mario Bros</a>
-  </div>
-  <div class="content">
-    <img src="lampada-apagada.jpg" id="luz" onmousemove="mudaLampada('lampada-acesa')"
-      onmouseout="mudaLampada('lampada-apagada')" onclick="mudaLampada('lampada-quebrada')" />
-  </div>
-  <script src="script.js"></script>
-</body>
 
+    <div class="nexus-wrapper">
+        <header class="project-header">
+            <h1>DOM Control</h1>
+            <p>Lógica de Estados e Eventos</p>
+        </header>
+
+        <main class="lamp-display">
+            <img src="lampada-apagada.jpg" id="luz" alt="Lâmpada do Projeto Nexus">
+            
+            <div id="statusLabel" class="status-badge">
+                Aguardando interação...
+            </div>
+        </main>
+
+        <footer class="controls">
+            <button id="btnReset" class="btn btn-reset">Substituir Lâmpada</button>
+            <a href="../index.html" class="btn-back">Sair do Laboratório</a>
+        </footer>
+    </div>
+
+    <script>
+        /**
+         * Nexus Script: Gerenciamento de Estado da Lâmpada
+         * Alinhado aos padrões de Clean Code da ByteClass
+         */
+
+        const lampElement = document.getElementById("luz");
+        const statusLabel = document.getElementById("statusLabel");
+        const btnReset = document.getElementById("btnReset");
+
+        // Configuração de Estados (Assets)
+        const STATE_ASSETS = {
+            OFF: "lampada-apagada.jpg",
+            ON: "lampada-acesa.jpg",
+            BROKEN: "lampada-quebrada.jpg"
+        };
+
+        // Estado Interno
+        let isLampBroken = false;
+
+        // Métodos de Controle
+        const setLampState = (state, message) => {
+            if (isLampBroken) return; // Bloqueio de estado se estiver quebrada
+
+            lampElement.src = STATE_ASSETS[state];
+            statusLabel.innerText = message;
+
+            if (state === 'BROKEN') {
+                isLampBroken = true;
+                statusLabel.style.color = 'var(--danger)';
+                statusLabel.style.borderColor = 'var(--danger)';
+            }
+        };
+
+        const resetSystem = () => {
+            isLampBroken = false;
+            lampElement.src = STATE_ASSETS.OFF;
+            statusLabel.innerText = "Lâmpada Restaurada";
+            statusLabel.style.color = 'inherit';
+            statusLabel.style.borderColor = '#eee';
+        };
+
+        // Event Listeners (Separação total de HTML e JS)
+        lampElement.addEventListener('mouseenter', () => setLampState('ON', 'Lâmpada Acesa'));
+        lampElement.addEventListener('mouseleave', () => setLampState('OFF', 'Lâmpada Apagada'));
+        lampElement.addEventListener('click', () => setLampState('BROKEN', 'Lâmpada Quebrada!'));
+        btnReset.addEventListener('click', resetSystem);
+
+    </script>
+</body>
 </html>

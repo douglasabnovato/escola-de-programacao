@@ -1,155 +1,272 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../public/favicon.ico"
-    />
-    <link rel="manifest" href="../public/manifest.json" />
-    <title>Estacionamento</title>
-    <link rel="stylesheet" href="./style.css" />
+    <title>Nexus Lab | Gestão de Estacionamento</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-      body {
-        margin: 0;
-        font-family: "Lato", sans-serif;
-      }
-
-      .sidebar {
-        margin: 0;
-        padding: 0;
-        width: 200px;
-        background-color: #f1f1f1;
-        position: fixed;
-        height: 100%;
-        overflow: auto;
-      }
-
-      .sidebar a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-      }
-
-      .sidebar a.active {
-        background-color: #04aa6d;
-        color: white;
-      }
-
-      .sidebar a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-      }
-
-      div.content {
-        margin-left: 200px;
-        padding: 1px 16px;
-        height: 100vh;
-      }
-
-      .dropdown-content {
-        background-color: #dad6d6;
-      }
-
-      .dropdown-content a.active {
-        background-color: #79bba3;
-      }
-
-      @media screen and (max-width: 700px) {
-        .sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
+        :root {
+            --nexus-primary: #04AA6D;
+            --nexus-secondary: #2c3e50;
+            --nexus-accent: #3498db;
+            --nexus-danger: #e74c3c;
+            --nexus-bg: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
         }
-        .sidebar a {
-          float: left;
-        }
-        div.content {
-          margin-left: 0;
-        }
-      }
 
-      @media screen and (max-width: 400px) {
-        .sidebar a {
-          text-align: center;
-          float: none;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--nexus-bg);
+            color: var(--nexus-secondary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
         }
-      }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--nexus-bg);
+            padding-bottom: 20px;
+        }
+
+        header h1 { font-size: 1.5rem; color: var(--nexus-secondary); }
+
+        /* Form Layout */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: end;
+        }
+
+        .input-group { display: flex; flex-direction: column; gap: 8px; }
+        .input-group label { font-size: 0.8rem; font-weight: 600; color: #64748b; }
+
+        input {
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        input:focus { border-color: var(--nexus-primary); }
+
+        .btn-add {
+            background: var(--nexus-primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-add:hover { opacity: 0.9; }
+
+        /* Table Design */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            text-align: left;
+            background: #f1f5f9;
+            padding: 12px;
+            font-size: 0.8rem;
+            color: #475569;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+        }
+
+        .btn-out {
+            background: transparent;
+            color: var(--nexus-danger);
+            border: 1px solid var(--nexus-danger);
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .btn-out:hover { background: var(--nexus-danger); color: white; }
+
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
     </style>
-  </head>
-  <body>
-    <div class="sidebar">
-      <a href="../../index.html">Home</a>
-      <a href="../../formulario-login/index.html">Formulário Login</a>
-      <a href="../../home-instagram/index.html">Home Instagram</a>
-      <a href="../../uma-lampada/index.html">Uma Lâmpada</a>
-      <a href="../../desafios-codigo/index.html">Desafios Código</a>
-      <a href="../../curso-em-video/index.html">Curso em Vídeo</a>
+</head>
+<body>
 
-      <div class="dropdown">
-        <a class="active dropbtn" href="#diomaisspread">DIO + Spread</a>
-        <div class="dropdown-content">
-          <a href="../contador/index.html">Contador</a>
-          <a class="active" href="#estacionamento">Estacionamento</a>
-          <a href="../flex-box/index.html">Flex Box</a>
-          <a href="../operadores/index.html">Operadores</a>
-          <a href="../todolist/index.html">To Do List</a>
-        </div>
-      </div>
+    <div class="container">
+        <header>
+            <h1>Nexus Parking | Controle de Pátio</h1>
+        </header>
 
-      <a href="../../driven-aplicacoes/index.html">Driven Aplicações</a>
-      <a href="../../rocketseat/html-challenges/index.html">Rocketseat - Desafio HTML</a>
-      <a href="../../jogo-da-memoria/index.html">Jogo da Memória</a>
-      <a href="../../jogo-da-velha/index.html">Jogo da Velha</a>
-      <a href="../../jogo-lost-decade/index.html">Jogo lost decade</a>
-      <a href="../../jogo-pedra-papel-e-tesoura/index.html"
-        >Jogo Pedra Papel e Tesoura</a
-      >
-      <a href="../../jogo-da-cobra/index.html">Jogo da Cobra</a>
-      <a href="../../game-mario-bros/index.html">Jogo Mario Bros</a>
-    </div>
-    <div class="content">
-      <h2>DIO + Spread</h2>
-      <main class="container cards">
-        <div class="card">
-          <article class="card-input input-info">
-            <input
-              type="text"
-              id="nome"
-              placeholder="Digite o nome do veículo:"
-              autocomplete="off"
-            />
-            <input
-              type="text"
-              id="placa"
-              placeholder="Digite a placa do veículo:"
-              autocomplete="off"
-            />
-            <input type="submit" id="cadastrar" value="Cadastrar" />
-          </article>
+        <div class="form-grid">
+            <div class="input-group">
+                <label for="nome">Modelo do Veículo</label>
+                <input type="text" id="nome" placeholder="Ex: Volvo FH 540" autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="placa">Placa</label>
+                <input type="text" id="placa" placeholder="BRA2E19" autocomplete="off">
+            </div>
+            <button id="cadastrar" class="btn-add">Registrar Entrada</button>
         </div>
 
-        <div class="card">
-          <article class="card-view view-info">
-            <table id="customers">
-              <thead>
+        <table>
+            <thead>
                 <tr>
-                  <th>Nome</th>
-                  <th>Placa</th>
-                  <th>Entrada</th>
-                  <th>Ações</th>
+                    <th>Veículo</th>
+                    <th>Placa</th>
+                    <th>Entrada</th>
+                    <th>Ação</th>
                 </tr>
-              </thead>
-              <tbody id="patio"></tbody>
-            </table>
-          </article>
-        </div>
-      </main>
+            </thead>
+            <tbody id="patio"></tbody>
+        </table>
     </div>
-    <script src="./script.js"></script>
-  </body>
+
+    <div id="nexus-modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: white; width: 100%; max-width: 400px; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);">
+        <div style="color: var(--nexus-primary); font-size: 2rem; margin-bottom: 15px;">
+            <i class="fas fa-clock"></i>
+        </div>
+        <h3 style="margin-bottom: 10px; color: var(--nexus-secondary);">Finalizar Estadia</h3>
+        <div id="modal-content" style="margin-bottom: 25px; color: #64748b; font-size: 0.95rem; line-height: 1.5;">
+            </div>
+        <div style="display: flex; gap: 10px;">
+            <button id="modal-cancel" style="flex: 1; padding: 12px; border: 1px solid #e2e8f0; background: white; border-radius: 6px; cursor: pointer; font-weight: 600;">Cancelar</button>
+            <button id="modal-confirm" style="flex: 1; padding: 12px; border: none; background: var(--nexus-primary); color: white; border-radius: 6px; cursor: pointer; font-weight: 600;">Confirmar Saída</button>
+        </div>
+    </div>
+</div>
+
+    <script>
+        /**
+         * Lógica Nexus transpilada de TS para JS
+         * Foco: Persistência e Cálculo de Tempo
+         */
+        (function () {
+            const $ = (query) => document.querySelector(query);
+
+            function calcTempo(mil) {
+                const min = Math.floor(mil / 60000);
+                const sec = Math.floor((mil % 60000) / 1000);
+                return `${min}m e ${sec}s`;
+            }
+
+            function patioControl() {
+                function ler() {
+                    return localStorage.patio ? JSON.parse(localStorage.patio) : [];
+                }
+
+                function salvar(veiculos) {
+                    localStorage.setItem("patio", JSON.stringify(veiculos));
+                }
+
+                function adicionar(veiculo, salva) {
+                    const row = document.createElement("tr");
+                    const horaEntrada = new Date(veiculo.entrada).toLocaleTimeString('pt-BR', {
+                        hour: '2-digit', minute: '2-digit'
+                    });
+
+                    row.innerHTML = `
+                        <td><strong>${veiculo.nome}</strong></td>
+                        <td>${veiculo.placa}</td>
+                        <td>${horaEntrada}</td>
+                        <td>
+                            <button class="btn-out" data-placa="${veiculo.placa}">Check-out</button>
+                        </td>
+                    `;
+
+                    row.querySelector(".btn-out").addEventListener("click", function() {
+                        remover(this.dataset.placa);
+                    });
+
+                    $("#patio").appendChild(row);
+                    if (salva) salvar([...ler(), veiculo]);
+                }
+
+                function remover(placa) {
+    const veiculos = ler();
+    const veiculo = veiculos.find(v => v.placa === placa);
+    const tempo = calcTempo(new Date().getTime() - new Date(veiculo.entrada).getTime());
+
+    // Configura o conteúdo do Modal
+    const modal = $("#nexus-modal");
+    const modalContent = $("#modal-content");
+    modalContent.innerHTML = `O veículo <strong>${veiculo.nome}</strong> (${veiculo.placa}) permanece estacionado há <strong>${tempo}</strong>.`;
+    
+    modal.style.display = "flex";
+
+    // Ação de Cancelar
+    $("#modal-cancel").onclick = () => modal.style.display = "none";
+
+    // Ação de Confirmar
+    $("#modal-confirm").onclick = () => {
+        salvar(veiculos.filter(v => v.placa !== placa));
+        render();
+        modal.style.display = "none";
+    };
+}
+
+                function render() {
+                    $("#patio").innerHTML = "";
+                    const list = ler();
+                    if (list.length) list.forEach(v => adicionar(v));
+                }
+
+                return { adicionar, render };
+            }
+
+            const storage = patioControl();
+            storage.render();
+
+            $("#cadastrar").addEventListener("click", () => {
+                const nome = $("#nome").value;
+                const placa = $("#placa").value;
+
+                if (!nome || !placa) {
+                    alert("Campos obrigatórios: Nome e Placa.");
+                    return;
+                }
+
+                storage.adicionar({ nome, placa, entrada: new Date().toISOString() }, true);
+                $("#nome").value = "";
+                $("#placa").value = "";
+            });
+        })();
+    </script>
+</body>
 </html>

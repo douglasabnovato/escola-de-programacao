@@ -20,6 +20,9 @@ const verificarSeEhBase = async (id) => {
       `https://pokeapi.co/api/v2/pokemon-species/${id}`,
     );
     const data = await response.json();
+
+    console.log("response",response);
+    console.log("data",data);
     // Se não evolui de ninguém, é base (estágio 1)
     return data.evolves_from_species === null;
   } catch (error) {

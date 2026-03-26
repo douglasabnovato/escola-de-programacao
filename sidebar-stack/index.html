@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Lab | Code Hub</title>
+    <style>
+        :root {
+            --nexus-primary: #04aa6d;
+            --nexus-sidebar: #2d3436;
+            --nexus-bg: #f4f7f6;
+            --nexus-code-bg: #282c34;
+            --nexus-text: #dfe6e9;
+        }
+
+        body { margin: 0; font-family: 'Lato', sans-serif; display: flex; background: var(--nexus-bg); }
+
+        /* Sidebar Profissional */
+        .sidebar {
+            width: 240px; background: var(--nexus-sidebar); height: 100vh;
+            position: fixed; color: white; overflow-y: auto;
+            border-right: 3px solid var(--nexus-primary);
+        }
+
+        .sidebar header { padding: 20px; text-align: center; background: #1e272e; }
+        
+        .sidebar-category {
+            padding: 15px 20px 5px; font-size: 0.75rem;
+            text-transform: uppercase; color: var(--nexus-primary); font-weight: bold;
+        }
+
+        .sidebar a {
+            padding: 12px 25px; text-decoration: none; color: #b2bec3;
+            display: block; font-size: 0.9rem; transition: 0.3s;
+        }
+
+        .sidebar a:hover { background: #3d4a4d; color: white; }
+        .sidebar a.active { background: var(--nexus-primary); color: white; border-radius: 0 20px 20px 0; margin-right: 10px; }
+
+        /* Área de Conteúdo */
+        .content { margin-left: 240px; padding: 40px; flex-grow: 1; }
+
+        .code-display {
+            background: var(--nexus-code-bg);
+            color: var(--nexus-text);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            line-height: 1.5;
+            border: 1px solid #444;
+        }
+
+        h2 { color: #2d3436; margin-top: 0; }
+
+        @media screen and (max-width: 768px) {
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .content { margin-left: 0; }
+            body { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <header><strong>Lab</strong> STACKs</header>
+        
+        <div class="sidebar-category">Fundamentos</div>
+        <a href="#" onclick="showCode('html')">HTML5</a>
+        <a href="#" onclick="showCode('css')">CSS3</a>
+        <a href="#" onclick="showCode('js')">JavaScript</a>
+
+        <div class="sidebar-category">Frameworks</div>
+        <a href="#" onclick="showCode('react')">ReactJS</a>
+        <a href="#" onclick="showCode('node')">NodeJS</a>
+        <a href="#" onclick="showCode('vue')">Vue.js</a>
+
+        <div class="sidebar-category">Infra & DB</div>
+        <a href="#" onclick="showCode('git')">Git / GitHub</a>
+        <a href="#" onclick="showCode('sql')">SQL / MySQL</a>
+    </nav>
+
+    <main class="content">
+        <h2 id="title">Selecione uma tecnologia</h2>
+        <div id="code-container" class="code-display">
+            // O código aparecerá aqui...
+        </div>
+    </main>
+
+    <script>
+        const snippets = {
+            html: `\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Nexus</title>\n  </head>\n</html>`,
+            css: `/* Flexbox Layout */\n.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}`,
+            js: `// Arrow Function\nconst nexus = () => {\n  console.log("Bem-vindo ao Lab!");\n};`,
+            react: `// Componente Funcional\nfunction App() {\n  return <h1>Hello Nexus</h1>;\n}`,
+            node: `// Simples Servidor HTTP\nconst http = require('http');\nhttp.createServer((req, res) => {\n  res.end('Node Lab');\n}).listen(3000);`,
+            git: `# Comandos básicos\ngit add .\ngit commit -m "feat: nexus lab"\ngit push origin main`,
+            sql: `-- Select básico\nSELECT * FROM usuarios\nWHERE status = 'ativo'\nORDER BY nome ASC;`
+        };
+
+        function showCode(tech) {
+            const container = document.getElementById('code-container');
+            const title = document.getElementById('title');
+            
+            // Atualiza Título e Código
+            title.innerText = tech.toUpperCase();
+            container.innerText = snippets[tech] || "// Snippet não encontrado";
+
+            // Marcar link ativo
+            document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
