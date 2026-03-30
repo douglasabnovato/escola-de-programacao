@@ -1,6 +1,124 @@
 [
   {
     "id": 1,
+    "title": "Slide Show Pro",
+    "description": "Manipulação de carrosséis dinâmicos e transições de assets via JS.",
+    "path": "./1-slide-show/index.html",
+    "category": "Frontend",
+    "icon": "fas fa-images",
+    "featured": false
+  },
+  {
+    "id": 2,
+    "title": "Controle de Despesas",
+    "description": "Gestão de fluxo de caixa com manipulação de arrays e cálculos financeiros.",
+    "path": "./2-controle-despesas/index.html",
+    "category": "Finanças",
+    "icon": "fas fa-wallet",
+    "featured": false
+  },
+  {
+    "id": 3,
+    "title": "Movie Maker Hub",
+    "description": "Interface de curadoria de vídeos e consumo de estruturas de mídia.",
+    "path": "./3-movie-maker/index.html",
+    "category": "Media",
+    "icon": "fas fa-video",
+    "featured": false
+  },
+  {
+    "id": 4,
+    "title": "Dashboard Futebol",
+    "description": "Processamento de dados esportivos e renderização de tabelas dinâmicas.",
+    "path": "./4-futebol/index.html",
+    "category": "Data",
+    "icon": "fas fa-futbol",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": "One Piece Wiki",
+    "description": "Landing page temática com foco em estilização avançada e narrativa visual.",
+    "path": "./5-onepiece/index.html",
+    "category": "UI/UX",
+    "icon": "fas fa-skull-crossbones",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "Formulário Inteligente",
+    "description": "Captura de leads com validação de campos e experiência de usuário otimizada.",
+    "path": "./6-formulario/index.html",
+    "category": "Web Core",
+    "icon": "fas fa-file-signature",
+    "featured": false
+  },
+  {
+    "id": 7,
+    "title": "Liga da Justiça",
+    "description": "Aplicação de filtros e busca em listas de personagens heroicos.",
+    "path": "./7-ligadajustica/index.html",
+    "category": "Interativo",
+    "icon": "fas fa-shield-halved",
+    "featured": false
+  },
+  {
+    "id": 8,
+    "title": "Arcade Mini Games",
+    "description": "Coletânea de pequenas lógicas de interação e estados de vitória/derrota.",
+    "path": "./8-minigames/index.html",
+    "category": "Games",
+    "icon": "fas fa-headset",
+    "featured": true,
+    "image": "./assets/thumbnails/minigames.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Calculadora Pro",
+    "description": "Engine aritmética para execução de operações matemáticas complexas.",
+    "path": "./9-calculadora/index.html",
+    "category": "Lógica",
+    "icon": "fas fa-divide",
+    "featured": false
+  },
+  {
+    "id": 10,
+    "title": "Site de Viagens",
+    "description": "Interface de reserva e exploração de destinos com layout responsivo.",
+    "path": "./10-site-viagens/index.html",
+    "category": "Template",
+    "icon": "fas fa-plane-departure",
+    "featured": false
+  },
+  {
+    "id": 11,
+    "title": "API Pokedex",
+    "description": "Consumo de API RESTful para listagem e filtragem dinâmica de dados.",
+    "path": "./11-api-pokedex/index.html",
+    "category": "API",
+    "icon": "fas fa-mobile-screen-button",
+    "featured": false
+  },
+  {
+    "id": 12,
+    "title": "Mini Trello",
+    "description": "Organização de tarefas com colunas e gestão básica de fluxo de trabalho.",
+    "path": "./12-mini-trello/index.html",
+    "category": "Produtividade",
+    "icon": "fas fa-clipboard-list",
+    "featured": false
+  },
+  {
+    "id": 13,
+    "title": "Kanban Avançado",
+    "description": "Persistência de cards e organização de sprints em modo ágil.",
+    "path": "./13-mini-trello/index.html",
+    "category": "Produtividade",
+    "icon": "fas fa-layer-group",
+    "featured": false
+  },
+  {
+    "id": 14,
     "title": "Curso em Vídeo",
     "description": "Domínio de sintaxe JavaScript e fundamentos de lógica algorítmica.",
     "path": "./curso-em-video/index.html",
@@ -9,16 +127,17 @@
     "featured": false
   },
   {
-    "id": 2,
+    "id": 15,
     "title": "Desafios de Código",
     "description": "Engine de resolução de problemas lógicos e complexidade de algoritmos.",
     "path": "./desafios-codigo/index.html",
     "icon": "fas fa-terminal",
     "category": "Lógica",
-    "featured": false
+    "featured": true,
+    "image": "./assets/thumbnails/desafios-de-codigo.jpg"
   },
   {
-    "id": 3,
+    "id": 16,
     "title": "DIO + Spread",
     "description": "Repositório avançado de desafios práticos do ecossistema Bootcamp.",
     "path": "./dio-spread/index.html",
@@ -27,7 +146,7 @@
     "featured": false
   },
   {
-    "id": 4,
+    "id": 17,
     "title": "Driven Aplicações",
     "description": "Arquitetura de Web Apps escaláveis com foco em estruturação profissional.",
     "path": "./driven-aplicacoes/index.html",
@@ -36,7 +155,7 @@
     "featured": false
   },
   {
-    "id": 5,
+    "id": 18,
     "title": "Formulário de Login",
     "description": "Segurança de dados no client-side, validação Regex e UX de autenticação.",
     "path": "./formulario-login/index.html",
@@ -45,7 +164,7 @@
     "featured": false
   },
   {
-    "id": 6,
+    "id": 19,
     "title": "Game Mario Bros",
     "description": "Lógica de colisão e manipulação de sprites com CSS Keyframes.",
     "path": "./game-mario-bros/index.html",
@@ -54,7 +173,7 @@
     "featured": false
   },
   {
-    "id": 7,
+    "id": 20,
     "title": "Home Instagram",
     "description": "Slicing de UI complexa utilizando CSS Grid e Flexbox Layout Engine.",
     "path": "./instagram-home-desktop/index.html",
@@ -63,26 +182,27 @@
     "featured": false
   },
   {
-    "id": 8,
+    "id": 21,
     "title": "Jogo da Cobra",
     "description": "Algoritmo de crescimento de array e gestão de coordenadas em grid.",
     "path": "./jogo-da-cobra/index.html",
     "category": "Games",
     "icon": "fas fa-worm",
-    "featured": true,
+    "featured": false,
     "image": "./assets/thumbnails/snake-game.png"
   },
   {
-    "id": 9,
+    "id": 22,
     "title": "Jogo da Memória",
     "description": "State management manual e manipulação dinâmica de classes no DOM.",
     "path": "./jogo-da-memoria/index.html",
     "category": "Games",
     "icon": "fas fa-clone",
-    "featured": false
+    "featured": true,
+    "image": "./assets/thumbnails/jogo-da-memoria.jpg"
   },
   {
-    "id": 10,
+    "id": 23,
     "title": "Jogo da Velha",
     "description": "Implementação de lógica matricial para detecção de padrões de vitória.",
     "path": "./jogo-da-velha/index.html",
@@ -91,7 +211,7 @@
     "featured": false
   },
   {
-    "id": 11,
+    "id": 24,
     "title": "Jogo Lost Decade",
     "description": "Desenvolvimento de engine 2D com renderização em HTML5 Canvas.",
     "path": "./jogo-lost-decade/index.html",
@@ -100,7 +220,7 @@
     "featured": false
   },
   {
-    "id": 12,
+    "id": 25,
     "title": "Pedra, Papel e Tesoura",
     "description": "Lógica de decisão aleatória e fluxos condicionais de resultado.",
     "path": "./jogo-pedra-papel-e-tesoura/index.html",
@@ -109,7 +229,7 @@
     "featured": false
   },
   {
-    "id": 13,
+    "id": 26,
     "title": "Receitas Deliciosas",
     "description": "Arquitetura de componentes estáticos e estilização de cards responsivos.",
     "path": "./receitas/index.html",
@@ -118,7 +238,7 @@
     "featured": false
   },
   {
-    "id": 14,
+    "id": 27,
     "title": "Rocketseat Explorer",
     "description": "Fundamentos de semântica HTML e estruturação de projetos modernos.",
     "path": "./rocketseat-challenges/index.html",
@@ -127,7 +247,7 @@
     "featured": false
   },
   {
-    "id": 15,
+    "id": 28,
     "title": "Uma Lâmpada",
     "description": "Gestão de eventos de entrada (Event Listeners) e troca dinâmica de assets.",
     "path": "./uma-lampada/index.html",
@@ -136,7 +256,7 @@
     "featured": false
   },
   {
-    "id": 16,
+    "id": 29,
     "title": "DIO + Contador",
     "description": "Controle de estado numérico e limites de execução lógica em tempo real.",
     "path": "./dio-spread-contador/index.html",
@@ -146,7 +266,7 @@
     "image": "./assets/thumbnails/counter-project.png"
   },
   {
-    "id": 17,
+    "id": 30,
     "title": "DIO + Estacionamento",
     "description": "Simulação de sistema de gestão de pátio com registro de logs temporais.",
     "path": "./dio-spread-estacionamento/index.html",
@@ -155,7 +275,7 @@
     "featured": false
   },
   {
-    "id": 18,
+    "id": 31,
     "title": "DIO + Flex Box",
     "description": "Deep dive em propriedades de alinhamento e distribuição de eixos CSS.",
     "path": "./dio-spread-flex-box/index.html",
@@ -164,7 +284,7 @@
     "featured": false
   },
   {
-    "id": 19,
+    "id": 32,
     "title": "DIO + Operadores",
     "description": "Análise de precedência aritmética e operadores de comparação binária.",
     "path": "./dio-spread-operadores/index.html",
@@ -173,7 +293,7 @@
     "featured": false
   },
   {
-    "id": 20,
+    "id": 33,
     "title": "DIO + ToDo List",
     "description": "Aplicação de persistência básica e manipulação de listas dinâmicas.",
     "path": "./dio-spread-todolist/index.html",
@@ -182,7 +302,7 @@
     "featured": false
   },
   {
-    "id": 21,
+    "id": 34,
     "title": "Sidebar Stack",
     "description": "Template de navegação lateral com persistência de estado e submenus.",
     "path": "./sidebar-stack/index.html",
@@ -191,12 +311,21 @@
     "featured": false
   },
   {
-    "id": 22,
+    "id": 35,
     "title": "Treinar JS",
     "description": "Sandbox para testes rápidos de ES6+ e novas funcionalidades do Node.js.",
     "path": "./treinar-js/index.html",
     "category": "Template",
     "icon": "fab fa-js",
+    "featured": false
+  },
+  {
+    "id": 36,
+    "title": "Aulas Fundamentais",
+    "description": "Sandbox para testes rápidos de ES6+, HTML5 e CSS3 e muito mais.",
+    "path": "./aulas-fundamentais/index.html",
+    "category": "Template",
+    "icon": "fab fa-html5",
     "featured": false
   }
 ]

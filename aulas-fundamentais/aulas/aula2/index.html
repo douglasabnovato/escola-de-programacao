@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 02 - Funções e Condicionais | ByteClass</title>
+    <style>
+        /* Nexus Design System - Tokyo Night */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0f111a;
+            color: #a9b1d6;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .logic-card {
+            background: rgba(26, 27, 38, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 4px solid #7aa2f7;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            max-width: 350px;
+        }
+
+        .status-box {
+            background: #16161e;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px dashed #414868;
+        }
+
+        h1 { color: #7aa2f7; font-size: 1.4rem; margin-bottom: 5px; }
+        .subtitle { color: #565f89; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        button {
+            background: #7aa2f7;
+            color: #0f111a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover { background: #9ece6a; }
+    </style>
+</head>
+<body>
+
+    <div class="logic-card">
+        <span class="subtitle">Módulo Fundamental</span>
+        <h1>Execução de Funções</h1>
+        
+        <div class="status-box" id="display-resultado">
+            Aguardando interação...
+        </div>
+
+        <button onclick="executarAula()">Rodar Script da Aula</button>
+    </div>
+
+    <script>
+        // --- Lógica da Aula 02 ---
+        const nome = "Mariana";
+        const idade = 30;
+
+        function idadeMaior25(idade) {
+            return idade > 25; // Versão simplificada (Clean Code)
+        }
+
+        function saudacaoIdentificaIdade25(nome, idade) {
+            const display = document.getElementById('display-resultado');
+            
+            // Log para o terminal do Nexus
+            console.log(`[SISTEMA] Processando: ${nome}, ${idade} anos.`);
+            
+            alert("Olá " + nome);
+            
+            if(idadeMaior25(idade)) {
+                console.log("Status: Você tem mais de 25 anos");
+                display.innerHTML = `<span style="color: #9ece6a">✔ ${nome} tem mais de 25 anos.</span>`;
+            } else {
+                console.log("Status: Você tem menos de 25 anos");
+                display.innerHTML = `<span style="color: #f7768e">✖ ${nome} tem menos de 25 anos.</span>`;
+            }
+        }
+
+        // Função para o aluno disparar o teste visualmente
+        function executarAula() {
+            saudacaoIdentificaIdade25(nome, idade);
+        }
+    </script>
+</body>
+</html>

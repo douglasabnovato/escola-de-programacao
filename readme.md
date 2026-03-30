@@ -64,6 +64,7 @@ O projeto utiliza a **NEXUS Engine v1.2**, que permite:
 
 - Fazer os projetos das pastas ciclo 0, 1, 2, 3, 4, 5.
 - Analisar cada um dos projetos e criar issues para eles
+- Fazer um QA
 
 
 ---

@@ -1,0 +1,347 @@
+/* --- NEXUS DESIGN SYSTEM (Tokyo Night Inspired) --- */
+:root {
+  --bg-dark: #0f111a;
+  --bg-sidebar: #1a1b26;
+  --bg-terminal: #16161e;
+  --bg-header: #1f2335;
+
+  --accent: #7aa2f7; /* Azul Nexus */
+  --accent-dim: #2f334d;
+  --success: #9ece6a;
+  --warning: #e0af68;
+  --error: #f7768e;
+
+  --text-main: #a9b1d6;
+  --text-dim: #565f89;
+  --white: #c0caf5;
+
+  --sidebar-width: 280px;
+  --inspector-width: 320px;
+}
+
+/* --- Reset & Base --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Trava o scroll global para permitir scrolls independentes */
+}
+
+/* --- Main Layout --- */
+.nexus-wrapper {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr var(--inspector-width);
+  height: 100vh;
+  width: 100vw;
+}
+
+/* --- Sidebar (Navigation) --- */
+.nexus-sidebar {
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid #24283b;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ocupa a altura total */
+}
+
+.sidebar-brand {
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #24283b;
+  flex-shrink: 0; /* Impede que o cabeçalho diminua */
+}
+
+.brand-logo {
+  background: var(--accent);
+  color: var(--bg-dark);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  border-radius: 4px;
+}
+
+.brand-text .main {
+  display: block;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--white);
+  letter-spacing: 1px;
+}
+
+.brand-text .sub {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+  overflow-y: auto; /* Barra de rolagem no menu de desafios */
+  padding: 20px 0;
+}
+
+.nav-group header {
+  padding: 10px 25px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-item {
+  padding: 12px 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  border-left: 3px solid transparent;
+}
+
+.nav-item:hover {
+  background-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+.nav-item.active {
+  background: linear-gradient(90deg, var(--accent-dim) 0%, transparent 100%);
+  border-left: 3px solid var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-item .icon {
+  font-style: normal;
+  width: 18px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* --- Main Content Area --- */
+.nexus-main {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-dark);
+  height: 100vh;
+}
+
+.main-header {
+  height: 60px;
+  background-color: var(--bg-sidebar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  border-bottom: 1px solid #24283b;
+  flex-shrink: 0;
+}
+
+.path-info {
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* --- Central Execution Area (Code + Terminal) --- */
+.execution-area {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  flex-grow: 1;
+  height: calc(100vh - 60px);
+  overflow: hidden; /* Garante que os containers internos controlem o scroll */
+}
+
+.code-viewer-container,
+.terminal-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-terminal);
+  border: 1px solid #24283b;
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 1; /* Divide o espaço igualmente */
+  min-height: 0; /* Importante para flexbox permitir scroll interno */
+}
+
+.panel-bar {
+  background-color: var(--bg-header);
+  padding: 8px 15px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #24283b;
+  flex-shrink: 0;
+}
+
+/* Scroll independente para o código */
+.code-display {
+  padding: 20px;
+  margin: 0;
+  font-family: "Fira Code", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--success);
+  background-color: #1a1b26;
+  overflow: auto;
+  flex-grow: 1;
+}
+
+/* Scroll independente para o terminal */
+.terminal-body {
+  flex-grow: 1;
+  padding: 20px;
+  font-family: "Fira Code", monospace;
+  font-size: 13px;
+  overflow-y: auto;
+  line-height: 1.6;
+  color: var(--white);
+  background-color: var(--bg-terminal);
+}
+
+.prompt-line {
+  margin-bottom: 4px;
+}
+
+.prompt-line .symbol {
+  color: var(--accent);
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.system-msg {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.error {
+  color: var(--error);
+}
+.success {
+  color: var(--success);
+}
+
+/* --- Inspector (Right Column) --- */
+.nexus-inspector {
+  background-color: var(--bg-sidebar);
+  border-left: 1px solid #24283b;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  height: 100vh;
+  overflow-y: auto; /* Barra de rolagem na documentação */
+}
+
+.inspector-header h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  border-bottom: 1px solid #24283b;
+  padding-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.info-card label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.info-card p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+.meta-grid .label {
+  color: var(--text-dim);
+  font-weight: 700;
+}
+.meta-grid .val {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* --- Buttons --- */
+.btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--bg-dark);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 15px rgba(122, 162, 247, 0.3);
+}
+
+.btn-primary:disabled {
+  background-color: var(--accent-dim);
+  color: var(--text-dim);
+  cursor: not-allowed;
+}
+
+/* --- Scrollbar Custom --- */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #24283b;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
