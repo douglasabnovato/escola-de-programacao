@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 03 - Operadores e Objetos | ByteClass</title>
+    <style>
+        /* Nexus Design System - Tokyo Night */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0f111a;
+            color: #a9b1d6;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .calc-card {
+            background: rgba(26, 27, 38, 0.9);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #bb9af7; /* Roxo Nexus para Objetos/Lógica */
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 { color: #bb9af7; font-size: 1.2rem; margin: 0 0 15px 0; text-transform: uppercase; }
+        
+        .display-terminal {
+            background: #16161e;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #24283b;
+            margin-bottom: 15px;
+            min-height: 100px;
+            white-space: pre-wrap;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        button {
+            background: #2f334d;
+            color: #bb9af7;
+            border: 1px solid #bb9af7;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #bb9af7;
+            color: #0f111a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calc-card">
+        <h1>Nexus Calc & Objects</h1>
+        
+        <div class="display-terminal" id="calc-output">
+// Aguardando processamento...
+        </div>
+
+        <div class="controls">
+            <button onclick="testarOperacoes()">Testar Cálculos</button>
+            <button onclick="testarObjeto()">Inspecionar Objeto</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. Funções de Operação (Math Engine) ---
+        const soma = (a, b) => a + b;
+        const subtrai = (a, b) => a - b;
+        const multiplica = (a, b) => a * b;
+        const divide = (a, b) => b === 0 ? "Erro: div/0" : a / b;
+        const percentual = (a, b) => (a / 100) * b;
+        const calculaMedia = (a, b) => (a + b) / 2;
+
+        function operacao(n1, n2, op) {
+            switch(op) {
+                case '+': return soma(n1, n2);
+                case '-': return subtrai(n1, n2);
+                case '*': return multiplica(n1, n2);
+                case '/': return divide(n1, n2);
+                case '%': return percentual(n1, n2);
+                case 'media': return calculaMedia(n1, n2);
+                default: return 'operação inválida';
+            }
+        }
+
+        // --- 2. Objetos (Data Modeling) ---
+        const cadastro = {
+            nome: "Mari",
+            idade: 21
+        };
+
+        // --- Interação com o Terminal Nexus ---
+        const output = document.getElementById('calc-output');
+
+        function testarOperacoes() {
+            output.innerHTML = "";
+            const testes = [
+                {n1: 20, n2: 10, op: '+'},
+                {n1: 20, n2: 10, op: '/'},
+                {n1: 20, n2: 0, op: '/'},
+                {n1: 50, n2: 10, op: 'media'}
+            ];
+
+            testes.forEach(t => {
+                const res = operacao(t.n1, t.n2, t.op);
+                const msg = `> ${t.n1} ${t.op} ${t.n2} = ${res}`;
+                output.innerHTML += msg + "\n";
+                console.log(msg); // Envia para o terminal principal do Nexus
+            });
+        }
+
+        function testarObjeto() {
+            output.innerHTML = "// Acessando Objeto 'cadastro':\n";
+            const msg = `Nome: ${cadastro.nome}\nIdade: ${cadastro["idade"]}`;
+            output.innerHTML += msg;
+            console.log("[OBJETO]", cadastro);
+        }
+    </script>
+</body>
+</html>

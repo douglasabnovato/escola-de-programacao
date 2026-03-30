@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 06 - Temas e Arrow Functions | ByteClass</title>
+    <style>
+        /* Nexus Design System - Base */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.4s, color 0.4s;
+            background-color: #0f111a; /* Início no tema Dark */
+            color: #a9b1d6;
+        }
+
+        .theme-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 350px;
+            width: 90%;
+        }
+
+        h1#titulo {
+            font-size: 2.5rem;
+            margin: 0 0 20px 0;
+            color: #7aa2f7;
+        }
+
+        .button-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .btn-main { background: #7aa2f7; color: #0f111a; }
+        .btn-light { background: #e0af68; color: #0f111a; }
+        .btn-dark { background: #414868; color: white; }
+        
+        button:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        /* Classes Utilitárias para o Toggle */
+        .tema-claro { background-color: #f0f0f0 !important; color: #1a1b26 !important; }
+        .tema-escuro { background-color: #0f111a !important; color: #a9b1d6 !important; }
+    </style>
+</head>
+<body id="main-body">
+
+    <div class="theme-card">
+        <h1 id="titulo">Noite</h1>
+        
+        <div class="button-stack">
+            <button class="btn-main" onclick="mostrarAlerta('Mariana')">Saudação Especial</button>
+            <button class="btn-light" onclick="temaClaro()">Ativar Modo Dia</button>
+            <button class="btn-dark" onclick="temaEscuro()">Ativar Modo Noite</button>
+            <button style="margin-top:10px; background: transparent; border: 1px solid #565f89; color: #565f89;" 
+                    onclick="rodarLoops()">Executar Loops no Console</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Arrow Function (Conforme seu exemplo)
+        const mostrarAlerta = (nome) => alert(`Olá querida ${nome}!`);
+
+        const titulo = document.getElementById('titulo');
+        const body = document.getElementById('main-body');
+
+        // 2. Manipulação de Tema via Funções Específicas
+        function temaClaro() {
+            body.className = 'tema-claro';
+            titulo.style.color = "red";
+            titulo.textContent = 'Dia';
+            console.log("[TEMA] Alterado para Claro");
+        }
+
+        function temaEscuro() {
+            body.className = 'tema-escuro';
+            titulo.style.color = "#7aa2f7";
+            titulo.textContent = 'Noite';
+            console.log("[TEMA] Alterado para Escuro");
+        }
+
+        // 3. Toggle Genérico (Lógica do seu script.js)
+        const toggleTheme = () => {
+            if (titulo.textContent === 'Noite') {
+                temaClaro();
+            } else {
+                temaEscuro();
+            }
+        };
+
+        // 4. Loops de Saudação (Lógica de repetição)
+        function rodarLoops() {
+            const imprime = "hello world!";
+            console.log("--- Iniciando Loops da Aula 06 ---");
+            
+            // For tradicional
+            for (let i = 0; i < 3; i++) {
+                console.log(`Loop ${i+1}: ${imprime}`);
+            }
+
+            // forEach em Array
+            let saudacao = [1, 2, 3];
+            saudacao.forEach((item) => console.log(`forEach Item ${item}: ${imprime}`));
+            
+            alert("Loops executados! Verifique o terminal do Nexus.");
+        }
+    </script>
+</body>
+</html>

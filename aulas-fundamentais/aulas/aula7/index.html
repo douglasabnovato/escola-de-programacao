@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 07 - Laboratório de Algoritmos | ByteClass</title>
+    <style>
+        /* Nexus Design System - Tokyo Night */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0f111a;
+            color: #a9b1d6;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .algo-card {
+            background: rgba(26, 27, 38, 0.9);
+            padding: 25px;
+            border-radius: 12px;
+            border-bottom: 4px solid #7dcfff; /* Cyan Nexus para algoritmos */
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            width: 95%;
+            max-width: 450px;
+        }
+
+        h1 { color: #7dcfff; font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; }
+
+        .terminal-box {
+            background: #16161e;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #24283b;
+            margin-bottom: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            color: #9ece6a;
+        }
+
+        .grid-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        button {
+            background: #2f334d;
+            color: #7dcfff;
+            border: 1px solid #7dcfff;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #7dcfff;
+            color: #0f111a;
+        }
+
+        .btn-highlight {
+            grid-column: span 2;
+            background: #7aa2f7;
+            color: #0f111a;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="algo-card">
+        <h1>Algorithm Lab v1.0</h1>
+        
+        <div class="terminal-box" id="algo-terminal">
+// Selecione um algoritmo para processar...
+        </div>
+
+        <div class="grid-actions">
+            <button onclick="rodarTabuada(5)">Tabuada do 5</button>
+            <button onclick="calcularMediaAula()">Média [2,4,6,8]</button>
+            <button onclick="rodarSomatorio()">Somatório (1 a 3)</button>
+            <button onclick="rodarFatorial(5)">Fatorial de 5</button>
+            <button class="btn-highlight" onclick="verificarFaseVida()">Verificar Fase da Vida</button>
+        </div>
+    </div>
+
+    <script>
+        const terminal = document.getElementById('algo-terminal');
+        
+        const limparTerminal = () => terminal.innerHTML = "";
+        const log = (msg) => {
+            terminal.innerHTML += `> ${msg}\n`;
+            console.log(msg); // Link com o terminal principal do Nexus
+        };
+
+        // 1. Tabuada Dinâmica
+        const rodarTabuada = (n) => {
+            limparTerminal();
+            log(`Tabuada de ${n}:`);
+            for (let i = 1; i <= 10; i++) {
+                log(`${n} x ${i} = ${n * i}`);
+            }
+        };
+
+        // 2. Média de Array (Lógica de somatório)
+        const calcularMediaAula = () => {
+            limparTerminal();
+            let numeros = [2, 4, 6, 8];
+            let soma = 0;
+            for(let i = 0; i < numeros.length; i++){
+                soma += numeros[i];
+            }
+            let media = soma / numeros.length;
+            log(`Array: [${numeros}]`);
+            log(`Soma: ${soma}`);
+            log(`Média Resultante: ${media}`);
+        };
+
+        // 3. Somatório Simples
+        const rodarSomatorio = () => {
+            limparTerminal();
+            let num = 0;
+            for (let i = 1; i < 4; i++) {
+                num += i;
+                log(`i=${i} | acumulado=${num}`);
+            }
+            log(`Resultado Final: ${num}`);
+        };
+
+        // 4. Fatorial (Arrow Function Refatorada)
+        const rodarFatorial = (num) => {
+            limparTerminal();
+            let fatorial = 1;
+            for (let i = 1; i <= num; i++) {
+                fatorial *= i;
+            }
+            log(`Fatorial de ${num} é: ${fatorial}`);
+        };
+
+        // 5. Validação de Idade (Fases da Vida)
+        const verificarFaseVida = () => {
+            const entrada = prompt("Informe sua idade:");
+            const idade = parseFloat(entrada);
+            limparTerminal();
+
+            if (isNaN(idade)) {
+                log("ERRO: Digite uma idade válida.");
+            } else {
+                log(`Idade informada: ${idade}`);
+                if (idade < 12) log("Fase: Criança");
+                else if (idade < 18) log("Fase: Adolescente");
+                else if (idade < 60) log("Fase: Adulto");
+                else log("Fase: Idoso");
+            }
+        };
+    </script>
+</body>
+</html>

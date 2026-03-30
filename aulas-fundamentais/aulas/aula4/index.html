@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 04 - Manipulação de DOM | ByteClass</title>
+    <style>
+        /* Nexus Design System - Tokyo Night */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0f111a;
+            color: #a9b1d6;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .dom-card {
+            background: rgba(26, 27, 38, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            border-top: 4px solid #9ece6a; /* Verde Nexus para ações de interface */
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1#titulo {
+            color: #7aa2f7;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            background: #16161e;
+            border: 1px solid #24283b;
+            padding: 12px;
+            border-radius: 6px;
+            color: #c0caf5;
+            outline: none;
+        }
+
+        input:focus { border-color: #9ece6a; }
+
+        button {
+            background: #9ece6a;
+            color: #0f111a;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover { filter: brightness(1.1); }
+        
+        ul#lista {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            text-align: left;
+            border-top: 1px solid #24283b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dom-card">
+        <h1 id="titulo">Título Original</h1>
+        
+        <div class="input-group">
+            <input type="text" id="novaTarefa" placeholder="Digite algo...">
+            <button id="adicionar" onclick="novoTitulo()">Alterar Interface</button>
+        </div>
+
+        <ul id="lista"></ul>
+    </div>
+
+    <script>
+        /* TRECHO DE REFERÊNCIA (Para aulas futuras de Arrays):
+           let personagens = [
+               { nome: "Luffy", recompensa: 1000 }, 
+               { nome: "Zoro", recompensa: 800 }
+           ];
+           const resultado = personagens.find(p => p.nome == "Zoro");
+        */
+
+        function novoTitulo() {
+            // Capturando elementos do DOM
+            const titulo = document.getElementById("titulo");
+            const input = document.getElementById("novaTarefa");
+            const lista = document.getElementById("lista");
+
+            // 1. Alterando o Título (Conforme seu código)
+            titulo.textContent = input.value || "Novo Título";
+            titulo.style.color = "#f7768e"; // Rosa/Vermelho Tokyo Night
+            
+            // 2. Log para o Terminal do Nexus
+            console.log(`[DOM] Título alterado para: ${titulo.textContent}`);
+
+            // 3. Bônus: Adicionando à lista visual
+            if(input.value) {
+                const li = document.createElement("li");
+                li.innerHTML = `<span style="color: #9ece6a">→</span> ${input.value}`;
+                li.style.padding = "5px 0";
+                lista.appendChild(li);
+                input.value = ""; // Limpa o input
+            }
+        }
+    </script>
+</body>
+</html>
