@@ -1,37 +1,269 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 16 - Gerador de Senhas | ByteClass</title>
+    <style>
+      /* CSS INTEGRADO */
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Gerador de Senhas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+      .container {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        max-width: 1000px;
+        margin: 20px auto;
+      }
 
-<body>
+      main {
+        flex: 2;
+        background: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #2c3e50;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+
+      #tipoSenha {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      #tipoSenha label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+
+      aside {
+        flex: 1;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        min-width: 250px;
+      }
+
+      input[type="number"] {
+        padding: 12px;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+      }
+
+      button {
+        padding: 12px 24px;
+        background-color: #3498db;
+        border: none;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      #senhaAtual {
+        font-family: monospace;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #27ae60;
+        background: #f0fff4;
+        padding: 5px 10px;
+        border-radius: 4px;
+      }
+
+      ul#historicoSenhas {
+        list-style: none;
+        padding: 0;
+        margin-top: 15px;
+      }
+
+      #historicoSenhas li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 6px;
+        border-left: 4px solid #3498db;
+      }
+
+      #historicoSenhas li span {
+        font-family: monospace;
+        word-break: break-all;
+        font-size: 0.9rem;
+      }
+
+      .btn-copiar {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+        background-color: #95a5a6;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          flex-direction: column;
+        }
+        main,
+        aside {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <div class="container">
-        <main>
-            <h1>Sistema Gerador de Senhas</h1>
-            <p>Digite a quantidade entre 4 e 20 caracteres desejados para a criação de sua senha:</p>
-            <div id="tipoSenha">
-                <label><input type="radio" name="tipoSenha" value="letras">Somente letras</label><br>
-                <label><input type="radio" name="tipoSenha" value="numeros">Somente numeros</label><br>
-                <label><input type="radio" name="tipoSenha" value="caracteres">Letras, numeros e caracteres especiais</label>
-            </div>   
-            <input id="qtdCaracteres" type="number" placeholder="números de 4 a 20">
-            <button id="botaoGerar">Gerar Senha</button>
+      <main>
+        <h1>Gerador de Senhas Profissional</h1>
+        <p>Defina o tamanho (4-20) e o tipo da sua nova senha:</p>
 
-            <h2>Senha Gerada</h2>
-            <p>Senha atual: <span id="senhaAtual"></span></p>
-        </main>
+        <div id="tipoSenha">
+          <label
+            ><input type="radio" name="tipoSenha" value="letras" checked />
+            Somente letras</label
+          >
+          <label
+            ><input type="radio" name="tipoSenha" value="numeros" /> Somente
+            números</label
+          >
+          <label
+            ><input type="radio" name="tipoSenha" value="caracteres" /> Letras,
+            números e símbolos</label
+          >
+        </div>
 
-        <aside>
-            <h2>Histórico</h2>
-            <ul id="historicoSenhas"></ul>
-        </aside>
+        <input
+          id="qtdCaracteres"
+          type="number"
+          placeholder="Números de 4 a 20"
+          min="4"
+          max="20"
+        />
+        <button id="botaoGerar">Gerar Senha 🔑</button>
+
+        <h2 style="margin-top: 30px; font-size: 1.1rem">Senha Gerada:</h2>
+        <p style="margin-top: 10px"><span id="senhaAtual">---</span></p>
+      </main>
+
+      <aside>
+        <h2>Histórico</h2>
+        <p style="font-size: 0.8rem; color: #7f8c8d">Últimas 5 geradas:</p>
+        <ul id="historicoSenhas"></ul>
+      </aside>
     </div>
 
-    <script src="script.js"></script>
-</body>
+    <script>
+      // JAVASCRIPT INTEGRADO
+      let senhas = JSON.parse(localStorage.getItem("senhas")) || [];
 
+      function salvarSenhas() {
+        localStorage.setItem("senhas", JSON.stringify(senhas));
+      }
+
+      function gerarSenha() {
+        const input = document.getElementById("qtdCaracteres");
+        const qtd = parseInt(input.value.trim());
+
+        if (isNaN(qtd) || qtd < 4 || qtd > 20) {
+          alert("Por favor, digite um número entre 4 e 20.");
+          return;
+        }
+
+        const tipoSelecionado = document.querySelector(
+          'input[name="tipoSenha"]:checked',
+        );
+        if (!tipoSelecionado) {
+          alert("Por favor, selecione o tipo de senha.");
+          return;
+        }
+
+        const tipo = tipoSelecionado.value;
+        let caracteres = "";
+
+        if (tipo === "letras") {
+          caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        } else if (tipo === "numeros") {
+          caracteres = "0123456789";
+        } else if (tipo === "caracteres") {
+          caracteres =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+        }
+
+        let novaSenha = "";
+        for (let i = 0; i < qtd; i++) {
+          const index = Math.floor(Math.random() * caracteres.length);
+          novaSenha += caracteres[index];
+        }
+
+        document.getElementById("senhaAtual").innerText = novaSenha;
+
+        // Adiciona no início do array e mantém apenas as 5 últimas
+        senhas.unshift(novaSenha);
+        senhas = senhas.slice(0, 5);
+
+        salvarSenhas();
+        mostrarSenhas();
+        input.value = "";
+      }
+
+      function mostrarSenhas() {
+        const lista = document.getElementById("historicoSenhas");
+        lista.innerHTML = "";
+
+        senhas.forEach((senha) => {
+          const li = document.createElement("li");
+          const spanSenha = document.createElement("span");
+          spanSenha.innerText = senha;
+
+          const btnCopiar = document.createElement("button");
+          btnCopiar.innerText = "Copiar";
+          btnCopiar.className = "btn-copiar";
+          btnCopiar.addEventListener("click", () => {
+            navigator.clipboard.writeText(senha);
+            const originalText = btnCopiar.innerText;
+            btnCopiar.innerText = "Copiado!";
+            btnCopiar.style.backgroundColor = "#27ae60";
+            setTimeout(() => {
+              btnCopiar.innerText = originalText;
+              btnCopiar.style.backgroundColor = "#95a5a6";
+            }, 1000);
+          });
+
+          li.appendChild(spanSenha);
+          li.appendChild(btnCopiar);
+          lista.appendChild(li);
+        });
+      }
+
+      document
+        .getElementById("botaoGerar")
+        .addEventListener("click", gerarSenha);
+
+      // Inicialização
+      mostrarSenhas();
+    </script>
+  </body>
 </html>

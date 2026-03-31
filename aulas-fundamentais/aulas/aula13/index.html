@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 13 - A Logística da Internet | ByteClass</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card: #1e293b;
+        --primary: #38bdf8;
+        --accent: #fbbf24;
+        --text: #f1f5f9;
+        --line: #334155;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 900px;
+        width: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+      .subtitle {
+        text-align: center;
+        color: var(--accent);
+        margin-bottom: 40px;
+        font-weight: 300;
+      }
+
+      /* --- ANIMAÇÃO DA REDE --- */
+      .network-viz {
+        background: var(--card);
+        border-radius: 20px;
+        padding: 60px 20px;
+        margin-bottom: 40px;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid var(--line);
+      }
+
+      .node {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 2;
+        width: 120px;
+      }
+
+      .icon {
+        font-size: 3rem;
+        margin-bottom: 10px;
+        filter: drop-shadow(0 0 10px var(--primary));
+      }
+
+      .label {
+        font-weight: bold;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+      }
+
+      .path {
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        right: 15%;
+        height: 4px;
+        background: var(--line);
+        z-index: 1;
+      }
+
+      .packet {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: var(--accent);
+        border-radius: 50%;
+        top: -4px;
+        box-shadow: 0 0 15px var(--accent);
+        offset-path: path("M 0 0 L 600 0"); /* Ajustado via JS se necessário */
+        animation: travel 4s infinite linear;
+      }
+
+      @keyframes travel {
+        0% {
+          left: 0%;
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        45% {
+          left: 100%;
+          opacity: 1;
+        }
+        50% {
+          left: 100%;
+          opacity: 0;
+        }
+        55% {
+          left: 100%;
+          opacity: 0;
+        }
+        60% {
+          left: 100%;
+          opacity: 1;
+          background: var(--primary);
+        }
+        95% {
+          left: 0%;
+          opacity: 1;
+        }
+        100% {
+          left: 0%;
+          opacity: 0;
+        }
+      }
+
+      /* --- CONTEÚDO EXPLICATIVO --- */
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .info-card {
+        background: var(--card);
+        padding: 25px;
+        border-radius: 12px;
+        border-left: 4px solid var(--primary);
+      }
+
+      .info-card h3 {
+        color: var(--accent);
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+      .info-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #cbd5e1;
+      }
+
+      .full-card {
+        grid-column: span 2;
+      }
+
+      ul {
+        margin-top: 15px;
+        padding-left: 20px;
+      }
+      li {
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+
+      .tag {
+        background: var(--primary);
+        color: var(--bg);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Aula 13: A Anatomia da Internet</h1>
+      <p class="subtitle">Entendendo a logística por trás do seu clique</p>
+
+      <div class="network-viz">
+        <div class="node">
+          <div class="icon">💻</div>
+          <div class="label">Cliente</div>
+          <span style="font-size: 0.7rem; color: var(--accent)"
+            >Seu Browser</span
+          >
+        </div>
+
+        <div class="path">
+          <div class="packet"></div>
+        </div>
+
+        <div class="node">
+          <div class="icon">☁️</div>
+          <div class="label">DNS / Web</div>
+          <span style="font-size: 0.7rem; color: var(--accent)"
+            >Roteamento</span
+          >
+        </div>
+
+        <div class="node">
+          <div class="icon">🗄️</div>
+          <div class="label">Servidor</div>
+          <span style="font-size: 0.7rem; color: var(--accent)">learnTECH</span>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>1. O que é a Internet?</h3>
+          <p>
+            Muitos confundem Internet com Web. A <strong>Internet</strong> é a
+            infraestrutura física (cabos submarinos, satélites, roteadores). A
+            <strong>Web (WWW)</strong> é apenas um dos serviços que viajam nela,
+            assim como o e-mail ou o WhatsApp.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3>2. Protocolo HTTP/S</h3>
+          <p>
+            É o "idioma" oficial da Web. Funciona em um ciclo de
+            <strong>Request (Requisição)</strong> e
+            <strong>Response (Resposta)</strong>. O cadeado verde (HTTPS) indica
+            que essa conversa está criptografada.
+          </p>
+        </div>
+
+        <div class="info-card full-card">
+          <h3>3. A Logística do Dado (TCP/IP)</h3>
+          <p>
+            Imagine que você quer enviar um caminhão de mercadorias da
+            <strong>Volta Express</strong>. O dado é grande demais para uma
+            viagem só, então o TCP/IP faz o seguinte:
+          </p>
+          <ul>
+            <li>
+              <span class="tag">Fatiamento</span> Divide o arquivo em pequenos
+              "pacotes".
+            </li>
+            <li>
+              <span class="tag">Endereçamento</span> Coloca o IP de destino em
+              cada pacote.
+            </li>
+            <li>
+              <span class="tag">Confirmação</span> O servidor avisa se todos os
+              pacotes chegaram. Se um sumir, ele pede o reenvio.
+            </li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>4. O Papel do DNS</h3>
+          <p>
+            Computadores falam por números (IPs: 192.168...). O DNS é o catálogo
+            que traduz <em>google.com</em> para o IP correto, permitindo que
+            humanos usem nomes fáceis.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3>5. Frontend vs Backend</h3>
+          <p>
+            O <strong>Frontend</strong> (o que fizemos até a aula 12) vive no
+            Cliente. O <strong>Backend</strong> vive no Servidor, processando as
+            regras de negócio e acessando o Banco de Dados.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      console.log("ByteClass: Aula de Infraestrutura Iniciada.");
+      // Podemos adicionar interatividade aqui no futuro para mudar a velocidade da animação
+    </script>
+  </body>
+</html>

@@ -1,16 +1,319 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <button id="meuBotao">Meu botão</button><br>
-    <p id="mensagem">Texto Inicial</p>
-    <input id="campoTexto" placeholder="Digite algo"><br><br>
-    <button id="contador">0</button><hr>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 12 - ByteClass | App de Tarefas Profissional</title>
 
-    <script src="index.js"></script>
-</body>
+    <style>
+      /* 1. RESET E VARIÁVEIS (NEXUS DESIGN SYSTEM) */
+      :root {
+        --bg: #f0f2f5;
+        --card: #ffffff;
+        --primary: #3498db;
+        --primary-hover: #2980b9;
+        --danger: #e74c3c;
+        --danger-hover: #c0392b;
+        --success: #2ecc71;
+        --text-main: #333;
+        --text-muted: #95a5a6;
+        --border: #ddd;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", system-ui, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text-main);
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+
+      /* 2. LAYOUT DO APP */
+      .app-container {
+        background: var(--card);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: var(--primary);
+      }
+
+      /* 3. INPUT E BOTÕES */
+      .input-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      input {
+        flex: 1;
+        padding: 12px;
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+
+      input:focus {
+        border-color: var(--primary);
+      }
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+
+      #btnAdicionar {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      #btnAdicionar:hover {
+        background-color: var(--primary-hover);
+      }
+
+      /* 4. FILTROS */
+      .filtros {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .btn-filtro {
+        flex: 1;
+        background-color: #eee;
+        font-size: 0.85rem;
+      }
+
+      .btn-filtro.ativo {
+        background-color: var(--text-muted);
+        color: white;
+      }
+
+      /* 5. LISTA DE TAREFAS */
+      ul {
+        list-style: none;
+      }
+
+      li {
+        background: #fff;
+        border: 1px solid #eee;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .tarefa-texto {
+        flex: 1;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      .concluida {
+        text-decoration: line-through;
+        color: var(--text-muted);
+      }
+
+      .btn-remover {
+        background-color: var(--danger);
+        color: white;
+        padding: 5px 12px;
+        font-size: 0.8rem;
+      }
+
+      .btn-remover:hover {
+        background-color: var(--danger-hover);
+      }
+
+      /* 6. ESTATÍSTICAS */
+      .stats {
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 2px solid #eee;
+        font-size: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .stats b {
+        color: var(--primary);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <h1>ByteClass Tasks</h1>
+
+      <div class="input-group">
+        <input
+          type="text"
+          id="inputTarefa"
+          placeholder="O que vamos programar hoje?"
+        />
+        <button id="btnAdicionar">Adicionar</button>
+      </div>
+
+      <div class="filtros">
+        <button class="btn-filtro" onclick="filtrar('todas')">Todas</button>
+        <button class="btn-filtro" onclick="filtrar('pendentes')">
+          Pendentes
+        </button>
+        <button class="btn-filtro" onclick="filtrar('concluidas')">
+          Concluídas
+        </button>
+      </div>
+
+      <ul id="listaTarefas"></ul>
+
+      <div class="stats">
+        <p>Total de tarefas: <b id="total">0</b></p>
+        <p>Tarefas concluídas: <b id="concluidas">0</b></p>
+        <p>Pendentes: <b id="pendentes">0</b></p>
+      </div>
+    </div>
+
+    <script>
+      // --- LÓGICA DO APP ---
+
+      // 1. ESTADO INICIAL (Busca no LocalStorage ou inicia vazio)
+      let tarefas = JSON.parse(localStorage.getItem("tarefas_byteclass")) || [];
+      let filtroAtual = "todas";
+
+      // 2. SELETORES
+      const input = document.getElementById("inputTarefa");
+      const btnAdd = document.getElementById("btnAdicionar");
+      const listaUl = document.getElementById("listaTarefas");
+
+      // 3. PERSISTÊNCIA
+      function salvarNoStorage() {
+        localStorage.setItem("tarefas_byteclass", JSON.stringify(tarefas));
+      }
+
+      // 4. RENDERIZAÇÃO (A "Mágica" do DOM)
+      function renderizar() {
+        listaUl.innerHTML = "";
+
+        // Lógica de Filtro
+        const listaFiltrada = tarefas.filter((t) => {
+          if (filtroAtual === "pendentes") return !t.concluida;
+          if (filtroAtual === "concluidas") return t.concluida;
+          return true;
+        });
+
+        listaFiltrada.forEach((tarefa) => {
+          const li = document.createElement("li");
+
+          // Criar o texto da tarefa
+          const span = document.createElement("span");
+          span.classList.add("tarefa-texto");
+          if (tarefa.concluida) span.classList.add("concluida");
+          span.innerText = tarefa.texto;
+
+          // Evento: Alternar Conclusão
+          span.onclick = () => alternarTarefa(tarefa);
+
+          // Criar botão remover
+          const btnRemover = document.createElement("button");
+          btnRemover.innerText = "Remover";
+          btnRemover.classList.add("btn-remover");
+          btnRemover.onclick = () => removerTarefa(tarefa);
+
+          li.appendChild(span);
+          li.appendChild(btnRemover);
+          listaUl.appendChild(li);
+        });
+
+        atualizarPainel();
+      }
+
+      // 5. AÇÕES (CRUD)
+      function adicionarTarefa() {
+        const texto = input.value.trim();
+        if (texto === "") return;
+
+        tarefas.push({
+          id: Date.now(), // ID único para evitar erros de índice
+          texto: texto,
+          concluida: false,
+        });
+
+        input.value = "";
+        salvarNoStorage();
+        renderizar();
+      }
+
+      function alternarTarefa(tarefaAlvo) {
+        tarefas = tarefas.map((t) =>
+          t.id === tarefaAlvo.id ? { ...t, concluida: !t.concluida } : t,
+        );
+        salvarNoStorage();
+        renderizar();
+      }
+
+      function removerTarefa(tarefaAlvo) {
+        tarefas = tarefas.filter((t) => t.id !== tarefaAlvo.id);
+        salvarNoStorage();
+        renderizar();
+      }
+
+      function filtrar(tipo) {
+        filtroAtual = tipo;
+        renderizar();
+      }
+
+      function atualizarPainel() {
+        const total = tarefas.length;
+        const concluidas = tarefas.filter((t) => t.concluida).length;
+
+        document.getElementById("total").innerText = total;
+        document.getElementById("concluidas").innerText = concluidas;
+        document.getElementById("pendentes").innerText = total - concluidas;
+      }
+
+      // 6. EVENTOS GLOBAIS
+      btnAdd.addEventListener("click", adicionarTarefa);
+
+      input.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") adicionarTarefa();
+      });
+
+      // Inicialização
+      renderizar();
+
+      console.log("ByteClass: Aula 12 carregada com sucesso!");
+    </script>
+  </body>
 </html>

@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 15 - Git Workflow | ByteClass</title>
+    <style>
+      :root {
+        --bg: #0d1117;
+        --card: #161b22;
+        --primary: #238636; /* Verde GitHub */
+        --accent: #58a6ff;
+        --text: #c9d1d9;
+        --border: #30363d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1000px;
+        width: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+      .subtitle {
+        text-align: center;
+        color: #8b949e;
+        margin-bottom: 40px;
+      }
+
+      /* --- VISUALIZAÇÃO DO WORKFLOW --- */
+      .git-workflow {
+        display: flex;
+        justify-content: space-between;
+        background: var(--card);
+        padding: 60px 20px;
+        border-radius: 15px;
+        border: 1px solid var(--border);
+        position: relative;
+        margin-bottom: 40px;
+      }
+
+      .zone {
+        flex: 1;
+        text-align: center;
+        border: 2px dashed var(--border);
+        margin: 0 10px;
+        padding: 20px 10px;
+        border-radius: 10px;
+        position: relative;
+        z-index: 2;
+        background: var(--card);
+      }
+
+      .zone h3 {
+        font-size: 0.8rem;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+
+      .file-icon {
+        width: 40px;
+        height: 50px;
+        background: #f0883e;
+        border-radius: 4px;
+        margin: 10px auto;
+        position: relative;
+        transition: 0.5s;
+        display: none; /* Inicia oculto */
+      }
+
+      .file-icon::after {
+        content: "JS";
+        font-size: 10px;
+        font-weight: bold;
+        color: white;
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+      }
+
+      /* Linhas de Conexão */
+      .arrow {
+        position: absolute;
+        top: 50%;
+        height: 2px;
+        background: var(--border);
+        z-index: 1;
+        transition: 0.3s;
+      }
+
+      /* Botões de Comando */
+      .controls {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 40px;
+      }
+
+      button {
+        padding: 12px 20px;
+        background: #21262d;
+        border: 1px solid var(--border);
+        color: var(--text);
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: monospace;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #30363d;
+        border-color: var(--accent);
+      }
+      button:active {
+        transform: scale(0.95);
+      }
+      .btn-active {
+        background: var(--primary) !important;
+        color: white;
+        border-color: transparent;
+      }
+
+      /* --- EXPLICAÇÃO --- */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .info-card {
+        background: var(--card);
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+
+      .info-card h4 {
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+      .info-card code {
+        background: #000;
+        padding: 2px 5px;
+        color: #ff7b72;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Aula 15: Git & GitHub</h1>
+      <p class="subtitle">Dominando o fluxo de trabalho profissional</p>
+
+      <div class="git-workflow">
+        <div class="zone" id="working-dir">
+          <h3>WORKING DIRECTORY</h3>
+          <div class="file-icon" id="file"></div>
+          <small style="color: #8b949e">Arquivo Editado</small>
+        </div>
+
+        <div class="zone" id="staging-area">
+          <h3>STAGING AREA</h3>
+          <small style="color: #8b949e">Pronto p/ Commit</small>
+        </div>
+
+        <div class="zone" id="local-repo">
+          <h3>LOCAL REPO</h3>
+          <small style="color: #8b949e">Versão Salva (id)</small>
+        </div>
+
+        <div class="zone" id="remote-repo">
+          <h3>REMOTE (GITHUB)</h3>
+          <small style="color: #8b949e">Nuvem / Equipe</small>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button onclick="stepInit()">1. git init</button>
+        <button id="btnAdd" onclick="stepAdd()" disabled>2. git add .</button>
+        <button id="btnCommit" onclick="stepCommit()" disabled>
+          3. git commit -m "..."
+        </button>
+        <button id="btnPush" onclick="stepPush()" disabled>4. git push</button>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h4>O que é o Git?</h4>
+          <p>
+            É o seu seguro de vida. Ele rastreia cada linha de código alterada.
+            Se algo quebrar no <code>learnTECH</code>, você pode voltar para uma
+            versão que funcionava em segundos.
+          </p>
+        </div>
+        <div class="info-card">
+          <h4>GitHub vs Git</h4>
+          <p>
+            <strong>Git</strong> é a ferramenta instalada no seu PC.
+            <strong>GitHub</strong> é a rede social/servidor onde guardamos os
+            repositórios Git para que outros devs acessem.
+          </p>
+        </div>
+        <div class="info-card">
+          <h4>Workflow de Ouro</h4>
+          <p>
+            Sempre faça o ciclo completo: Alterar -> <code>add</code> ->
+            <code>commit</code> -> <code>push</code>. Nunca deixe seu código
+            apenas na sua máquina!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const file = document.getElementById("file");
+      const zones = [
+        "working-dir",
+        "staging-area",
+        "local-repo",
+        "remote-repo",
+      ];
+      let currentStep = 0;
+
+      function stepInit() {
+        file.style.display = "block";
+        file.style.background = "#f0883e"; // Laranja: Sujo
+        document.getElementById("btnAdd").disabled = false;
+        alert("Repositório Iniciado! Arquivo criado no Working Directory.");
+      }
+
+      function stepAdd() {
+        const staging = document.getElementById("staging-area");
+        staging.appendChild(file);
+        file.style.background = "#2ea043"; // Verde: Preparado
+        document.getElementById("btnCommit").disabled = false;
+        console.log("git add: Arquivo movido para a Staging Area.");
+      }
+
+      function stepCommit() {
+        const local = document.getElementById("local-repo");
+        local.appendChild(file);
+        file.style.background = "#58a6ff"; // Azul: Commitado
+        document.getElementById("btnPush").disabled = false;
+        alert("git commit: Foto do código tirada e salva no histórico local!");
+      }
+
+      function stepPush() {
+        const remote = document.getElementById("remote-repo");
+        remote.appendChild(file);
+        file.style.boxShadow = "0 0 20px #58a6ff";
+        alert("git push: Código enviado para o GitHub com sucesso! 🚀");
+      }
+    </script>
+  </body>
+</html>

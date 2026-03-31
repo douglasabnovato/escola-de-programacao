@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass | Sistema CRUD Pro</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* BASE & DESIGN (Aula 24 antecipada) */
+      :root {
+        --primary: #6366f1;
+        --accent: #10b981;
+        --danger: #ef4444;
+        --bg: #0f172a;
+        --glass: rgba(255, 255, 255, 0.05);
+        --text: #f8fafc;
+      }
+
+      body {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: radial-gradient(circle at top right, #1e1b4b, var(--bg));
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 900px;
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      header h1 {
+        font-size: 2.5rem;
+        letter-spacing: -1px;
+        margin-bottom: 10px;
+      }
+      header p {
+        color: #94a3b8;
+      }
+
+      /* FORMULÁRIO (Aula 23 antecipada) */
+      .crud-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        gap: 15px;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 16px;
+        margin-bottom: 30px;
+      }
+
+      input,
+      select {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px 16px;
+        border-radius: 8px;
+        color: white;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+      }
+
+      .btn-add {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0 25px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: 0.3s;
+      }
+
+      .btn-add:hover {
+        background: #4f46e5;
+        transform: translateY(-2px);
+      }
+
+      /* LISTAGEM */
+      .data-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+      }
+
+      .data-table th {
+        text-align: left;
+        padding: 10px 20px;
+        color: #64748b;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+
+      .item-row {
+        background: rgba(255, 255, 255, 0.03);
+        transition: 0.3s;
+      }
+
+      .item-row:hover {
+        background: rgba(255, 255, 255, 0.07);
+        transform: scale(1.01);
+      }
+
+      .item-row td {
+        padding: 20px;
+      }
+      .item-row td:first-child {
+        border-radius: 12px 0 0 12px;
+      }
+      .item-row td:last-child {
+        border-radius: 0 12px 12px 0;
+        text-align: right;
+      }
+
+      .badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: bold;
+      }
+      .badge-frontend {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--accent);
+      }
+      .badge-backend {
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+      }
+
+      .actions button {
+        background: none;
+        border: none;
+        color: #94a3b8;
+        cursor: pointer;
+        margin-left: 10px;
+        font-size: 1.1rem;
+        transition: 0.2s;
+      }
+
+      .actions .edit:hover {
+        color: var(--accent);
+      }
+      .actions .delete:hover {
+        color: var(--danger);
+      }
+
+      /* ANIMAÇÃO DE ENTRADA */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .item-row {
+        animation: fadeIn 0.5s ease forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>ByteClass <span style="color: var(--primary)">CRUD</span></h1>
+        <p>Gestão de Módulos de Treinamento</p>
+      </header>
+
+      <div class="crud-form">
+        <input
+          type="text"
+          id="courseName"
+          placeholder="Nome do Módulo (ex: Hooks no React)"
+        />
+        <select id="courseTrack">
+          <option value="Frontend">Frontend</option>
+          <option value="Backend">Backend</option>
+          <option value="Fullstack">Fullstack</option>
+        </select>
+        <button class="btn-add" onclick="handleAction()" id="mainBtn">
+          <i class="fas fa-plus"></i> Adicionar
+        </button>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Módulo</th>
+            <th>Track</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="dataTableBody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      /* JAVASCRIPT - AULA 22 (O Cérebro) */
+
+      let modules = JSON.parse(localStorage.getItem("byteclass_modules")) || [];
+      let editIndex = null;
+
+      const inputName = document.getElementById("courseName");
+      const inputTrack = document.getElementById("courseTrack");
+      const btnMain = document.getElementById("mainBtn");
+      const tableBody = document.getElementById("dataTableBody");
+
+      // CREATE & UPDATE
+      function handleAction() {
+        const name = inputName.value.trim();
+        const track = inputTrack.value;
+
+        if (!name) return alert("Preencha o nome!");
+
+        if (editIndex !== null) {
+          // Update
+          modules[editIndex] = { name, track };
+          editIndex = null;
+          btnMain.innerHTML = '<i class="fas fa-plus"></i> Adicionar';
+        } else {
+          // Create
+          modules.push({ name, track });
+        }
+
+        saveAndRender();
+        inputName.value = "";
+        inputName.focus();
+      }
+
+      // READ
+      function render() {
+        tableBody.innerHTML = "";
+
+        modules.forEach((mod, index) => {
+          const tr = document.createElement("tr");
+          tr.className = "item-row";
+
+          tr.innerHTML = `
+                    <td><strong>${mod.name}</strong></td>
+                    <td><span class="badge badge-${mod.track.toLowerCase()}">${mod.track}</span></td>
+                    <td class="actions">
+                        <button class="edit" onclick="prepareEdit(${index})"><i class="fas fa-edit"></i></button>
+                        <button class="delete" onclick="deleteItem(${index})"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
+          tableBody.appendChild(tr);
+        });
+      }
+
+      // DELETE
+      function deleteItem(index) {
+        if (confirm("Deseja excluir este módulo?")) {
+          modules.splice(index, 1);
+          saveAndRender();
+        }
+      }
+
+      // PREPARE EDIT (Auxiliar do Update)
+      function prepareEdit(index) {
+        const mod = modules[index];
+        inputName.value = mod.name;
+        inputTrack.value = mod.track;
+        editIndex = index;
+        btnMain.innerHTML = '<i class="fas fa-save"></i> Salvar';
+        inputName.focus();
+      }
+
+      // PERSISTÊNCIA
+      function saveAndRender() {
+        localStorage.setItem("byteclass_modules", JSON.stringify(modules));
+        render();
+      }
+
+      // Início
+      render();
+    </script>
+  </body>
+</html>

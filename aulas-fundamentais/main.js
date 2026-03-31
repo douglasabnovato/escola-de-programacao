@@ -149,158 +149,244 @@ function atualizarInspector(id) {
   // Limpeza inicial para novos carregamentos
   docContent.innerHTML = "";
 
-  switch (id) {
+   switch (id) {
     case 1:
-      metaLevel.innerText = "BASIC";
-      docContent.innerHTML = `
+        metaLevel.innerText = "BASIC / INFRA";
+        docContent.innerHTML = `
             <div class="info-card">
-                <label>SOBRE O REDUCE</label>
-                <p>O método <strong>.reduce()</strong> é fundamental para processar coleções de dados de forma imutável.</p>
-                <p>Neste desafio, ele subtrai fatoriais de um montante inicial de 500k.</p>
-                <hr>
-                <p><small>Dica: Observe como o acumulador preserva o estado entre as iterações.</small></p>
-            </div>
-        `;
-      break;
+                <label>AULA 01: O NASCIMENTO DA WEB</label>
+                <p><strong>Foco:</strong> Entender o caminho do dado desde o clique até a tela.</p>
+                <ul>
+                    <li><strong>Protocolos:</strong> A diferença entre a segurança do HTTPS e o padrão HTTP.</li>
+                    <li><strong>DNS:</strong> O "GPS" que localiza o servidor da <strong>learnTECH</strong>.</li>
+                    <li><strong>Renderização:</strong> Como o browser lê o HTML de cima para baixo.</li>
+                </ul>
+            </div>`;
+        break;
 
     case 2:
-      metaLevel.innerText = "FUNDAMENTAL";
-      docContent.innerHTML = `
+        metaLevel.innerText = "BASIC / SEO";
+        docContent.innerHTML = `
             <div class="info-card">
-                <label>RECURSIVIDADE E GERAÇÃO</label>
-                <p>Aqui evoluímos a lógica: os fatoriais são gerados dinamicamente por uma <strong>função recursiva</strong>.</p>
-                <p>A recursão permite resolver problemas complexos dividindo-os em instâncias menores de si mesmos.</p>
-                <hr>
-                <p><small>Foco: Observe a diferença entre gerar dados (case 2) e consumir dados estáticos (case 1).</small></p>
-            </div>
-        `;
-      break;
+                <label>AULA 02: SEMÂNTICA E ACESSIBILIDADE</label>
+                <p><strong>Foco:</strong> Parar de usar <code>&lt;div&gt;</code> para tudo.</p>
+                <p>Ensinamos o aluno que tags como <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code> e <code>&lt;footer&gt;</code> ajudam o Google e leitores de tela.</p>
+            </div>`;
+        break;
 
     case 3:
-      metaLevel.innerText = "FUNDAMENTAL";
-      docContent.innerHTML = `
+        metaLevel.innerText = "BASIC / DESIGN";
+        docContent.innerHTML = `
             <div class="info-card">
-                <label>MANIPULAÇÃO DE ARRAYS</label>
-                <p>Uso avançado de métodos de iteração para transformação de coleções de dados.</p>
-                <p>Foco em como estruturar resultados para exibição posterior.</p>
-            </div>
-        `;
-      break;
+                <label>AULA 03: BOX MODEL NA PRÁTICA</label>
+                <p><strong>Foco:</strong> A anatomia de todo elemento web.</p>
+                <p>Explicamos a diferença crucial entre <strong>Padding</strong> (espaço interno) e <strong>Margin</strong> (espaço externo).</p>
+            </div>`;
+        break;
 
     case 4:
-    case 5:
-      metaLevel.innerText = "INTERMEDIATE";
-      docContent.innerHTML = `
+        metaLevel.innerText = "BASIC / LAYOUT";
+        docContent.innerHTML = `
             <div class="info-card">
-                <label>LÓGICA E ESTRUTURAS</label>
-                <p>Desafios focados em algoritmos de busca e ordenação dentro do ecossistema learnTECH.</p>
-                <p>Introdução a conceitos de performance e eficiência de código.</p>
-            </div>
-        `;
-      break;
+                <label>AULA 04: POSICIONAMENTO E DISPLAYS</label>
+                <p><strong>Foco:</strong> Como os elementos se comportam no fluxo da página.</p>
+                <ul>
+                    <li><strong>Relative vs Absolute:</strong> Criando elementos sobrepostos (ex: badges de alerta).</li>
+                    <li><strong>Fixed:</strong> Menus que não somem no scroll.</li>
+                </ul>
+            </div>`;
+        break;
+
+    case 5:
+        metaLevel.innerText = "BASIC / FLEXBOX";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 05: FLEXBOX - EIXO PRINCIPAL</label>
+                <p><strong>Foco:</strong> Alinhamento horizontal facilitado.</p>
+                <p>Uso de <code>justify-content</code> para distribuir elementos em uma barra de navegação.</p>
+            </div>`;
+        break;
 
     case 6:
-      metaLevel.innerText = "INTERMEDIATE";
-      docContent.innerHTML = `
+        metaLevel.innerText = "BASIC / FLEXBOX";
+        docContent.innerHTML = `
             <div class="info-card">
-                <label>MODELAGEM DE DADOS: LOGÍSTICA</label>
-                <p>Neste desafio, trabalhamos com a estrutura central da <strong>Volta Express</strong>.</p>
-                <p>O objetivo é mapear um array de objetos representando "Mercadorias" e associá-los a "Caminhões" disponíveis, utilizando lógica de filtragem dinâmica.</p>
-                
-                <label class="sub-label">CONCEITOS CHAVE:</label>
-                <ul>
-                    <li><strong>Mapeamento (Map):</strong> Transformação de objetos brutos em instâncias de classe.</li>
-                    <li><strong>Relacionamento:</strong> Vinculação entre IDs de carga e IDs de transporte.</li>
-                    <li><strong>Imutabilidade:</strong> Garantir que a lista original de mercadorias não seja alterada durante o match.</li>
-                </ul>
+                <label>AULA 06: FLEXBOX - EIXO TRANSVERSAL</label>
+                <p><strong>Foco:</strong> Alinhamento vertical e quebra de linha (<code>flex-wrap</code>).</p>
+                <p>Ideal para criar galerias de cards de cursos que se ajustam sozinhos.</p>
+            </div>`;
+        break;
 
-                <hr>
-                <p><small>Dica Pedagógica: Observe como o sistema valida se "tenho mercadoria e quero alugar caminhão" antes de processar o frete.</small></p>
-            </div>
-        `;
-      break;
     case 7:
-    case 8:
-      metaLevel.innerText = "INTERMEDIATE";
-      docContent.innerHTML = `
+        metaLevel.innerText = "FUNDAMENTAL / GRID";
+        docContent.innerHTML = `
             <div class="info-card">
-                <label>OBJETOS E DATA MODELS</label>
-                <p>Trabalhando com estruturas de objetos complexos, simulando dados de <strong>logística e transporte</strong>.</p>
-                <p>Essencial para a integração com a BU de Logística.</p>
-            </div>
-        `;
-      break;
+                <label>AULA 07: CSS GRID LAYOUT</label>
+                <p><strong>Foco:</strong> Planejamento bi-dimensional (Linhas e Colunas).</p>
+                <p>Criação de dashboards complexos usando <code>grid-template-areas</code>.</p>
+            </div>`;
+        break;
+
+    case 8:
+        metaLevel.innerText = "FUNDAMENTAL / RESPONSIVE";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 08: MEDIA QUERIES E MOBILE FIRST</label>
+                <p><strong>Foco:</strong> Adaptabilidade. O site deve carregar bem no celular antes do desktop.</p>
+                <p>Estratégia de <code>min-width</code> para escalar o layout.</p>
+            </div>`;
+        break;
 
     case 9:
-    case 10:
-    case 11:
-    case 12:
-      metaLevel.innerText = "ADVANCED";
-      docContent.innerHTML = `
+        metaLevel.innerText = "FUNDAMENTAL / UI";
+        docContent.innerHTML = `
             <div class="info-card">
-                <label>ESTRUTURAS DE DADOS: MAP</label>
-                <p>Neste desafio, exploramos o objeto <strong>Map</strong> do ES6 para gerenciar permissões de acesso (Roles).</p>
-                <p>Diferente de objetos comuns, o Map preserva a ordem de inserção e oferece melhor performance para grandes volumes de dados.</p>
-                
-                <label class="sub-label">OBJETIVOS TÉCNICOS:</label>
-                <ul>
-                    <li><strong>Iteração:</strong> Utilizar estruturas de repetição para percorrer chaves e valores simultaneamente.</li>
-                    <li><strong>Filtragem Dinâmica:</strong> Identificar usuários com a role 'ADMIN' dentro de um conjunto de dados.</li>
-                    <li><strong>Performance:</strong> Entender por que o Map é a escolha profissional para dicionários de dados.</li>
-                </ul>
+                <label>AULA 09: DESIGN TOKENS (CORES E TIPOS)</label>
+                <p><strong>Foco:</strong> Consistência visual.</p>
+                <p>Uso de unidades relativas (<code>rem</code>) para garantir que o texto escale com a preferência do usuário.</p>
+            </div>`;
+        break;
 
-                <hr>
-                <p><small>Desafio: Como você modificaria o código para retornar um objeto contendo a contagem total de cada role?</small></p>
-            </div>
-        `;
-      break;
+    case 10:
+        metaLevel.innerText = "PROJECT / HTML-CSS";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 10: PROJETO LANDING PAGE</label>
+                <p><strong>Desafio:</strong> Consolidar todo o CSS e HTML aprendido em uma página real de captura de alunos.</p>
+            </div>`;
+        break;
+
+    case 11:
+        metaLevel.innerText = "LOGIC / JS";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 11: VARIÁVEIS E TIPAGEM</label>
+                <p><strong>Foco:</strong> Como o JS armazena dados na memória.</p>
+                <p>A diferença entre <code>let</code> e <code>const</code> e por que nunca usar <code>var</code>.</p>
+            </div>`;
+        break;
+
+    case 12:
+        metaLevel.innerText = "LOGIC / JS";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 12: OPERADORES E ARITMÉTICA</label>
+                <p><strong>Foco:</strong> Cálculos básicos e comparações lógicas (<code>==</code> vs <code>===</code>).</p>
+            </div>`;
+        break;
+
+    case 13:
+        metaLevel.innerText = "LOGIC / JS";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 13: ESTRUTURAS CONDICIONAIS</label>
+                <p><strong>Foco:</strong> Tomada de decisão. "Se o aluno passou, mostre verde; se não, vermelho".</p>
+            </div>`;
+        break;
+
+    case 14:
+        metaLevel.innerText = "LOGIC / JS";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 14: LAÇOS DE REPETIÇÃO</label>
+                <p><strong>Foco:</strong> Automação. Percorrer listas sem repetir código manualmente.</p>
+            </div>`;
+        break;
+
+    case 15:
+        metaLevel.innerText = "LOGIC / JS";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 15: FUNÇÕES E ESCOPO</label>
+                <p><strong>Foco:</strong> Criar ferramentas reutilizáveis. O conceito de "entrada -> processamento -> saída".</p>
+            </div>`;
+        break;
+
+    case 16:
+        metaLevel.innerText = "LOGIC / JS";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 16: ARROW FUNCTIONS</label>
+                <p><strong>Foco:</strong> Sintaxe moderna e simplificada para o dia a dia do desenvolvedor.</p>
+            </div>`;
+        break;
+
+    case 17:
+        metaLevel.innerText = "DOM / INTERACTION";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 17: SELETORES E MANIPULAÇÃO</label>
+                <p><strong>Foco:</strong> Capturar elementos do HTML e alterar seu conteúdo via JS.</p>
+            </div>`;
+        break;
+
+    case 18:
+        metaLevel.innerText = "DOM / EVENTS";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 18: ESCUTADORES DE EVENTOS</label>
+                <p><strong>Foco:</strong> Reagir à interação do usuário (clicks, formulários e teclas).</p>
+            </div>`;
+        break;
+
+    case 19:
+        metaLevel.innerText = "PROJECT / DOM";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 19: HUB DE EXERCÍCIOS</label>
+                <p><strong>Foco:</strong> Criar um dashboard que gerencia o estado da aplicação dinamicamente.</p>
+            </div>`;
+        break;
+
+    case 20:
+        metaLevel.innerText = "API / FETCH";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 20: POKÉDEX E APIs</label>
+                <p><strong>Foco:</strong> Buscar dados em servidores externos e injetar na nossa interface.</p>
+            </div>`;
+        break;
+
+    case 21:
+        metaLevel.innerText = "ASYNC / JS";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 21: ASYNC E AWAIT</label>
+                <p><strong>Foco:</strong> Lidar com o tempo da internet. Aprender a esperar a resposta sem travar o browser.</p>
+            </div>`;
+        break;
+
+    case 22:
+        metaLevel.innerText = "PRO / CRUD";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 22: CRUD - CREATE E READ</label>
+                <p><strong>Foco:</strong> Iniciar um sistema de gestão. Salvar dados em um array e listá-los na tela.</p>
+            </div>`;
+        break;
+
+    case 23:
+        metaLevel.innerText = "PRO / CRUD";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 23: CRUD - UPDATE E DELETE</label>
+                <p><strong>Foco:</strong> Manipular índices de arrays para editar informações existentes ou remover registros.</p>
+            </div>`;
+        break;
+
+    case 24:
+        metaLevel.innerText = "PRO / UX";
+        docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 24: UX E DESIGN NO CRUD</label>
+                <p><strong>Foco:</strong> Dar feedback visual. Mensagens de sucesso, erro e animações de transição.</p>
+            </div>`;
+        break;
 
     default:
-      metaLevel.innerText = "BOOTCAMP";
-      docContent.innerHTML = `
-            <div class="info-card">
-                <label>PROJETO FULLSTACK</label>
-                <p>Desafios finais integrando Frontend, Backend e regras de negócio complexas.</p>
-                <p>Aplicação dos princípios <strong>SOLID e Clean Architecture</strong> aprendidos.</p>
-            </div>
-        `;
-      break;
-    case 18:
-      metaLevel.innerText = "INTERMEDIATE";
-      docContent.innerHTML = `
-            <div class="info-card">
-                <label>LÓGICA DE NÚMEROS PRIMOS</label>
-                <p>Um número primo é aquele divisível apenas por 1 e por ele mesmo.</p>
-                
-                <label class="sub-label">OTIMIZAÇÃO APLICADA:</label>
-                <ul>
-                    <li><strong>Early Exit:</strong> O algoritmo ignora números pares e múltiplos de 3 imediatamente.</li>
-                    <li><strong>Raiz Quadrada:</strong> Testamos divisores apenas até √n, reduzindo drasticamente o número de iterações.</li>
-                </ul>
+        metaLevel.innerText = "PLANNING";
+        docContent.innerHTML = `<p>Conteúdo em fase de planejamento pedagógico.</p>`;
+        break;
+}
 
-                <hr>
-                <p><small>Curiosidade: Números primos são a base da criptografia moderna (RSA).</small></p>
-            </div>
-        `;
-      break;
-    case 19:
-      metaLevel.innerText = "INTERMEDIATE";
-      docContent.innerHTML = `
-            <div class="info-card">
-                <label>LÓGICA DE MÚLTIPLOS (3 OU 5)</label>
-                <p>Este desafio foca em três níveis de maturidade de código:</p>
-                
-                <label class="sub-label">EVOLUÇÃO DO CÓDIGO:</label>
-                <ul>
-                    <li><strong>A) Funcional:</strong> Resolve o problema central de soma.</li>
-                    <li><strong>B) Modular:</strong> Separa a regra de negócio (verificação) da lógica de repetição.</li>
-                    <li><strong>C) Estado:</strong> Armazena os dados processados em uma estrutura de lista (Array).</li>
-                </ul>
-
-                <hr>
-                <p><small>Reflexão: Por que é melhor ter uma função 'verificarMultiplo' separada em vez de fazer o cálculo direto no loop?</small></p>
-            </div>
-        `;
-      break;
-  }
 }

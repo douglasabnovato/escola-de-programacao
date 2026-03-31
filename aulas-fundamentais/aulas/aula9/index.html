@@ -1,11 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script src="index.js"></script>
-</body>
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 09 - Loops Condicionais | ByteClass</title>
+    <style>
+      /* Nexus Design System - Tokyo Night */
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #0f111a;
+        color: #a9b1d6;
+        font-family: "Inter", sans-serif;
+      }
+
+      .loop-card {
+        background: rgba(26, 27, 38, 0.9);
+        padding: 30px;
+        border-radius: 12px;
+        border-left: 4px solid #f7768e; /* Rosa Nexus para controle de fluxo */
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #f7768e;
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+      }
+
+      .terminal-mini {
+        background: #16161e;
+        padding: 15px;
+        border-radius: 6px;
+        font-family: "Fira Code", monospace;
+        font-size: 0.85rem;
+        border: 1px solid #24283b;
+        margin-bottom: 20px;
+        min-height: 120px;
+        text-align: left;
+        white-space: pre-wrap;
+      }
+
+      .btn-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      button {
+        background: #2f334d;
+        color: #f7768e;
+        border: 1px solid #f7768e;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #f7768e;
+        color: #0f111a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loop-card">
+      <h1>Controle de Fluxo (While)</h1>
+
+      <div class="terminal-mini" id="terminal-loop">
+        // Aguardando execução...
+      </div>
+
+      <div class="btn-group">
+        <button onclick="executarSoma()">Calcular Soma (1 a 100)</button>
+        <button onclick="iniciarInputLoop()">Iniciar Loop de Input</button>
+      </div>
+    </div>
+
+    <script>
+      const terminal = document.getElementById("terminal-loop");
+
+      // 1. Lógica de Soma (Loop Determinístico)
+      function executarSoma() {
+        let soma = 0;
+        let num = 1;
+        terminal.innerHTML = "Calculando...\n";
+
+        while (num <= 100) {
+          soma += num;
+          num++;
+        }
+
+        terminal.innerHTML += `> Resultado da soma: ${soma}`;
+        console.log(`[SOMA] Resultado Final: ${soma}`);
+      }
+
+      // 2. Loop de Interação (Loop Indeterminístico)
+      function iniciarInputLoop() {
+        let digitar = "";
+        terminal.innerHTML = "Loop ativo: Verifique o prompt do navegador.\n";
+
+        console.log("[SISTEMA] Iniciando loop de entrada do usuário.");
+
+        // Loop While baseado em condição externa
+        while (digitar.toLowerCase() !== "sair") {
+          digitar = prompt("Digite algo (ou 'sair' para encerrar):");
+
+          if (digitar === null) break; // Trata o 'Cancelar' do prompt
+
+          if (digitar.toLowerCase() !== "sair") {
+            console.log(`> Usuário digitou: ${digitar}`);
+            terminal.innerHTML += `> Recebido: ${digitar}\n`;
+          }
+        }
+
+        terminal.innerHTML += "\n> Loop encerrado com sucesso!";
+        console.log("[SISTEMA] Loop finalizado pelo comando 'sair'.");
+      }
+    </script>
+  </body>
 </html>
