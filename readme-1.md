@@ -1,6 +1,6 @@
 # 🔍 Escola de Programação
 
-uma escola de formação de programação com visão
+Uma escola de formação de programação e segue o Plano de Conteúdos da nossa formação.
 
 - Básico → Entender o que está acontecendo 
 - Iniciante → Construir coisas reais 
