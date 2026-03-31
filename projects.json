@@ -112,7 +112,7 @@
     "id": 13,
     "title": "Kanban Avançado",
     "description": "Persistência de cards e organização de sprints em modo ágil.",
-    "path": "./13-mini-trello/index.html",
+    "path": "./13-mini-kanban/index.html",
     "category": "Produtividade",
     "icon": "fas fa-layer-group",
     "featured": false
