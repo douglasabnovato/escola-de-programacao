@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 10 - Arquitetura de Calculadoras | ByteClass</title>
+    <style>
+      /* Nexus Design System - Tokyo Night */
+      :root {
+        --bg: #0f111a;
+        --card: #1a1b26;
+        --accent-1: #7aa2f7; /* Funções */
+        --accent-2: #bb9af7; /* Parsing */
+        --accent-3: #ff9e64; /* Estado */
+        --text: #a9b1d6;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .lab-container {
+        width: 100%;
+        max-width: 800px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .vertente-card {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 20px;
+        border-top: 5px solid var(--accent-1);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s;
+      }
+
+      .vertente-card:nth-child(2) {
+        border-color: var(--accent-2);
+      }
+      .vertente-card:nth-child(3) {
+        border-color: var(--accent-3);
+      }
+
+      h2 {
+        font-size: 1.1rem;
+        margin-top: 0;
+      }
+      p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        flex-grow: 1;
+      }
+
+      .btn-explorar {
+        background: transparent;
+        border: 1px solid currentColor;
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 15px;
+      }
+
+      #display-log {
+        grid-column: span 3;
+        background: #16161e;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        font-family: "Fira Code", monospace;
+        border: 1px solid #24283b;
+      }
+
+      .code-highlight {
+        color: #9ece6a;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: #fff; margin-bottom: 30px">
+      Laboratório de Lógica: Calculadora (10/54)
+    </h1>
+
+    <div class="lab-container">
+      <div class="vertente-card" style="color: var(--accent-1)">
+        <h2>1. Motor de Cálculo</h2>
+        <p>
+          Foco na <strong>Matemática Pura</strong>. Separamos as operações em
+          funções minúsculas e independentes (Soma, Subtração...).
+        </p>
+        <button class="btn-explorar" onclick="explicar('motor')">
+          Ver Lógica
+        </button>
+      </div>
+
+      <div class="vertente-card" style="color: var(--accent-2)">
+        <h2>2. Parsing (Tokens)</h2>
+        <p>
+          Foco em <strong>Análise de Texto</strong>. Transformamos a string do
+          visor em dados que o computador entende via Split/Map.
+        </p>
+        <button class="btn-explorar" onclick="explicar('parsing')">
+          Ver Lógica
+        </button>
+      </div>
+
+      <div class="vertente-card" style="color: var(--accent-3)">
+        <h2>3. Máquina de Estado</h2>
+        <p>
+          Foco em <strong>Comportamento</strong>. Como o app "lembra" se você
+          acabou de clicar em um operador ou número.
+        </p>
+        <button class="btn-explorar" onclick="explicar('estado')">
+          Ver Lógica
+        </button>
+      </div>
+
+      <div id="display-log">
+        // Clique em uma vertente para analisar o DNA do código...
+      </div>
+    </div>
+
+    <script>
+      const log = document.getElementById("display-log");
+
+      const explicacoes = {
+        motor: {
+          titulo: "DNA: Funções Atômicas",
+          codigo:
+            "const somar = (a, b) => a + b;\nconst subtrair = (a, b) => a - b;",
+          conceito:
+            "Aqui o aluno aprende que o 'coração' do sistema não deve depender de botões. Se mudarmos o HTML, o cálculo continua funcionando. É a base de Testes Unitários.",
+        },
+        parsing: {
+          titulo: "DNA: Tokenização e Parsing",
+          codigo: "const [n1, n2] = visor.split('+').map(Number);",
+          conceito:
+            "Ensinamos o aluno a quebrar strings. É como um tradutor: pegamos o que o humano escreveu e convertemos em uma estrutura de dados processável.",
+        },
+        estado: {
+          titulo: "DNA: Gerenciamento de Estado",
+          codigo: "let aguardandoOperador = true;\nif(clicouNum) { ... }",
+          conceito:
+            "Focamos na memória do app. Útil para evitar que o usuário digite dois pontos (..) ou dois operadores (++) seguidos. É o embrião do Redux/Pinia.",
+        },
+      };
+
+      function explicar(tipo) {
+        const data = explicacoes[tipo];
+        log.innerHTML = `
+                <h3 style="color: #fff">${data.titulo}</h3>
+                <p>${data.conceito}</p>
+                <div class="code-highlight">
+                    <pre><code>${data.codigo}</code></pre>
+                </div>
+            `;
+        console.log(`[BYTECLASS] Explorando vertente: ${tipo}`);
+      }
+    </script>
+  </body>
+</html>

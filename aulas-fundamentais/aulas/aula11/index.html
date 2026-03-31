@@ -1,19 +1,149 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 11 - DOM & Arrays | ByteClass</title>
+    <style>
+      /* Nexus Design System - Tokyo Night */
+      :root {
+        --bg: #0f111a;
+        --card: #1a1b26;
+        --accent: #9ece6a; /* Verde para criação/adição */
+        --text: #a9b1d6;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+      body {
+        margin: 0;
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
 
-<body>
-    <!--<p id="mensagem">Olá</p>-->
-    <p class="destaque">texto</p>
-    <ul id="lista">
-        <li>item 1</li>
-    </ul>
+      .dom-card {
+        background: var(--card);
+        padding: 30px;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border-top: 4px solid var(--accent);
+      }
 
-    <script src="script.js"></script>
+      .destaque {
+        font-weight: bold;
+        transition: 0.3s;
+        margin-bottom: 20px;
+      }
 
+      #lista-tarefas {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+      }
+
+      #lista-tarefas li {
+        background: #24283b;
+        margin-bottom: 8px;
+        padding: 10px;
+        border-radius: 4px;
+        border-left: 3px solid var(--accent);
+        display: flex;
+        justify-content: space-between;
+        animation: slideIn 0.3s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      input {
+        flex: 1;
+        background: #16161e;
+        border: 1px solid #24283b;
+        color: #fff;
+        padding: 10px;
+        border-radius: 6px;
+      }
+
+      button {
+        background: var(--accent);
+        color: #0f111a;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dom-card">
+      <p class="destaque">Aguardando interação...</p>
+
+      <div class="controls">
+        <input type="text" id="input-tarefa" placeholder="Nova tarefa..." />
+        <button onclick="adicionarTarefa()">Adicionar</button>
+      </div>
+
+      <ul id="lista-tarefas"></ul>
+    </div>
+
+    <script>
+      // 1. MEMÓRIA (O Array que você propôs)
+      let tarefas = ["Estudar JS", "Estudar Métodos"];
+
+      // 2. SELEÇÃO DE ELEMENTOS (querySelector / getElementById)
+      const textoDestaque = document.querySelector(".destaque");
+      const listaUl = document.getElementById("lista-tarefas");
+      const input = document.getElementById("input-tarefa");
+
+      // 3. RENDERIZAÇÃO (Transformar Array em HTML)
+      function renderizarTarefas() {
+        listaUl.innerHTML = ""; // Limpa para não duplicar
+
+        tarefas.forEach((tarefa, index) => {
+          const novoItem = document.createElement("li"); // createElement
+          novoItem.innerText = tarefa;
+
+          // Aplicando estilo via JS como no seu exemplo
+          textoDestaque.innerText = `Você tem ${tarefas.length} tarefas`;
+          textoDestaque.style.color = "#7aa2f7";
+
+          listaUl.appendChild(novoItem); // appendChild
+        });
+      }
+
+      // 4. LÓGICA DE ADIÇÃO (Push)
+      function adicionarTarefa() {
+        const valor = input.value;
+        if (valor.trim() !== "") {
+          tarefas.push(valor); // Método push que você destacou
+          input.value = "";
+          renderizarTarefas();
+          console.log("[SISTEMA] Tarefa adicionada:", valor);
+        }
+      }
+
+      // Inicialização
+      renderizarTarefas();
+    </script>
+  </body>
 </html>

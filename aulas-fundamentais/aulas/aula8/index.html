@@ -1,42 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 08 - CSS Layout Masterclass | ByteClass</title>
+    <style>
+      /* --- DESIGN SYSTEM TOKYO NIGHT (NEXUS) --- */
+      :root {
+        --bg: #0f111a;
+        --card: #1a1b26;
+        --accent: #7aa2f7;
+        --text: #a9b1d6;
+        --header-bg: #414868;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+      body {
+        margin: 0;
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "Inter", Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
 
-<body>
-    <header>
-        <h1>Brasileirão Serie A</h1>
-    </header>
-    <section>
-        <nav>
-            <ul>
-                <li><a href="#times">Times</a></li>
-                <li><a href="#partidas">Partidas</a></li>
-                <li><a href="#classificacao">Classificação</a></li>
-             
-            </ul>
+      .instructor-panel {
+        background: var(--card);
+        padding: 20px;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 900px;
+        margin-bottom: 20px;
+        border: 1px solid #24283b;
+        text-align: center;
+      }
+
+      .mode-selector {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      button {
+        background: #2f334d;
+        color: var(--accent);
+        border: 1px solid var(--accent);
+        padding: 10px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      button.active {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      /* --- ESTILOS DOS DESAFIOS (DINÂMICOS) --- */
+
+      #preview-container {
+        width: 100%;
+        max-width: 900px;
+        background: white; /* Fundo branco para simular site real */
+        color: #333;
+        border-radius: 8px;
+        overflow: hidden;
+        min-height: 500px;
+      }
+
+      /* Estrutura Base do Site de Exemplo */
+      .site-header {
+        background: #666;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      .site-nav {
+        background: #ccc;
+        padding: 20px;
+      }
+      .site-article {
+        background: #f1f1f1;
+        padding: 20px;
+      }
+      .site-footer {
+        background: #777;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        clear: both;
+      }
+
+      /* MODO 1: FLOAT (O Clássico) */
+      .layout-float .site-nav {
+        float: left;
+        width: 30%;
+        height: 300px;
+      }
+      .layout-float .site-article {
+        float: left;
+        width: 70%;
+        height: 300px;
+      }
+      .layout-float section::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* MODO 2: FLEXBOX (O Padrão Atual) */
+      .layout-flex section {
+        display: flex;
+        min-height: 300px;
+      }
+      .layout-flex .site-nav {
+        flex: 1;
+      }
+      .layout-flex .site-article {
+        flex: 3;
+      }
+
+      /* MODO 3: GRID (O Futuro/Complexo) */
+      .layout-grid section {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        min-height: 300px;
+      }
+
+      /* Responsividade */
+      @media (max-width: 600px) {
+        .layout-float .site-nav,
+        .layout-float .site-article,
+        .layout-flex section {
+          flex-direction: column;
+        }
+        .layout-float .site-nav,
+        .layout-float .site-article {
+          width: 100%;
+          height: auto;
+        }
+        .layout-grid section {
+          grid-template-columns: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="instructor-panel">
+      <h2>Aula 08: Desafio de Layout</h2>
+      <p>
+        Selecione a tecnologia de posicionamento para visualizar o
+        comportamento:
+      </p>
+      <div class="mode-selector">
+        <button onclick="changeLayout('float', this)" id="default-btn">
+          CSS Float
+        </button>
+        <button onclick="changeLayout('flex', this)">CSS Flexbox</button>
+        <button onclick="changeLayout('grid', this)">CSS Grid</button>
+      </div>
+    </div>
+
+    <div id="preview-container" class="layout-float">
+      <header class="site-header">
+        <h2>Brasileirão Serie A</h2>
+      </header>
+
+      <section>
+        <nav class="site-nav">
+          <ul style="list-style: none; padding: 0">
+            <li><strong>Times</strong></li>
+            <li><a href="#">Flamengo</a></li>
+            <li><a href="#">Cruzeiro</a></li>
+            <li><a href="#">Palmeiras</a></li>
+          </ul>
         </nav>
-        <article>
-            <h2>Partidas</h2>
-            <h2>Classificação</h2>
-            <ol>
-                <li>Flamengo</li>
-                <li>Cruzeiro</li>
-                <li>Bragantino</li>
-                <li>Palmeiras</li>
-                <li>Bahia</li>
-            </ol>
+
+        <article class="site-article">
+          <h1>Classificação Atual</h1>
+          <ol>
+            <li>Flamengo</li>
+            <li>Cruzeiro</li>
+            <li>Bragantino</li>
+            <li>Palmeiras</li>
+            <li>Bahia</li>
+          </ol>
+          <p>
+            Estude como os elementos se comportam ao mudar o modo de exibição.
+          </p>
         </article>
-        <footer>
-            <p>Este é um site simples que traz algumas informações sobre o campionato brasileiro de futebol, Brasileirão serie A, trazendo algumas notícias sobre os times, partidas e classificação.</p>
-        </footer>
-    </section>
+      </section>
 
-    <main></main>
-</body>
+      <footer class="site-footer">
+        <p>ByteClass - Escola de Programação (Fundamentos 08/54)</p>
+      </footer>
+    </div>
 
+    <script>
+      function changeLayout(mode, btn) {
+        const container = document.getElementById("preview-container");
+
+        // Remove todas as classes de layout
+        container.classList.remove(
+          "layout-float",
+          "layout-flex",
+          "layout-grid",
+        );
+
+        // Adiciona a selecionada
+        container.classList.add("layout-" + mode);
+
+        // Gerencia estado visual dos botões
+        document
+          .querySelectorAll(".mode-selector button")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        console.log(`[NEXUS] Layout alterado para: ${mode.toUpperCase()}`);
+      }
+
+      // Inicia com o botão de float ativo (que é o padrão do HTML acima)
+      document.getElementById("default-btn").classList.add("active");
+    </script>
+  </body>
 </html>
