@@ -149,244 +149,599 @@ function atualizarInspector(id) {
   // Limpeza inicial para novos carregamentos
   docContent.innerHTML = "";
 
-   switch (id) {
+  switch (id) {
     case 1:
-        metaLevel.innerText = "BASIC / INFRA";
-        docContent.innerHTML = `
+      metaLevel.innerText = "BASIC / INFRA";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 01: O NASCIMENTO DA WEB</label>
-                <p><strong>Foco:</strong> Entender o caminho do dado desde o clique até a tela.</p>
+                <label>AULA 01: O NASCIMENTO DA WEB E ARQUITETURA CLIENTE-SERVIDOR</label>
+                <p><strong>Foco do Instrutor:</strong> Desmistificar a "mágica" da internet. O aluno deve entender que o browser é apenas um tradutor de texto.</p>
+                
+                <label class="sub-label">PILARES TÉCNICOS:</label>
                 <ul>
-                    <li><strong>Protocolos:</strong> A diferença entre a segurança do HTTPS e o padrão HTTP.</li>
-                    <li><strong>DNS:</strong> O "GPS" que localiza o servidor da <strong>learnTECH</strong>.</li>
-                    <li><strong>Renderização:</strong> Como o browser lê o HTML de cima para baixo.</li>
+                    <li><strong>Protocolos (HTTP/S):</strong> A conversa entre cliente e servidor. Explique que o 'S' é o aperto de mão criptografado que protege os dados da <strong>Volta Express</strong>.</li>
+                    <li><strong>DNS (O Catálogo):</strong> Como o IP <code>192.0.2.1</code> vira <code>learntech.com.br</code>.</li>
+                    <li><strong>Ciclo de Request/Response:</strong> O caminho do dado desde o clique no botão até a renderização do HTML.</li>
                 </ul>
+
+                <label class="sub-label">ANALOGIA DE NEGÓCIO:</label>
+                <p>O <strong>Cliente</strong> é o caminhoneiro pedindo carga; o <strong>Servidor</strong> é a central de logística processando o pedido; o <strong>Protocolo</strong> é o rádio comunicador garantindo que ambos falem a mesma língua.</p>
+                
+                <hr>
+                <p><small>💡 Insight: Entender infraestrutura separa o "digitador de código" do "engenheiro de software". Sem entender o ciclo de vida da requisição, o debug se torna impossível.</small></p>
             </div>`;
-        break;
+      break;
 
     case 2:
-        metaLevel.innerText = "BASIC / SEO";
-        docContent.innerHTML = `
+      metaLevel.innerText = "BASIC / SEO";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 02: SEMÂNTICA E ACESSIBILIDADE</label>
-                <p><strong>Foco:</strong> Parar de usar <code>&lt;div&gt;</code> para tudo.</p>
-                <p>Ensinamos o aluno que tags como <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code> e <code>&lt;footer&gt;</code> ajudam o Google e leitores de tela.</p>
+                <label>AULA 02: SEMÂNTICA, ACESSIBILIDADE E SEO</label>
+                <p><strong>Foco do Instrutor:</strong> Parar de usar <code>&lt;div&gt;</code> para tudo. Código limpo é código legível por máquinas e humanos.</p>
+                
+                <label class="sub-label">POR QUE IMPORTA?</label>
+                <ul>
+                    <li><strong>SEO:</strong> Como o Google indexa a <strong>learnTECH</strong>. Tags semânticas são "pistas" para o algoritmo.</li>
+                    <li><strong>Acessibilidade (A11y):</strong> O uso de leitores de tela por deficientes visuais. Um site inacessível é um mercado ignorado.</li>
+                </ul>
+
+                <label class="sub-label">BOAS PRÁTICAS:</label>
+                <p>Substituir o caos de divs por: <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code> e <code>&lt;footer&gt;</code>.</p>
+                
+                <hr>
+                <p><small>🚩 Alerta de Carreira: Desenvolvedores Sêniores são obcecados por semântica. É a base da manutenção de longo prazo em projetos Fullstack.</small></p>
             </div>`;
-        break;
+      break;
 
     case 3:
-        metaLevel.innerText = "BASIC / DESIGN";
-        docContent.innerHTML = `
+      metaLevel.innerText = "BASIC / DESIGN";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 03: BOX MODEL NA PRÁTICA</label>
-                <p><strong>Foco:</strong> A anatomia de todo elemento web.</p>
-                <p>Explicamos a diferença crucial entre <strong>Padding</strong> (espaço interno) e <strong>Margin</strong> (espaço externo).</p>
+                <label>AULA 03: BOX MODEL E A FÍSICA DOS ELEMENTOS</label>
+                <p><strong>Foco do Instrutor:</strong> Todo elemento na web é um retângulo. Entender as camadas desse retângulo é vital para o layout.</p>
+                
+                <label class="sub-label">A ANATOMIA DO BOX:</label>
+                <ul>
+                    <li><strong>Content:</strong> Onde mora o texto ou imagem.</li>
+                    <li><strong>Padding:</strong> O respiro interno (conforto visual).</li>
+                    <li><strong>Border:</strong> A fronteira do elemento.</li>
+                    <li><strong>Margin:</strong> O respeito ao vizinho (espaço externo).</li>
+                </ul>
+
+                <label class="sub-label">DICA DE OURO:</label>
+                <p>Introdução ao <code>box-sizing: border-box;</code>. Explique como isso evita que o elemento "exploda" de tamanho ao adicionar padding, facilitando a vida do dev.</p>
+                
+                <hr>
+                <p><small>📦 Analogia Logística: O <strong>Conteúdo</strong> é a mercadoria; o <strong>Padding</strong> é o plástico bolha; a <strong>Borda</strong> é a caixa de papelão; a <strong>Margem</strong> é a distância entre as caixas no caminhão.</small></p>
             </div>`;
-        break;
+      break;
 
     case 4:
-        metaLevel.innerText = "BASIC / LAYOUT";
-        docContent.innerHTML = `
+      metaLevel.innerText = "BASIC / LAYOUT";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 04: POSICIONAMENTO E DISPLAYS</label>
-                <p><strong>Foco:</strong> Como os elementos se comportam no fluxo da página.</p>
+                <label>AULA 04: POSICIONAMENTO E FLUXO DOCUMENTAL</label>
+                <p><strong>Foco do Instrutor:</strong> Dominar o eixo Z e a quebra do fluxo natural do HTML.</p>
+                
+                <label class="sub-label">ESTRATÉGIAS DE POSIÇÃO:</label>
                 <ul>
-                    <li><strong>Relative vs Absolute:</strong> Criando elementos sobrepostos (ex: badges de alerta).</li>
-                    <li><strong>Fixed:</strong> Menus que não somem no scroll.</li>
+                    <li><strong>Static/Relative:</strong> O comportamento padrão e ajustes finos.</li>
+                    <li><strong>Absolute:</strong> Elementos flutuantes dentro de contextos específicos (ex: ícone de notificação sobre o sino).</li>
+                    <li><strong>Fixed/Sticky:</strong> Criando menus que acompanham o usuário na rolagem da página da <strong>ByteClass</strong>.</li>
                 </ul>
+
+                <label class="sub-label">Z-INDEX:</label>
+                <p>A gestão de camadas. Quem fica em cima de quem? (O conceito de camadas no Photoshop aplicado ao código).</p>
             </div>`;
-        break;
+      break;
 
     case 5:
-        metaLevel.innerText = "BASIC / FLEXBOX";
-        docContent.innerHTML = `
+      metaLevel.innerText = "BASIC / FLEXBOX";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 05: FLEXBOX - EIXO PRINCIPAL</label>
-                <p><strong>Foco:</strong> Alinhamento horizontal facilitado.</p>
-                <p>Uso de <code>justify-content</code> para distribuir elementos em uma barra de navegação.</p>
+                <label>AULA 05: FLEXBOX I - O EIXO PRINCIPAL (MAIN AXIS)</label>
+                <p><strong>Foco do Instrutor:</strong> O fim do <code>float: left</code>. Alinhamento unidimensional moderno.</p>
+                
+                <label class="sub-label">CONCEITOS CHAVE:</label>
+                <ul>
+                    <li><strong>display: flex;</strong> O comando que ativa os superpoderes do container.</li>
+                    <li><strong>justify-content:</strong> Como distribuir o espaço (<code>space-between</code> para menus, <code>center</code> para heros).</li>
+                    <li><strong>flex-direction:</strong> Mudando de linha para coluna instantaneamente.</li>
+                </ul>
+
+                <hr>
+                <p><small>🚀 Desafio Prático: Alinhar os cards de cursos da <strong>learnTECH</strong> em uma linha perfeita que se distribui conforme a largura da tela.</small></p>
             </div>`;
-        break;
+      break;
 
     case 6:
-        metaLevel.innerText = "BASIC / FLEXBOX";
-        docContent.innerHTML = `
+      metaLevel.innerText = "BASIC / FLEXBOX";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 06: FLEXBOX - EIXO TRANSVERSAL</label>
-                <p><strong>Foco:</strong> Alinhamento vertical e quebra de linha (<code>flex-wrap</code>).</p>
-                <p>Ideal para criar galerias de cards de cursos que se ajustam sozinhos.</p>
+                <label>AULA 06: FLEXBOX II - ALINHAMENTO E QUEBRA</label>
+                <p><strong>Foco do Instrutor:</strong> O controle total do espaço transversal e a adaptabilidade de conteúdo.</p>
+                
+                <label class="sub-label">PROPRIEDADES AVANÇADAS:</label>
+                <ul>
+                    <li><strong>align-items:</strong> Alinhamento vertical perfeito (o pesadelo dos devs antigos resolvido).</li>
+                    <li><strong>flex-wrap:</strong> Como fazer os elementos "pularem" para a linha de baixo em vez de esmagarem.</li>
+                    <li><strong>gap:</strong> A forma moderna de criar espaçamento entre itens sem usar margens individuais.</li>
+                </ul>
+                
+                <p><strong>Aplicação:</strong> Ideal para criar a vitrine de caminhões disponíveis na <strong>Volta Express</strong>.</p>
             </div>`;
-        break;
+      break;
 
     case 7:
-        metaLevel.innerText = "FUNDAMENTAL / GRID";
-        docContent.innerHTML = `
+      metaLevel.innerText = "FUNDAMENTAL / GRID";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 07: CSS GRID LAYOUT</label>
-                <p><strong>Foco:</strong> Planejamento bi-dimensional (Linhas e Colunas).</p>
-                <p>Criação de dashboards complexos usando <code>grid-template-areas</code>.</p>
+                <label>AULA 07: CSS GRID LAYOUT - O PODER BI-DIMENSIONAL</label>
+                <p><strong>Foco do Instrutor:</strong> Planejar o esqueleto da página antes de colocar o conteúdo. Linhas e colunas trabalhando juntas.</p>
+                
+                <label class="sub-label">GRID VS FLEX:</label>
+                <p>Enquanto o Flex é para componentes (menus, botões), o Grid é para o <strong>Layout (Dashboard, Estrutura)</strong>.</p>
+
+                <ul>
+                    <li><strong>grid-template-columns:</strong> Definindo as pistas do nosso layout.</li>
+                    <li><strong>grid-template-areas:</strong> Nomeando áreas (header, sidebar, main) para um código extremamente legível.</li>
+                    <li><strong>repeat() & fr:</strong> O uso de unidades fracionárias para layouts fluidos.</li>
+                </ul>
+                
+                <hr>
+                <p><small>🏗️ Projeto: Estruturar o Dashboard administrativo da <strong>ByteClass</strong> usando apenas Grid.</small></p>
             </div>`;
-        break;
+      break;
 
     case 8:
-        metaLevel.innerText = "FUNDAMENTAL / RESPONSIVE";
-        docContent.innerHTML = `
+      metaLevel.innerText = "FUNDAMENTAL / RESPONSIVE";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 08: MEDIA QUERIES E MOBILE FIRST</label>
-                <p><strong>Foco:</strong> Adaptabilidade. O site deve carregar bem no celular antes do desktop.</p>
-                <p>Estratégia de <code>min-width</code> para escalar o layout.</p>
+                <label>AULA 08: RESPONSIVIDADE E A MENTALIDADE MOBILE-FIRST</label>
+                <p><strong>Foco do Instrutor:</strong> O site não é para o seu monitor de 27 polegadas; é para o celular do usuário na rua.</p>
+                
+                <label class="sub-label">ESTRATÉGIAS DE ADAPTAÇÃO:</label>
+                <ul>
+                    <li><strong>Media Queries:</strong> O uso de <code>@media</code> para detectar tamanhos de tela.</li>
+                    <li><strong>Mobile-First:</strong> Escrever o CSS do celular primeiro e escalar para o desktop (economiza 30% de código).</li>
+                    <li><strong>Breakpoints:</strong> Definindo onde o layout "quebra" e se transforma.</li>
+                </ul>
+
+                <hr>
+                <p><small>⚠️ Regra de Negócio: Se o sistema da <strong>Volta Express</strong> não funcionar no celular do motorista no meio da estrada, o sistema falhou.</small></p>
             </div>`;
-        break;
+      break;
 
     case 9:
-        metaLevel.innerText = "FUNDAMENTAL / UI";
-        docContent.innerHTML = `
+      metaLevel.innerText = "FUNDAMENTAL / UI";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 09: DESIGN TOKENS (CORES E TIPOS)</label>
-                <p><strong>Foco:</strong> Consistência visual.</p>
-                <p>Uso de unidades relativas (<code>rem</code>) para garantir que o texto escale com a preferência do usuário.</p>
+                <label>AULA 09: DESIGN TOKENS E SISTEMAS DE CORES</label>
+                <p><strong>Foco do Instrutor:</strong> Parar de usar cores aleatórias. Criar uma identidade visual consistente através de variáveis.</p>
+                
+                <label class="sub-label">IMPLEMENTAÇÃO:</label>
+                <ul>
+                    <li><strong>CSS Variables (:root):</strong> Centralizar cores, fontes e espaçamentos (ex: <code>--accent-color</code>).</li>
+                    <li><strong>Tipografia Escalonável:</strong> Trocar <code>px</code> por <code>rem</code> e <code>em</code> para respeitar as configurações do usuário.</li>
+                    <li><strong>Contraste:</strong> A importância de cores que permitem a leitura sem esforço.</li>
+                </ul>
+
+                <p><strong>Exemplo:</strong> Aplicando a paleta <strong>Tokyo Night</strong> no projeto do aluno.</p>
             </div>`;
-        break;
+      break;
 
     case 10:
-        metaLevel.innerText = "PROJECT / HTML-CSS";
-        docContent.innerHTML = `
+      metaLevel.innerText = "PROJECT / HTML-CSS";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 10: PROJETO LANDING PAGE</label>
-                <p><strong>Desafio:</strong> Consolidar todo o CSS e HTML aprendido em uma página real de captura de alunos.</p>
+                <label>AULA 10: PROJETO FINAL DE MÓDULO - LANDING PAGE PROFISSIONAL</label>
+                <p><strong>O Desafio:</strong> Construir do zero uma página de alta conversão para a <strong>learnTECH</strong>.</p>
+                
+                <label class="sub-label">REQUISITOS DO PROJETO:</label>
+                <ul>
+                    <li>HTML5 Semântico e SEO-friendly.</li>
+                    <li>Layout Grid para estrutura e Flexbox para componentes.</li>
+                    <li>100% Responsivo (Celular, Tablet e Desktop).</li>
+                    <li>Uso de Design Tokens (Variáveis CSS).</li>
+                </ul>
+                
+                <hr>
+                <p><small>🏆 Milestone: Este é o primeiro item real do portfólio do aluno. A qualidade aqui define a entrada dele no mercado.</small></p>
             </div>`;
-        break;
+      break;
 
     case 11:
-        metaLevel.innerText = "LOGIC / JS";
-        docContent.innerHTML = `
+      metaLevel.innerText = "LOGIC / JS";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 11: VARIÁVEIS E TIPAGEM</label>
-                <p><strong>Foco:</strong> Como o JS armazena dados na memória.</p>
-                <p>A diferença entre <code>let</code> e <code>const</code> e por que nunca usar <code>var</code>.</p>
+                <label>AULA 11: ANATOMIA DOS DADOS E GESTÃO DE MEMÓRIA</label>
+                <p><strong>Foco do Instrutor:</strong> O JS não é apenas texto; são espaços na memória do computador. Entender a fundação da linguagem.</p>
+                
+                <label class="sub-label">PILAR TÉCNICO:</label>
+                <ul>
+                    <li><strong>Let vs Const:</strong> A regra de ouro da <strong>learnTECH</strong>: use <code>const</code> por padrão; use <code>let</code> apenas se o valor for mudar. Esqueça que <code>var</code> existe.</li>
+                    <li><strong>Tipagem Dinâmica:</strong> String, Number, Boolean, Null e Undefined.</li>
+                    <li><strong>Naming Conventions:</strong> camelCase e por que nomes de variáveis importam para a manutenção do código.</li>
+                </ul>
+
+                <hr>
+                <p><small>💡 Dica: Mostre que <code>const placaCaminhao = "ABC-1234"</code> é imutável, garantindo segurança no fluxo da <strong>Volta Express</strong>.</small></p>
             </div>`;
-        break;
+      break;
 
     case 12:
-        metaLevel.innerText = "LOGIC / JS";
-        docContent.innerHTML = `
+      metaLevel.innerText = "LOGIC / JS";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 12: OPERADORES E ARITMÉTICA</label>
-                <p><strong>Foco:</strong> Cálculos básicos e comparações lógicas (<code>==</code> vs <code>===</code>).</p>
+                <label>AULA 12: OPERADORES E A LÓGICA DA VERDADE</label>
+                <p><strong>Foco do Instrutor:</strong> Ensinar o computador a processar informações e fazer comparações precisas.</p>
+                
+                <label class="sub-label">CONCEITOS CHAVE:</label>
+                <ul>
+                    <li><strong>Aritmética:</strong> Soma, subtração e o operador de resto (<code>%</code>) para algoritmos de paridade.</li>
+                    <li><strong>Igualdade Estrita (===):</strong> Por que nunca usar <code>==</code> (evitando coerção de tipo implícita).</li>
+                    <li><strong>Operadores Lógicos:</strong> AND (&&), OR (||) e NOT (!).</li>
+                </ul>
+
+                <p><strong>Exemplo:</strong> "O motorista tem CNH <strong>E</strong> o caminhão está disponível?"</p>
             </div>`;
-        break;
+      break;
 
     case 13:
-        metaLevel.innerText = "LOGIC / JS";
-        docContent.innerHTML = `
+      metaLevel.innerText = "LOGIC / JS";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 13: ESTRUTURAS CONDICIONAIS</label>
-                <p><strong>Foco:</strong> Tomada de decisão. "Se o aluno passou, mostre verde; se não, vermelho".</p>
+                <label>AULA 13: TOMADA DE DECISÃO (CONTROL FLOW)</label>
+                <p><strong>Foco do Instrutor:</strong> Criar bifurcações no sistema. O código deve reagir a diferentes estados de negócio.</p>
+                
+                <label class="sub-label">ESTRUTURAS:</label>
+                <ul>
+                    <li><strong>If / Else If / Else:</strong> A base da inteligência do sistema.</li>
+                    <li><strong>Operador Ternário:</strong> Escrevendo condições simples em uma única linha para um código mais limpo.</li>
+                    <li><strong>Switch Case:</strong> Ideal para estados de pedidos (Pendente, Em Trânsito, Entregue).</li>
+                </ul>
+                
+                <hr>
+                <p><small>🛠️ Exercício: Criar um validador de frete que altera o preço baseado no peso da mercadoria.</small></p>
             </div>`;
-        break;
+      break;
 
     case 14:
-        metaLevel.innerText = "LOGIC / JS";
-        docContent.innerHTML = `
+      metaLevel.innerText = "LOGIC / JS";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 14: LAÇOS DE REPETIÇÃO</label>
-                <p><strong>Foco:</strong> Automação. Percorrer listas sem repetir código manualmente.</p>
+                <label>AULA 14: ESTRUTURAS DE REPETIÇÃO E ITERAÇÃO</label>
+                <p><strong>Foco do Instrutor:</strong> Automação de tarefas em massa. Não repetimos código, repetimos lógica.</p>
+                
+                <label class="sub-label">O PODER DO LOOP:</label>
+                <ul>
+                    <li><strong>For Loop:</strong> Controle total sobre o índice e a parada.</li>
+                    <li><strong>While:</strong> Executar enquanto uma condição for verdadeira (ex: processar fila de espera).</li>
+                    <li><strong>Break e Continue:</strong> Como interromper ou pular ciclos de forma inteligente.</li>
+                </ul>
+
+                <p><strong>Contexto:</strong> Percorrer uma lista de 500 entregas na <strong>Volta Express</strong> para encontrar uma específica.</p>
             </div>`;
-        break;
+      break;
 
     case 15:
-        metaLevel.innerText = "LOGIC / JS";
-        docContent.innerHTML = `
+      metaLevel.innerText = "LOGIC / JS";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 15: FUNÇÕES E ESCOPO</label>
-                <p><strong>Foco:</strong> Criar ferramentas reutilizáveis. O conceito de "entrada -> processamento -> saída".</p>
+                <label>AULA 15: FUNÇÕES - A FÁBRICA DE CÓDIGO</label>
+                <p><strong>Foco do Instrutor:</strong> Modularização e DRY (Don't Repeat Yourself). Criar ferramentas reutilizáveis.</p>
+                
+                <label class="sub-label">CONCEITOS CRÍTICOS:</label>
+                <ul>
+                    <li><strong>Parâmetros e Argumentos:</strong> As entradas da nossa fábrica.</li>
+                    <li><strong>Return:</strong> A saída (produto final) da função.</li>
+                    <li><strong>Escopo (Global vs Local):</strong> Onde suas variáveis vivem e onde elas morrem.</li>
+                </ul>
+
+                <hr>
+                <p><small>💡 Insight de Engenharia: Uma função deve fazer apenas <strong>uma coisa</strong> e fazê-la bem. Se sua função tem 100 linhas, ela precisa ser dividida.</small></p>
             </div>`;
-        break;
+      break;
 
     case 16:
-        metaLevel.innerText = "LOGIC / JS";
-        docContent.innerHTML = `
+      metaLevel.innerText = "LOGIC / JS";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 16: ARROW FUNCTIONS</label>
-                <p><strong>Foco:</strong> Sintaxe moderna e simplificada para o dia a dia do desenvolvedor.</p>
+                <label>AULA 16: MODERN JS E ARROW FUNCTIONS</label>
+                <p><strong>Foco do Instrutor:</strong> Sintaxe ES6+. Escrever código moderno, elegante e performático.</p>
+                
+                <label class="sub-label">DIFERENCIAIS:</label>
+                <ul>
+                    <li><strong>Arrow Syntax (=>):</strong> Menos verbosidade e comportamento do <code>this</code> léxico.</li>
+                    <li><strong>Template Literals:</strong> Interpolação de strings com <code>\`\${variável}\`</code> em vez de concatenação com <code>+</code>.</li>
+                    <li><strong>Destructuring:</strong> Extrair dados de objetos e arrays de forma rápida.</li>
+                </ul>
             </div>`;
-        break;
+      break;
 
     case 17:
-        metaLevel.innerText = "DOM / INTERACTION";
-        docContent.innerHTML = `
+      metaLevel.innerText = "DOM / INTERACTION";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 17: SELETORES E MANIPULAÇÃO</label>
-                <p><strong>Foco:</strong> Capturar elementos do HTML e alterar seu conteúdo via JS.</p>
+                <label>AULA 17: MANIPULAÇÃO DO DOM (DOCUMENT OBJECT MODEL)</label>
+                <p><strong>Foco do Instrutor:</strong> A ponte entre o JavaScript e o HTML. Dar vida aos elementos estáticos.</p>
+                
+                <label class="sub-label">DOMINAÇÃO DA TELA:</label>
+                <ul>
+                    <li><strong>QuerySelectors:</strong> A forma moderna de capturar elementos (ID, Class, Atributos).</li>
+                    <li><strong>innerHTML vs textContent:</strong> Segurança e performance ao injetar dados.</li>
+                    <li><strong>Style via JS:</strong> Alterar o CSS dinamicamente (ex: mudar a cor de um status de "Aguardando" para "OK").</li>
+                </ul>
             </div>`;
-        break;
+      break;
 
     case 18:
-        metaLevel.innerText = "DOM / EVENTS";
-        docContent.innerHTML = `
+      metaLevel.innerText = "DOM / EVENTS";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 18: ESCUTADORES DE EVENTOS</label>
-                <p><strong>Foco:</strong> Reagir à interação do usuário (clicks, formulários e teclas).</p>
+                <label>AULA 18: EVENT LISTENERS E INTERATIVIDADE</label>
+                <p><strong>Foco do Instrutor:</strong> Transformar o site em uma aplicação reativa. O sistema deve "ouvir" o usuário.</p>
+                
+                <label class="sub-label">REAÇÃO EM TEMPO REAL:</label>
+                <ul>
+                    <li><strong>Clicks e Submits:</strong> Capturar o envio de formulários de cadastro de alunos.</li>
+                    <li><strong>Keyboard Events:</strong> Atalhos de teclado e busca enquanto digita.</li>
+                    <li><strong>PreventDefault:</strong> Assumir o controle total do comportamento do navegador.</li>
+                </ul>
+                
+                <hr>
+                <p><small>⚡ Projeto: Criar um botão "Calcular Rota" que valida os campos antes de processar.</small></p>
             </div>`;
-        break;
+      break;
 
     case 19:
-        metaLevel.innerText = "PROJECT / DOM";
-        docContent.innerHTML = `
+      metaLevel.innerText = "PROJECT / DOM";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 19: HUB DE EXERCÍCIOS</label>
-                <p><strong>Foco:</strong> Criar um dashboard que gerencia o estado da aplicação dinamicamente.</p>
+                <label>AULA 19: ESTADO DA APLICAÇÃO (HUB DE EXERCÍCIOS)</label>
+                <p><strong>Desafio:</strong> Gerenciar a "verdade" dos dados na interface sem banco de dados (ainda).</p>
+                
+                <label class="sub-label">OBJETIVO PEDAGÓGICO:</label>
+                <p>O aluno deve criar um Dashboard que lista, filtra e remove itens de uma lista em tempo real, manipulando o DOM de forma eficiente.</p>
+                
+                <hr>
+                <p><small>🏆 Milestone: É aqui que o aluno entende como o React/Vue funcionam "por baixo do capô".</small></p>
             </div>`;
-        break;
+      break;
 
     case 20:
-        metaLevel.innerText = "API / FETCH";
-        docContent.innerHTML = `
+      metaLevel.innerText = "API / FETCH";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 20: POKÉDEX E APIs</label>
-                <p><strong>Foco:</strong> Buscar dados em servidores externos e injetar na nossa interface.</p>
+                <label>AULA 20: CONSUMO DE APIs E INTEGRAÇÃO EXTERNA</label>
+                <p><strong>Foco do Instrutor:</strong> O seu sistema não está sozinho no mundo. Aprender a buscar dados externos.</p>
+                
+                <label class="sub-label">Habilidades:</label>
+                <ul>
+                    <li><strong>Fetch API:</strong> Como fazer requisições HTTP (GET) para servidores.</li>
+                    <li><strong>JSON:</strong> O formato universal de troca de dados na web.</li>
+                    <li><strong>Promises:</strong> Entender que a internet demora e o código precisa saber esperar.</li>
+                </ul>
+
+                <p><strong>Case:</strong> Buscar o endereço pelo CEP automaticamente no cadastro da <strong>Volta Express</strong> usando a ViaCEP.</p>
             </div>`;
-        break;
+      break;
 
     case 21:
-        metaLevel.innerText = "ASYNC / JS";
-        docContent.innerHTML = `
+      metaLevel.innerText = "ASYNC / JS";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 21: ASYNC E AWAIT</label>
-                <p><strong>Foco:</strong> Lidar com o tempo da internet. Aprender a esperar a resposta sem travar o browser.</p>
+                <label>AULA 21: ASYNC / AWAIT - O PADRÃO PROFISSIONAL</label>
+                <p><strong>Foco do Instrutor:</strong> Escrever código assíncrono que parece síncrono. Legibilidade e tratamento de erros.</p>
+                
+                <label class="sub-label">CONTEÚDO:</label>
+                <ul>
+                    <li><strong>Try / Catch:</strong> O que fazer quando a internet cai ou a API falha? Gestão de erros robusta.</li>
+                    <li><strong>Syntactic Sugar:</strong> Migrando de <code>.then()</code> para <code>await</code>.</li>
+                </ul>
+                
+                <hr>
+                <p><small>🚩 Dica de CTO: Um desenvolvedor que não sabe tratar erros em chamadas de API derruba sistemas em produção.</small></p>
             </div>`;
-        break;
+      break;
 
     case 22:
-        metaLevel.innerText = "PRO / CRUD";
-        docContent.innerHTML = `
+      metaLevel.innerText = "PRO / CRUD";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 22: CRUD - CREATE E READ</label>
-                <p><strong>Foco:</strong> Iniciar um sistema de gestão. Salvar dados em um array e listá-los na tela.</p>
+                <label>AULA 22: CRUD I - CREATE E READ (FUNDAÇÃO)</label>
+                <p><strong>Foco do Instrutor:</strong> O coração de 99% das aplicações de mercado. Criar e Listar dados.</p>
+                
+                <label class="sub-label">FLUXO DE DADOS:</label>
+                <ul>
+                    <li><strong>LocalStorage:</strong> Persistindo dados no navegador do aluno para que não sumam no F5.</li>
+                    <li><strong>Data Tables:</strong> Renderizar listas complexas a partir de objetos JS.</li>
+                </ul>
             </div>`;
-        break;
+      break;
 
     case 23:
-        metaLevel.innerText = "PRO / CRUD";
-        docContent.innerHTML = `
+      metaLevel.innerText = "PRO / CRUD";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 23: CRUD - UPDATE E DELETE</label>
-                <p><strong>Foco:</strong> Manipular índices de arrays para editar informações existentes ou remover registros.</p>
+                <label>AULA 23: CRUD II - UPDATE E DELETE (MANUTENÇÃO)</label>
+                <p><strong>Foco do Instrutor:</strong> Manipulação precisa de dados por ID ou Índice.</p>
+                
+                <label class="sub-label">SKILLS:</label>
+                <ul>
+                    <li><strong>Find / FindIndex:</strong> Localizar o item exato para edição.</li>
+                    <li><strong>Splice / Filter:</strong> Remover dados sem quebrar a integridade da lista.</li>
+                    <li><strong>Modais de Confirmação:</strong> "Tem certeza que deseja excluir este aluno?".</li>
+                </ul>
             </div>`;
-        break;
+      break;
 
     case 24:
-        metaLevel.innerText = "PRO / UX";
-        docContent.innerHTML = `
+      metaLevel.innerText = "PRO / UX";
+      docContent.innerHTML = `
             <div class="info-card">
-                <label>AULA 24: UX E DESIGN NO CRUD</label>
-                <p><strong>Foco:</strong> Dar feedback visual. Mensagens de sucesso, erro e animações de transição.</p>
+                <label>AULA 24: UX E FEEDBACK NO GERENCIAMENTO DE DADOS</label>
+                <p><strong>Foco do Instrutor:</strong> O sistema deve ser amigável. Não basta funcionar, tem que ser bom de usar.</p>
+                
+                <label class="sub-label">DIRETRIZES DE UI:</label>
+                <ul>
+                    <li><strong>Toasts/Alertas:</strong> Notificações de "Salvo com sucesso!".</li>
+                    <li><strong>Loading States:</strong> Spinners enquanto a API carrega.</li>
+                    <li><strong>Empty States:</strong> "Nenhum caminhão encontrado" em vez de uma tela em branco.</li>
+                </ul>
+                
+                <hr>
+                <p><small>🏆 Milestone: O aluno agora possui as ferramentas para construir qualquer ferramenta de gestão (ERP/CRM) básica.</small></p>
             </div>`;
-        break;
+      break;
+    case 25:
+      metaLevel.innerText = "FUNDAMENTAL / CLI";
+      docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 25: DOMINANDO O TERMINAL (CLI)</label>
+                <p><strong>Foco do Instrutor:</strong> Perder o medo da "tela preta". O terminal é a ferramenta mais rápida e poderosa do desenvolvedor.</p>
+                <p>Nesta aula, o aluno aprende a interagir diretamente com o <strong>Sistema Operacional (SO)</strong> através da Interface de Linha de Comando (CLI).</p>
+                
+                <label class="sub-label">DIRETRIZES PEDAGÓGICAS:</label>
+                <ul>
+                    <li><strong>PWD:</strong> "Onde eu estou?". A base da navegação em diretórios.</li>
+                    <li><strong>LS (-la):</strong> "O que tem aqui?". Mostre a importância de ver arquivos ocultos (como o .git).</li>
+                    <li><strong>CD (..) :</strong> "Como eu ando?". Navegação relativa e absoluta entre pastas.</li>
+                    <li><strong>MKDIR / TOUCH:</strong> "Como eu crio?". Criando a estrutura de pastas e arquivos sem usar o mouse.</li>
+                </ul>
+                
+                <label class="sub-label">CONTEXTO LOGÍSTICO (Volta Express):</label>
+                <p>Um Sênior de Logística não usa interfaces lentas para gerenciar servidores; ele usa o terminal para mover manifestos de carga e verificar logs de roteamento em segundos.</p>
 
+                <hr>
+                <p><small>💡 Dica do CTO: O ambiente Vanilla acaba aqui. O Terminal é o portal para o mundo profissional (Node.js, Docker e Cloud).</small></p>
+            </div>
+        `;
+      break;
+    case 26:
+      metaLevel.innerText = "INFRA / VERSIONING";
+      docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 26: GIT & GITHUB I - O SNAPSHOT</label>
+                <p><strong>Foco do Instrutor:</strong> Ensinar que o Git é a "Máquina do Tempo" do desenvolvedor. O erro é reversível.</p>
+                
+                <label class="sub-label">A METÁFORA DO CARRINHO:</label>
+                <ul>
+                    <li><strong>Working Dir:</strong> Os produtos na prateleira da loja (Arquivos editados).</li>
+                    <li><strong>Staging Area:</strong> Colocar o produto no carrinho (<code>git add</code>). Você escolhe o que vai levar.</li>
+                    <li><strong>Local Repo:</strong> Passar no caixa e receber o cupom fiscal (<code>git commit</code>). Agora está registrado permanentemente.</li>
+                </ul>
+
+                <label class="sub-label">SKILLS TÉCNICAS:</label>
+                <p>O aluno deve sair da aula sabendo a diferença entre <strong>rastreado</strong> (tracked) e <strong>não rastreado</strong> (untracked).</p>
+                
+                <hr>
+                <p><small>🚩 Alerta Pedagógico: Foque na qualidade das mensagens de commit. "Ajustes" não diz nada. "feat: adiciona calculador de frete na Volta Express" diz tudo.</small></p>
+            </div>
+        `;
+      break;
+    case 27:
+      metaLevel.innerText = "INFRA / CLOUD";
+      docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 27: GIT & GITHUB II - O MUNDO REMOTO</label>
+                <p><strong>Foco do Instrutor:</strong> Transição do Local para o Global. Ensinar a importância do Repositório Remoto.</p>
+                
+                <label class="sub-label">CONCEITOS CRÍTICOS:</label>
+                <ul>
+                    <li><strong>Origin:</strong> O apelido (alias) para o endereço do servidor no GitHub.</li>
+                    <li><strong>Push:</strong> O ato de empurrar suas fotos (commits) para o álbum coletivo na nuvem.</li>
+                    <li><strong>Main/Master:</strong> Entender o conceito de ramificação (branch) principal de produção.</li>
+                </ul>
+
+                <label class="sub-label">VALOR PARA O ALUNO:</label>
+                <p>Mostre que a partir de hoje o trabalho deles está seguro. Se o computador quebrar, o código vive no <strong>learnTECH GitHub</strong>.</p>
+                
+                <hr>
+                <p><small>⚡ Dica de CTO: Explique que o GitHub não é apenas backup, é ferramenta de colaboração (Pull Requests) e portfólio técnico.</small></p>
+            </div>
+        `;
+      break;
+    case 28:
+      metaLevel.innerText = "INFRA / DEPLOY";
+      docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 28: DEPLOY - COLOCANDO O SITE NO AR</label>
+                <p><strong>Foco do Instrutor:</strong> O encerramento do ciclo de publicação. Transformar o código local em um link global compartilhavel.</p>
+                
+                <label class="sub-label">FLUXO DE TRABALHO (CD):</label>
+                <ul>
+                    <li><strong>Continuous Deployment:</strong> Explique que, ao dar <code>git push</code>, o site se atualiza sozinho.</li>
+                    <li><strong>Netlify/Vercel:</strong> Por que usamos essas ferramentas ao invés de servidores manuais neste início? (Facilidade e foco no Front).</li>
+                    <li><strong>Custom Domain:</strong> Introduza brevemente a ideia de domínios (ex: <code>voltaexpress.com.br</code>).</li>
+                </ul>
+
+                <label class="sub-label">A SENSAÇÃO DE "SOU DEV":</label>
+                <p>Este é o momento de pedir para os alunos enviarem o link do projeto no grupo da <strong>ByteClass</strong> e para amigos. A visibilidade é o maior combustível para o aprendizado.</p>
+                
+                <hr>
+                <p><small>⚠️ Importante: Verifique se o arquivo principal se chama <strong>index.html</strong>. Sem isso, o servidor de deploy não saberá qual página carregar primeiro.</small></p>
+            </div>
+        `;
+      break;
+    case 29:
+      metaLevel.innerText = "MANAGEMENT / WORKFLOW";
+      docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 29: GESTÃO DE TAREFAS E KANBAN</label>
+                <p><strong>Foco do Instrutor:</strong> O aluno deve entender que código sem organização gera dívida técnica e estresse.</p>
+                
+                <label class="sub-label">1. O QUE É KANBAN?</label>
+                <p>É um sistema visual para gerenciar trabalho conforme ele avança por um processo. O objetivo é visualizar o <strong>fluxo</strong> e garantir que nada fique "entalado" (Gargalos).</p>
+
+                <label class="sub-label">2. COMO PRIORIZAR? (Matriz de Eisenhower)</label>
+                <ul>
+                    <li><strong>Urgente + Importante:</strong> Crise! (Ex: Login quebrado). Faça agora.</li>
+                    <li><strong>Não Urgente + Importante:</strong> Evolução. (Ex: Refatoração para Clean Code). Agende.</li>
+                    <li><strong>Urgente + Não Importante:</strong> Interrupções. Tente automatizar ou delegar.</li>
+                </ul>
+
+                <label class="sub-label">3. O FLUXO NA PRÁTICA (Life of a Ticket):</label>
+                <ol>
+                    <li><strong>Issue:</strong> O problema é relatado no GitHub.</li>
+                    <li><strong>Label:</strong> Classificamos (bug, feature, refactor).</li>
+                    <li><strong>Sprint:</strong> Movemos para o "To Do" da semana.</li>
+                    <li><strong>Review:</strong> Antes de ir para "Done", alguém revisa o código.</li>
+                </ol>
+
+                <hr>
+                <p><small>💡 Insight de CTO: Na Volta Express, priorizamos o que move a mercadoria. Se o caminhão não sai do lugar por causa de um bug no sistema, essa é a única tarefa que importa hoje.</small></p>
+            </div>
+        `;
+      break;
+    case 30:
+      metaLevel.innerText = "SOFT SKILLS / REVIEW";
+      docContent.innerHTML = `
+            <div class="info-card">
+                <label>AULA 30: CODE REVIEW E FEEDBACK DE CICLO</label>
+                <p><strong>Foco do Instrutor:</strong> Encerramento dos Fundamentos. O objetivo é a <strong>Qualidade</strong> e o <strong>Ego Zero</strong>.</p>
+                
+                <label class="sub-label">O QUE É UM CODE REVIEW?</label>
+                <p>É o processo onde um par revisa seu código em busca de erros, melhorias de performance ou desvios de padrão. Na <strong>Volta Express</strong>, nada vai para o ar sem passar por aqui.</p>
+
+                <label class="sub-label">COMO DAR FEEDBACK (Regra ByteClass):</label>
+                <ul>
+                    <li><strong>Seja Específico:</strong> Não diga "está ruim". Diga "essa variável poderia ser mais clara".</li>
+                    <li><strong>Elogie o Acerto:</strong> Comece destacando o que foi bem feito.</li>
+                    <li><strong>Sugira, não Ordene:</strong> "O que você acha de usar um .map aqui?" em vez de "Troque isso".</li>
+                </ul>
+
+                <label class="sub-label">CHECKLIST DE CONCLUSÃO:</label>
+                <p>O aluno possui: HTML semântico, CSS organizado (Flex/Grid), JS funcional com APIs e deploy ativo no GitHub?</p>
+
+                <hr>
+                <p><small>🏆 Próximo Passo: Preparação para o Módulo INTERMEDIÁRIO (Frameworks e Backend). O aluno agora é oficialmente um Desenvolvedor Jr. em formação.</small></p>
+            </div>
+        `;
+      break;
     default:
-        metaLevel.innerText = "PLANNING";
-        docContent.innerHTML = `<p>Conteúdo em fase de planejamento pedagógico.</p>`;
-        break;
-}
-
+      metaLevel.innerText = "PLANNING";
+      docContent.innerHTML = `<p>Conteúdo em fase de planejamento pedagógico.</p>`;
+      break;
+  }
 }

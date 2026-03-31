@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 26 - Git Fundamentos | ByteClass</title>
+    <style>
+        :root {
+            --bg: #1a1b26;
+            --panel: #24283b;
+            --git-add: #9ece6a;
+            --git-commit: #7aa2f7;
+            --git-working: #f7768e;
+            --text: #a9b1d6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .git-flow {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 30px;
+        }
+
+        .area {
+            flex: 1;
+            background: var(--panel);
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 300px;
+            border: 2px dashed #414868;
+            position: relative;
+        }
+
+        .area h3 {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .file {
+            background: #16161e;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            border-left: 4px solid var(--git-working);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .staged { border-left-color: var(--git-add); }
+        .committed { border-left-color: var(--git-commit); }
+
+        .arrow {
+            display: flex;
+            align-items: center;
+            color: #414868;
+            font-size: 2rem;
+        }
+
+        .command-box {
+            margin-top: 40px;
+            background: #16161e;
+            padding: 20px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid var(--git-commit);
+        }
+
+        code { color: var(--git-add); font-weight: bold; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .label-git {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #565f89;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Git Workflow: O Ciclo de Vida do Arquivo</h2>
+    <p>Simulação visual da trilha <strong>learnTECH</strong></p>
+
+    <div class="git-flow">
+        <div class="area">
+            <h3>Working Directory</h3>
+            <div class="file">index.html (modificado)</div>
+            <div class="file">style.css (novo)</div>
+            <div class="label-git">Arquivos não salvos</div>
+        </div>
+
+        <div class="arrow">➔</div>
+
+        <div class="area" style="border-color: var(--git-add);">
+            <h3>Staging Area</h3>
+            <div class="file staged">index.html</div>
+            <div class="label-git">git add .</div>
+        </div>
+
+        <div class="arrow">➔</div>
+
+        <div class="area" style="border-color: var(--git-commit);">
+            <h3>Local Repo</h3>
+            <div class="file committed">Snapshot: v1.0.0</div>
+            <div class="label-git">git commit -m "..."</div>
+        </div>
+    </div>
+
+    <div class="command-box">
+        <p>💡 <strong>Comandos da Aula:</strong></p>
+        <ul>
+            <li><code>git init</code>: Cria o banco de dados do Git na pasta.</li>
+            <li><code>git status</code>: Verifica em qual área os arquivos estão.</li>
+            <li><code>git add .</code>: Move os arquivos para o palco (Staging).</li>
+            <li><code>git commit -m "mensagem"</code>: Tira a foto oficial do projeto.</li>
+        </ul>
+    </div>
+
+    <script>
+        console.log("⚓ [GIT-SYSTEM] Aula 26 Iniciada.");
+        console.log("Lembre-se: O Git não salva arquivos, ele salva MUDANÇAS.");
+    </script>
+</body>
+</html>

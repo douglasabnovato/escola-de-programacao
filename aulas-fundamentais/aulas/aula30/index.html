@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Aula 30 - Code Review & Feedback | ByteClass</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --added: #2ea043; --removed: #f7768e; --comment: #e0af68;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
+        
+        .pr-header { border-bottom: 1px solid #414868; padding-bottom: 15px; margin-bottom: 20px; }
+        .pr-title { font-size: 1.2rem; color: #fff; display: flex; align-items: center; gap: 10px; }
+        .status-open { background: #238636; color: #fff; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; }
+
+        .diff-container { background: #16161e; border-radius: 6px; overflow: hidden; border: 1px solid #414868; }
+        .diff-header { background: #24283b; padding: 10px; font-family: monospace; font-size: 0.8rem; border-bottom: 1px solid #414868; }
+        
+        .diff-line { font-family: 'Fira Code', monospace; font-size: 0.85rem; padding: 2px 10px; display: flex; }
+        .line-num { width: 30px; color: #565f89; user-select: none; }
+        .line-add { background: rgba(46, 160, 67, 0.15); border-left: 4px solid var(--added); }
+        .line-rem { background: rgba(247, 118, 142, 0.15); border-left: 4px solid var(--removed); }
+
+        .review-bubble {
+            background: #24283b;
+            border: 1px solid var(--comment);
+            border-radius: 8px;
+            margin: 10px 40px;
+            padding: 12px;
+            font-size: 0.8rem;
+            position: relative;
+        }
+        .review-bubble::before {
+            content: "💬"; position: absolute; left: -25px; top: 10px;
+        }
+        .author { font-weight: bold; color: var(--comment); margin-bottom: 5px; display: block; }
+        
+        .btn-merge {
+            margin-top: 20px;
+            background: var(--added);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pr-header">
+        <div class="pr-title">
+            <span class="status-open">Open</span>
+            feat: Refatoração do cálculo de frete #142
+        </div>
+        <p style="font-size: 0.8rem; color: #565f89;">aluno_dev deseja mesclar 5 commits em <code>main</code></p>
+    </div>
+
+    <div class="diff-container">
+        <div class="diff-header">src/logic/frete.js</div>
+        
+        <div class="diff-line line-rem">
+            <span class="line-num">10</span>
+            <span>- var total = preco + 10; // valor fixo</span>
+        </div>
+        <div class="diff-line line-add">
+            <span class="line-num">10</span>
+            <span>+ const total = calcularTaxaLogistica(preco);</span>
+        </div>
+
+        <div class="review-bubble">
+            <span class="author">Instrutor ByteClass:</span>
+            Ótima mudança! Usar <code>const</code> e extrair para uma função segue os princípios de <strong>Clean Code</strong> que vimos na Aula 09. Apenas verifique se a função trata valores nulos.
+        </div>
+
+        <div class="diff-line">
+            <span class="line-num">11</span>
+            <span>  return total;</span>
+        </div>
+    </div>
+
+    <button class="btn-merge">Confirm Merge Request</button>
+
+    <script>
+        document.querySelector('.btn-merge').onclick = () => {
+            alert("🚀 Parabéns! Ciclo 01 Concluído. Código aprovado e em produção!");
+            console.log("🏆 [MILESTONE] Ciclo de Fundamentos Finalizado.");
+        };
+    </script>
+</body>
+</html>
