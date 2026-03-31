@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 18 - JS Assíncrono | ByteClass</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card: #1e293b;
+        --primary: #f59e0b; /* Âmbar para "espera" */
+        --success: #10b981;
+        --error: #ef4444;
+        --text: #f1f5f9;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .simulation-box {
+        background: var(--card);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 20px 0;
+        border: 2px solid #334155;
+        text-align: center;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+        background: #334155;
+      }
+
+      .loader {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #334155;
+        border-top: 5px solid var(--primary);
+        border-radius: 50%;
+        margin: 20px auto;
+        display: none;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .console-mock {
+        background: #000;
+        color: #adbac7;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: "Fira Code", monospace;
+        font-size: 0.85rem;
+        text-align: left;
+        min-height: 150px;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+        margin: 5px;
+      }
+
+      .btn-promise {
+        background: var(--primary);
+        color: #000;
+      }
+      .btn-async {
+        background: var(--success);
+        color: #000;
+      }
+
+      .log-entry {
+        margin-bottom: 5px;
+        border-left: 2px solid #334155;
+        padding-left: 10px;
+      }
+      .log-success {
+        color: var(--success);
+      }
+      .log-error {
+        color: var(--error);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="color: var(--primary)">Aula 18: O Poder do Assíncrono</h1>
+      <p style="text-align: center; color: #94a3b8">
+        Promises, Async e Await na prática.
+      </p>
+
+      <div class="simulation-box">
+        <div id="status" class="status-badge">SISTEMA OCIOSO</div>
+        <div id="loader" class="loader"></div>
+
+        <div>
+          <button class="btn-promise" onclick="testarPromise()">
+            Testar Promise (.then)
+          </button>
+          <button class="btn-async" onclick="testarAsync()">
+            Testar Async/Await
+          </button>
+        </div>
+      </div>
+
+      <div class="console-mock" id="console">
+        <div class="log-entry">> Aguardando comando...</div>
+      </div>
+
+      <div
+        style="
+          margin-top: 30px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+        "
+      >
+        <div style="background: var(--card); padding: 15px; border-radius: 8px">
+          <h4 style="color: var(--primary)">Por que usar?</h4>
+          <p style="font-size: 0.8rem">
+            Para buscar dados de APIs, ler arquivos ou processar pagamentos sem
+            "congelar" a tela do usuário.
+          </p>
+        </div>
+        <div style="background: var(--card); padding: 15px; border-radius: 8px">
+          <h4 style="color: var(--success)">Async/Await</h4>
+          <p style="font-size: 0.8rem">
+            É a forma moderna de escrever Promises. Deixa o código mais limpo e
+            fácil de debugar.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const consoleMock = document.getElementById("console");
+      const loader = document.getElementById("loader");
+      const status = document.getElementById("status");
+
+      function log(msg, type = "") {
+        const div = document.createElement("div");
+        div.className = `log-entry ${type}`;
+        div.innerText = `> ${msg}`;
+        consoleMock.appendChild(div);
+        consoleMock.scrollTop = consoleMock.scrollHeight;
+      }
+
+      // Simulação de busca no Banco de Dados (ex: Volta Express)
+      function buscarProdutoNoBD(nome) {
+        return new Promise((resolve, reject) => {
+          const produtos = ["laranja", "maça", "banana"];
+          setTimeout(() => {
+            if (produtos.includes(nome.toLowerCase())) {
+              resolve(`Sucesso: ${nome} encontrado no estoque!`);
+            } else {
+              reject(`Erro: ${nome} não consta no sistema.`);
+            }
+          }, 2000); // 2 segundos de "latência"
+        });
+      }
+
+      // Exemplo 1: .then() / .catch()
+      function testarPromise() {
+        log("Iniciando busca via .then()...");
+        loader.style.display = "block";
+        status.innerText = "BUSCANDO...";
+        status.style.background = "var(--primary)";
+
+        buscarProdutoNoBD("Maça")
+          .then((res) => {
+            log(res, "log-success");
+          })
+          .catch((err) => {
+            log(err, "log-error");
+          })
+          .finally(() => {
+            loader.style.display = "none";
+            status.innerText = "CONCLUÍDO";
+            status.style.background = "var(--success)";
+          });
+      }
+
+      // Exemplo 2: Async / Await
+      async function testarAsync() {
+        log("Iniciando busca via Async/Await...");
+        loader.style.display = "block";
+        status.innerText = "PROCESSANDO...";
+
+        try {
+          const res = await buscarProdutoNoBD("Uva"); // Vai dar erro proposital
+          log(res, "log-success");
+        } catch (error) {
+          log(error, "log-error");
+        } finally {
+          loader.style.display = "none";
+          status.innerText = "FINALIZADO";
+          status.style.background = "var(--error)";
+        }
+      }
+    </script>
+  </body>
+</html>

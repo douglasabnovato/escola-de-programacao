@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 24 - Domínio CSS no CRUD</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* 🎨 1. TOKENS DE DESIGN (Variáveis) */
+      :root {
+        --primary: #6366f1;
+        --accent: #10b981;
+        --danger: #ef4444;
+        --bg-dark: #0f172a;
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --border-glass: rgba(255, 255, 255, 0.1);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        background: radial-gradient(
+          circle at top right,
+          #1e1b4b,
+          var(--bg-dark)
+        );
+        color: #f8fafc;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+      }
+
+      /* 🧊 2. GLASSMORPHISM (O Container) */
+      .crud-card {
+        width: 100%;
+        max-width: 800px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--border-glass);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        animation: cardEnter 0.8s ease-out;
+      }
+
+      @keyframes cardEnter {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      h1 span {
+        color: var(--primary);
+      }
+
+      /* ⚡ 3. FLEXBOX NO FORMULÁRIO */
+      .input-group {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 40px;
+      }
+
+      input,
+      select {
+        flex: 1;
+        padding: 14px;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--border-glass);
+        color: white;
+        border-radius: 12px;
+        outline: none;
+        transition: var(--transition);
+      }
+
+      input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .btn-add {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0 25px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: var(--transition);
+      }
+
+      .btn-add:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.2);
+        box-shadow: 0 10px 20px -5px var(--primary);
+      }
+
+      /* 📊 4. ESTILIZAÇÃO DE TABELA (Layout) */
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+      th {
+        text-align: left;
+        padding: 10px 20px;
+        color: #64748b;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+
+      .item-row {
+        background: rgba(255, 255, 255, 0.02);
+        transition: var(--transition);
+      }
+
+      .item-row:hover {
+        background: rgba(255, 255, 255, 0.06);
+        transform: translateX(5px);
+      }
+
+      .item-row td {
+        padding: 18px 20px;
+        border-top: 1px solid var(--border-glass);
+        border-bottom: 1px solid var(--border-glass);
+      }
+      .item-row td:first-child {
+        border-left: 1px solid var(--border-glass);
+        border-radius: 12px 0 0 12px;
+      }
+      .item-row td:last-child {
+        border-right: 1px solid var(--border-glass);
+        border-radius: 0 12px 12px 0;
+        text-align: right;
+      }
+
+      /* ✨ 5. BADGES E MICRO-INTERAÇÕES */
+      .badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: bold;
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+      }
+
+      .btn-action {
+        background: none;
+        border: none;
+        color: #64748b;
+        cursor: pointer;
+        margin-left: 10px;
+        font-size: 1rem;
+        transition: 0.2s;
+      }
+
+      .btn-action.delete:hover {
+        color: var(--danger);
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="crud-card">
+      <h1>ByteClass <span>Design</span></h1>
+
+      <div class="input-group">
+        <input type="text" id="courseName" placeholder="Nome do Módulo" />
+        <select id="courseTrack">
+          <option value="Frontend">Frontend</option>
+          <option value="Backend">Backend</option>
+        </select>
+        <button class="btn-add" onclick="addItem()">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Módulo</th>
+            <th>Track</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="dataTableBody"></tbody>
+      </table>
+    </main>
+
+    <script>
+      // Lógica mínima (Aula 22) para demonstrar o CSS em ação
+      const tableBody = document.getElementById("dataTableBody");
+      const inputName = document.getElementById("courseName");
+      const inputTrack = document.getElementById("courseTrack");
+
+      function addItem() {
+        if (!inputName.value) return;
+
+        const tr = document.createElement("tr");
+        tr.className = "item-row";
+
+        tr.innerHTML = `
+                <td><strong>${inputName.value}</strong></td>
+                <td><span class="badge">${inputTrack.value}</span></td>
+                <td>
+                    <button class="btn-action delete" onclick="this.closest('tr').remove()">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+
+        tableBody.appendChild(tr);
+        inputName.value = "";
+      }
+    </script>
+  </body>
+</html>

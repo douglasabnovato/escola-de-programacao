@@ -1,3 +1,0 @@
-- alterar para svg a imagem do boneco
-- alterar plano de fundo do site e conteiner
-- inserir um audio

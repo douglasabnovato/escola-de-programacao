@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 23 - Anatomia do HTML CRUD</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #6366f1;
+        --bg: #0f172a;
+        --html-tag: #f43f5e;
+        --js-action: #10b981;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: #fff;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* ESTILO DE "AULA" - DESTAQUE DE TAGS */
+      .debug-mode .tag-highlight {
+        outline: 2px solid var(--html-tag);
+        position: relative;
+      }
+
+      .debug-mode .tag-highlight::after {
+        content: attr(data-label);
+        position: absolute;
+        top: -20px;
+        left: 0;
+        background: var(--html-tag);
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 4px;
+        z-index: 10;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: var(--primary);
+      }
+
+      /* ESTRUTURA DO FORMULÁRIO (HTML) */
+      .crud-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        gap: 10px;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+      }
+
+      input,
+      select {
+        padding: 12px;
+        background: #1e293b;
+        border: 1px solid #334155;
+        color: white;
+        border-radius: 8px;
+        outline: none;
+      }
+
+      .btn-add {
+        background: var(--primary);
+        border: none;
+        color: white;
+        padding: 0 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      /* TABELA SEMÂNTICA */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        animation: fadeIn 1s ease;
+      }
+
+      th {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 2px solid var(--primary);
+        color: #94a3b8;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+
+      td {
+        padding: 15px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      /* ANIMAÇÕES */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .row-new {
+        animation: highlightRow 1.5s ease;
+      }
+
+      @keyframes highlightRow {
+        0% {
+          background: rgba(16, 185, 129, 0.2);
+        }
+        100% {
+          background: transparent;
+        }
+      }
+
+      .btn-toggle {
+        margin-bottom: 20px;
+        background: var(--html-tag);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body class="debug-mode">
+    <button
+      class="btn-toggle"
+      onclick="document.body.classList.toggle('debug-mode')"
+    >
+      Alternar Visão de Tags (HTML)
+    </button>
+
+    <div class="container tag-highlight" data-label="<main class='container'>">
+      <h1>Aula 23: Estrutura do CRUD</h1>
+
+      <div class="crud-header tag-highlight" data-label="<section id='form'>">
+        <input
+          type="text"
+          id="courseName"
+          placeholder="ID: courseName"
+          class="tag-highlight"
+          data-label="<input id='courseName'>"
+        />
+
+        <select
+          id="courseTrack"
+          class="tag-highlight"
+          data-label="<select id='courseTrack'>"
+        >
+          <option value="Frontend">Frontend</option>
+          <option value="Backend">Backend</option>
+        </select>
+
+        <button
+          class="btn-add tag-highlight"
+          data-label="<button onclick='addItem()'>"
+          onclick="addItem()"
+        >
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+
+      <table class="tag-highlight" data-label="<table>">
+        <thead>
+          <tr class="tag-highlight" data-label="<thead> <tr>">
+            <th>Módulo</th>
+            <th>Track</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody
+          id="dataTableBody"
+          class="tag-highlight"
+          data-label="<tbody id='dataTableBody'>"
+        >
+          <tr>
+            <td
+              colspan="3"
+              style="text-align: center; color: #64748b; padding: 40px"
+            >
+              Aguardando dados para injetar no DOM...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      // Lógica simplificada para focar na estrutura HTML
+      const tableBody = document.getElementById("dataTableBody");
+      const inputName = document.getElementById("courseName");
+      const inputTrack = document.getElementById("courseTrack");
+
+      function addItem() {
+        const name = inputName.value;
+        const track = inputTrack.value;
+
+        if (!name) return alert("O HTML precisa de um valor no input!");
+
+        // Se for a primeira inserção, limpa o "Aguardando dados"
+        if (tableBody.innerText.includes("Aguardando"))
+          tableBody.innerHTML = "";
+
+        // Criando a estrutura HTML via JavaScript
+        const tr = document.createElement("tr");
+        tr.className = "row-new";
+
+        // Aqui explicamos como o HTML dinâmico é construído
+        tr.innerHTML = `
+                <td><strong>${name}</strong></td>
+                <td><span style="color: var(--primary)">${track}</span></td>
+                <td>
+                    <button style="background:none; border:none; color:#ef4444; cursor:pointer;">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+
+        tableBody.appendChild(tr);
+        inputName.value = "";
+        inputName.focus();
+      }
+    </script>
+  </body>
+</html>

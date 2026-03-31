@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 14 - O Garçom da Web (APIs) | ByteClass</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card: #1e293b;
+        --primary: #10b981; /* Verde "Sucesso/API" */
+        --accent: #f59e0b;
+        --text: #f8fafc;
+        --line: #334155;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        width: 100%;
+      }
+
+      h1 {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 30px;
+      }
+
+      /* --- ANIMAÇÃO DO GARÇOM (API) --- */
+      .api-scene {
+        background: var(--card);
+        border-radius: 20px;
+        padding: 50px;
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        border: 2px dashed var(--line);
+      }
+
+      .actor {
+        text-align: center;
+        z-index: 2;
+      }
+
+      .actor-icon {
+        font-size: 4rem;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .actor-label {
+        font-weight: bold;
+        font-size: 0.8rem;
+        color: var(--primary);
+      }
+
+      /* O "Garçom" Animado */
+      .waiter-api {
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        transform: translateY(-50%);
+        font-size: 2.5rem;
+        transition: all 1.5s ease-in-out;
+        opacity: 0;
+        z-index: 3;
+      }
+
+      .tray {
+        font-size: 1.5rem;
+        vertical-align: middle;
+      }
+
+      /* Botão de Teste */
+      .btn-order {
+        display: block;
+        margin: 20px auto;
+        padding: 12px 30px;
+        background: var(--primary);
+        border: none;
+        border-radius: 50px;
+        color: var(--bg);
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn-order:hover {
+        transform: scale(1.05);
+        background: #34d399;
+      }
+
+      /* --- CARDS DE EXPLICAÇÃO --- */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        background: var(--card);
+        padding: 20px;
+        border-radius: 12px;
+        border-bottom: 4px solid var(--primary);
+      }
+
+      .card h3 {
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+      .card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #94a3b8;
+      }
+
+      .method-tag {
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: bold;
+        margin-right: 5px;
+        color: white;
+      }
+      .get {
+        background: #61afef;
+      }
+      .post {
+        background: #98c379;
+      }
+      .put {
+        background: #e5c07b;
+      }
+      .delete {
+        background: #e06c75;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Aula 14: APIs (O Garçom da Web)</h1>
+
+      <div class="api-scene">
+        <div class="actor">
+          <span class="actor-icon">🤵</span>
+          <span class="actor-label">CLIENTE (VOCÊ)</span>
+        </div>
+
+        <div id="waiter" class="waiter-api">
+          🏃💨 <span class="tray">📋</span>
+        </div>
+
+        <div class="actor">
+          <span class="actor-icon">👨‍🍳</span>
+          <span class="actor-label">COZINHA (SERVER)</span>
+        </div>
+      </div>
+
+      <button class="btn-order" onclick="fazerPedido()">
+        Fazer Pedido (GET /mercadorias)
+      </button>
+
+      <div class="grid">
+        <div class="card">
+          <h3>O que é uma API?</h3>
+          <p>
+            É um conjunto de regras que permite que sua aplicação peça dados ao
+            servidor. Na <strong>Volta Express</strong>, o frontend pede a lista
+            de caminhões e a API entrega no formato JSON.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>O Papel do Garçom</h3>
+          <p>
+            O garçom (API) leva o seu pedido (Request) e traz o prato
+            (Response). Se o prato não existe, ele traz um erro
+            <strong>404</strong>. Se a cozinha quebrou, ele traz um
+            <strong>500</strong>.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Verbos Principais</h3>
+          <p><span class="method-tag get">GET</span> Ler dados.</p>
+          <p><span class="method-tag post">POST</span> Criar novo dado.</p>
+          <p><span class="method-tag put">PUT</span> Atualizar dado.</p>
+          <p><span class="method-tag delete">DELETE</span> Deletar dado.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function fazerPedido() {
+        const waiter = document.getElementById("waiter");
+        const btn = document.querySelector(".btn-order");
+
+        btn.disabled = true;
+        btn.innerText = "Processando Request...";
+
+        // Ida do garçom
+        waiter.style.opacity = "1";
+        waiter.style.left = "70%";
+        waiter.innerHTML = "🏃💨 <span class='tray'>📋</span>"; // Levando o pedido
+
+        setTimeout(() => {
+          // Volta do garçom
+          waiter.innerHTML = "🏃💨 <span class='tray'>📦</span>"; // Trazendo o dado (pacote)
+          waiter.style.left = "20%";
+
+          setTimeout(() => {
+            waiter.style.opacity = "0";
+            btn.disabled = false;
+            btn.innerText = "Fazer novo Pedido (GET)";
+            alert(
+              "API RESPONSE: [ {id: 1, carga: 'Café Mió', status: 'Em trânsito'} ]",
+            );
+          }, 1500);
+        }, 1500);
+      }
+    </script>
+  </body>
+</html>

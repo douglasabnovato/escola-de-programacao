@@ -1,132 +1,375 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 19 - Hub de Exercícios | ByteClass</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #3498db;
+        --dark: #2c3e50;
+        --light: #ecf0f1;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exercícios de Fixação</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-<body>
-  <header>
-    <h1 id="titulo">Bem-Vindo!</h1>
-  </header>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f2f5;
+        color: var(--dark);
+        transition: background 0.5s ease;
+      }
 
-  <main>
-    <p id="primeiroParagrafo">Exercícios de Html, Css e Js</p>
+      header {
+        background: linear-gradient(135deg, var(--primary), #8e44ad);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
 
-    <ul class="menu">
-      <li class="li-titulo"><a href="#"><i class="fa-brands fa-html5"></i> HTML</a></li>
-      <li class="li-titulo"><a href="#"><i class="fa-brands fa-css3-alt"></i> CSS</a></li>
-      <li class="li-titulo"><a href="#"><i class="fa-brands fa-js"></i> JS</a></li>
+      .nav-menu {
+        display: flex;
+        justify-content: center;
+        background: white;
+        list-style: none;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .nav-menu li a {
+        display: block;
+        padding: 15px 25px;
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .nav-menu li a:hover {
+        color: var(--primary);
+        background: #f8f9fa;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 0 20px;
+      }
+
+      .section-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+        border-top: 5px solid var(--primary);
+      }
+
+      h2 {
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Estilos de Componentes */
+      .relogio {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        text-align: center;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 8px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+        font-size: 0.9rem;
+      }
+      th {
+        background: var(--primary);
+        color: white;
+      }
+
+      .galeria-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-top: 15px;
+      }
+
+      .galeria-grid img {
+        width: 100%;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .galeria-grid img:hover {
+        transform: scale(1.1);
+      }
+
+      input,
+      button {
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .btn-action {
+        background: var(--primary);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .btn-action:hover {
+        background: #2980b9;
+      }
+
+      /* Footer e Botão Topo */
+      footer {
+        text-align: center;
+        padding: 40px;
+        background: var(--dark);
+        color: white;
+      }
+
+      #btnTopo {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .news-box {
+        border-left: 4px solid var(--warning);
+        padding-left: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 id="titulo">Bem-Vindo!</h1>
+      <p>Dashboard de Exercícios Interativos - Aula 19</p>
+    </header>
+
+    <ul class="nav-menu">
+      <li>
+        <a href="#"><i class="fa-brands fa-html5"></i> HTML</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-brands fa-css3-alt"></i> CSS</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-brands fa-js"></i> JS</a>
+      </li>
     </ul>
 
+    <main>
+      <div class="section-grid">
+        <div class="card">
+          <h2><i class="fa-solid fa-play"></i> Aula Recomendada</h2>
+          <iframe
+            width="100%"
+            height="200"
+            src="https://www.youtube.com/embed/9EO47xna5oU"
+            frameborder="0"
+            allowfullscreen
+            style="border-radius: 8px"
+          ></iframe>
+          <table style="height: auto; margin-top: 15px">
+            <thead>
+              <tr>
+                <th>HTML</th>
+                <th>CSS</th>
+                <th>JS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Forms</td>
+                <td>FlexBox</td>
+                <td>DOM</td>
+              </tr>
+              <tr>
+                <td>Tables</td>
+                <td>Grid</td>
+                <td>Events</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
+        <div class="card">
+          <h2><i class="fa-solid fa-clock"></i> Tempo & Tarefas</h2>
+          <div class="relogio" id="relogio">00:00:00</div>
+          <hr style="margin: 15px 0; opacity: 0.2" />
+          <input type="text" id="novaTarefa" placeholder="Nova tarefa..." />
+          <button class="btn-action" onclick="adicionarTarefa()">
+            Adicionar
+          </button>
+          <ul
+            id="listaDeTarefas"
+            style="list-style: none; padding-top: 10px; font-size: 0.9rem"
+          ></ul>
+        </div>
 
-    <div class="container-flex">
-      <div class="caixa">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/9EO47xna5oU"
-          title="Responsive Website With HTML CSS Bootstrap" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
+        <div class="card">
+          <h2><i class="fa-solid fa-gamepad"></i> Adivinhação</h2>
+          <p style="font-size: 0.8rem; margin-bottom: 10px">
+            Tente acertar o número de 1 a 10:
+          </p>
+          <input type="number" id="palpite" placeholder="Seu palpite" />
+          <button class="btn-action" onclick="verificarPalpite()">
+            Tentar
+          </button>
+          <div id="mensagem" style="font-weight: bold; margin-top: 10px"></div>
+
+          <hr style="margin: 20px 0; opacity: 0.2" />
+          <h2><i class="fa-solid fa-camera"></i> Galeria Improvisada</h2>
+          <div class="galeria-grid">
+            <img
+              src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=200"
+              alt="Code"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1550439062-609e1531270e?w=200"
+              alt="Tech"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=200"
+              alt="Laptop"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200"
+              alt="Dev"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=200"
+              alt="Program"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=200"
+              alt="Matrix"
+            />
+          </div>
+        </div>
       </div>
 
-      <div class="caixa">
-        <a href="form.html">
-          <img src="./img/imagem.jpg" alt="Clique na imagem para ir para o formulário"
-            title="Clique na imagem para ir para o formulário" style="max-width: 100%;">
-        </a>
-      </div>
+      <section class="card news-box">
+        <h2><i class="fa-solid fa-newspaper"></i> Notícias Tech</h2>
+        <article>
+          <h3>Frameworks em 2026: A evolução do aprendizado</h3>
+          <p style="font-size: 0.8rem; color: #666; margin: 5px 0">
+            <i class="fa-solid fa-calendar"></i> Março, 2026 |
+            <i class="fa-solid fa-user"></i> ByteClass Editorial
+          </p>
+          <p>
+            O domínio das bases (HTML/CSS) continua sendo o diferencial entre
+            codificadores e engenheiros de software reais. Dominar o DOM abre
+            portas para React, Vue e o ecossistema learnTECH.
+          </p>
+        </article>
+      </section>
+    </main>
 
-      <div class="caixa">
-        <table>
-          <thead>
-            <tr>
-              <th>HTML</th>
-              <th>CSS</th>
-              <th>JS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Listas</td>
-              <td>FlexBox</td>
-              <td>React</td>
-            </tr>
-            <tr>
-              <td>Forms</td>
-              <td>Grid</td>
-              <td>Next.js</td>
-            </tr>
-            <tr>
-              <td>Tabelas</td>
-              <td>Float</td>
-              <td>Node.js</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <footer>
+      <p>ByteClass School - Prática Aula 19</p>
+      <button id="btnTopo">↑</button>
+    </footer>
 
-    <!-- Seção de Notícia -->
-    <section>
-      <h2><i class="fa-solid fa-newspaper"></i> Últimas Notícias</h2>
-      <article>
-        <h3>HTML e CSS seguem dominando o desenvolvimento web</h3>
-        <p>
-          <i class="fa-solid fa-calendar-days"></i> 30 de setembro de 2025 |
-          <i class="fa-solid fa-user"></i> Mariana Rodrigues |
-          <i class="fa-solid fa-folder-open"></i> Desenvolvimento Web
-        </p>
-        <p>
-          Segundo um relatório recente, HTML e CSS continuam sendo as tecnologias mais ensinadas nas escolas de
-          programação,
-          com JavaScript logo atrás, ganhando força com bibliotecas modernas como React e frameworks como Node.js.
-        </p>
-      </article>
-    </section>
+    <script>
+      // LOGICA DE BOAS-VINDAS
+      window.onload = function () {
+        const nome = prompt("Para personalizar seu Dashboard, qual seu nome?");
+        if (nome)
+          document.getElementById("titulo").textContent = `Olá, ${nome}!`;
+      };
 
-    <section>
-      <h2>Minha Lista de Tarefas</h2>
+      // RELÓGIO
+      setInterval(() => {
+        const agora = new Date();
+        document.getElementById("relogio").textContent =
+          agora.toLocaleTimeString("pt-BR");
+      }, 1000);
 
-      <input type="text" id="novaTarefa" placeholder="Digite uma tarefa">
-      <button class="botao" onclick="adicionarTarefa()">Adicionar</button>
+      // TAREFAS
+      function adicionarTarefa() {
+        const input = document.getElementById("novaTarefa");
+        const lista = document.getElementById("listaDeTarefas");
+        if (input.value.trim()) {
+          const li = document.createElement("li");
+          li.innerHTML = `<i class="fa-solid fa-check" style="color:var(--success)"></i> ${input.value}`;
+          lista.appendChild(li);
+          input.value = "";
+        }
+      }
 
-      <ul id="listaDeTarefas"></ul>
-    </section>
+      // JOGO
+      const numeroSecreto = Math.floor(Math.random() * 10) + 1;
+      function verificarPalpite() {
+        const p = Number(document.getElementById("palpite").value);
+        const m = document.getElementById("mensagem");
+        if (p === numeroSecreto) {
+          m.textContent = "🎉 ACERTOU!";
+          m.style.color = "var(--success)";
+          // Efeito especial: muda cor do fundo
+          document.body.style.backgroundColor = "#d4edda";
+        } else {
+          m.textContent = p < numeroSecreto ? "Mais alto..." : "Mais baixo...";
+          m.style.color = "var(--warning)";
+        }
+      }
 
-    <section>
-      <h2>Meu Relógio Digital</h2>
-
-      <div class="relogio" id="relogio">00:00:00</div>
-    </section>
-
-    <section>
-      <h2>Jogo de Adivinhação</h2>
-
-      <div>
-        <input type="number" id="palpite" placeholder="1 a 10" min="1" max="10" />
-        <button class="botao" onclick="verificarPalpite()">Tentar</button>
-      </div>
-
-      <div id="mensagem"></div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="circulo">
-      <a href="https://marianarodriguess3.github.io/portifolioMarianaRodrigues/">Meu perfil</a>
-    </div>
-
-    <div>
-      <button id="btnTopo" class="circulo">Voltar ao topo ↑</button>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-
+      // BOTÃO TOPO
+      const btnTopo = document.getElementById("btnTopo");
+      window.onscroll = () => {
+        btnTopo.style.display = window.scrollY > 300 ? "block" : "none";
+      };
+      btnTopo.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    </script>
+  </body>
 </html>

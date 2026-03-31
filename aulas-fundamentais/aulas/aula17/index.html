@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 17 - Masterclass de Lógica | ByteClass</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card: #1e293b;
+        --primary: #38bdf8;
+        --accent: #a855f7;
+        --text: #f1f5f9;
+        --code-bg: #000000;
+      }
+
+      body {
+        font-family: "Fira Code", monospace;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+        border-bottom: 1px solid #334155;
+        padding-bottom: 20px;
+      }
+      h1 {
+        color: var(--primary);
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+      }
+
+      .algo-card {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 20px;
+        border: 1px solid #334155;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .algo-card h3 {
+        font-size: 1rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .output {
+        background: var(--code-bg);
+        color: #10b981;
+        padding: 15px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        margin-top: 10px;
+        min-height: 50px;
+        white-space: pre-line;
+        border-left: 3px solid var(--accent);
+      }
+
+      button {
+        background: var(--primary);
+        color: var(--bg);
+        border: none;
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: auto;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      .tag {
+        font-size: 0.7rem;
+        background: #334155;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: var(--primary);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Aula 17: Dashboard de Algoritmos</h1>
+        <p>Clique nos desafios para executar a lógica em tempo real.</p>
+      </header>
+
+      <div class="dashboard">
+        <div class="algo-card">
+          <h3>🔢 Op. Matemáticas <span class="tag">Basic</span></h3>
+          <p style="font-size: 0.8rem">
+            Calcula soma, sub, mult e div de [10, 5].
+          </p>
+          <div id="out-math" class="output">Aguardando...</div>
+          <button onclick="execMath()">Executar</button>
+        </div>
+
+        <div class="algo-card">
+          <h3>⚖️ Par ou Ímpar <span class="tag">Loop</span></h3>
+          <p style="font-size: 0.8rem">Verifica sequência [1, 2, 3, 5].</p>
+          <div id="out-par" class="output">Aguardando...</div>
+          <button onclick="execPar()">Executar</button>
+        </div>
+
+        <div class="algo-card">
+          <h3>✖️ Tabuada 1-10 <span class="tag">Nested Loop</span></h3>
+          <p style="font-size: 0.8rem">Gera tabuada completa aninhada.</p>
+          <div id="out-tabuada" class="output">Aguardando...</div>
+          <button onclick="execTabuada()">Gerar</button>
+        </div>
+
+        <div class="algo-card">
+          <h3>💰 Juros Compostos <span class="tag">Math.pow</span></h3>
+          <p style="font-size: 0.8rem">Simulação de rendimento bancário.</p>
+          <div id="out-juros" class="output">Aguardando...</div>
+          <button onclick="execJuros()">Simular</button>
+        </div>
+
+        <div class="algo-card">
+          <h3>🤖 Robô 5x5 <span class="tag">Matrix</span></h3>
+          <p style="font-size: 0.8rem">Comandos: D, D, B, B, C, E.</p>
+          <div
+            id="out-robo"
+            class="output"
+            style="font-family: monospace; font-size: 0.7rem"
+          >
+            Aguardando...
+          </div>
+          <button onclick="execRobo()">Mover Robô</button>
+        </div>
+
+        <div class="algo-card">
+          <h3>📝 Analisador de Texto <span class="tag">String</span></h3>
+          <p style="font-size: 0.8rem">Conta vogais e caracteres.</p>
+          <div id="out-texto" class="output">Aguardando...</div>
+          <button onclick="execTexto()">Analisar</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // --- FUNÇÕES DE LÓGICA (Baseadas no seu código) ---
+
+      function execMath() {
+        let n = [10, 5];
+        let res = `Soma: ${n[0] + n[1]}\nSub: ${n[0] - n[1]}\nMult: ${n[0] * n[1]}\nDiv: ${n[0] / n[1]}`;
+        document.getElementById("out-math").innerText = res;
+      }
+
+      function execPar() {
+        let n = [1, 2, 3, 5];
+        let res = n
+          .map((x) => `${x}: ${x % 2 === 0 ? "Par" : "Ímpar"}`)
+          .join("\n");
+        document.getElementById("out-par").innerText = res;
+      }
+
+      function execTabuada() {
+        let res = "";
+        for (let i = 1; i <= 3; i++) {
+          // Limitado a 3 para não quebrar o layout
+          res += `Tabuada do ${i}:\n`;
+          for (let j = 1; j <= 5; j++) res += `${i}x${j}=${i * j} `;
+          res += "\n\n";
+        }
+        document.getElementById("out-tabuada").innerText =
+          res + "... (veja console p/ completa)";
+      }
+
+      function execJuros() {
+        const aplicacao = { capital: 1000, taxa: 2, meses: 6 };
+        const montante =
+          aplicacao.capital *
+          Math.pow(1 + aplicacao.taxa / 100, aplicacao.meses);
+        document.getElementById("out-juros").innerText =
+          `Cap: R$1000 | 6 meses | 2%\nMontante Final: R$ ${montante.toFixed(2)}`;
+      }
+
+      function execRobo() {
+        const comandos = [
+          "direita",
+          "direita",
+          "baixo",
+          "baixo",
+          "cima",
+          "esquerda",
+        ];
+        const tamanho = 5;
+        let col = 0,
+          lin = 0;
+
+        comandos.forEach((c) => {
+          if (c === "cima" && lin > 0) lin--;
+          if (c === "baixo" && lin < 4) lin++;
+          if (c === "esquerda" && col > 0) col--;
+          if (c === "direita" && col < 4) col++;
+        });
+
+        let board = "";
+        for (let l = 0; l < 5; l++) {
+          for (let c = 0; c < 5; c++)
+            board += l === lin && c === col ? " 🤖 " : " . ";
+          board += "\n";
+        }
+        document.getElementById("out-robo").innerText =
+          `Posição Final: (${lin},${col})\n\n${board}`;
+      }
+
+      function execTexto() {
+        const t = "Hoje é dia 03 de Setembro, 2025!".toLowerCase();
+        let v = 0,
+          c = 0,
+          d = 0;
+        for (let char of t) {
+          if ("aeiou".includes(char)) v++;
+          else if (char >= "a" && char <= "z") c++;
+          else if (char >= "0" && char <= "9") d++;
+        }
+        document.getElementById("out-texto").innerText =
+          `Vogais: ${v}\nConsoantes: ${c}\nDígitos: ${d}`;
+      }
+    </script>
+  </body>
+</html>
