@@ -1,15 +1,129 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="index.js"></script>
-</head>
+    <title>Aula 27 - Git & GitHub Cloud | ByteClass</title>
+    <style>
+        :root {
+            --bg: #1a1b26;
+            --local: #7aa2f7;
+            --remote: #bb9af7;
+            --success: #9ece6a;
+            --text: #a9b1d6;
+        }
 
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .sync-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            perspective: 1000px;
+        }
+
+        .node {
+            width: 200px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .local { border-color: var(--local); box-shadow: 0 0 15px var(--local); }
+        .remote { border-color: var(--remote); box-shadow: 0 0 15px var(--remote); }
+
+        .connection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .arrow-path {
+            width: 150px;
+            height: 4px;
+            background: #414868;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .data-packet {
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            background: var(--success);
+            left: -30px;
+            animation: pushData 2s infinite ease-in-out;
+        }
+
+        @keyframes pushData {
+            0% { left: -30px; }
+            100% { left: 150px; }
+        }
+
+        .command-log {
+            margin-top: 50px;
+            background: #16161e;
+            padding: 15px;
+            border-radius: 8px;
+            width: 400px;
+            border-left: 4px solid var(--remote);
+        }
+
+        .code-line { color: #cfc9c2; margin: 5px 0; font-size: 0.85rem; }
+        .keyword { color: var(--remote); font-weight: bold; }
+        
+        h1 { font-size: 1.2rem; margin-bottom: 40px; color: #fff; }
+    </style>
+</head>
 <body>
 
-</body>
+    <h1>Git & GitHub: O Salto para a Nuvem</h1>
 
+    <div class="sync-container">
+        <div class="node local">
+            <h3>💻 Local</h3>
+            <p><small>Seu Computador</small></p>
+            <div style="font-size: 0.7rem; color: var(--local);">Commit: #a1b2c3</div>
+        </div>
+
+        <div class="connection">
+            <span style="font-size: 0.7rem;">git push origin main</span>
+            <div class="arrow-path">
+                <div class="data-packet"></div>
+            </div>
+            <span style="font-size: 0.7rem;">Enviando commits...</span>
+        </div>
+
+        <div class="node remote">
+            <h3>☁️ GitHub</h3>
+            <p><small>Servidor Remoto</small></p>
+            <div style="font-size: 0.7rem; color: var(--remote);">Repo: learnTECH</div>
+        </div>
+    </div>
+
+    <div class="command-log">
+        <div class="code-line"><span class="keyword">git remote add</span> origin [URL_GITHUB]</div>
+        <div class="code-line"><span class="keyword">git branch -M</span> main</div>
+        <div class="code-line"><span class="keyword">git push</span> -u origin main</div>
+    </div>
+
+    <script>
+        console.log("🚀 [GITHUB-SYNC] Aula 27: Conexão Remota Estabelecida.");
+        console.log("Dica: O GitHub é o LinkedIn do código. Mantenha seu histórico limpo!");
+    </script>
+</body>
 </html>

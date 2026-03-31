@@ -1,18 +1,135 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Aula 29 - Gestão de Fluxo | ByteClass</title>
+    <style>
+      :root {
+        --bg: #1a1b26;
+        --card-bg: #24283b;
+        --text: #a9b1d6;
+        --high: #f7768e;
+        --medium: #e0af68;
+        --low: #9ece6a;
+        --info: #7aa2f7;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        padding: 20px;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="index.js"></script>
-</head>
+      /* Matriz de Priorização */
+      .priority-matrix {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 30px;
+        background: #16161e;
+        padding: 15px;
+        border-radius: 8px;
+      }
+      .matrix-quadrant {
+        padding: 10px;
+        border: 1px solid #414868;
+        border-radius: 4px;
+        font-size: 0.8rem;
+      }
+      .q-critical {
+        border-left: 4px solid var(--high);
+      }
+      .q-backlog {
+        border-left: 4px solid var(--low);
+      }
 
-<body>
-<h1 id="titulo">Titulo</h1>
-<input type="text" id="novaTarefa">
-<button id="adicionar" onclick="novoTitulo()">Adicionar</button>
-<ul id="lista"></ul>
-</body>
+      /* Kanban */
+      .kanban {
+        display: flex;
+        gap: 15px;
+      }
+      .column {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 8px;
+        padding: 10px;
+        min-height: 300px;
+      }
+      .column-header {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        color: var(--info);
+        font-weight: bold;
+      }
 
+      .card {
+        background: var(--card-bg);
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        border-top: 3px solid #414868;
+      }
+      .priority-tag {
+        font-size: 0.6rem;
+        padding: 2px 5px;
+        border-radius: 3px;
+        float: right;
+      }
+      .p-high {
+        background: var(--high);
+        color: #fff;
+      }
+      .p-low {
+        background: var(--low);
+        color: #1a1b26;
+      }
+    </style>
+  </head>
+  <body>
+    <h3 style="color: #fff">1. Matriz de Priorização (Decisão do PO)</h3>
+    <div class="priority-matrix">
+      <div class="matrix-quadrant q-critical">
+        <strong>Fazer Agora:</strong> Bugs em produção (Volta Express fora do
+        ar).
+      </div>
+      <div class="matrix-quadrant">
+        <strong>Agendar:</strong> Novas features (Dark Mode).
+      </div>
+      <div class="matrix-quadrant">
+        <strong>Delegar:</strong> Atualização de documentação simples.
+      </div>
+      <div class="matrix-quadrant q-backlog">
+        <strong>Eliminar/Backlog:</strong> Ideias sem validação técnica.
+      </div>
+    </div>
+
+    <h3 style="color: #fff">2. Fluxo Kanban (Execução Dev)</h3>
+    <div class="kanban">
+      <div class="column">
+        <div class="column-header">Backlog (To-Do)</div>
+        <div class="card">
+          <span class="priority-tag p-high">CRÍTICO</span>
+          Integrar API de Frete
+        </div>
+      </div>
+      <div class="column">
+        <div class="column-header">In Progress</div>
+        <div class="card" style="border-top-color: var(--medium)">
+          Refatoração de CSS (SOLID)
+        </div>
+      </div>
+      <div class="column">
+        <div class="column-header">Done</div>
+        <div class="card" style="border-top-color: var(--low)">
+          Setup Git Repositories
+        </div>
+      </div>
+    </div>
+
+    <script>
+      console.log("📊 [WORKFLOW] Aula 29: Mentalidade de Gestão aplicada.");
+    </script>
+  </body>
 </html>

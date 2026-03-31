@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 25 - Dominando o Terminal | ByteClass</title>
+    <style>
+        /* NEXUS Design System - Tokyo Night Palette */
+        :root {
+            --bg: #1a1b26;
+            --fg: #a9b1d6;
+            --terminal-bg: #16161e;
+            --prompt: #7aa2f7; /* Azul Nexus */
+            --command: #9ece6a; /* Verde Sucesso */
+            --string: #e0af68;  /* Amarelo Parâmetro */
+            --error: #f7768e;    /* Vermelho Erro */
+            --comment: #565f89;  /* Cinza Comentário */
+            --border: #24283b;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Fira Code', 'Courier New', monospace; /* Fonte Mono obrigatória */
+        }
+
+        .terminal-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--terminal-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        /* Barra de Título Simulação OS */
+        .terminal-header {
+            background-color: #24283b;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+            margin-right: 15px;
+        }
+
+        .btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .close { background-color: #f7768e; }
+        .minimize { background-color: #e0af68; }
+        .maximize { background-color: #9ece6a; }
+
+        .title {
+            color: var(--comment);
+            font-size: 0.8rem;
+            flex-grow: 1;
+            text-align: center;
+            margin-right: 35px; /* Compensar botões */
+        }
+
+        /* Área de Conteúdo do Terminal */
+        .terminal-body {
+            padding: 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .comment { color: var(--comment); }
+        
+        .prompt-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .prompt {
+            color: var(--prompt);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .command { color: var(--command); }
+        .param { color: var(--string); }
+        
+        .output {
+            color: var(--fg);
+            margin-bottom: 15px;
+            opacity: 0.8;
+            white-space: pre; /* Mantém formatação de espaços */
+        }
+
+        .error { color: var(--error); }
+
+        /* Simulação de Cursor Piscando */
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background-color: var(--prompt);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Highlights de Navegação */
+        strong { color: var(--prompt); }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="buttons">
+                <div class="btn close"></div>
+                <div class="btn minimize"></div>
+                <div class="btn maximize"></div>
+            </div>
+            <div class="title">byteclass@volta-express:~</div>
+        </div>
+
+        <div class="terminal-body">
+            <div class="comment"># Aula 25 - Introdução ao Terminal de Comando (CLI)</div>
+            <div class="comment"># Contexto: Startup de Logística Volta Express</div>
+            <br>
+            
+            <div class="prompt-line">
+                <span class="prompt">byteclass@volta-express:~$</span>
+                <span class="command">pwd</span>
+            </div>
+            <div class="output">/home/byteclass/projetos/volta-express</div>
+            
+            <div class="comment"># O comando 'pwd' (Print Working Directory) mostra onde estamos.</div>
+            <br>
+
+            <div class="prompt-line">
+                <span class="prompt">byteclass@volta-express:~$</span>
+                <span class="command">ls</span>
+                <span class="param">-la</span>
+            </div>
+            <div class="output">
+total 24
+drwxr-xr-x  4 byteclass  staff  128 Mar 15 10:30 .
+drwxr-xr-x  3 byteclass  staff   96 Mar 15 10:25 ..
+drwxr-xr-x  8 byteclass  staff  256 Mar 15 10:32 .git
+-rw-r--r--  1 byteclass  staff  1024 Mar 15 10:30 index.html
+-rw-r--r--  1 byteclass  staff   512 Mar 15 10:30 style.css
+drwxr-xr-x  2 byteclass  staff   64 Mar 15 10:29 scripts
+            </div>
+            <div class="comment"># 'ls -la' lista todos os arquivos, incluindo ocultos (.git).</div>
+            <br>
+
+            <div class="prompt-line">
+                <span class="prompt">byteclass@volta-express:~$</span>
+                <span class="command">cd</span>
+                <span class="param">scripts/</span>
+            </div>
+            <br>
+
+            <div class="prompt-line">
+                <span class="prompt">byteclass@volta-express:~/scripts$</span>
+                <span class="command">pwd</span>
+            </div>
+            <div class="output">/home/byteclass/projetos/volta-express/scripts</div>
+            <div class="comment"># 'cd' (Change Directory) mudou nosso prompt.</div>
+            <br>
+
+            <div class="prompt-line">
+                <span class="prompt">byteclass@volta-express:~/scripts$</span>
+                <span class="command">mkdir</span>
+                <span class="param">utils</span>
+            </div>
+            <div class="comment"># 'mkdir' (Make Directory) criou a pasta 'utils'.</div>
+            <br>
+
+            <div class="prompt-line">
+                <span class="prompt">byteclass@volta-express:~/scripts$</span>
+                <span class="command">cd</span>
+                <span class="param">..</span>
+            </div>
+            <div class="comment"># 'cd ..' volta um nível na árvore de diretórios.</div>
+            <br>
+
+            <div class="prompt-line">
+                <span class="prompt">byteclass@volta-express:~$</span>
+                <span class="command">clear</span>
+            </div>
+            <div class="comment"># 'clear' limpa a tela (teste no seu terminal real).</div>
+            <br>
+
+            <div class="prompt-line">
+                <span class="prompt">byteclass@volta-express:~$</span>
+                <span class="cursor"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Log para o terminal integrado do NEXUS
+        console.log("✔️ [SISTEMA] Aula 25 carregada.");
+        console.log("Dica: Esta aula é visual. Abra o terminal do seu computador para praticar.");
+    </script>
+</body>
+</html>
