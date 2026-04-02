@@ -739,9 +739,9 @@ function atualizarInspector(id) {
             </div>
         `;
       break;
-       case 31:
-    metaLevel.innerText = "INTERMEDIÁRIO / DEBUG";
-    docContent.innerHTML = `
+    case 31:
+      metaLevel.innerText = "INTERMEDIÁRIO / DEBUG";
+      docContent.innerHTML = `
         <div class="info-card">
             <label>AULA 31: DEVTOOLS & DEBUGGING AVANÇADO</label>
             <p><strong>Foco do Instrutor:</strong> Transição do <code>console.log</code> para o <strong>Breakpoint</strong> Profissional.</p>
@@ -774,22 +774,24 @@ function atualizarInspector(id) {
         </div>
     `;
 
-    // Função auxiliar injetada para troca de contexto dentro do case
-    window.updateBUContext = () => {
-        const bu = document.getElementById('bu-case-31').value;
-        const desc = document.getElementById('bu-desc');
+      // Função auxiliar injetada para troca de contexto dentro do case
+      window.updateBUContext = () => {
+        const bu = document.getElementById("bu-case-31").value;
+        const desc = document.getElementById("bu-desc");
         const contexts = {
-            volta: "Contexto: Cálculo de Frete e Manifesto de Carga.",
-            medtrem: "Contexto: Gestão de Exames e Taxas de Risco Ocupacional.",
-            nck: "Contexto: Orçamento de Infraestrutura e Horas Cloud."
+          volta: "Contexto: Cálculo de Frete e Manifesto de Carga.",
+          medtrem: "Contexto: Gestão de Exames e Taxas de Risco Ocupacional.",
+          nck: "Contexto: Orçamento de Infraestrutura e Horas Cloud.",
         };
         desc.innerText = contexts[bu];
-        console.log(`[ByteClass] Contexto de Debug alterado para: ${bu.toUpperCase()}`);
-    };
-    break;
+        console.log(
+          `[ByteClass] Contexto de Debug alterado para: ${bu.toUpperCase()}`,
+        );
+      };
+      break;
     case 32:
-    metaLevel.innerText = "INTERMEDIÁRIO / UI-UX";
-    docContent.innerHTML = `
+      metaLevel.innerText = "INTERMEDIÁRIO / UI-UX";
+      docContent.innerHTML = `
         <div class="info-card">
             <label>AULA 32: ANIMAÇÕES CSS I - TRANSIÇÕES E TRANSFORMAÇÕES</label>
             <p><strong>Foco do Instrutor:</strong> Ensinar que o movimento no CSS não é "enfeite", é <strong>feedback de interface</strong>.</p>
@@ -825,7 +827,516 @@ function atualizarInspector(id) {
             <p><small>⚠️ <strong>Ponto de Atenção:</strong> Cuidado com o "enjoo visual". Animações devem ter entre 200ms e 500ms. Mais que isso, o sistema parece lento.</small></p>
         </div>
     `;
-    break;
+      break;
+    case 33:
+      metaLevel.innerText = "INTERMEDIÁRIO / DOM-ANIMATION";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 33: KEYFRAMES E LÓGICA JAVASCRIPT</label>
+            <p><strong>Foco do Instrutor:</strong> Criar coreografias complexas no CSS e dar o "play/pause" via código (Business Logic).</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #73daca; margin: 15px 0;">
+                <label class="sub-label" style="color: #73daca;">🔬 CONCEITOS AVANÇADOS:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>@keyframes:</strong> Definição de estados intermediários (0%, 50%, 100%).</li>
+                    <li><strong>Animation-Play-State:</strong> Controlar <code>running</code> ou <code>paused</code> via JS.</li>
+                    <li><strong>CSS Variables (Runtime):</strong> Alterar a velocidade (<code>duration</code>) dinamicamente com <code>setProperty</code>.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">SINCRONIA COM AS BUS:</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                <div style="background: #24283b; padding: 10px; border-radius: 4px; border: 1px solid #414868;">
+                    <strong style="color: #f7768e;">MedTrem:</strong>
+                    <p style="font-size: 0.75rem; margin: 5px 0;">O ícone de batimento cardíaco acelera se o status do funcionário for alterado para "Emergência".</p>
+                </div>
+                <div style="background: #24283b; padding: 10px; border-radius: 4px; border: 1px solid #414868;">
+                    <strong style="color: #73daca;">NCK Labs:</strong>
+                    <p style="font-size: 0.75rem; margin: 5px 0;">Uma linha de "Scan" atravessa a tela continuamente enquanto o deploy de infraestrutura está ativo.</p>
+                </div>
+            </div>
+
+            <div class="review-bubble" style="background: rgba(115, 218, 202, 0.1); border: 1px solid #73daca; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #73daca; font-weight: bold; font-size: 0.8rem;">🚀 Desafio de Engenharia:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Como sincronizar o tempo de uma animação CSS com o tempo de resposta de uma API da NCK Labs?"</p>
+                <p style="font-size: 0.75rem; color: #565f89;"><em>Resposta: Usar Promises no JS para remover a classe de animação (loading) assim que o <code>resolve</code> for disparado.</em></p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>📌 <strong>Próximo Passo:</strong> Aula 34 - Refatoração e Clean Code. Vamos organizar toda a lógica de animação que criamos para escalar no ecossistema.</small></p>
+        </div>
+    `;
+      break;
+    case 34:
+      metaLevel.innerText = "INTERMEDIÁRIO / CLEAN-CODE";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 34: REFATORAÇÃO E CLEAN CODE APLICADO</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar que código é feito para humanos lerem e máquinas executarem.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #9ece6a; margin: 15px 0;">
+                <label class="sub-label" style="color: #9ece6a;">📜 OS MANDAMENTOS DA AULA:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>DRY (Don't Repeat Yourself):</strong> Se você copiou e colou, está errado.</li>
+                    <li><strong>Nomes Significativos:</strong> <code>const t</code> ❌ vs <code>const totalFrete</code> ✅.</li>
+                    <li><strong>Funções de Responsabilidade Única:</strong> Uma função deve fazer apenas uma coisa e fazê-la bem.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">IMPACTO NO ECOSSISTEMA:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>MedTrem:</strong> Refatorar a lógica de validação de exames para que sirva para qualquer tipo de clínica.<br>
+                <strong>NCK Labs:</strong> Organizar as chamadas de animação que criamos na Aula 33 em uma única Engine de UI.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(158, 206, 106, 0.1); border: 1px solid #9ece6a; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #9ece6a; font-weight: bold; font-size: 0.8rem;">💡 Dica de CTO para Aluno:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Refatoração não é mudar o que o código FAZ, é mudar COMO ele é escrito para que o seu 'eu do futuro' não te odeie daqui a 6 meses."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🏆 <strong>Fim do Bloco 2:</strong> O aluno agora domina o fluxo de trabalho profissional. Próxima parada: <strong>Estrutura de Dados e Algoritmos (Aula 35)</strong>.</small></p>
+        </div>
+    `;
+      break;
+    case 35:
+      metaLevel.innerText = "ALGORITMOS / ESTRUTURA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 35: ARRAYS E MATRIZES (DATA STRUCTURES)</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar como organizar dados de forma linear e multidimensional.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #7aa2f7; margin: 15px 0;">
+                <label class="sub-label" style="color: #7aa2f7;">📊 MAPA MENTAL:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Array (Unidimensional):</strong> Uma lista simples de itens (Ex: Lista de funcionários MedTrem).</li>
+                    <li><strong>Matriz (Multidimensional):</strong> Um Array de Arrays. Ideal para coordenadas, grids e pátios logísticos.</li>
+                    <li><strong>Acesso por Índice:</strong> Por que começamos a contar do <code>[0]</code>? (Offset de Memória).</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">CASOS DE USO NAS BUs:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Mapeamento de vagas no galpão via Matriz <code>[corredor][vaga]</code>.<br>
+                <strong>NCK Labs:</strong> Processamento de pixels em imagens ou buffers de dados em rede.<br>
+                <strong>MedTrem:</strong> Histórico de exames anuais organizados em Arrays temporais.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(122, 162, 247, 0.1); border: 1px solid #7aa2f7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #7aa2f7; font-weight: bold; font-size: 0.8rem;">💡 Desafio de Lógica:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Se a Volta Express tem 5 galpões e cada galpão tem 10 vagas, qual a estrutura de dados ideal?"</p>
+                <p style="font-size: 0.75rem; color: #565f89;"><em>Resposta: Uma matriz <code>galpoes[5][10]</code>.</em></p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🧠 <strong>Próxima Aula:</strong> Objetos e Mapas (Dicionários). Saímos dos índices numéricos para chaves semânticas.</small></p>
+        </div>
+    `;
+      break;
+    case 36:
+      metaLevel.innerText = "ALGORITMOS / ESTRUTURA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 36: OBJETOS E MAPAS (DICTIONARIES)</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar o conceito de Chave-Valor e como ele substitui buscas lentas em Arrays.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #73daca; margin: 15px 0;">
+                <label class="sub-label" style="color: #73daca;">🔑 ESTRUTURAS SEMÂNTICAS:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Objeto Literal:</strong> Perfeito para descrever uma única entidade (Ex: 1 Caminhão da Volta Express).</li>
+                    <li><strong>Map (Dicionário):</strong> Ideal para coleções onde a busca é feita por um identificador único (ID, CPF, Placa).</li>
+                    <li><strong>Performance:</strong> Por que buscar em um Map é <code>O(1)</code> enquanto no Array pode ser <code>O(n)</code>?</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">DOMÍNIO DAS BUS:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>MedTrem:</strong> Dicionário de CIDs ou CPFs para acesso instantâneo aos prontuários.<br>
+                <strong>NCK Labs:</strong> Objetos de configuração para ambientes de Deploy e variáveis de ambiente.<br>
+                <strong>Volta Express:</strong> Mapeamento de Placas de veículos para seus respectivos motoristas.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(115, 218, 202, 0.1); border: 1px solid #73daca; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #73daca; font-weight: bold; font-size: 0.8rem;">🧠 Desafio de Memória:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Para um sistema com 1 milhão de registros, você usaria um Array ou um Map para encontrar um usuário pelo e-mail?"</p>
+                <p style="font-size: 0.75rem; color: #565f89;"><em>O aluno deve concluir que o Map evita o loop por todo o milhão de registros.</em></p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>📌 <strong>Próxima Aula:</strong> Pilhas (Stack) e Filas (Queue). Vamos controlar a ordem de entrada e saída de dados.</small></p>
+        </div>
+    `;
+      break;
+    case 37:
+      metaLevel.innerText = "ALGORITMOS / ESTRUTURA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 37: PILHAS (STACK) E FILAS (QUEUE)</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar as restrições de entrada e saída (LIFO vs FIFO).</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #bb9af7; margin: 15px 0;">
+                <label class="sub-label" style="color: #bb9af7;">📐 REGRAS DE ACESSO:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Stack (Pilha):</strong> <em>Last-In, First-Out</em>. O último a entrar é o primeiro a sair. (Ex: O "Desfazer" do editor).</li>
+                    <li><strong>Queue (Fila):</strong> <em>First-In, First-Out</em>. O primeiro a entrar é o primeiro a sair. (Ex: Impressora ou Fila de Processamento).</li>
+                    <li><strong>Métodos JS:</strong> <code>push/pop</code> para Pilha e <code>push/shift</code> para Fila.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">DOMÍNIO DAS BUS:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Fila de caminhões para pesagem (o primeiro que chega é o primeiro pesado).<br>
+                <strong>MedTrem:</strong> Pilha de prontuários na mesa do médico (o último que chega fica no topo).<br>
+                <strong>NCK Labs:</strong> Fila de execução de Deploys (Pipeline de CI/CD).
+            </p>
+
+            <div class="review-bubble" style="background: rgba(187, 154, 247, 0.1); border: 1px solid #bb9af7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #bb9af7; font-weight: bold; font-size: 0.8rem;">💡 Pergunta Crítica:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Se você remover o primeiro elemento de um Array de 1 milhão de itens (shift), o que acontece com a performance?"</p>
+                <p style="font-size: 0.75rem; color: #565f89;"><em>O aluno deve notar que o JS precisa re-indexar todos os outros 999.999 itens.</em></p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>📌 <strong>Próxima Aula:</strong> Busca Linear e Busca Binária. Como encontrar dados de forma eficiente.</small></p>
+        </div>
+    `;
+      break;
+    case 38:
+      metaLevel.innerText = "ALGORITMOS / PERFORMANCE";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 38: ALGORITMOS DE BUSCA (LINEAR VS BINÁRIA)</label>
+            <p><strong>Foco do Instrutor:</strong> Demonstrar que a organização dos dados (ordenação) permite buscas exponencialmente mais rápidas.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #f7768e; margin: 15px 0;">
+                <label class="sub-label" style="color: #f7768e;">🔍 COMPARAÇÃO TÉCNICA:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Busca Linear:</strong> Verifica item por item. Funciona em listas desordenadas. Complexidade: <code>O(n)</code>.</li>
+                    <li><strong>Busca Binária:</strong> Divide para conquistar. Requer lista <strong>ORDENADA</strong>. Complexidade: <code>O(log n)</code>.</li>
+                    <li><strong>A Regra de Ouro:</strong> Para 1 milhão de itens, a Linear pode levar 1 milhão de passos; a Binária leva apenas 20.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">CENÁRIOS NAS BUSINESS UNITS:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Localizar um caminhão específico pelo ID numa frota de 50.000 veículos ordenados.<br>
+                <strong>MedTrem:</strong> Procurar uma palavra-chave num laudo médico longo (Busca Linear no texto).<br>
+                <strong>NCK Labs:</strong> Otimização de índices de base de dados para consultas de alta performance.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(122, 162, 247, 0.1); border: 1px solid #7aa2f7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #7aa2f7; font-weight: bold; font-size: 0.8rem;">💡 Insight de Arquitetura:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Vale a pena ordenar uma lista só para fazer uma busca? Se fores procurar apenas uma vez, não. Se fores procurar várias vezes, a ordenação paga-se rapidamente."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🚀 <strong>Próxima Aula:</strong> Ordenação I (Bubble Sort). Como colocar os dados em ordem para permitir a Busca Binária.</small></p>
+        </div>
+    `;
+      break;
+    case 39:
+      metaLevel.innerText = "ALGORITMOS / ORDENAÇÃO";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 39: ALGORITMOS DE ORDENAÇÃO I (BUBBLE SORT)</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar a lógica de comparação de pares e a complexidade quadrática.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #bb9af7; margin: 15px 0;">
+                <label class="sub-label" style="color: #bb9af7;">🫧 A LÓGICA DA BOLHA:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Comparação Adjacente:</strong> Verifica <code>arr[j]</code> e <code>arr[j+1]</code>.</li>
+                    <li><strong>Troca (Swap):</strong> Se o da esquerda for maior, eles trocam de lugar.</li>
+                    <li><strong>Complexidade:</strong> <code>O(n²)</code>. É ineficiente para grandes volumes, mas excelente para ensinar o conceito de <em>Nested Loops</em>.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">CENÁRIOS NAS BUSINESS UNITS:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Ordenar uma pequena lista de entregas do dia por prioridade.<br>
+                <strong>MedTrem:</strong> Organizar a fila de espera de uma clínica com apenas 5 pacientes.<br>
+                <strong>NCK Labs:</strong> Entender o "pior cenário" de performance para evitar algoritmos lentos em produção.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(187, 154, 247, 0.1); border: 1px solid #bb9af7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #bb9af7; font-weight: bold; font-size: 0.8rem;">🧠 Reflexão de Engenharia:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Por que o Bubble Sort é considerado lento?"</p>
+                <p style="font-size: 0.75rem; color: #565f89;"><em>Resposta: Porque ele precisa percorrer a lista muitas vezes. Se dobrarmos os itens, o tempo de execução quadruplica.</em></p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>⚡ <strong>Próxima Aula:</strong> Ordenação II (Quick Sort). O algoritmo de "dividir para conquistar" usado em sistemas de alto tráfego.</small></p>
+        </div>
+    `;
+      break;
+    case 40:
+      metaLevel.innerText = "ALGORITMOS / PERFORMANCE";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 40: SORT NATIVO E COMPARADORES</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar o uso profissional do método <code>.sort()</code> e a importância de tratar números vs strings.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #73daca; margin: 15px 0;">
+                <label class="sub-label" style="color: #73daca;">🛠️ O MOTOR DO JAVASCRIPT:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Padrão Alfabético:</strong> Sem comparador, <code>[1, 10, 2]</code> vira <code>[1, 10, 2]</code> (ordem léxica).</li>
+                    <li><strong>Comparador Numérico:</strong> <code>(a, b) => a - b</code> (Crescente) ou <code>b - a</code> (Decrescente).</li>
+                    <li><strong>Strings:</strong> Uso do <code>localeCompare()</code> para tratar acentos e casos especiais.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">CENÁRIOS NAS BUSINESS UNITS:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Ordenar ordens de serviço por prioridade de entrega.<br>
+                <strong>NCK Labs:</strong> Listar logs de servidor do mais recente para o mais antigo.<br>
+                <strong>MedTrem:</strong> Classificar pacientes por nível de risco no dashboard.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(115, 218, 202, 0.1); border: 1px solid #73daca; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #73daca; font-weight: bold; font-size: 0.8rem;">🧠 Dica de Performance:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"O <code>.sort()</code> do JS moderno geralmente usa <strong>Timsort</strong> (estável e rápido). Não tente reescrever isso a menos que tenha um motivo acadêmico."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>⏱️ <strong>Próxima Aula:</strong> Complexidade de Tempo (Big O Notation). Vamos aprender a medir matematicamente o custo do nosso código.</small></p>
+        </div>
+    `;
+      break;
+    case 41:
+      metaLevel.innerText = "ALGORITMOS / TEORIA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 41: BIG O NOTATION (COMPLEXIDADE)</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar o aluno a medir a eficiência do código antes mesmo de executá-lo.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #f7768e; margin: 15px 0;">
+                <label class="sub-label" style="color: #f7768e;">📉 TABELA DE IMPACTO:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>O(1) - Excelente:</strong> Acesso direto (Ex: <code>paciente.nome</code>).</li>
+                    <li><strong>O(log n) - Muito Bom:</strong> Busca Binária.</li>
+                    <li><strong>O(n) - Justo:</strong> Loop simples por um Array.</li>
+                    <li><strong>O(n²) - Ruim:</strong> Loop dentro de Loop (Nested Loops).</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">CENÁRIOS REAIS:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Comparar cada caminhão com todos os outros para otimizar rotas sem filtro prévio é <code>O(n²)</code>. Sistema trava com 1.000 caminhões.<br>
+                <strong>MedTrem:</strong> Buscar um CPF em um <code>Map</code> é <code>O(1)</code>. Instantâneo com 1 milhão de pacientes.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(247, 118, 142, 0.1); border: 1px solid #f7768e; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #f7768e; font-weight: bold; font-size: 0.8rem;">🚨 PENSAMENTO SÊNIOR:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Premature optimization is the root of all evil, mas ignorar o Big O é plantar um bug de performance para o futuro."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🧠 <strong>Próxima Aula:</strong> Recursividade. Quando uma função chama a si mesma para resolver problemas complexos.</small></p>
+        </div>
+    `;
+      break;
+    case 42:
+      metaLevel.innerText = "ALGORITMOS / LÓGICA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 42: RECURSIVIDADE (RECURSION)</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar o aluno a pensar em camadas e a entender a Call Stack (Pilha de Chamadas).</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #bb9af7; margin: 15px 0;">
+                <label class="sub-label" style="color: #bb9af7;">🧠 ANATOMIA RECURSIVA:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Caso Base (Condição de Parada):</strong> Evita o loop infinito e o erro de estouro de pilha.</li>
+                    <li><strong>Passo Recursivo:</strong> A função chama a si mesma com um argumento "menor" ou mais próximo do caso base.</li>
+                    <li><strong>Call Stack:</strong> O navegador empilha cada chamada e só resolve os cálculos de cima para baixo ao atingir o fim.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">CENÁRIOS NAS BUSINESS UNITS:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>NCK Labs:</strong> Percorrer uma árvore de pastas e subpastas para encontrar arquivos de log.<br>
+                <strong>Volta Express:</strong> Calcular o custo de uma rota que possui múltiplas paradas interdependentes.<br>
+                <strong>MedTrem:</strong> Analisar uma árvore genealógica médica para identificar padrões hereditários.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(187, 154, 247, 0.1); border: 1px solid #bb9af7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #bb9af7; font-weight: bold; font-size: 0.8rem;">⚠️ ALERTA DE PERFORMANCE:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"A recursividade é poderosa, mas gasta mais memória (Stack) que um loop <code>while</code>. Use-a quando a estrutura do dado for naturalmente recursiva (como árvores)."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🌳 <strong>Próxima Aula:</strong> Árvores e Grafos. Onde a recursividade brilha de verdade.</small></p>
+        </div>
+    `;
+      break;
+    case 43:
+      metaLevel.innerText = "ALGORITMOS / RESILIÊNCIA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 43: TRATAMENTO DE ERROS PROFISSIONAL</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar que um erro não tratado é uma vulnerabilidade e uma péssima UX.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #f7768e; margin: 15px 0;">
+                <label class="sub-label" style="color: #f7768e;">🛡️ O ESCUDO DO CÓDIGO:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Try:</strong> O bloco onde "tentamos" executar o código perigoso (APIs, JSON, DB).</li>
+                    <li><strong>Catch:</strong> Onde capturamos o objeto <code>Error</code> e decidimos o que fazer.</li>
+                    <li><strong>Finally:</strong> Onde limpamos a casa (fechar conexões, parar loadings) independente do resultado.</li>
+                    <li><strong>Throw:</strong> Como criar seus próprios erros (Ex: <code>throw new Error('Saldo Insuficiente')</code>).</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">CENÁRIOS NAS BUSINESS UNITS:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>MedTrem:</strong> Se o sensor de batimentos falhar, o sistema deve emitir um alerta visual em vez de apenas parar de funcionar.<br>
+                <strong>NCK Labs:</strong> Tratamento de erros em requisições assíncronas para garantir que o usuário saiba que o servidor está offline.<br>
+                <strong>Volta Express:</strong> Validação de entrada de dados (peso, dimensões) lançando erros personalizados antes de enviar ao backend.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(247, 118, 142, 0.1); border: 1px solid #f7768e; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #f7768e; font-weight: bold; font-size: 0.8rem;">💡 Mentalidade Sênior:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Tratar erros é sobre dar uma saída digna para o usuário. Um erro 500 sem mensagem amigável faz o cliente perder a confiança no ecossistema learnTECH."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🏁 <strong>Próxima Aula:</strong> Revisão e Exercício Final de Algoritmos (Aula 44). O grande desafio antes do Módulo de Projetos Reais.</small></p>
+        </div>
+    `;
+      break;
+    case 44:
+      metaLevel.innerText = "ALGORITMOS / STRING-PARSING";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 44: REGEX AVANÇADO (VALIDAÇÕES)</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar o poder do reconhecimento de padrões para garantir a integridade dos dados.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #7aa2f7; margin: 15px 0;">
+                <label class="sub-label" style="color: #7aa2f7;">🧩 SINTAXE DE ELITE:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Quantificadores:</strong> <code>{3}</code>, <code>+</code>, <code>*</code>, <code>?</code> (Controle de repetição).</li>
+                    <li><strong>Lookaheads:</strong> <code>(?=...)</code> - Validar se algo existe à frente sem "consumir" a string.</li>
+                    <li><strong>Escapes:</strong> <code>\\d</code> (números), <code>\\w</code> (alfanumérico), <code>\\s</code> (espaços).</li>
+                    <li><strong>Flags:</strong> <code>/g</code> (global), <code>/i</code> (case-insensitive).</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">USO NO ECOSSISTEMA:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Validação de CEPs e placas para evitar erros no cadastro de fretes.<br>
+                <strong>MedTrem:</strong> Higienização de inputs em laudos para remover caracteres especiais maliciosos.<br>
+                <strong>NCK Labs:</strong> Criação de roteadores (Routing) baseados em padrões de URL.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(122, 162, 247, 0.1); border: 1px solid #7aa2f7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #7aa2f7; font-weight: bold; font-size: 0.8rem;">🚨 Aviso do CTO:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Regex é como fogo: cozinha o jantar ou queima a casa. Sempre use ferramentas como <strong>Regex101</strong> para testar antes de levar para a produção."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🏁 <strong>Módulo 5 Concluído!</strong> O aluno agora domina a lógica pura. Próximo Módulo: <strong>DOM e Browser APIs (45-54)</strong>.</small></p>
+        </div>
+    `;
+      break;
+    case 45:
+      metaLevel.innerText = "POO / ARQUITETURA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 45: POO I - CLASSES E CONSTRUTORES</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar o conceito de "Blueprint" (Molde) e a palavra-chave <code>new</code>.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #7aa2f7; margin: 15px 0;">
+                <label class="sub-label" style="color: #7aa2f7;">🏗️ PILARES INICIAIS:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Class:</strong> A definição teórica (O que um caminhão tem e faz?).</li>
+                    <li><strong>Constructor:</strong> A função automática que "nasce" com o objeto para inicializar dados.</li>
+                    <li><strong>This:</strong> A referência ao próprio objeto que está sendo criado no momento.</li>
+                    <li><strong>Instance:</strong> O objeto vivo na memória após o comando <code>new</code>.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">ENTIDADES DO ECOSSISTEMA:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Classe <code>Veiculo</code> para gerenciar frotas.<br>
+                <strong>MedTrem:</strong> Classe <code>Exame</code> para padronizar laudos médicos.<br>
+                <strong>NCK Labs:</strong> Classe <code>ComponenteUI</code> para criar elementos de interface reutilizáveis.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(122, 162, 247, 0.1); border: 1px solid #7aa2f7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #7aa2f7; font-weight: bold; font-size: 0.8rem;">💡 Analogia de CTO:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"A Classe é a planta baixa de um prédio da Volta Express. O Objeto é o prédio construído onde as pessoas realmente entram."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🧬 <strong>Próxima Aula:</strong> POO II - Métodos e Encapsulamento. Como dar "vida" aos objetos e proteger seus dados.</small></p>
+        </div>
+    `;
+      break;
+    case 46:
+      metaLevel.innerText = "POO / SEGURANÇA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 46: ENCAPSULAMENTO E ATRIBUTOS PRIVADOS</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar o conceito de "caixa preta" e como proteger o estado interno do objeto.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #bb9af7; margin: 15px 0;">
+                <label class="sub-label" style="color: #bb9af7;">🔐 CONCEITOS CHAVE:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Atributo Privado (<code>#</code>):</strong> Impede que o dado seja alterado de fora da classe.</li>
+                    <li><strong>Getters:</strong> Métodos para ler dados de forma controlada.</li>
+                    <li><strong>Setters:</strong> Métodos para alterar dados com validação (Ex: não aceitar peso negativo).</li>
+                    <li><strong>Interface Pública:</strong> Apenas o que o objeto "mostra" para o mundo.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">APLICAÇÃO NAS BUs:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> O <code>#odometro</code> de um caminhão deve ser privado para evitar fraudes de quilometragem.<br>
+                <strong>MedTrem:</strong> O <code>#historicoClinico</code> deve ser acessado apenas por métodos que validam o token do médico.<br>
+                <strong>NCK Labs:</strong> Chaves de API de serviços de nuvem encapsuladas em classes de Configuração.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(187, 154, 247, 0.1); border: 1px solid #bb9af7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #bb9af7; font-weight: bold; font-size: 0.8rem;">🧠 Desafio Sênior:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Por que não deixar tudo público e apenas tomar cuidado?"</p>
+                <p style="font-size: 0.75rem; color: #565f89;"><em>Resposta: Em sistemas grandes (learnTECH), múltiplos desenvolvedores mexem no código. O encapsulamento evita que um erro em uma parte do sistema quebre a lógica de negócio central de outra.</em></p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🧬 <strong>Próxima Aula:</strong> POO III - Herança e Polimorfismo. Como reaproveitar código e criar especializações.</small></p>
+        </div>
+    `;
+      break;
+    case 47:
+      metaLevel.innerText = "POO / ARQUITETURA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 47: POO III - HERANÇA E REUSO</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar como evitar a repetição de código (DRY - Don't Repeat Yourself) através da especialização de classes.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #7aa2f7; margin: 15px 0;">
+                <label class="sub-label" style="color: #7aa2f7;">🧬 GENÉTICA DE CÓDIGO:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Extends:</strong> Estabelece a relação "É UM" (Um Caminhão <em>é um</em> Veículo).</li>
+                    <li><strong>Super():</strong> O "telefone" para o pai. Obrigatório para inicializar os atributos herdados.</li>
+                    <li><strong>Reuso:</strong> Se você consertar um bug na classe <code>Veiculo</code>, todas as classes filhas são corrigidas automaticamente.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">USO NAS BUs:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>MedTrem:</strong> Classe <code>Usuario</code> (base) -> <code>Medico</code> e <code>Paciente</code> (especializações).<br>
+                <strong>Volta Express:</strong> Classe <code>Carga</code> -> <code>Perigosa</code>, <code>Frágil</code> e <code>Comum</code>.<br>
+                <strong>NCK Labs:</strong> Classe <code>BotaoUI</code> -> <code>BotaoSubmit</code> e <code>BotaoCancel</code>.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(122, 162, 247, 0.1); border: 1px solid #7aa2f7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #7aa2f7; font-weight: bold; font-size: 0.8rem;">⚠️ ALERTA DE ARQUITETURA:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Não abuse da herança. Se a relação não for estritamente 'É UM', talvez você precise de <strong>Composição</strong>, que veremos mais à frente."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🎭 <strong>Próxima Aula:</strong> POO IV - Polimorfismo. Como o mesmo comando pode ter comportamentos diferentes.</small></p>
+        </div>
+    `;
+      break;
     default:
       metaLevel.innerText = "PLANNING";
       docContent.innerHTML = `<p>Conteúdo em fase de planejamento pedagógico.</p>`;

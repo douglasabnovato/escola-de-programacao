@@ -1,19 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ByteClass | Aula 46 - Encapsulamento</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --accent: #bb9af7; --danger: #f7768e; --safe: #9ece6a;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .shield-container {
+            background: var(--panel); border: 2px solid #414868;
+            padding: 30px; border-radius: 15px; width: 100%; max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .data-box {
+            background: #16161e; padding: 15px; border-radius: 8px;
+            margin: 15px 0; border-left: 5px solid var(--accent);
+        }
+
+        .terminal {
+            background: #000; color: #0f0; padding: 10px;
+            font-size: 0.8rem; height: 100px; overflow-y: auto;
+            border-radius: 4px; margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 15px; cursor: pointer; border: none; border-radius: 4px;
+            font-weight: bold; margin: 5px; transition: 0.3s;
+        }
+
+        .btn-hack { background: var(--danger); color: white; }
+        .btn-safe { background: var(--safe); color: #1a1b26; }
+    </style>
 </head>
-
 <body>
-    <!--<p id="mensagem">Olá</p>-->
-    <p class="destaque">texto</p>
-    <ul id="lista">
-        <li>item 1</li>
-    </ul>
 
-    <script src="script.js"></script>
+    <h1>Aula 46: Encapsulamento</h1>
+    <p>Protegendo Dados Sensíveis (Private Class Fields)</p>
 
+    <div class="shield-container">
+        <h2 style="color: var(--accent);">🏦 Cofre Digital: MedTrem</h2>
+        
+        <div class="data-box" id="display-publico">
+            Nome do Paciente: (Aguardando...)
+        </div>
+
+        <div class="controls">
+            <button class="btn-hack" onclick="tentarHackear()">Tentar Acesso Direto (#)</button>
+            <button class="btn-safe" onclick="usarMetodoOficial()">Usar Método Oficial (Getter)</button>
+        </div>
+
+        <div class="terminal" id="log-terminal">
+            > Sistema de Segurança pronto...
+        </div>
+    </div>
+
+    <script>
+        class PacientePrivado {
+            nome; // Público
+            #diagnostico; // PRIVADO (Encapsulado)
+
+            constructor(nome, diagnostico) {
+                this.nome = nome;
+                this.#diagnostico = diagnostico;
+            }
+
+            // GETTER: Forma segura de ler o dado
+            getDiagnostico() {
+                this.log("Acesso autorizado via Getter.");
+                return this.#diagnostico;
+            }
+
+            log(msg) {
+                const term = document.getElementById('log-terminal');
+                term.innerHTML += `<br>> ${msg}`;
+                term.scrollTop = term.scrollHeight;
+            }
+        }
+
+        const meuPaciente = new PacientePrivado("Douglas Novato", "Hipotermia Leve");
+        document.getElementById('display-publico').innerText = `Paciente: ${meuPaciente.nome}`;
+
+        function tentarHackear() {
+            try {
+                // Isso vai gerar um erro de sintaxe/execução pois # é privado
+                const dado = meuPaciente.#diagnostico; 
+            } catch (err) {
+                const term = document.getElementById('log-terminal');
+                term.innerHTML += `<br><span style="color:var(--danger)">> BLOQUEADO: Atributo #diagnostico é privado!</span>`;
+            }
+        }
+
+        function usarMetodoOficial() {
+            const dado = meuPaciente.getDiagnostico();
+            alert(`Diagnóstico recuperado com segurança: ${dado}`);
+        }
+    </script>
+</body>
 </html>

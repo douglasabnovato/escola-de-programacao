@@ -1,11 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script src="index.js"></script>
-</body>
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass | Aula 39 - Bubble Sort</title>
+    <style>
+      :root {
+        --bg: #1a1b26;
+        --panel: #24283b;
+        --text: #a9b1d6;
+        --accent: #7aa2f7;
+        --bubble: #bb9af7;
+        --success: #9ece6a;
+      }
+
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background: var(--bg);
+        color: var(--text);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .chart-container {
+        display: flex;
+        align-items: flex-end;
+        gap: 4px;
+        height: 200px;
+        margin: 30px 0;
+        background: #16161e;
+        padding: 20px;
+        border-radius: 8px;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .bar {
+        width: 30px;
+        background: var(--accent);
+        transition:
+          height 0.3s,
+          background 0.3s;
+        border-radius: 2px 2px 0 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        font-size: 0.7rem;
+        color: #fff;
+        padding-bottom: 5px;
+      }
+
+      .comparing {
+        background: var(--bubble) !important;
+        transform: scale(1.1);
+      }
+      .sorted {
+        background: var(--success) !important;
+      }
+
+      .controls {
+        background: var(--panel);
+        padding: 20px;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+      }
+
+      button {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        background: var(--bubble);
+        color: #1a1b26;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Aula 39: Bubble Sort</h1>
+    <p>Ordenando Cargas da Volta Express por Peso (kg)</p>
+
+    <div class="chart-container" id="chart"></div>
+
+    <div class="controls">
+      <button onclick="startBubbleSort()">Iniciar Ordenação 🚀</button>
+      <button
+        onclick="resetData()"
+        style="background: var(--text); margin-left: 10px"
+      >
+        Resetar
+      </button>
+    </div>
+
+    <p id="status" style="margin-top: 20px; color: var(--bubble)">
+      Aguardando início...
+    </p>
+
+    <script>
+      let data = [80, 45, 120, 30, 95, 60, 10, 110];
+      const chart = document.getElementById("chart");
+
+      function render(highlightIndices = []) {
+        chart.innerHTML = data
+          .map((val, i) => {
+            const isHighlight = highlightIndices.includes(i);
+            return `<div class="bar ${isHighlight ? "comparing" : ""}" style="height: ${val}px">${val}</div>`;
+          })
+          .join("");
+      }
+
+      async function startBubbleSort() {
+        let n = data.length;
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n - i - 1; j++) {
+            render([j, j + 1]);
+            document.getElementById("status").innerText =
+              `Comparando ${data[j]} e ${data[j + 1]}`;
+            await new Promise((r) => setTimeout(r, 400));
+
+            if (data[j] > data[j + 1]) {
+              // Swap
+              let temp = data[j];
+              data[j] = data[j + 1];
+              data[j + 1] = temp;
+              render([j, j + 1]);
+            }
+          }
+        }
+        render();
+        document.getElementById("status").innerText = "✅ Ordenação concluída!";
+        const bars = document.querySelectorAll(".bar");
+        bars.forEach((b) => b.classList.add("sorted"));
+      }
+
+      function resetData() {
+        data = [80, 45, 120, 30, 95, 60, 10, 110];
+        render();
+        document.getElementById("status").innerText = "Dados resetados.";
+      }
+
+      render();
+    </script>
+  </body>
 </html>

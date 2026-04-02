@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteClass | Aula 38 - Busca Linear vs Binária</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --accent: #7aa2f7; --linear: #f7768e; --binary: #9ece6a;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .array-container {
+            display: flex; flex-wrap: wrap; gap: 5px; max-width: 800px;
+            margin: 20px 0; background: #16161e; padding: 15px; border-radius: 8px;
+        }
+
+        .cell {
+            width: 35px; height: 35px; border: 1px solid #414868;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; border-radius: 3px; transition: 0.2s;
+        }
+
+        .active-linear { background: var(--linear); color: #000; transform: scale(1.1); }
+        .active-binary { background: var(--binary); color: #000; transform: scale(1.1); }
+        .found { background: var(--accent); color: #000; font-weight: bold; }
+
+        .controls { background: var(--panel); padding: 20px; border-radius: 8px; width: 100%; max-width: 600px; }
+        input { background: #16161e; border: 1px solid #414868; color: #fff; padding: 8px; width: 80px; }
+        
+        button {
+            padding: 10px 15px; cursor: pointer; border: none; border-radius: 4px;
+            font-weight: bold; color: #1a1b26; margin: 5px;
+        }
+
+        .stats { margin-top: 20px; display: flex; gap: 20px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <h1>Aula 38: Algoritmos de Busca</h1>
+    <p>Eficiência Logística: Encontrando Cargas na Volta Express</p>
+
+    <div class="controls">
+        <label>Procurar ID (1-100):</label>
+        <input type="number" id="target" value="85">
+        <button style="background: var(--linear);" onclick="runLinear()">Busca Linear</button>
+        <button style="background: var(--binary);" onclick="runBinary()">Busca Binária</button>
+    </div>
+
+    <div class="array-container" id="array-visual"></div>
+
+    <div class="stats">
+        <div id="linear-stat" style="color: var(--linear);">Passos Linear: 0</div>
+        <div id="binary-stat" style="color: var(--binary);">Passos Binária: 0</div>
+    </div>
+
+    <script>
+        const data = Array.from({length: 100}, (_, i) => i + 1);
+        const container = document.getElementById('array-visual');
+
+        function renderArray() {
+            container.innerHTML = data.map(n => `<div class="cell" id="cell-${n}">${n}</div>`).join('');
+        }
+
+        async function runLinear() {
+            renderArray();
+            const target = parseInt(document.getElementById('target').value);
+            let steps = 0;
+            
+            for (let n of data) {
+                steps++;
+                document.getElementById(`cell-${n}`).classList.add('active-linear');
+                document.getElementById('linear-stat').innerText = `Passos Linear: ${steps}`;
+                await new Promise(r => setTimeout(r, 30));
+                
+                if (n === target) {
+                    document.getElementById(`cell-${n}`).classList.add('found');
+                    break;
+                }
+                document.getElementById(`cell-${n}`).classList.remove('active-linear');
+            }
+        }
+
+        async function runBinary() {
+            renderArray();
+            const target = parseInt(document.getElementById('target').value);
+            let steps = 0;
+            let start = 0;
+            let end = data.length - 1;
+
+            while (start <= end) {
+                steps++;
+                let mid = Math.floor((start + end) / 2);
+                let val = data[mid];
+                
+                document.getElementById(`cell-${val}`).classList.add('active-binary');
+                document.getElementById('binary-stat').innerText = `Passos Binária: ${steps}`;
+                await new Promise(r => setTimeout(r, 400));
+
+                if (val === target) {
+                    document.getElementById(`cell-${val}`).classList.add('found');
+                    return;
+                }
+                
+                if (val < target) start = mid + 1;
+                else end = mid - 1;
+                
+                document.getElementById(`cell-${val}`).style.opacity = "0.3";
+            }
+        }
+
+        renderArray();
+    </script>
+</body>
+</html>

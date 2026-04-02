@@ -1,17 +1,109 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <title>ByteClass | Aula 36 - Objetos e Mapas</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --accent: #7aa2f7; --nck: #73daca; --medtrem: #f7768e;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .container { display: flex; gap: 20px; width: 100%; max-width: 900px; margin-top: 20px; }
+
+        .card {
+            background: var(--panel); border: 1px solid #414868;
+            padding: 20px; border-radius: 8px; flex: 1;
+        }
+
+        h2 { color: var(--accent); font-size: 1rem; margin-top: 0; }
+        
+        .data-display {
+            background: #16161e; padding: 15px; border-radius: 4px;
+            font-size: 0.85rem; color: #9ece6a; min-height: 120px;
+        }
+
+        input {
+            width: 100%; padding: 8px; margin: 10px 0;
+            background: #16161e; border: 1px solid #414868; color: #fff;
+        }
+
+        button {
+            width: 100%; padding: 10px; cursor: pointer; border: none;
+            background: var(--accent); color: var(--bg); font-weight: bold;
+        }
+
+        .highlight { color: var(--nck); font-weight: bold; }
+    </style>
 </head>
-
 <body>
-    <h1 id="titulo">Dia</h1>
-    <button onclick="toggleTheme()">Alternar Tema</button>
-    <script src="assets/script.js"></script>
-</body>
 
+    <h1>Aula 36: Objetos e Mapas (Dicionários)</h1>
+    <p>Acessando dados por "Chaves" em vez de "Posições".</p>
+
+    <div class="container">
+        <div class="card">
+            <h2>🚀 NCK Labs: Config de Servidor</h2>
+            <div id="nck-display" class="data-display">
+                // Objeto de Configuração
+            </div>
+            <button onclick="atualizarServidor()" style="margin-top:10px;">Atualizar IP</button>
+        </div>
+
+        <div class="card">
+            <h2>🏥 MedTrem: Busca por CPF</h2>
+            <input type="text" id="search-cpf" placeholder="Digite o CPF (Ex: 123)">
+            <button onclick="buscarPaciente()" style="background: var(--medtrem);">Buscar Paciente</button>
+            <div id="med-display" class="data-display" style="margin-top:10px; color: var(--medtrem);">
+                Aguardando busca...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. OBJETO LITERAL (NCK Labs - Estrutura Fixa)
+        let servidor = {
+            id: "SRV-01",
+            ip: "192.168.0.1",
+            status: "Online",
+            uptime: "99.9%"
+        };
+
+        function atualizarServidor() {
+            servidor.ip = "10.0.0.50"; // Mutação de propriedade
+            document.getElementById('nck-display').innerHTML = `
+                ID: ${servidor.id} <br>
+                IP: <span class="highlight">${servidor.ip}</span> <br>
+                Status: ${servidor.status}
+            `;
+        }
+
+        // 2. MAP / DICIONÁRIO (MedTrem - Busca Dinâmica)
+        const pacientes = new Map();
+        pacientes.set("123", { nome: "Douglas Novato", exames: "ASO Pendente" });
+        pacientes.set("456", { nome: "Analista Senior", exames: "Apto" });
+
+        function buscarPaciente() {
+            const cpf = document.getElementById('search-cpf').value;
+            const display = document.getElementById('med-display');
+            
+            if(pacientes.has(cpf)) {
+                const p = pacientes.get(cpf);
+                display.innerHTML = `Nome: ${p.nome} <br> Status: ${p.exames}`;
+            } else {
+                display.innerHTML = "❌ CPF não encontrado no sistema.";
+            }
+        }
+
+        // Inicializar NCK display
+        atualizarServidor();
+    </script>
+</body>
 </html>

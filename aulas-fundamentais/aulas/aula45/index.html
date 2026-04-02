@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass | Aula 45 - POO I: Classes</title>
+    <style>
+      :root {
+        --bg: #1a1b26;
+        --panel: #24283b;
+        --text: #a9b1d6;
+        --accent: #7aa2f7;
+        --nck: #73daca;
+        --medtrem: #f7768e;
+      }
+
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background: var(--bg);
+        color: var(--text);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .factory-container {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        max-width: 900px;
+        margin-top: 20px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid #414868;
+        padding: 20px;
+        border-radius: 8px;
+        flex: 1;
+      }
+
+      .output-screen {
+        background: #16161e;
+        padding: 15px;
+        border-radius: 4px;
+        margin-top: 15px;
+        min-height: 150px;
+        font-size: 0.85rem;
+        color: var(--nck);
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        background: #16161e;
+        border: 1px solid #414868;
+        color: #fff;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        cursor: pointer;
+        border: none;
+        background: var(--accent);
+        color: #1a1b26;
+        font-weight: bold;
+        border-radius: 4px;
+      }
+
+      .obj-badge {
+        background: rgba(115, 218, 202, 0.1);
+        border: 1px solid var(--nck);
+        padding: 5px;
+        margin-bottom: 5px;
+        border-radius: 3px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Aula 45: Introdução à POO</h1>
+    <p>O conceito de Molde (Classe) e Instância (Objeto)</p>
+
+    <div class="factory-container">
+      <div class="card">
+        <h2 style="color: var(--accent)">🛠️ Construtor de Entidades</h2>
+        <label>Tipo de Objeto:</label>
+        <select id="tipo">
+          <option value="Caminhao">Caminhão (Volta Express)</option>
+          <option value="Paciente">Paciente (MedTrem)</option>
+        </select>
+
+        <label>Nome / Identificador:</label>
+        <input
+          type="text"
+          id="identificador"
+          placeholder="Ex: Scania R450 ou Douglas Novato"
+        />
+
+        <button onclick="criarInstancia()">Instanciar Objeto (new)</button>
+      </div>
+
+      <div class="card">
+        <h2 style="color: var(--nck)">🧠 Memória do Sistema</h2>
+        <div id="memoria" class="output-screen">
+          // Aguardando instanciar...
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // DEFINIÇÃO DAS CLASSES (O MOLDE)
+      class Caminhao {
+        constructor(modelo) {
+          this.id = `VLT-${Math.floor(Math.random() * 1000)}`;
+          this.modelo = modelo;
+          this.status = "Disponível";
+          this.criadoEm = new Date().toLocaleTimeString();
+        }
+      }
+
+      class Paciente {
+        constructor(nome) {
+          this.registro = `MED-${Math.random().toString(36).substr(2, 5).toUpperCase()}`;
+          this.nome = nome;
+          this.triagem = "Pendente";
+          this.criadoEm = new Date().toLocaleTimeString();
+        }
+      }
+
+      const objetosCriados = [];
+
+      function criarInstancia() {
+        const tipo = document.getElementById("tipo").value;
+        const nome = document.getElementById("identificador").value;
+
+        if (!nome) return alert("Defina um identificador!");
+
+        let novoObjeto;
+        if (tipo === "Caminhao") {
+          novoObjeto = new Caminhao(nome); // O uso do 'new' chama o constructor
+        } else {
+          novoObjeto = new Paciente(nome);
+        }
+
+        objetosCriados.push(novoObjeto);
+        renderMemoria();
+      }
+
+      function renderMemoria() {
+        const display = document.getElementById("memoria");
+        display.innerHTML = objetosCriados
+          .map(
+            (obj) => `
+                <div class="obj-badge">
+                    <strong>${obj.constructor.name}</strong>: ${obj.nome || obj.modelo}<br>
+                    <small>ID: ${obj.id || obj.registro} | ${obj.criadoEm}</small>
+                </div>
+            `,
+          )
+          .join("");
+      }
+    </script>
+  </body>
+</html>
