@@ -739,6 +739,93 @@ function atualizarInspector(id) {
             </div>
         `;
       break;
+       case 31:
+    metaLevel.innerText = "INTERMEDIÁRIO / DEBUG";
+    docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 31: DEVTOOLS & DEBUGGING AVANÇADO</label>
+            <p><strong>Foco do Instrutor:</strong> Transição do <code>console.log</code> para o <strong>Breakpoint</strong> Profissional.</p>
+            
+            <div class="bu-selector-container" style="background: #16161e; padding: 15px; border-radius: 8px; border: 1px solid #414868; margin-bottom: 20px;">
+                <label class="sub-label" style="color: #7aa2f7;">SIMULADOR DE ECOSSISTEMA (BU):</label>
+                <select id="bu-case-31" onchange="updateBUContext()" style="width: 100%; padding: 10px; background: #24283b; color: #fff; border: 1px solid #414868; border-radius: 4px; margin-top: 10px;">
+                    <option value="volta">Volta Express (Logística)</option>
+                    <option value="medtrem">MedTrem (Saúde Ocupacional)</option>
+                    <option value="nck">NCK Labs (Inovação Tech)</option>
+                </select>
+                <p id="bu-desc" style="font-size: 0.85rem; margin-top: 10px; color: #565f89;">Contexto: Cálculo de Frete Logístico.</p>
+            </div>
+
+            <label class="sub-label">O QUE O ALUNO DEVE APRENDER:</label>
+            <ul style="font-size: 0.9rem; line-height: 1.6;">
+                <li><strong>Sources Panel:</strong> Navegar no código fonte em tempo real.</li>
+                <li><strong>Watch Expressions:</strong> Monitorar variáveis sem sujar o código.</li>
+                <li><strong>Call Stack:</strong> Rastrear a "pilha de chamadas" para saber quem invocou a função.</li>
+                <li><strong>Tipagem no DOM:</strong> Identificar por que <code>input.value</code> é sempre String.</li>
+            </ul>
+
+            <div class="debug-challenge" style="background: rgba(247, 118, 142, 0.1); border-left: 4px solid #f7768e; padding: 15px; margin-top: 20px;">
+                <h4 style="margin: 0; color: #f7768e;">🚨 MISSÃO DO DIA:</h4>
+                <p style="font-size: 0.85rem;">O sistema está concatenando valores em vez de somar (Ex: 100 + 50 = 10050). O aluno deve usar o <strong>Breakpoint</strong> para capturar a coerção implícita e corrigir usando <code>Number()</code>.</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>💡 <strong>Dica de Sênior:</strong> Mostre ao aluno que no painel "Scope", Strings aparecem com aspas e Numbers em azul. Essa percepção visual acelera o Debug em 10x.</small></p>
+        </div>
+    `;
+
+    // Função auxiliar injetada para troca de contexto dentro do case
+    window.updateBUContext = () => {
+        const bu = document.getElementById('bu-case-31').value;
+        const desc = document.getElementById('bu-desc');
+        const contexts = {
+            volta: "Contexto: Cálculo de Frete e Manifesto de Carga.",
+            medtrem: "Contexto: Gestão de Exames e Taxas de Risco Ocupacional.",
+            nck: "Contexto: Orçamento de Infraestrutura e Horas Cloud."
+        };
+        desc.innerText = contexts[bu];
+        console.log(`[ByteClass] Contexto de Debug alterado para: ${bu.toUpperCase()}`);
+    };
+    break;
+    case 32:
+    metaLevel.innerText = "INTERMEDIÁRIO / UI-UX";
+    docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 32: ANIMAÇÕES CSS I - TRANSIÇÕES E TRANSFORMAÇÕES</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar que o movimento no CSS não é "enfeite", é <strong>feedback de interface</strong>.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #bb9af7; margin: 15px 0;">
+                <label class="sub-label" style="color: #bb9af7;">🧠 PILARES TÉCNICOS:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Transition:</strong> Suaviza a mudança de estado (ex: de <code>bg-blue</code> para <code>bg-red</code>).</li>
+                    <li><strong>Transform (GPU):</strong> Move, rotaciona e escala elementos sem causar <em>Reflow</em> (recalculo de layout).</li>
+                    <li><strong>Timing Functions:</strong> Diferença entre <code>linear</code>, <code>ease-in-out</code> e o personalizado <code>cubic-bezier</code>.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">APLICAÇÃO NAS BUSINESS UNITS:</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                <div style="background: #24283b; padding: 10px; border-radius: 4px; border: 1px solid #414868;">
+                    <strong style="color: #9ece6a;">MedTrem:</strong>
+                    <p style="font-size: 0.75rem; margin: 5px 0;">Cards de exames que "saltam" ao passar o mouse para indicar interatividade.</p>
+                </div>
+                <div style="background: #24283b; padding: 10px; border-radius: 4px; border: 1px solid #414868;">
+                    <strong style="color: #7aa2f7;">NCK Labs:</strong>
+                    <p style="font-size: 0.75rem; margin: 5px 0;">Botões de Deploy que expandem levemente, simulando pressão física (tecnologia).</p>
+                </div>
+            </div>
+
+            <div class="review-bubble" style="background: rgba(224, 175, 104, 0.1); border: 1px solid #e0af68; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #e0af68; font-weight: bold; font-size: 0.8rem;">🔎 Pergunta Estratégica:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Por que é melhor usar <code>transform: translateX(10px)</code> em vez de <code>margin-left: 10px</code> para animar um caminhão da Volta Express?"</p>
+                <p style="font-size: 0.75rem; color: #565f89;"><em>Resposta esperada: Performance. O transform não afeta os elementos vizinhos, economizando processamento.</em></p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>⚠️ <strong>Ponto de Atenção:</strong> Cuidado com o "enjoo visual". Animações devem ter entre 200ms e 500ms. Mais que isso, o sistema parece lento.</small></p>
+        </div>
+    `;
+    break;
     default:
       metaLevel.innerText = "PLANNING";
       docContent.innerHTML = `<p>Conteúdo em fase de planejamento pedagógico.</p>`;
