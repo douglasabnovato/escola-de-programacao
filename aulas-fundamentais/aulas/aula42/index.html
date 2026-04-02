@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteClass | Aula 42 - Recursividade</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --accent: #bb9af7; --danger: #f7768e; --leaf: #9ece6a;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .stack-viewer {
+            width: 100%; max-width: 500px; min-height: 300px;
+            background: #16161e; border: 2px solid #414868;
+            margin: 20px 0; display: flex; flex-direction: column-reverse;
+            padding: 15px; gap: 5px; border-radius: 8px;
+        }
+
+        .stack-frame {
+            background: var(--accent); color: #1a1b26;
+            padding: 10px; border-radius: 4px; font-weight: bold;
+            text-align: center; animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-20px); } }
+
+        .controls { background: var(--panel); padding: 20px; border-radius: 8px; width: 100%; max-width: 500px; }
+        
+        input { background: #16161e; border: 1px solid #414868; color: #fff; padding: 10px; width: 80px; }
+        
+        button {
+            padding: 10px 20px; cursor: pointer; border: none; border-radius: 4px;
+            background: var(--leaf); color: #1a1b26; font-weight: bold;
+        }
+
+        .recursion-info { font-size: 0.8rem; color: #565f89; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <h1>Aula 42: Recursividade</h1>
+    <p>A Função que Chama a Si Mesma</p>
+
+    <div class="controls">
+        <label>Calcular Fatorial de:</label>
+        <input type="number" id="num" value="5" min="1" max="10">
+        <button onclick="startRecursion()">Executar 🔄</button>
+    </div>
+
+    <div class="stack-viewer" id="stack">
+        </div>
+
+    <div id="result-display" style="font-size: 1.5rem; color: var(--leaf); font-weight: bold;"></div>
+
+    <div class="recursion-info">
+        <strong>Regra de Ouro:</strong> Toda função recursiva precisa de um <strong>Caso Base</strong> para não causar um <code>Stack Overflow</code>.
+    </div>
+
+    <script>
+        const stackDiv = document.getElementById('stack');
+        const resultDiv = document.getElementById('result-display');
+
+        async function startRecursion() {
+            const n = parseInt(document.getElementById('num').value);
+            stackDiv.innerHTML = '';
+            resultDiv.innerText = '';
+            
+            const finalResult = await fatorialVisual(n);
+            resultDiv.innerText = `Resultado: ${finalResult}`;
+        }
+
+        async function fatorialVisual(n) {
+            // Criar visual na stack
+            const frame = document.createElement('div');
+            frame.className = 'stack-frame';
+            frame.innerText = `fatorial(${n})`;
+            stackDiv.appendChild(frame);
+            
+            await new Promise(r => setTimeout(r, 600));
+
+            // 1. CASO BASE
+            if (n <= 1) {
+                frame.style.background = 'var(--leaf)';
+                return 1;
+            }
+
+            // 2. CHAMADA RECURSIVA
+            let res = n * await fatorialVisual(n - 1);
+            
+            // Highlight ao retornar
+            frame.innerText = `${n} * ${res/n} = ${res}`;
+            frame.style.background = '#7aa2f7';
+            await new Promise(r => setTimeout(r, 400));
+            
+            return res;
+        }
+    </script>
+</body>
+</html>

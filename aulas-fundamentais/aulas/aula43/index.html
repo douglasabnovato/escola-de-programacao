@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteClass | Aula 43 - Tratamento de Erros</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --danger: #f7768e; --success: #9ece6a; --warning: #e0af68;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .terminal {
+            width: 100%; max-width: 600px; background: #16161e;
+            border-radius: 8px; border: 1px solid #414868;
+            margin: 20px 0; overflow: hidden;
+        }
+
+        .terminal-header { background: #24283b; padding: 10px; font-size: 0.7rem; color: #565f89; }
+        .terminal-body { padding: 15px; min-height: 200px; font-size: 0.85rem; line-height: 1.5; }
+
+        .log-error { color: var(--danger); }
+        .log-success { color: var(--success); }
+        .log-info { color: var(--warning); }
+
+        .controls { display: flex; gap: 10px; margin-top: 20px; }
+        button {
+            padding: 12px; cursor: pointer; border: none; border-radius: 4px;
+            background: #414868; color: white; font-weight: bold;
+        }
+        button:hover { filter: brightness(1.2); }
+    </style>
+</head>
+<body>
+
+    <h1>Aula 43: Erros & Resiliência</h1>
+    <p>Simulador de Integração: Volta Express API</p>
+
+    <div class="terminal">
+        <div class="terminal-header">LOGS DE SISTEMA - VOLTA_EXPRESS_CORE</div>
+        <div class="terminal-body" id="console">
+            > Sistema online. Aguardando comando...
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="processarEnvio(true)">Simular Sucesso ✅</button>
+        <button onclick="processarEnvio(false)" style="background: var(--danger);">Simular Falha de Rede 📡</button>
+        <button onclick="simularErroValidacao()" style="background: var(--warning);">Erro de Validação ✍️</button>
+    </div>
+
+    <script>
+        const terminal = document.getElementById('console');
+
+        function logger(msg, type = 'info') {
+            const span = document.createElement('div');
+            span.className = `log-${type}`;
+            span.innerHTML = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            terminal.appendChild(span);
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        // FUNÇÃO COM TRATAMENTO PROFISSIONAL
+        async function processarEnvio(sucesso) {
+            logger("Iniciando despacho de carga...", "info");
+            
+            try {
+                // Simula uma chamada de API
+                await new Promise((resolve, reject) => {
+                    setTimeout(() => sucesso ? resolve() : reject(new Error("Timeout de Conexão")), 1000);
+                });
+
+                logger("Carga despachada com sucesso!", "success");
+            } 
+            catch (error) {
+                // Captura e trata o erro sem travar o script
+                logger(`FALHA CRÍTICA: ${error.message}`, "error");
+                logger("Acionando protocolo de contingência: Reenviar em 5s...", "info");
+            } 
+            finally {
+                // Executa independente de erro ou sucesso
+                logger("Finalizando sessão de comunicação.", "info");
+            }
+        }
+
+        function simularErroValidacao() {
+            try {
+                const peso = -50;
+                if(peso < 0) throw new Error("Peso da carga não pode ser negativo.");
+            } catch (e) {
+                logger(`ERRO DE INPUT: ${e.message}`, "error");
+            }
+        }
+    </script>
+</body>
+</html>

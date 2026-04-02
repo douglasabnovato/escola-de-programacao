@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteClass | Aula 50 - SQL vs NoSQL</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --sql: #7aa2f7; --nosql: #9ece6a; --accent: #bb9af7;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .battle-container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+            width: 100%; max-width: 900px; margin-top: 20px;
+        }
+
+        .side {
+            background: var(--panel); border: 2px solid #414868;
+            padding: 20px; border-radius: 12px;
+        }
+
+        .sql-side { border-top: 5px solid var(--sql); }
+        .nosql-side { border-top: 5px solid var(--nosql); }
+
+        pre {
+            background: #16161e; padding: 15px; border-radius: 6px;
+            font-size: 0.75rem; overflow-x: auto; color: #fff;
+        }
+
+        .tag {
+            display: inline-block; padding: 4px 8px; border-radius: 4px;
+            font-size: 0.7rem; font-weight: bold; margin-bottom: 10px;
+        }
+
+        .use-case { font-size: 0.8rem; margin-top: 15px; border-top: 1px solid #414868; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Aula 50: SQL vs NoSQL</h1>
+    <p>Escolhendo a Infraestrutura para as BUs</p>
+
+    <div class="battle-container">
+        <div class="side sql-side">
+            <span class="tag" style="background: var(--sql); color: #1a1b26;">RELACIONAL (SQL)</span>
+            <p><small>Estrutura Rígida | Tabelas | ACID</small></p>
+            <pre>
+SELECT v.placa, r.destino 
+FROM veiculos v
+JOIN rotas r ON v.id = r.veiculo_id
+WHERE v.status = 'Ativo';
+            </pre>
+            <div class="use-case">
+                <strong>Ideal para:</strong> Volta Express (Financeiro, Notas Fiscais, Relações Complexas).
+            </div>
+        </div>
+
+        <div class="side nosql-side">
+            <span class="tag" style="background: var(--nosql); color: #1a1b26;">DOCUMENTO (NoSQL)</span>
+            <p><small>Estrutura Flexível | JSON-like | Escala</small></p>
+            <pre>
+{
+  "placa": "ABC-1234",
+  "status": "Ativo",
+  "historico_rotas": [
+    {"destino": "Juiz de Fora"},
+    {"destino": "São Paulo"}
+  ]
+}
+            </pre>
+            <div class="use-case">
+                <strong>Ideal para:</strong> MedTrem (Sensores de IoT, Logs de Auditoria, Chat em Tempo Real).
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center; max-width: 600px;">
+        <p style="color: var(--accent);"><strong>Dica ByteClass:</strong> "SQL é sobre relacionamentos previsíveis. NoSQL é sobre velocidade e volume de dados variados."</p>
+    </div>
+
+</body>
+</html>

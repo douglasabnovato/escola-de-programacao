@@ -1,11 +1,334 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <img src="./imagem.jpg" alt="imagemExemplo">
-</body>
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass | Aula 31 - Debugging Avançado (Multi-BU)</title>
+    <style>
+      :root {
+        --bg: #1a1b26;
+        --panel: #24283b;
+        --text: #a9b1d6;
+        --accent: #7aa2f7;
+        --error: #f7768e;
+        --success: #9ece6a;
+        --warning: #e0af68;
+        --code-bg: #16161e;
+      }
+
+      body {
+        font-family: "JetBrains Mono", "Fira Code", monospace;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        background: var(--panel);
+        padding: 15px 25px;
+        border-bottom: 2px solid var(--accent);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .container {
+        display: flex;
+        flex: 1;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        background: var(--panel);
+        border-radius: 8px;
+        padding: 20px;
+        flex: 1;
+        min-width: 350px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        border: 1px solid #414868;
+      }
+
+      h2 {
+        color: var(--accent);
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+
+      .instructions {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+      code {
+        background: var(--code-bg);
+        padding: 2px 5px;
+        color: var(--warning);
+        border-radius: 3px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        font-size: 0.8rem;
+        color: #565f89;
+        margin-bottom: 5px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        background: var(--code-bg);
+        border: 1px solid #414868;
+        color: #fff;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .btn {
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        padding: 12px;
+        width: 100%;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+      }
+      .btn:hover {
+        opacity: 0.8;
+      }
+
+      #log-screen {
+        background: var(--code-bg);
+        border-radius: 4px;
+        padding: 15px;
+        height: 150px;
+        overflow-y: auto;
+        font-size: 0.85rem;
+        border: 1px solid #414868;
+        color: #73daca;
+        margin-top: 10px;
+      }
+
+      .bug-alert {
+        color: var(--error);
+        border: 1px solid var(--error);
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 15px;
+        display: none;
+      }
+
+      #gabarito-section {
+        margin: 20px;
+        padding: 20px;
+        background: #1f2335;
+        border: 1px dashed var(--success);
+        border-radius: 8px;
+        display: none;
+      }
+      .solution-box {
+        background: var(--code-bg);
+        padding: 15px;
+        border-radius: 4px;
+        color: #9ece6a;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div><strong>ByteClass</strong> | Módulo Intermediário</div>
+      <div
+        style="
+          font-size: 0.8rem;
+          background: var(--warning);
+          color: #000;
+          padding: 2px 8px;
+          border-radius: 4px;
+          font-weight: bold;
+        "
+      >
+        AULA 31: DEBUGGING MULTI-BU
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <h2>🚀 Simulador de Business Units</h2>
+
+        <div class="form-group">
+          <label>Selecione a Empresa (BU)</label>
+          <select id="select-bu" onchange="atualizarContexto()">
+            <option value="volta">Volta Express (Logística)</option>
+            <option value="medtrem">MedTrem (Saúde Ocupacional)</option>
+            <option value="nck">NCK Labs (Cloud & Inovação)</option>
+          </select>
+        </div>
+
+        <p id="bu-instruction" class="instructions">
+          Calcule o valor do frete para Juiz de Fora.
+        </p>
+
+        <div class="form-group">
+          <label id="label-input-1">Peso da Carga (kg) / Qtd de Vidas</label>
+          <input type="number" id="input-val-1" placeholder="Ex: 100" />
+        </div>
+        <div class="form-group">
+          <label id="label-input-2">Distância (km) / Complexidade</label>
+          <input type="number" id="input-val-2" placeholder="Ex: 50" />
+        </div>
+
+        <button class="btn" onclick="executarCalculoBU()">
+          Gerar Orçamento / Manifesto
+        </button>
+
+        <div id="bug-notice" class="bug-alert">
+          🚨 <strong>BUG DETECTADO:</strong> O cálculo falhou ou gerou um valor
+          inconsistente. Use o <code>F12 > Sources</code> para investigar as
+          variáveis.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🔍 Task: Detetive de Código</h2>
+        <div class="instructions">
+          <ol>
+            <li>
+              Abra o DevTools (F12) e localize a aba <strong>Sources</strong>.
+            </li>
+            <li>Encontre a função <code>calcularSistema()</code>.</li>
+            <li>Coloque um Breakpoint no retorno da função (Linha ~145).</li>
+            <li>
+              No painel <strong>Scope</strong>, verifique por que as variáveis
+              de entrada aparecem como <code>string</code>.
+            </li>
+          </ol>
+        </div>
+        <h3>Output de Sistema</h3>
+        <div id="log-screen">> Sistema pronto para análise...</div>
+        <button
+          class="btn"
+          style="background: var(--success); margin-top: 20px"
+          onclick="exibirGabarito()"
+        >
+          Ver Gabarito Pedagógico
+        </button>
+      </div>
+    </div>
+
+    <div id="gabarito-section">
+      <h2 style="color: var(--success)">🎓 Solução Técnica: Tipagem Estrita</h2>
+      <p>
+        Independentemente da BU, o problema reside na
+        <strong>coerção de tipos</strong>. O DOM sempre entrega valores como
+        string.
+      </p>
+
+      <div class="solution-box">
+        <p>
+          <strong>Causa Raiz:</strong> <code>"100" + 50</code> no JavaScript
+          resulta em <code>"10050"</code>.
+        </p>
+        <p><strong>A Correção (Clean Code):</strong></p>
+        <pre>
+const val1 = Number(document.getElementById('input-val-1').value);
+const val2 = Number(document.getElementById('input-val-2').value);
+        </pre>
+      </div>
+      <p>
+        <small
+          >💡 Dica do CTO: Em sistemas da <strong>MedTrem</strong> ou
+          <strong>NCK Labs</strong>, um erro de centavos pode significar falhas
+          em auditorias ou estouro de orçamento cloud.</small
+        >
+      </p>
+    </div>
+
+    <script>
+      const logScreen = document.getElementById("log-screen");
+      const bugNotice = document.getElementById("bug-notice");
+
+      function logger(msg) {
+        const t = new Date().toLocaleTimeString();
+        logScreen.innerHTML += `<div>[${t}] ${msg}</div>`;
+        logScreen.scrollTop = logScreen.scrollHeight;
+      }
+
+      function atualizarContexto() {
+        const bu = document.getElementById("select-bu").value;
+        const inst = document.getElementById("bu-instruction");
+        const l1 = document.getElementById("label-input-1");
+        const l2 = document.getElementById("label-input-2");
+
+        if (bu === "medtrem") {
+          inst.innerText =
+            "Simulador MedTrem: Calcule o custo de exames admissionais por lote.";
+          l1.innerText = "Quantidade de Funcionários";
+          l2.innerText = "Taxa de Risco Social";
+        } else if (bu === "nck") {
+          inst.innerText =
+            "Simulador NCK Labs: Estimativa de custos de Instâncias Cloud.";
+          l1.innerText = "Horas de Processamento";
+          l2.innerText = "Taxa de Transferência (GB)";
+        } else {
+          inst.innerText =
+            "Simulador Volta Express: Cálculo de frete e logística.";
+          l1.innerText = "Peso da Carga (kg)";
+          l2.innerText = "Distância (km)";
+        }
+        logger(`BU alterada para: ${bu.toUpperCase()}`);
+      }
+
+      function exibirGabarito() {
+        document.getElementById("gabarito-section").style.display = "block";
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth",
+        });
+      }
+
+      function executarCalculoBU() {
+        // CAPTURA COM BUG (Strings do DOM)
+        const v1 = document.getElementById("input-val-1").value;
+        const v2 = document.getElementById("input-val-2").value;
+
+        logger(`Iniciando processamento de dados...`);
+
+        const resultado = calcularSistema(v1, v2);
+
+        if (isNaN(resultado) || resultado.toString().length > 7) {
+          bugNotice.style.display = "block";
+          logger(`❌ ERRO: Valor inconsistente gerado: ${resultado}`);
+        } else {
+          bugNotice.style.display = "none";
+          logger(`✅ SUCESSO: Orçamento gerado: R$ ${resultado.toFixed(2)}`);
+        }
+      }
+
+      function calcularSistema(a, b) {
+        const taxaBase = 150;
+
+        // BUG PROPOSITAL: Multiplicação funciona por coerção,
+        // mas a soma final concatenará se 'a' ou 'b' forem strings.
+        const partA = a * 1.2;
+        const partB = b * 0.8;
+
+        // O erro acontece aqui! Breakpoint sugerido.
+        const total = taxaBase + partA + partB;
+
+        return total;
+      }
+    </script>
+  </body>
 </html>

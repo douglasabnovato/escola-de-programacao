@@ -1,18 +1,184 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass | Aula 34 - Clean Code & Refatoração</title>
+    <style>
+      :root {
+        --bg: #1a1b26;
+        --panel: #24283b;
+        --text: #a9b1d6;
+        --accent: #7aa2f7;
+        --success: #9ece6a;
+        --warning: #e0af68;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="index.js"></script>
-</head>
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background: var(--bg);
+        color: var(--text);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-<body>
-<h1 id="titulo">Titulo</h1>
-<input type="text" id="novaTarefa">
-<button id="adicionar" onclick="novoTitulo()">Adicionar</button>
-<ul id="lista"></ul>
-</body>
+      .container {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        max-width: 1100px;
+        margin-top: 20px;
+      }
 
+      .card {
+        background: var(--panel);
+        border: 1px solid #414868;
+        padding: 20px;
+        border-radius: 8px;
+        flex: 1;
+      }
+
+      h2 {
+        color: var(--accent);
+        font-size: 1.1rem;
+        border-bottom: 1px solid #414868;
+        padding-bottom: 10px;
+      }
+
+      pre {
+        background: #16161e;
+        padding: 15px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        overflow-x: auto;
+        color: #73daca;
+        border-left: 4px solid var(--warning);
+      }
+
+      .diff-good {
+        border-left-color: var(--success) !important;
+        color: var(--success);
+      }
+
+      .status-box {
+        margin-top: 15px;
+        padding: 10px;
+        background: rgba(122, 162, 247, 0.1);
+        border-radius: 4px;
+        font-size: 0.85rem;
+      }
+
+      .btn-refactor {
+        background: var(--success);
+        color: var(--bg);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header style="text-align: center">
+      <h1>Aula 34: Refatoração Profissional</h1>
+      <p>Aplicando Clean Code no ecossistema <strong>learnTECH</strong>.</p>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <h2>❌ Código "Sujo" (Legacy)</h2>
+        <p style="font-size: 0.8rem">
+          Variáveis genéricas, funções gigantes e repetição.
+        </p>
+        <pre>
+function facalc() {
+  var a = document.getElementById('v1').value;
+  var b = document.getElementById('v2').value;
+  var res = Number(a) + Number(b);
+  document.getElementById('out').innerHTML = res;
+  alert("Calculado");
+}
+
+function facalc2() {
+  var a = document.getElementById('v3').value;
+  var b = document.getElementById('v4').value;
+  var res = Number(a) * 0.15;
+  document.getElementById('out2').innerHTML = res;
+}
+            </pre
+        >
+        <div class="status-box">
+          🚩 Problemas: Nomes ruins (a, b, facalc), repetição de lógica de
+          captura de DOM, falta de tratamento de erro.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>✅ Clean Code (Padrão ByteClass)</h2>
+        <p style="font-size: 0.8rem">
+          Funções puras, nomes semânticos e modularidade.
+        </p>
+        <pre class="diff-good">
+const getInputValue = (id) => Number(document.getElementById(id).value);
+
+const calcularTaxaMedTrem = (valor) => valor * 0.15;
+
+function processarOrcamento() {
+    const totalVidas = getInputValue('input-vidas');
+    const taxaFinal = calcularTaxaMedTrem(totalVidas);
+    
+    renderizarResultado(taxaFinal);
+}
+            </pre
+        >
+        <div class="status-box">
+          💎 Benefícios: Reutilização (DRY), fácil de testar, nomes que explicam
+          a intenção do código.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px; width: 100%; max-width: 1080px">
+      <h2>🛠️ Exercício Prático: Refatoração da Volta Express</h2>
+      <p>
+        Abaixo temos um código funcional mas mal escrito para a
+        <strong>Volta Express</strong>. Sua missão é refatorar.
+      </p>
+      <div id="playground">
+        <button class="btn-refactor" onclick="simularRefatoracao()">
+          Simular Refatoração no Console
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function simularRefatoracao() {
+        console.log(
+          "%c [Refatoração Iniciada] ",
+          "background: #e0af68; color: #000; font-weight: bold;",
+        );
+
+        // Exemplo de como transformar múltiplos logs em uma única função de utilidade
+        const logger = (msg, bu) =>
+          console.log(
+            `[%c${bu}%c] ${msg}`,
+            "color: #7aa2f7; font-weight: bold;",
+            "color: inherit;",
+          );
+
+        logger("Limpando variáveis globais...", "NCK LABS");
+        logger("Extraindo lógica de cálculo de frete...", "VOLTA EXPRESS");
+        logger("Padronizando retornos de erro...", "MEDTREM");
+
+        alert(
+          "🚀 Parabéns! Você reduziu o código em 40% e aumentou a legibilidade em 100%.",
+        );
+      }
+    </script>
+  </body>
 </html>

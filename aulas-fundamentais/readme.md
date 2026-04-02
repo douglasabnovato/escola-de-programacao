@@ -4,16 +4,16 @@ Repositório central do ecossistema, focado na formação de desenvolvedores atr
 
 ---
 
-## 📊 Progresso do Curso (24/54)
+## 📊 Progresso do Curso (100% em 54/54) 🏆
 
 | Módulo                             |    Status    |  Aulas  |
 | :--------------------------------- | :----------: | :-----: |
 | 1. Fundamentos Web e Estrutura     | ✅ Concluído | 01 - 10 |
 | 2. Lógica e Manipulação de DOM     | ✅ Concluído | 11 - 20 |
 | 3. Persistência e CRUD Prático     | ✅ Concluído | 21 - 24 |
-| 4. Ferramentas e Fluxo de Trabalho | ⏳ Planejado | 25 - 34 |
-| 5. Estrutura de Dados e Algoritmos | ⏳ Planejado | 35 - 44 |
-| 6. POO e Integração de Dados       | ⏳ Planejado | 45 - 54 |
+| 4. Ferramentas e Fluxo de Trabalho | ✅ Planejado | 25 - 34 |
+| 5. Estrutura de Dados e Algoritmos | ✅ Planejado | 35 - 44 |
+| 6. POO e Integração de Dados       | ✅ Planejado | 45 - 54 |
 
 ---
 
@@ -52,11 +52,9 @@ Repositório central do ecossistema, focado na formação de desenvolvedores atr
 - **Aula 23:** Sistema CRUD II – Funções Read e Update.
 - **Aula 24:** Sistema CRUD III – Função Delete e UX Feedback.
 
----
+--- 
 
-## 🛠️ Próximas Etapas (Engineeering & Tools)
-
-### 🔵 Bloco 2: Ferramentas e Fluxo Profissional (25-34)
+### 🔵 Módulo 4: Ferramentas e Fluxo Profissional (25-34)
 
 - **25.** Sistemas Operacionais & Terminal (CLI).
 - **26.** Git & GitHub I: Fluxo básico.
@@ -69,7 +67,7 @@ Repositório central do ecossistema, focado na formação de desenvolvedores atr
 - **33.** Animações CSS II: Keyframes e Lógica JS.
 - **34.** Refatoração: Clean Code aplicado.
 
-### 🧠 Bloco 3: Estrutura de Dados e Algoritmos (35-44)
+### 🧠 Módulo 5:  Estrutura de Dados e Algoritmos (35-44)
 
 - **35.** Arrays e Matrizes.
 - **36.** Objetos e Mapas (Dicionários).
@@ -82,7 +80,7 @@ Repositório central do ecossistema, focado na formação de desenvolvedores atr
 - **43.** Tratamento de Erros Profissional.
 - **44.** Regex Avançado: Validações complexas.
 
-### 🏗️ Bloco 4: POO e Integração (45-54)
+### 🏗️ Módulo 6: POO e Integração (45-54)
 
 - **45.** POO I: Classes e Construtores.
 - **46.** POO II: Encapsulamento e Atributos Privados.

@@ -1,37 +1,123 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass | Aula 51 - JS Moderno (ES6+)</title>
+    <style>
+      :root {
+        --bg: #1a1b26;
+        --panel: #24283b;
+        --text: #a9b1d6;
+        --destruct: #ff9e64;
+        --module: #7aa2f7;
+        --accent: #9ece6a;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Gerador de Senhas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background: var(--bg);
+        color: var(--text);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-<body>
-    <div class="container">
-        <main>
-            <h1>Sistema Gerador de Senhas</h1>
-            <p>Digite a quantidade entre 4 e 20 caracteres desejados para a criação de sua senha:</p>
-            <div id="tipoSenha">
-                <label><input type="radio" name="tipoSenha" value="letras">Somente letras</label><br>
-                <label><input type="radio" name="tipoSenha" value="numeros">Somente numeros</label><br>
-                <label><input type="radio" name="tipoSenha" value="caracteres">Letras, numeros e caracteres especiais</label>
-            </div>   
-            <input id="qtdCaracteres" type="number" placeholder="números de 4 a 20">
-            <button id="botaoGerar">Gerar Senha</button>
+      .es6-container {
+        background: var(--panel);
+        border: 1px solid #414868;
+        padding: 25px;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 700px;
+      }
 
-            <h2>Senha Gerada</h2>
-            <p>Senha atual: <span id="senhaAtual"></span></p>
-        </main>
+      .code-block {
+        background: #16161e;
+        padding: 15px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        margin: 15px 0;
+        border-left: 4px solid var(--destruct);
+        color: #73daca;
+      }
 
-        <aside>
-            <h2>Histórico</h2>
-            <ul id="historicoSenhas"></ul>
-        </aside>
+      .result-card {
+        background: rgba(158, 206, 106, 0.1);
+        border: 1px solid var(--accent);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+
+      button {
+        background: var(--module);
+        color: #1a1b26;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Aula 51: Módulos & Destructuring</h1>
+    <p>Sintaxe Moderna para o Repositório learnTECH</p>
+
+    <div class="es6-container">
+      <h3 style="color: var(--destruct)">
+        📦 Destructuring de Carga (Volta Express)
+      </h3>
+      <p><small>Extraindo apenas o necessário de um objeto complexo:</small></p>
+
+      <div class="code-block">
+        const { cliente, destino, peso } = objetoCarga;
+      </div>
+
+      <button onclick="executarDestructuring()">
+        Simular Extração de Dados
+      </button>
+
+      <div id="resultado" class="result-card" style="display: none">
+        // Resultado aparecerá aqui...
+      </div>
     </div>
 
-    <script src="script.js"></script>
-</body>
+    <script>
+      // Simulando um objeto vindo de uma API de Logística
+      const dataFromAPI = {
+        id: "VLT-778",
+        cliente: "Douglas Corp",
+        logistica: {
+          origem: "Juiz de Fora",
+          destino: "São Paulo",
+          km: 450,
+        },
+        especificacoes: {
+          peso: "2.5 Toneladas",
+          tipo: "Perecível",
+        },
+      };
 
+      function executarDestructuring() {
+        // DESTRUCTURING NA PRÁTICA:
+        // Extraindo propriedades simples e propriedades aninhadas
+        const { cliente } = dataFromAPI;
+        const { destino } = dataFromAPI.logistica;
+        const { peso } = dataFromAPI.especificacoes;
+
+        const res = document.getElementById("resultado");
+        res.style.display = "block";
+        res.innerHTML = `
+                <strong>Dados Extraídos:</strong><br>
+                👤 Cliente: ${cliente}<br>
+                📍 Destino: ${destino}<br>
+                ⚖️ Peso: ${peso}<br><br>
+                <small style="color: #565f89;">Note como não precisamos usar "dataFromAPI.especificacoes.peso" o tempo todo.</small>
+            `;
+      }
+    </script>
+  </body>
 </html>

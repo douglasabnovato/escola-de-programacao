@@ -1,15 +1,177 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass | Aula 33 - Keyframes & Lógica JS</title>
+    <style>
+      :root {
+        --bg: #1a1b26;
+        --panel: #24283b;
+        --text: #a9b1d6;
+        --accent: #7aa2f7;
+        --medtrem: #f7768e;
+        --nck: #73daca;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="index.js"></script>
-</head>
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background: var(--bg);
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+      }
 
-<body>
+      .monitor-container {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-</body>
+      .monitor-card {
+        background: var(--panel);
+        border: 2px solid #414868;
+        padding: 30px;
+        border-radius: 15px;
+        width: 300px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
 
+      /* 🏥 ANIMAÇÃO MEDTREM: Batimento Cardíaco */
+      .heart-rate {
+        font-size: 4rem;
+        margin: 20px 0;
+        display: inline-block;
+        animation: heartbeat var(--speed, 1s) infinite ease-in-out;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+          filter: drop-shadow(0 0 0px var(--medtrem));
+        }
+        15% {
+          transform: scale(1.3);
+          filter: drop-shadow(0 0 10px var(--medtrem));
+        }
+        30% {
+          transform: scale(1);
+        }
+        45% {
+          transform: scale(1.15);
+        }
+        60% {
+          transform: scale(1);
+        }
+      }
+
+      /* 🚀 ANIMAÇÃO NCK LABS: Scan de Rede */
+      .scan-line {
+        width: 100%;
+        height: 2px;
+        background: var(--nck);
+        position: absolute;
+        left: 0;
+        box-shadow: 0 0 15px var(--nck);
+        animation: scanning 2s infinite linear;
+        display: none; /* Ativado via JS */
+      }
+
+      @keyframes scanning {
+        0% {
+          top: 0;
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          top: 100%;
+          opacity: 0;
+        }
+      }
+
+      .controls {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      button {
+        padding: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        background: #414868;
+        color: white;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+      button:hover {
+        background: var(--accent);
+      }
+
+      .status-label {
+        font-size: 0.8rem;
+        color: #565f89;
+        margin-bottom: 10px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: #fff">Aula 33: Keyframes & Lógica JS</h1>
+    <p style="margin-bottom: 40px">
+      Controlando o fluxo de animação via manipulação de propriedades CSS.
+    </p>
+
+    <div class="monitor-container">
+      <div class="monitor-card" id="card-medtrem">
+        <span class="status-label">MEDTREM | MONITOR CARDÍACO</span>
+        <div class="heart-rate">❤️</div>
+        <div class="controls">
+          <button onclick="setHeartRate('0.4s')">TAQUICARDIA (Rápido)</button>
+          <button onclick="setHeartRate('1.2s')">REPOUSO (Normal)</button>
+        </div>
+      </div>
+
+      <div class="monitor-card" id="card-nck">
+        <div class="scan-line" id="scanner"></div>
+        <span class="status-label">NCK LABS | SECURITY SCAN</span>
+        <div style="font-size: 3rem; margin: 20px 0">🛡️</div>
+        <div class="controls">
+          <button onclick="toggleScan()">ATIVAR / DESATIVAR SCAN</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // LÓGICA JS PARA CONTROLAR ANIMAÇÕES CSS
+
+      // 1. Alterando Variáveis de CSS (Velocidade)
+      function setHeartRate(speed) {
+        const heart = document.querySelector(".heart-rate");
+        // Mudamos o valor da variável customizada ou direto na propriedade
+        heart.style.setProperty("--speed", speed);
+        console.log(`[MedTrem] Frequência alterada para ${speed}`);
+      }
+
+      // 2. Ativando/Desativando via Classes ou Style Display
+      function toggleScan() {
+        const scanner = document.getElementById("scanner");
+        const isRunning = scanner.style.display === "block";
+
+        scanner.style.display = isRunning ? "none" : "block";
+        console.log(
+          `[NCK Labs] Scan de segurança: ${!isRunning ? "Iniciado" : "Parado"}`,
+        );
+      }
+    </script>
+  </body>
 </html>

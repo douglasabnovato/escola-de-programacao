@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteClass | Aula 49 - Arquitetura de Dados Logística</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --accent: #7aa2f7; --fk: #bb9af7; --pk: #9ece6a;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .erd-container {
+            display: flex; gap: 40px; align-items: center; justify-content: center;
+            flex-wrap: wrap; margin-top: 30px; position: relative;
+        }
+
+        .table-node {
+            background: var(--panel); border: 2px solid #414868;
+            border-radius: 8px; width: 220px; overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .table-header {
+            background: #414868; padding: 8px; font-weight: bold;
+            font-size: 0.8rem; text-align: center; color: #fff;
+        }
+
+        .column {
+            padding: 8px 12px; font-size: 0.75rem; border-bottom: 1px solid #16161e;
+            display: flex; justify-content: space-between;
+        }
+
+        .pk { color: var(--pk); font-weight: bold; }
+        .fk { color: var(--fk); font-weight: bold; }
+
+        .relation-line {
+            padding: 10px; background: rgba(122, 162, 247, 0.1);
+            border-radius: 4px; border: 1px dashed var(--accent);
+            margin-top: 20px; font-size: 0.8rem;
+        }
+
+        button {
+            margin-top: 20px; padding: 12px 24px; cursor: pointer;
+            background: var(--accent); color: #1a1b26; border: none;
+            border-radius: 4px; font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aula 49: Arquitetura de Dados</h1>
+    <p>Modelagem Logística: Volta Express Ecosystem</p>
+
+    <div class="erd-container">
+        <div class="table-node">
+            <div class="table-header">🚛 VEICULOS</div>
+            <div class="column"><span class="pk">id_veiculo</span> <span>INT</span></div>
+            <div class="column"><span>placa</span> <span>VARCHAR</span></div>
+            <div class="column"><span>capacidade</span> <span>DECIMAL</span></div>
+        </div>
+
+        <div style="font-size: 2rem; color: var(--accent);">← 1:N →</div>
+
+        <div class="table-node">
+            <div class="table-header">🗺️ VIAGENS</div>
+            <div class="column"><span class="pk">id_viagem</span> <span>INT</span></div>
+            <div class="column"><span class="fk">id_veiculo</span> <span>FK</span></div>
+            <div class="column"><span>origem</span> <span>VARCHAR</span></div>
+            <div class="column"><span>destino</span> <span>VARCHAR</span></div>
+        </div>
+    </div>
+
+    <div class="relation-line" id="info">
+        <strong>Regra de Negócio:</strong> Um Veículo pode realizar várias Viagens (1:N), mas cada Viagem pertence a um único Veículo.
+    </div>
+
+    <button onclick="mudarBU()">Simular Modelagem MedTrem</button>
+
+    <script>
+        function mudarBU() {
+            const container = document.querySelector('.erd-container');
+            const info = document.getElementById('info');
+            
+            container.innerHTML = `
+                <div class="table-node">
+                    <div class="table-header">👤 PACIENTES</div>
+                    <div class="column"><span class="pk">id_paciente</span> <span>INT</span></div>
+                    <div class="column"><span>nome</span> <span>VARCHAR</span></div>
+                </div>
+                <div style="font-size: 2rem; color: var(--fk);">← 1:N →</div>
+                <div class="table-node">
+                    <div class="table-header">📋 EXAMES</div>
+                    <div class="column"><span class="pk">id_exame</span> <span>INT</span></div>
+                    <div class="column"><span class="fk">id_paciente</span> <span>FK</span></div>
+                    <div class="column"><span>resultado</span> <span>TEXT</span></div>
+                </div>
+            `;
+            info.innerHTML = "<strong>Regra MedTrem:</strong> Um Paciente tem um histórico de N Exames. Integridade garantida pela Foreign Key (FK).";
+        }
+    </script>
+</body>
+</html>

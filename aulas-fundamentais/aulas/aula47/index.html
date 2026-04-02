@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteClass | Aula 47 - Herança e Reuso</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --parent: #7aa2f7; --child: #ff9e64; --accent: #bb9af7;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .hierarchy {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 20px; width: 100%; max-width: 800px;
+        }
+
+        .class-box {
+            background: var(--panel); border: 2px solid #414868;
+            padding: 15px; border-radius: 8px; width: 250px; text-align: center;
+            position: relative;
+        }
+
+        .parent { border-color: var(--parent); }
+        .child { border-color: var(--child); }
+
+        .arrow { font-size: 2rem; color: #414868; }
+
+        .terminal {
+            background: #16161e; padding: 15px; border-radius: 4px;
+            width: 100%; margin-top: 20px; font-size: 0.85rem; color: #9ece6a;
+            min-height: 100px; border: 1px solid #414868;
+        }
+
+        button {
+            padding: 10px 20px; cursor: pointer; border: none; border-radius: 4px;
+            background: var(--accent); color: #1a1b26; font-weight: bold; margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aula 47: Herança (Inheritance)</h1>
+    <p>Reutilizando Lógica na Volta Express</p>
+
+    <div class="hierarchy">
+        <div class="class-box parent">
+            <strong style="color: var(--parent);">Classe Pai: Veiculo</strong><br>
+            <small>Prop: placa, marca<br>Met: ligar()</small>
+        </div>
+        
+        <div class="arrow">↓</div>
+
+        <div style="display: flex; gap: 20px;">
+            <div class="class-box child">
+                <strong style="color: var(--child);">Classe Filha: Caminhao</strong><br>
+                <small>+ carga_maxima<br>+ descarregar()</small>
+            </div>
+            <div class="class-box child">
+                <strong style="color: var(--child);">Classe Filha: Moto</strong><br>
+                <small>+ cilindradas<br>+ darGrau()</small>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="testarHeranca()">Simular Instância de Caminhão</button>
+
+    <div class="terminal" id="output">
+        // Clique no botão para ver a herança em ação...
+    </div>
+
+    <script>
+        // 1. CLASSE BASE (GENERALISTA)
+        class Veiculo {
+            constructor(placa, marca) {
+                this.placa = placa;
+                this.marca = marca;
+            }
+            ligar() { return `🔌 Veículo [${this.placa}] sistema iniciado...`; }
+        }
+
+        // 2. CLASSE ESPECIALIZADA (HERANÇA)
+        class Caminhao extends Veiculo {
+            constructor(placa, marca, eixos) {
+                super(placa, marca); // Chama o construtor do Pai
+                this.eixos = eixos;
+            }
+            transportar() { return `🚚 Transportando carga pesada com ${this.eixos} eixos.`; }
+        }
+
+        function testarHeranca() {
+            const out = document.getElementById('output');
+            const meuCaminhao = new Caminhao("VOL-2026", "Volvo", 6);
+            
+            out.innerHTML = `
+                Instanciando: new Caminhao("VOL-2026", "Volvo", 6); <br><br>
+                > Atributo herdado (Marca): ${meuCaminhao.marca} <br>
+                > Atributo próprio (Eixos): ${meuCaminhao.eixos} <br><br>
+                > Chamando método herdado: <span style="color:white">${meuCaminhao.ligar()}</span> <br>
+                > Chamando método próprio: <span style="color:white">${meuCaminhao.transportar()}</span>
+            `;
+        }
+    </script>
+</body>
+</html>

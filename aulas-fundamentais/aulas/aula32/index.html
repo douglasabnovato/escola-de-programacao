@@ -1,15 +1,174 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass | Aula 32 - Transições e Transformações</title>
+    <style>
+      :root {
+        --bg: #1a1b26;
+        --panel: #24283b;
+        --text: #a9b1d6;
+        --accent: #7aa2f7;
+        --secondary: #bb9af7;
+        --success: #9ece6a;
+        --danger: #f7768e;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="index.js"></script>
-</head>
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-<body>
+      .canvas {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1000px;
+        margin-top: 30px;
+      }
 
-</body>
+      /* 🟢 ESTILO BASE DOS CARDS (BU) */
+      .bu-card {
+        background: var(--panel);
+        border: 1px solid #414868;
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        cursor: pointer;
 
+        /* AULA 32: A MÁGICA COMEÇA AQUI */
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      /* 🔵 TRANSFORMAÇÕES NO HOVER */
+      .bu-card:hover {
+        border-color: var(--accent);
+        background: #2f3549;
+        /* Transformação combinada: Escala + Elevação */
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        display: inline-block;
+        transition: transform 0.5s ease;
+      }
+
+      .bu-card:hover .icon {
+        /* Transformação de Rotação */
+        transform: rotate(15deg) scale(1.1);
+      }
+
+      h3 {
+        margin: 10px 0;
+        color: #fff;
+      }
+      p {
+        font-size: 0.85rem;
+        color: #565f89;
+      }
+
+      /* 🔴 BOTÃO COM TRANSIÇÃO DE ESTADO */
+      .btn-status {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        background: #414868;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition:
+          background 0.3s,
+          letter-spacing 0.3s;
+      }
+
+      .btn-status:hover {
+        background: var(--success);
+        letter-spacing: 2px;
+      }
+
+      /* DASHBOARD INFO */
+      .header-lesson {
+        text-align: center;
+        border-bottom: 1px solid #414868;
+        padding-bottom: 20px;
+        width: 100%;
+      }
+      .tag {
+        background: var(--secondary);
+        color: #000;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-lesson">
+      <span class="tag">MODULO INTERMEDIÁRIO</span>
+      <h1>Aula 32: Animações CSS I</h1>
+      <p>
+        Dominando <code>transition</code> e <code>transform</code> nas BUs do
+        ecossistema.
+      </p>
+    </div>
+
+    <div class="canvas">
+      <div class="bu-card" onclick="alert('MedTrem: Atestado Gerado!')">
+        <div class="icon">🏥</div>
+        <h3>MedTrem</h3>
+        <p>
+          Sistemas de Saúde Ocupacional. <br />
+          Interação: Hover com Suavização.
+        </p>
+        <button class="btn-status">GERAR ASO</button>
+      </div>
+
+      <div class="bu-card" onclick="alert('NCK Labs: Deploy iniciado!')">
+        <div class="icon">🚀</div>
+        <h3>NCK Labs</h3>
+        <p>
+          Inovação e Cloud Computing. <br />
+          Interação: Transformação 2D.
+        </p>
+        <button class="btn-status">DEPLOY CLOUD</button>
+      </div>
+
+      <div class="bu-card" onclick="alert('Volta Express: Carga Rastreada!')">
+        <div class="icon">📦</div>
+        <h3>Volta Express</h3>
+        <p>
+          Logística Inteligente. <br />
+          Interação: Elevação de Eixo Z.
+        </p>
+        <button class="btn-status">RASTREAR</button>
+      </div>
+    </div>
+
+    <div
+      style="
+        margin-top: 40px;
+        max-width: 600px;
+        font-size: 0.9rem;
+        color: #565f89;
+        line-height: 1.6;
+      "
+    >
+      <strong>Desafio da Aula:</strong> Altere o <code>cubic-bezier</code> no
+      CSS para mudar o comportamento do "pulo" (bounce) dos cards. Entenda como
+      o navegador interpola os estados entre o repouso e o hover.
+    </div>
+  </body>
 </html>

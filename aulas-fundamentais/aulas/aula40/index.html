@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteClass | Aula 40 - Sort Nativo e Comparadores</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --accent: #7aa2f7; --nck: #73daca;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .dashboard {
+            background: var(--panel); border: 1px solid #414868;
+            padding: 20px; border-radius: 8px; width: 100%; max-width: 600px;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+        th, td { padding: 12px; border-bottom: 1px solid #414868; text-align: left; }
+        th { color: var(--accent); cursor: pointer; }
+        th:hover { text-decoration: underline; }
+
+        .controls { display: flex; gap: 10px; margin-bottom: 20px; }
+        button {
+            padding: 8px 15px; cursor: pointer; border: none; border-radius: 4px;
+            background: var(--nck); color: #1a1b26; font-weight: bold;
+        }
+
+        .code-preview {
+            background: #16161e; padding: 15px; border-radius: 4px;
+            margin-top: 20px; color: #9ece6a; font-size: 0.8rem; width: 100%; max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aula 40: Sort Nativo & Comparadores</h1>
+    <p>Gerenciamento de Frota: Volta Express</p>
+
+    <div class="dashboard">
+        <div class="controls">
+            <button onclick="ordenarPor('id')">Ordenar por ID</button>
+            <button onclick="ordenarPor('peso')">Ordenar por Peso</button>
+            <button onclick="ordenarPor('destino')">Ordenar por Destino (A-Z)</button>
+        </div>
+
+        <table id="tabela-cargas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Destino</th>
+                    <th>Peso (kg)</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+
+    <div class="code-preview" id="logic-preview">
+        // A lógica do comparador aparecerá aqui...
+    </div>
+
+    <script>
+        let cargas = [
+            { id: 105, destino: "São Paulo", peso: 1200 },
+            { id: 32, destino: "Juiz de Fora", peso: 450 },
+            { id: 89, destino: "Curitiba", peso: 2800 },
+            { id: 12, destino: "Belo Horizonte", peso: 900 }
+        ];
+
+        function render() {
+            const tbody = document.querySelector('#tabela-cargas tbody');
+            tbody.innerHTML = cargas.map(c => `
+                <tr>
+                    <td>#${c.id}</td>
+                    <td>${c.destino}</td>
+                    <td>${c.peso} kg</td>
+                </tr>
+            `).join('');
+        }
+
+        function ordenarPor(criterio) {
+            let log = "";
+
+            if (criterio === 'id' || criterio === 'peso') {
+                // Ordenação Numérica: (a, b) => a - b
+                cargas.sort((a, b) => a[criterio] - b[criterio]);
+                log = `cargas.sort((a, b) => a.${criterio} - b.${criterio});`;
+            } else {
+                // Ordenação de String: localeCompare
+                cargas.sort((a, b) => a[criterio].localeCompare(b[criterio]));
+                log = `cargas.sort((a, b) => a.${criterio}.localeCompare(b.${criterio}));`;
+            }
+
+            document.getElementById('logic-preview').innerText = `Lógica aplicada: \n${log}`;
+            render();
+        }
+
+        render();
+    </script>
+</body>
+</html>

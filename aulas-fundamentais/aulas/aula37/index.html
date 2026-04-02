@@ -1,11 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ByteClass | Aula 37 - Pilhas e Filas</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --stack-color: #bb9af7; --queue-color: #73daca;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .container { display: flex; gap: 40px; width: 100%; max-width: 1000px; margin-top: 20px; }
+
+        .box {
+            background: var(--panel); border: 1px solid #414868;
+            padding: 20px; border-radius: 8px; flex: 1; text-align: center;
+        }
+
+        .visual-container {
+            background: #16161e; min-height: 250px; margin: 15px 0;
+            border-radius: 4px; display: flex; flex-direction: column-reverse;
+            padding: 10px; gap: 5px; align-items: center;
+        }
+
+        /* Estilo para a Fila (Horizontal) */
+        #queue-visual { flex-direction: row; justify-content: flex-start; align-items: center; overflow-x: auto; }
+
+        .element {
+            padding: 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem;
+            min-width: 60px; color: #1a1b26;
+        }
+
+        .stack-el { background: var(--stack-color); width: 80%; }
+        .queue-el { background: var(--queue-color); height: 40px; display: flex; align-items: center; }
+
+        button {
+            width: 45%; padding: 10px; cursor: pointer; border: none; border-radius: 4px;
+            font-weight: bold; margin: 2px;
+        }
+        .btn-stack { background: var(--stack-color); }
+        .btn-queue { background: var(--queue-color); }
+    </style>
 </head>
 <body>
-    <script src="index.js"></script>
+
+    <h1>Aula 37: Estruturas Lineares</h1>
+    <p>LIFO (Pilha) vs FIFO (Fila) no Ecossistema</p>
+
+    <div class="container">
+        <div class="box">
+            <h2 style="color: var(--stack-color);">📚 Pilha (Stack)</h2>
+            <small>Contexto: Histórico de Ações (Undo)</small>
+            <div id="stack-visual" class="visual-container"></div>
+            <button class="btn-stack" onclick="pushStack()">Push (Add)</button>
+            <button class="btn-stack" onclick="popStack()">Pop (Remove)</button>
+        </div>
+
+        <div class="box">
+            <h2 style="color: var(--queue-color);">🚛 Fila (Queue)</h2>
+            <small>Contexto: Ordem de Carga (Volta Express)</small>
+            <div id="queue-visual" class="visual-container"></div>
+            <button class="btn-queue" onclick="enqueue()">Enqueue</button>
+            <button class="btn-queue" onclick="dequeue()">Dequeue</button>
+        </div>
+    </div>
+
+    <script>
+        // LÓGICA DE PILHA (LIFO - Last In, First Out)
+        let stack = [];
+        function pushStack() {
+            stack.push(`Ação ${stack.length + 1}`);
+            renderStack();
+        }
+        function popStack() {
+            stack.pop();
+            renderStack();
+        }
+        function renderStack() {
+            const v = document.getElementById('stack-visual');
+            v.innerHTML = stack.map(el => `<div class="element stack-el">${el}</div>`).join('');
+        }
+
+        // LÓGICA DE FILA (FIFO - First In, First Out)
+        let queue = [];
+        function enqueue() {
+            queue.push(`Caminhão ${queue.length + 1}`);
+            renderQueue();
+        }
+        function dequeue() {
+            queue.shift(); // Remove o primeiro
+            renderQueue();
+        }
+        function renderQueue() {
+            const v = document.getElementById('queue-visual');
+            v.innerHTML = queue.map(el => `<div class="element queue-el">${el}</div>`).join('');
+        }
+    </script>
 </body>
 </html>
