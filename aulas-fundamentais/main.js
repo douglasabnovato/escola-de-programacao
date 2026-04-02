@@ -1337,6 +1337,246 @@ function atualizarInspector(id) {
         </div>
     `;
       break;
+    case 48:
+      metaLevel.innerText = "WEB APIS / PERSISTÊNCIA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 48: JSON E PERSISTÊNCIA AVANÇADA</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar o transporte de dados entre memória e armazenamento através da serialização.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #bb9af7; margin: 15px 0;">
+                <label class="sub-label" style="color: #bb9af7;">💾 O CICLO DO DADO:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>JSON.stringify():</strong> Transforma seu objeto vivo em uma String (pacote de viagem).</li>
+                    <li><strong>JSON.parse():</strong> Transforma a String de volta em um objeto funcional (desempacotamento).</li>
+                    <li><strong>LocalStorage:</strong> Memória persistente do browser (limite de ~5MB).</li>
+                    <li><strong>SessionStorage:</strong> Persistência apenas enquanto a aba estiver aberta.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">CENÁRIOS NAS BUSINESS UNITS:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Salvar o estado do formulário de frete para que o usuário não perca os dados se a página recarregar.<br>
+                <strong>MedTrem:</strong> Cache local de exames recentes para acesso rápido offline.<br>
+                <strong>NCK Labs:</strong> Armazenar o "Tema Escuro/Claro" escolhido pelo usuário.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(187, 154, 247, 0.1); border: 1px solid #bb9af7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #bb9af7; font-weight: bold; font-size: 0.8rem;">🚨 PONTO DE ATENÇÃO:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"O LocalStorage só aceita Strings. Tentar salvar um objeto direto resultará no famoso erro '[object Object]'. O JSON é a ponte obrigatória."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>📡 <strong>Próxima Aula:</strong> Fetch API I - Consumindo dados do mundo real (APIs Externas).</small></p>
+        </div>
+    `;
+      break;
+    case 49:
+      metaLevel.innerText = "ARQUITETURA / DATABASE";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 49: ARQUITETURA DE DADOS E MODELAGEM</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar a estruturar dados de forma normalizada para evitar redundância e garantir a integridade.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #9ece6a; margin: 15px 0;">
+                <label class="sub-label" style="color: #9ece6a;">🏗️ PILARES DA MODELAGEM:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Entidade:</strong> O "assunto" da tabela (Ex: Motorista, Carga).</li>
+                    <li><strong>Primary Key (PK):</strong> O ID único e imutável que identifica um registro.</li>
+                    <li><strong>Foreign Key (FK):</strong> A "ponte" que conecta uma tabela a outra.</li>
+                    <li><strong>Normalização:</strong> O processo de organizar colunas e tabelas para reduzir a duplicidade.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">DESIGN DE BUSINESS UNITS:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Como modelar a relação entre um Caminhão e o Manifesto de Cargas (Agrupamento).<br>
+                <strong>MedTrem:</strong> Como separar dados cadastrais (Paciente) de dados clínicos (Prontuário) por segurança e performance.<br>
+                <strong>NCK Labs:</strong> Estruturação de permissões de usuário (Roles) em sistemas SaaS.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(158, 206, 106, 0.1); border: 1px solid #9ece6a; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #9ece6a; font-weight: bold; font-size: 0.8rem;">💡 Visão de CTO:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Código ruim você refatora em um dia. Um banco de dados mal modelado pode destruir uma empresa em um ano. Desenhe antes de digitar."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>💾 <strong>Próxima Aula:</strong> SQL Básico - Consultando nossas modelagens na prática.</small></p>
+        </div>
+    `;
+      break;
+    case 50:
+      metaLevel.innerText = "DATABASE / INFRA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 50: FUNDAMENTOS DE BANCO DE DADOS (SQL VS NOSQL)</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar o aluno a discernir entre modelos relacionais e não-relacionais baseados no volume, velocidade e variedade dos dados.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #7aa2f7; margin: 15px 0;">
+                <label class="sub-label" style="color: #7aa2f7;">📊 COMPARAÇÃO TÉCNICA:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>SQL (PostgreSQL/MySQL):</strong> Foco em Consistência e Integridade. Excelente para dados que se conectam muito (Joins).</li>
+                    <li><strong>NoSQL (MongoDB/Redis):</strong> Foco em Performance e Flexibilidade. Excelente para Big Data e Protótipos rápidos.</li>
+                    <li><strong>Esquema:</strong> SQL exige que você defina as colunas antes. NoSQL aceita novos campos "on-the-fly".</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">ESTRATÉGIA NAS BUs:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> SQL para o Core (Pagamentos e Contratos) + NoSQL para Rastreamento GPS (Alta escrita).<br>
+                <strong>MedTrem:</strong> SQL para Cadastro de Pacientes + NoSQL para imagens de exames e metadados variados.<br>
+                <strong>NCK Labs:</strong> NoSQL para armazenamento de configurações dinâmicas de usuários.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(122, 162, 247, 0.1); border: 1px solid #7aa2f7; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #7aa2f7; font-weight: bold; font-size: 0.8rem;">⚠️ VISÃO DE CTO:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Muitos devs escolhem NoSQL por 'preguiça' de modelar o banco SQL. Isso cobra um preço caro em relatórios complexos no futuro. Escolha pela necessidade técnica, não pela facilidade inicial."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🌐 <strong>Próxima Aula:</strong> Integração Frontend/Backend - O papel das APIs REST.</small></p>
+        </div>
+    `;
+      break;
+    case 51:
+      metaLevel.innerText = "ES6+ / ARQUITETURA";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 51: JS MODERNO - MÓDULOS E DESTRUCTURING</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar a sintaxe que torna o código JavaScript mais limpo, modular e fácil de manter em grandes projetos.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #ff9e64; margin: 15px 0;">
+                <label class="sub-label" style="color: #ff9e64;">⚡ SINTAXE DE ALTO NÍVEL:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Modules (import/export):</strong> Permite que a MedTrem use o mesmo validador de CPF em 50 arquivos diferentes sem duplicar código.</li>
+                    <li><strong>Object Destructuring:</strong> Facilita o recebimento de parâmetros em funções (Ex: <code>function cadastrar({nome, email})</code>).</li>
+                    <li><strong>Array Destructuring:</strong> Muito usado em hooks de bibliotecas modernas (como React).</li>
+                    <li><strong>Spread/Rest Operator:</strong> Para clonar objetos ou receber múltiplos argumentos de forma dinâmica.</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">APLICAÇÃO NAS BUs:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Exportar uma classe <code>CalculadoraFrete</code> para ser usada tanto no painel do cliente quanto no painel do admin.<br>
+                <strong>MedTrem:</strong> Desestruturar o objeto <code>Paciente</code> para exibir apenas as informações de emergência na tela do médico.<br>
+                <strong>NCK Labs:</strong> Utilizar módulos para separar a lógica de UI da lógica de processamento de dados.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(255, 158, 100, 0.1); border: 1px solid #ff9e64; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #ff9e64; font-weight: bold; font-size: 0.8rem;">💡 DICA DE SENIORIDADE:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"A modularização não é apenas sobre arquivos separados; é sobre 'Separação de Preocupações' (SoC). Se um arquivo faz 10 coisas diferentes, ele ainda não está modularizado."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🧪 <strong>Próxima Aula:</strong> Testes Unitários - Garantindo que a lógica das nossas BUs nunca falhe.</small></p>
+        </div>
+    `;
+      break;
+    case 52:
+      metaLevel.innerText = "QA / SOFTWARE ENGINEERING";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 52: METODOLOGIA DE TESTES BÁSICOS</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar a cultura da prova técnica. Testar não é um "extra", é parte do desenvolvimento.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #9ece6a; margin: 15px 0;">
+                <label class="sub-label" style="color: #9ece6a;">🛠️ O DICIONÁRIO DO QA:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Teste Unitário:</strong> Testa a menor unidade de código (uma função isolada).</li>
+                    <li><strong>Asserção (Expect):</strong> A afirmação do que esperamos que aconteça.</li>
+                    <li><strong>TDD:</strong> Ciclo Red (falha) -> Green (passa) -> Refactor (melhora).</li>
+                    <li><strong>Mocks:</strong> Simular comportamentos (ex: simular uma API fora do ar).</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">TESTES NAS BUs:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Volta Express:</strong> Garantir que o cálculo de pedágio nunca retorne valores negativos.<br>
+                <strong>MedTrem:</strong> Testar se a conversão de unidades (mg para g) está matematicamente perfeita.<br>
+                <strong>NCK Labs:</strong> Validar se o sistema de login bloqueia acessos sem token.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(158, 206, 106, 0.1); border: 1px solid #9ece6a; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #9ece6a; font-weight: bold; font-size: 0.8rem;">💡 MENTALIDADE CTO:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Código sem teste é dívida técnica imediata. Se você não tem tempo para testar agora, terá que ter tempo para consertar o bug em produção às 3 da manhã."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>⏱️ <strong>Próxima Aula:</strong> JavaScript Assíncrono (Promises/Async-Await). Lidando com o tempo.</small></p>
+        </div>
+    `;
+      break;
+    case 53:
+      metaLevel.innerText = "DEVOPS / CLOUD";
+      docContent.innerHTML = `
+        <div class="info-card">
+            <label>AULA 53: DEPLOY E AMBIENTES (NETLIFY/VERCEL)</label>
+            <p><strong>Foco do Instrutor:</strong> Ensinar o fluxo de automação que leva o código do ambiente de desenvolvimento para as mãos do usuário final.</p>
+            
+            <div style="background: #16161e; padding: 15px; border-radius: 8px; border-left: 4px solid #f14e32; margin: 15px 0;">
+                <label class="sub-label" style="color: #f14e32;">🌐 O CAMINHO PARA A NUVEM:</label>
+                <ul style="font-size: 0.85rem; margin-top: 10px; line-height: 1.6;">
+                    <li><strong>Continuous Deployment (CD):</strong> Cada "Push" no GitHub gera um novo deploy automático.</li>
+                    <li><strong>Variáveis de Ambiente (.env):</strong> Onde guardamos chaves secretas (DB, APIs) que não podem ir para o GitHub.</li>
+                    <li><strong>Preview Deploy:</strong> Ver como uma nova funcionalidade fica online antes de mesclar com a versão principal.</li>
+                    <li><strong>Edge Network:</strong> Servir o site learnTECH do servidor mais próximo do usuário (RJ, SP, Miami).</li>
+                </ul>
+            </div>
+
+            <label class="sub-label">ESTRUTURA DE AMBIENTES:</label>
+            <p style="font-size: 0.85rem;">
+                <strong>Local:</strong> Máquina do dev (Douglas). Liberdade total para errar.<br>
+                <strong>Staging (Homologação):</strong> Cópia idêntica à produção para testes finais da equipe ByteClass.<br>
+                <strong>Produção:</strong> Onde os caminhões da Volta Express são monitorados em tempo real. Erro proibido.
+            </p>
+
+            <div class="review-bubble" style="background: rgba(241, 78, 50, 0.1); border: 1px solid #f14e32; margin-top: 20px; padding: 12px; border-radius: 6px;">
+                <span style="color: #f14e32; font-weight: bold; font-size: 0.8rem;">🚨 REGRA DE OURO DO CTO:</span>
+                <p style="font-size: 0.85rem; margin-top: 5px;">"Nunca suba chaves de acesso no código fonte. Use sempre as Environment Variables do Netlify/Vercel. Segurança em primeiro lugar, sempre."</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #414868; margin: 20px 0;">
+            <p><small>🏁 <strong>PRÓXIMA AULA (54):</strong> O Grande Projeto Final. Consolidando todo o Módulo 6 e fechando o treinamento!</small></p>
+        </div>
+    `;
+      break;
+    case 54:
+      metaLevel.innerText = "MVP / GRADUAÇÃO";
+      docContent.innerHTML = `
+        <div class="info-card" style="border: 2px solid #9ece6a;">
+            <label style="background: #9ece6a; color: #1a1b26; padding: 5px 10px; border-radius: 4px;">AULA 54: PROJETO INTEGRADOR FINAL (MVP)</label>
+            <h2 style="margin-top: 15px;">🎓 Conclusão do Ciclo de Fundamentos</h2>
+            
+            <p><strong>Objetivo:</strong> O aluno deve agir como um Desenvolvedor Júnior em sua primeira task real na learnTECH.</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <div style="background: rgba(122, 162, 247, 0.1); padding: 15px; border-radius: 8px; border: 1px solid #7aa2f7;">
+                    <h4 style="color: #7aa2f7;">📦 Entregável A (Logística)</h4>
+                    <p style="font-size: 0.8rem;">Sistema de despacho de carga com cálculo de frete dinâmico, persistência de rotas e validação de frota.</p>
+                </div>
+                <div style="background: rgba(187, 154, 247, 0.1); padding: 15px; border-radius: 8px; border: 1px solid #bb9af7;">
+                    <h4 style="color: #bb9af7;">🏥 Entregável B (Saúde)</h4>
+                    <p style="font-size: 0.8rem;">Triagem de pacientes com histórico encapsulado (POO), filtros de busca e exportação de dados em JSON.</p>
+                </div>
+            </div>
+
+            <div class="review-bubble" style="background: #16161e; border: 1px solid #9ece6a; padding: 15px;">
+                <span style="color: #9ece6a; font-weight: bold;">📝 Checklist de Avaliação do CTO:</span>
+                <ul style="font-size: 0.8rem; margin-top: 10px; line-height: 1.6;">
+                    <li>✅ O código está modularizado (import/export)?</li>
+                    <li>✅ Os atributos sensíveis estão protegidos com # (Private)?</li>
+                    <li>✅ O deploy reflete o último commit da branch main?</li>
+                    <li>✅ O README do GitHub explica como rodar o projeto?</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <h3 style="color: #f7768e;">¡MISSIÓN CUMPLIDA!</h3>
+                <p><small>Douglas, finalizamos a trilha de 54 aulas. O ecossistema ByteClass/learnTECH tem agora uma base de engenharia de software de elite.</small></p>
+            </div>
+        </div>
+    `;
+      break;
     default:
       metaLevel.innerText = "PLANNING";
       docContent.innerHTML = `<p>Conteúdo em fase de planejamento pedagógico.</p>`;

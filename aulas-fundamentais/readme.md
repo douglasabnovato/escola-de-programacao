@@ -4,16 +4,16 @@ Repositório central do ecossistema, focado na formação de desenvolvedores atr
 
 ---
 
-## 📊 Progresso do Curso (24/54)
+## 📊 Progresso do Curso (100% em 54/54) 🏆
 
 | Módulo                             |    Status    |  Aulas  |
 | :--------------------------------- | :----------: | :-----: |
 | 1. Fundamentos Web e Estrutura     | ✅ Concluído | 01 - 10 |
 | 2. Lógica e Manipulação de DOM     | ✅ Concluído | 11 - 20 |
 | 3. Persistência e CRUD Prático     | ✅ Concluído | 21 - 24 |
-| 4. Ferramentas e Fluxo de Trabalho | ⏳ Planejado | 25 - 34 |
-| 5. Estrutura de Dados e Algoritmos | ⏳ Planejado | 35 - 44 |
-| 6. POO e Integração de Dados       | ⏳ Planejado | 45 - 54 |
+| 4. Ferramentas e Fluxo de Trabalho | ✅ Planejado | 25 - 34 |
+| 5. Estrutura de Dados e Algoritmos | ✅ Planejado | 35 - 44 |
+| 6. POO e Integração de Dados       | ✅ Planejado | 45 - 54 |
 
 ---
 
