@@ -186,31 +186,35 @@
       }
 
       /* Estilo para Card com Imagem (Featured) */
-.project-card.featured {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 1px solid rgba(255, 87, 34, 0.3); /* Borda mais intensa no destaque */
-}
+      .project-card.featured {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 1px solid rgba(255, 87, 34, 0.3); /* Borda mais intensa no destaque */
+      }
 
-/* Overlay para garantir leitura do texto */
-.project-card.featured::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(8, 8, 8, 0.2) 0%, rgba(8, 8, 8, 0.9) 80%);
-    z-index: 1;
-}
+      /* Overlay para garantir leitura do texto */
+      .project-card.featured::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(8, 8, 8, 0.2) 0%,
+          rgba(8, 8, 8, 0.9) 80%
+        );
+        z-index: 1;
+      }
 
-/* Garante que o conteúdo fique acima do overlay */
-.project-card.featured .card-icon,
-.project-card.featured .badge,
-.project-card.featured .card-content {
-    z-index: 2;
-}
+      /* Garante que o conteúdo fique acima do overlay */
+      .project-card.featured .card-icon,
+      .project-card.featured .badge,
+      .project-card.featured .card-content {
+        z-index: 2;
+      }
 
       /* 6. Viewer Imersivo (O "Modo Página Imersiva") */
       #project-viewer {
@@ -289,6 +293,24 @@
     </header>
 
     <main class="hub-content">
+      <!-- ESTRATÉGIA: Container do Contador -->
+      <div
+        id="nexus-counter-container"
+        style="margin-bottom: 2rem; padding: 0 0.5rem"
+      >
+        <h2
+          id="project-count-text"
+          style="
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            font-weight: 500;
+            letter-spacing: -0.5px;
+          "
+        >
+          <!-- O JS vai injetar o texto aqui -->
+        </h2>
+      </div>
+
       <div class="bento-grid">
         <div
           class="project-card featured"
@@ -378,6 +400,7 @@
       // 2. FUNÇÃO PRINCIPAL: CARREGAR E RENDERIZAR PROJETOS
       async function loadNexusHub() {
         const grid = document.querySelector(NexusEngine.containerSelector);
+        const counterText = document.getElementById("project-count-text"); // Captura o alvo
 
         try {
           const response = await fetch(NexusEngine.jsonPath);
@@ -385,15 +408,18 @@
 
           const projects = await response.json();
 
+          // --- EXECUÇÃO DO CONTADOR DINÂMICO ---
+          if (counterText) {
+            counterText.innerHTML = `Conheça nossos <span style="color: var(--primary); font-weight: 800;">${projects.length}</span> projetos`;
+          }
+
+          // Renderização dos cards (seu código original)
           grid.innerHTML = projects
             .map((project) => renderCard(project))
             .join("");
 
           console.log(`[NEXUS] ${projects.length} projetos renderizados.`);
-          
-          // --- ESTRATÉGIA DE PERSISTÊNCIA: Recupera após renderizar ---
           checkPersistedProject(projects);
-
         } catch (error) {
           console.error("Critical Error:", error);
           grid.innerHTML = `<div class="error-notice"><p>Erro ao carregar hub.</p></div>`;
@@ -402,15 +428,16 @@
 
       // 3. COMPONENTE DE CARD
       function renderCard(project) {
-  const isFeatured = project.featured;
-  const cardClass = isFeatured ? "project-card featured" : "project-card";
-  
-  // Define o estilo de background apenas se for featured e tiver imagem
-  const bgStyle = (isFeatured && project.image) 
-    ? `style="background-image: url('${project.image}');"` 
-    : "";
+        const isFeatured = project.featured;
+        const cardClass = isFeatured ? "project-card featured" : "project-card";
 
-  return `
+        // Define o estilo de background apenas se for featured e tiver imagem
+        const bgStyle =
+          isFeatured && project.image
+            ? `style="background-image: url('${project.image}');"`
+            : "";
+
+        return `
     <div id="project-${project.id}" 
          class="${cardClass}" 
          ${bgStyle}
@@ -425,7 +452,7 @@
         </div>
     </div>
   `;
-}
+      }
 
       // 4. MOTOR DO VIEWER COM PERSISTÊNCIA
       window.openProject = function (title, url) {
@@ -434,8 +461,15 @@
         const titleDisplay = document.querySelector(NexusEngine.titleSelector);
 
         // A. Salva o estado (LocalStorage e URL Hash)
-        localStorage.setItem('nexus_active_project', JSON.stringify({ title, url }));
-        window.history.replaceState(null, null, `#${encodeURIComponent(title)}`);
+        localStorage.setItem(
+          "nexus_active_project",
+          JSON.stringify({ title, url }),
+        );
+        window.history.replaceState(
+          null,
+          null,
+          `#${encodeURIComponent(title)}`,
+        );
 
         // B. Exibe o Viewer
         titleDisplay.innerText = title;
@@ -449,8 +483,8 @@
         const iframe = document.querySelector(NexusEngine.iframeSelector);
 
         // Limpa estado
-        localStorage.removeItem('nexus_active_project');
-        window.history.replaceState(null, null, ' '); // Remove hash
+        localStorage.removeItem("nexus_active_project");
+        window.history.replaceState(null, null, " "); // Remove hash
 
         viewer.style.display = "none";
         iframe.src = "";
@@ -459,19 +493,21 @@
 
       // 5. CHECAGEM DE ESTADO AO RECARREGAR
       function checkPersistedProject(projects) {
-          // Tenta pegar do LocalStorage
-          const saved = localStorage.getItem('nexus_active_project');
-          
-          if (saved) {
-              const { title, url } = JSON.parse(saved);
-              console.log(`[PERSISTENCE] Restaurando projeto: ${title}`);
-              openProject(title, url);
-          } else if (window.location.hash) {
-              // Fallback para URL Hash se o Storage falhar
-              const hashTitle = decodeURIComponent(window.location.hash.replace('#', ''));
-              const project = projects.find(p => p.title === hashTitle);
-              if (project) openProject(project.title, project.path);
-          }
+        // Tenta pegar do LocalStorage
+        const saved = localStorage.getItem("nexus_active_project");
+
+        if (saved) {
+          const { title, url } = JSON.parse(saved);
+          console.log(`[PERSISTENCE] Restaurando projeto: ${title}`);
+          openProject(title, url);
+        } else if (window.location.hash) {
+          // Fallback para URL Hash se o Storage falhar
+          const hashTitle = decodeURIComponent(
+            window.location.hash.replace("#", ""),
+          );
+          const project = projects.find((p) => p.title === hashTitle);
+          if (project) openProject(project.title, project.path);
+        }
       }
 
       // 6. INICIALIZAÇÃO
