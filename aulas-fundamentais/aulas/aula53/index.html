@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteClass | Aula 53 - Deploy & Ambientes</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --git: #f14e32; --vercel: #ffffff; --success: #9ece6a;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .pipeline {
+            display: flex; align-items: center; gap: 15px;
+            margin-top: 40px; flex-wrap: wrap; justify-content: center;
+        }
+
+        .step {
+            background: var(--panel); border: 2px solid #414868;
+            padding: 15px; border-radius: 8px; width: 140px; text-align: center;
+            position: relative; transition: 0.5s;
+        }
+
+        .active { border-color: var(--success); box-shadow: 0 0 15px rgba(158, 206, 106, 0.4); }
+
+        .arrow { font-size: 1.5rem; color: #414868; }
+
+        .status-console {
+            width: 100%; max-width: 600px; background: #000;
+            color: #0f0; padding: 15px; border-radius: 4px;
+            margin-top: 30px; font-size: 0.8rem; height: 120px; overflow-y: auto;
+        }
+
+        button {
+            margin-top: 20px; padding: 15px 30px; cursor: pointer;
+            background: var(--git); color: white; border: none;
+            border-radius: 4px; font-weight: bold;
+        }
+
+        .url-box {
+            margin-top: 20px; padding: 10px; background: #16161e;
+            border: 1px dashed var(--success); color: var(--success);
+            display: none; font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aula 53: Deploy & Cloud Hosting</h1>
+    <p>Publicando o Ecossistema learnTECH</p>
+
+    <div class="pipeline">
+        <div class="step" id="step1">💻 Local<br><small>Desenvolvimento</small></div>
+        <div class="arrow">→</div>
+        <div class="step" id="step2">🐙 GitHub<br><small>Push / PR</small></div>
+        <div class="arrow">→</div>
+        <div class="step" id="step3">⚙️ Build<br><small>Vercel/Netlify</small></div>
+        <div class="arrow">→</div>
+        <div class="step" id="step4">🚀 Prod<br><small>Live!</small></div>
+    </div>
+
+    <button onclick="startDeploy()">Git Push Origin Main 🚀</button>
+
+    <div class="status-console" id="console">
+        > Aguardando commit...
+    </div>
+
+    <div id="url" class="url-box">
+        🎉 Projeto online: <strong>https://volta-express-v3.vercel.app</strong>
+    </div>
+
+    <script>
+        async function startDeploy() {
+            const steps = ['step1', 'step2', 'step3', 'step4'];
+            const logs = [
+                "Compactando arquivos locais...",
+                "Enviando para o repositório remoto (GitHub)...",
+                "Trigger de Webhook detectado na Vercel.",
+                "Rodando Scripts de Build (npm run build)...",
+                "Executando Testes Unitários da Aula 52...",
+                "Otimizando imagens e assets...",
+                "Deploy concluído com sucesso nas Edge Networks!"
+            ];
+
+            const consoleEl = document.getElementById('console');
+            consoleEl.innerHTML = '';
+            
+            for(let i=0; i < steps.length; i++) {
+                document.getElementById(steps[i]).classList.add('active');
+                consoleEl.innerHTML += `> ${logs[i*2] || logs[6]}<br>`;
+                await new Promise(r => setTimeout(r, 1000));
+            }
+
+            document.getElementById('url').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteClass | Aula 52 - Metodologia de Testes</title>
+    <style>
+        :root {
+            --bg: #1a1b26; --panel: #24283b; --text: #a9b1d6;
+            --pass: #9ece6a; --fail: #f7768e; --accent: #7aa2f7;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg); color: var(--text);
+            padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .test-suite {
+            background: var(--panel); border: 2px solid #414868;
+            padding: 25px; border-radius: 12px; width: 100%; max-width: 650px;
+        }
+
+        .test-case {
+            background: #16161e; padding: 12px; border-radius: 6px;
+            margin-bottom: 10px; display: flex; justify-content: space-between;
+            align-items: center; border-left: 4px solid #414868;
+        }
+
+        .test-pass { border-left-color: var(--pass); }
+        .test-fail { border-left-color: var(--fail); }
+
+        .status-badge {
+            padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold;
+        }
+
+        button {
+            background: var(--accent); color: #1a1b26; border: none;
+            padding: 12px 24px; border-radius: 4px; font-weight: bold; cursor: pointer;
+            margin-top: 20px; width: 100%;
+        }
+
+        .code-preview {
+            font-size: 0.8rem; color: #73daca; background: #16161e;
+            padding: 10px; border-radius: 4px; margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aula 52: Metodologia de Testes</h1>
+    <p>Garantia de Qualidade (QA) na Volta Express</p>
+
+    <div class="test-suite">
+        <h3 style="color: var(--accent);">🧪 Suite de Testes: Calculadora de Frete</h3>
+        
+        <div id="results">
+            </div>
+
+        <button onclick="runTests()">Rodar Testes Unitários 🚀</button>
+
+        <div class="code-preview">
+            <code>expect(calcular(100)).toBe(150);</code>
+        </div>
+    </div>
+
+    <script>
+        // A FUNÇÃO A SER TESTADA (A LÓGICA DE NEGÓCIO)
+        function calcularFrete(distancia) {
+            if (distancia < 0) return 0;
+            return 50 + (distancia * 1.5); // R$ 50 fixo + 1.5 por km
+        }
+
+        // MINI FRAMEWORK DE TESTE CASEIRO
+        function expect(actual) {
+            return {
+                toBe: (expected) => actual === expected,
+                toBeGreaterThan: (expected) => actual > expected
+            };
+        }
+
+        function runTests() {
+            const container = document.getElementById('results');
+            container.innerHTML = '';
+
+            const tests = [
+                { 
+                    desc: "Deve calcular frete base corretamente (10km)", 
+                    result: expect(calcularFrete(10)).toBe(65) 
+                },
+                { 
+                    desc: "Deve retornar 0 para distâncias negativas", 
+                    result: expect(calcularFrete(-5)).toBe(0) 
+                },
+                { 
+                    desc: "Frete de 100km deve ser maior que 100 reais", 
+                    result: expect(calcularFrete(100)).toBeGreaterThan(100) 
+                }
+            ];
+
+            tests.forEach(t => {
+                const div = document.createElement('div');
+                div.className = `test-case ${t.result ? 'test-pass' : 'test-fail'}`;
+                div.innerHTML = `
+                    <span>${t.desc}</span>
+                    <span class="status-badge" style="background: ${t.result ? 'var(--pass)' : 'var(--fail)'}; color: #1a1b26;">
+                        ${t.result ? 'PASS' : 'FAIL'}
+                    </span>
+                `;
+                container.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
