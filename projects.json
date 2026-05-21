@@ -332,7 +332,7 @@
     "id": 37,
     "title": "VLTX-01: E-commerce Premium",
     "description": "Landing Page Fullstack de alto ticket com design fluido (clamp), micro-interações via cursor dinâmico e arquitetura assíncrona planejada para controle de estoque em tempo real.",
-    "path": "./calcados/index.html",
+    "path": "./calcados-ecommerce/index.html",
     "category": "Fullstack",
     "icon": "fas fa-shoe-prints",
     "featured": true,

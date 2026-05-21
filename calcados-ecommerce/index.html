@@ -1,0 +1,1456 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VLTX-01 — Tênis de Performance</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-logo">VLTX</div>
+      <ul class="nav-links">
+        <li><a href="#features">Tecnologia</a></li>
+        <li><a href="#specs">Especificações</a></li>
+        <li><a href="#colors">Cores</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <p class="hero-tag">Coleção 2025 — Edição Limitada</p>
+        <h1 class="hero-title">
+          VLTX<br />
+          <span>01</span>
+        </h1>
+        <p class="hero-desc">
+          Construído para atletas que recusam limites. Solado de resposta
+          máxima, cabedal de malha termoregulada e design que faz a rua parar.
+        </p>
+        <div class="size-selector">
+          <button class="size-btn" onclick="selectSize(this)">38</button>
+          <button class="size-btn" onclick="selectSize(this)">39</button>
+          <button class="size-btn active" onclick="selectSize(this)">40</button>
+          <button class="size-btn" onclick="selectSize(this)">41</button>
+          <button class="size-btn" onclick="selectSize(this)">42</button>
+          <button class="size-btn" onclick="selectSize(this)">43</button>
+          <button class="size-btn" onclick="selectSize(this)">44</button>
+        </div>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary" id="buy-btn">Comprar Agora</a>
+          <a href="#features" class="btn-ghost">Ver Detalhes</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-shoe-wrap">
+          <!-- SVG tênis ilustrado -->
+          <svg
+            class="shoe-svg"
+            viewBox="0 0 560 320"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="soleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color: #e8ff47" />
+                <stop offset="100%" style="stop-color: #b8cc20" />
+              </linearGradient>
+              <linearGradient
+                id="upperGrad"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" style="stop-color: #2a2a2a" />
+                <stop offset="100%" style="stop-color: #1a1a1a" />
+              </linearGradient>
+              <filter id="shadow">
+                <feDropShadow
+                  dx="0"
+                  dy="20"
+                  stdDeviation="20"
+                  flood-color="rgba(232,255,71,0.2)"
+                />
+              </filter>
+            </defs>
+            <!-- Sombra no chão -->
+            <ellipse
+              cx="280"
+              cy="300"
+              rx="200"
+              ry="15"
+              fill="rgba(0,0,0,0.4)"
+            />
+            <!-- Sola externa -->
+            <path
+              d="M 60 240 Q 50 270 100 280 L 480 275 Q 520 275 515 255 Q 510 235 490 230 L 80 228 Q 65 228 60 240 Z"
+              fill="url(#soleGrad)"
+              filter="url(#shadow)"
+            />
+            <!-- Sola mid -->
+            <path
+              d="M 75 210 Q 65 228 80 228 L 490 230 Q 505 228 500 215 Q 498 205 485 202 L 90 200 Q 78 200 75 210 Z"
+              fill="#f5f2ed"
+            />
+            <!-- Cabedal principal -->
+            <path
+              d="M 90 200 L 485 202 Q 490 180 470 160 Q 450 140 420 135 L 180 130 Q 150 130 130 145 Q 110 160 100 175 Z"
+              fill="url(#upperGrad)"
+            />
+            <!-- Detalhe lateral -->
+            <path
+              d="M 150 140 Q 200 120 300 118 Q 380 116 430 138 L 415 155 Q 370 135 290 135 Q 210 135 165 155 Z"
+              fill="#e8ff47"
+              opacity="0.9"
+            />
+            <!-- Mesh texture lines -->
+            <line
+              x1="200"
+              y1="140"
+              x2="190"
+              y2="198"
+              stroke="rgba(255,255,255,0.05)"
+              stroke-width="1"
+            />
+            <line
+              x1="240"
+              y1="136"
+              x2="232"
+              y2="199"
+              stroke="rgba(255,255,255,0.05)"
+              stroke-width="1"
+            />
+            <line
+              x1="280"
+              y1="134"
+              x2="274"
+              y2="200"
+              stroke="rgba(255,255,255,0.05)"
+              stroke-width="1"
+            />
+            <line
+              x1="320"
+              y1="134"
+              x2="316"
+              y2="200"
+              stroke="rgba(255,255,255,0.05)"
+              stroke-width="1"
+            />
+            <line
+              x1="360"
+              y1="136"
+              x2="358"
+              y2="200"
+              stroke="rgba(255,255,255,0.05)"
+              stroke-width="1"
+            />
+            <line
+              x1="400"
+              y1="140"
+              x2="400"
+              y2="200"
+              stroke="rgba(255,255,255,0.05)"
+              stroke-width="1"
+            />
+            <!-- Colarinho -->
+            <path
+              d="M 90 200 Q 100 175 130 145 Q 100 148 80 165 Q 65 180 70 200 Z"
+              fill="#333"
+            />
+            <!-- Língua -->
+            <path
+              d="M 130 145 Q 145 125 165 115 L 185 118 Q 170 130 165 155 Z"
+              fill="#222"
+            />
+            <!-- Cadarços -->
+            <line
+              x1="155"
+              y1="152"
+              x2="240"
+              y2="138"
+              stroke="var(--white)"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              opacity="0.6"
+            />
+            <line
+              x1="155"
+              y1="163"
+              x2="248"
+              y2="149"
+              stroke="var(--white)"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              opacity="0.6"
+            />
+            <line
+              x1="160"
+              y1="174"
+              x2="256"
+              y2="162"
+              stroke="var(--white)"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              opacity="0.6"
+            />
+            <line
+              x1="166"
+              y1="184"
+              x2="262"
+              y2="174"
+              stroke="var(--white)"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              opacity="0.6"
+            />
+            <line
+              x1="171"
+              y1="193"
+              x2="267"
+              y2="185"
+              stroke="var(--white)"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              opacity="0.6"
+            />
+            <!-- Logo VLTX -->
+            <text
+              x="350"
+              y="178"
+              font-family="'Bebas Neue', sans-serif"
+              font-size="28"
+              fill="rgba(232,255,71,0.8)"
+              letter-spacing="4"
+            >
+              VLTX
+            </text>
+            <!-- Detalhe calcanhar -->
+            <rect
+              x="462"
+              y="150"
+              width="25"
+              height="50"
+              rx="4"
+              fill="#e8ff47"
+            />
+            <text
+              x="467"
+              y="182"
+              font-family="'Bebas Neue', sans-serif"
+              font-size="11"
+              fill="#0a0a0a"
+              letter-spacing="1"
+            >
+              01
+            </text>
+            <!-- Sola antiderrapante -->
+            <rect
+              x="100"
+              y="260"
+              width="30"
+              height="12"
+              rx="2"
+              fill="rgba(0,0,0,0.3)"
+            />
+            <rect
+              x="145"
+              y="260"
+              width="30"
+              height="12"
+              rx="2"
+              fill="rgba(0,0,0,0.3)"
+            />
+            <rect
+              x="190"
+              y="260"
+              width="30"
+              height="12"
+              rx="2"
+              fill="rgba(0,0,0,0.3)"
+            />
+            <rect
+              x="235"
+              y="260"
+              width="30"
+              height="12"
+              rx="2"
+              fill="rgba(0,0,0,0.3)"
+            />
+            <rect
+              x="280"
+              y="260"
+              width="30"
+              height="12"
+              rx="2"
+              fill="rgba(0,0,0,0.3)"
+            />
+            <rect
+              x="325"
+              y="260"
+              width="30"
+              height="12"
+              rx="2"
+              fill="rgba(0,0,0,0.3)"
+            />
+            <rect
+              x="370"
+              y="260"
+              width="30"
+              height="12"
+              rx="2"
+              fill="rgba(0,0,0,0.3)"
+            />
+            <rect
+              x="415"
+              y="260"
+              width="30"
+              height="12"
+              rx="2"
+              fill="rgba(0,0,0,0.3)"
+            />
+            <rect
+              x="455"
+              y="260"
+              width="30"
+              height="12"
+              rx="2"
+              fill="rgba(0,0,0,0.3)"
+            />
+          </svg>
+        </div>
+        <div class="price-badge">
+          <div class="price-label">Por apenas</div>
+          <div class="price-val">R$649</div>
+          <div class="price-installment">ou 12x de R$54,08</div>
+        </div>
+        <div class="hero-bg-text">VLTX</div>
+      </div>
+    </section>
+
+    <!-- STOCK BAR -->
+    <div class="stock-bar">
+      <div class="stock-pulse"></div>
+      <span class="stock-text"
+        >Apenas <strong id="stock-num">114</strong> pares restantes</span
+      >
+      <div class="stock-track">
+        <div class="stock-fill" id="stock-fill"></div>
+      </div>
+      <span class="stock-text" style="font-size: 0.62rem; color: var(--mid)"
+        >Edição limitada — 500 pares</span
+      >
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+      <div class="marquee-track" id="marquee">
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> TECNOLOGIA VOLTMAX PRO
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> MALHA TERMOREGULADA
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> ENTREGA EM 24H
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> FRETE GRÁTIS
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> 30 DIAS DE GARANTIA
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> EDIÇÃO LIMITADA 2025
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> TECNOLOGIA VOLTMAX PRO
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> MALHA TERMOREGULADA
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> ENTREGA EM 24H
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> FRETE GRÁTIS
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> 30 DIAS DE GARANTIA
+        </div>
+        <div class="marquee-item">
+          <span class="marquee-dot"></span> EDIÇÃO LIMITADA 2025
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+      <p class="section-label reveal">Por que o VLTX-01</p>
+      <h2 class="section-title reveal">
+        Engenharia que você sente em cada passo.
+      </h2>
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <div class="feature-num">01</div>
+          <svg
+            class="feature-icon"
+            viewBox="0 0 44 44"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="22"
+              cy="22"
+              r="21"
+              stroke="rgba(255,255,255,0.15)"
+              stroke-width="0.5"
+            />
+            <path
+              d="M 10 30 Q 22 10 34 30"
+              stroke="#e8ff47"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <circle cx="22" cy="22" r="4" fill="#e8ff47" />
+          </svg>
+          <div class="feature-title">Solado VoltMax Pro</div>
+          <div class="feature-desc">
+            Espuma de resposta dupla que absorve impacto e devolve energia a
+            cada pisada. 30% mais leve que a geração anterior.
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">02</div>
+          <svg
+            class="feature-icon"
+            viewBox="0 0 44 44"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="22"
+              cy="22"
+              r="21"
+              stroke="rgba(255,255,255,0.15)"
+              stroke-width="0.5"
+            />
+            <path
+              d="M14 22 L20 28 L30 16"
+              stroke="#e8ff47"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <div class="feature-title">Malha Termoregulada</div>
+          <div class="feature-desc">
+            Cabedal de malha 4D que se adapta ao formato do pé e mantém a
+            temperatura ideal em qualquer condição climática.
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-num">03</div>
+          <svg
+            class="feature-icon"
+            viewBox="0 0 44 44"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="22"
+              cy="22"
+              r="21"
+              stroke="rgba(255,255,255,0.15)"
+              stroke-width="0.5"
+            />
+            <path
+              d="M22 14 L22 30 M14 22 L30 22"
+              stroke="#e8ff47"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div class="feature-title">Estabilidade 360°</div>
+          <div class="feature-desc">
+            Sistema de suporte lateral integrado com tração omnidirecional.
+            Projetado para movimentos laterais rápidos e explosivos.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECS -->
+    <section class="specs" id="specs">
+      <div class="specs-inner">
+        <div class="specs-visual reveal">
+          <svg
+            class="specs-shoe"
+            viewBox="0 0 480 280"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient
+                id="specSoleGrad"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" style="stop-color: #e8ff47" />
+                <stop offset="100%" style="stop-color: #b8cc20" />
+              </linearGradient>
+            </defs>
+            <ellipse
+              cx="240"
+              cy="265"
+              rx="180"
+              ry="12"
+              fill="rgba(0,0,0,0.5)"
+            />
+            <path
+              d="M 50 210 Q 40 240 90 250 L 410 245 Q 445 245 440 225 Q 435 205 415 200 L 70 198 Q 55 198 50 210 Z"
+              fill="url(#specSoleGrad)"
+            />
+            <path
+              d="M 65 182 Q 55 198 70 198 L 415 200 Q 430 198 426 185 Q 423 175 410 172 L 80 170 Q 68 170 65 182 Z"
+              fill="#f5f2ed"
+            />
+            <path
+              d="M 80 170 L 410 172 Q 415 150 395 130 Q 375 112 345 108 L 160 105 Q 130 105 112 118 Q 92 132 82 148 Z"
+              fill="#1a1a1a"
+            />
+            <path
+              d="M 130 112 Q 175 95 265 93 Q 340 91 380 110 L 365 126 Q 325 108 255 108 Q 185 108 145 126 Z"
+              fill="#e8ff47"
+              opacity="0.9"
+            />
+            <path
+              d="M 80 170 Q 90 148 112 118 Q 85 122 68 138 Q 53 153 58 170 Z"
+              fill="#2a2a2a"
+            />
+            <path
+              d="M 112 118 Q 125 100 145 90 L 162 93 Q 148 104 145 126 Z"
+              fill="#1a1a1a"
+            />
+            <line
+              x1="140"
+              y1="124"
+              x2="210"
+              y2="110"
+              stroke="rgba(245,242,237,0.5)"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <line
+              x1="140"
+              y1="134"
+              x2="218"
+              y2="120"
+              stroke="rgba(245,242,237,0.5)"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <line
+              x1="145"
+              y1="144"
+              x2="224"
+              y2="132"
+              stroke="rgba(245,242,237,0.5)"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <line
+              x1="150"
+              y1="154"
+              x2="228"
+              y2="145"
+              stroke="rgba(245,242,237,0.5)"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <line
+              x1="155"
+              y1="163"
+              x2="232"
+              y2="156"
+              stroke="rgba(245,242,237,0.5)"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <text
+              x="290"
+              y="150"
+              font-family="'Bebas Neue', sans-serif"
+              font-size="24"
+              fill="rgba(232,255,71,0.8)"
+              letter-spacing="4"
+            >
+              VLTX
+            </text>
+            <rect
+              x="390"
+              y="122"
+              width="22"
+              height="44"
+              rx="3"
+              fill="#e8ff47"
+            />
+            <text
+              x="394"
+              y="148"
+              font-family="'Bebas Neue', sans-serif"
+              font-size="10"
+              fill="#0a0a0a"
+            >
+              01
+            </text>
+            <rect
+              x="90"
+              y="230"
+              width="24"
+              height="10"
+              rx="2"
+              fill="rgba(0,0,0,0.25)"
+            />
+            <rect
+              x="128"
+              y="230"
+              width="24"
+              height="10"
+              rx="2"
+              fill="rgba(0,0,0,0.25)"
+            />
+            <rect
+              x="166"
+              y="230"
+              width="24"
+              height="10"
+              rx="2"
+              fill="rgba(0,0,0,0.25)"
+            />
+            <rect
+              x="204"
+              y="230"
+              width="24"
+              height="10"
+              rx="2"
+              fill="rgba(0,0,0,0.25)"
+            />
+            <rect
+              x="242"
+              y="230"
+              width="24"
+              height="10"
+              rx="2"
+              fill="rgba(0,0,0,0.25)"
+            />
+            <rect
+              x="280"
+              y="230"
+              width="24"
+              height="10"
+              rx="2"
+              fill="rgba(0,0,0,0.25)"
+            />
+            <rect
+              x="318"
+              y="230"
+              width="24"
+              height="10"
+              rx="2"
+              fill="rgba(0,0,0,0.25)"
+            />
+            <rect
+              x="356"
+              y="230"
+              width="24"
+              height="10"
+              rx="2"
+              fill="rgba(0,0,0,0.25)"
+            />
+            <rect
+              x="390"
+              y="230"
+              width="24"
+              height="10"
+              rx="2"
+              fill="rgba(0,0,0,0.25)"
+            />
+          </svg>
+        </div>
+        <div class="reveal">
+          <p class="section-label">Especificações técnicas</p>
+          <h2 class="section-title" style="margin-bottom: 2rem">
+            Os números por trás do desempenho.
+          </h2>
+          <ul class="specs-list">
+            <li class="specs-item">
+              <span class="specs-key">Peso</span>
+              <span class="specs-val accent">248g</span>
+            </li>
+            <li class="specs-item">
+              <span class="specs-key">Drop</span>
+              <span class="specs-val">8mm</span>
+            </li>
+            <li class="specs-item">
+              <span class="specs-key">Amortecimento</span>
+              <span class="specs-val">VoltMax Pro™</span>
+            </li>
+            <li class="specs-item">
+              <span class="specs-key">Cabedal</span>
+              <span class="specs-val">Malha 4D Termoregulada</span>
+            </li>
+            <li class="specs-item">
+              <span class="specs-key">Sola externa</span>
+              <span class="specs-val">Borracha carbono</span>
+            </li>
+            <li class="specs-item">
+              <span class="specs-key">Sustentabilidade</span>
+              <span class="specs-val accent">40% reciclado</span>
+            </li>
+            <li class="specs-item">
+              <span class="specs-key">Garantia</span>
+              <span class="specs-val">12 meses</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLORS -->
+    <section class="colors-section" id="colors">
+      <p class="section-label reveal">Palette</p>
+      <h2 class="section-title reveal">Escolha a sua identidade.</h2>
+      <div class="color-options reveal">
+        <div class="color-card">
+          <div
+            class="color-card-bg"
+            style="
+              background: linear-gradient(135deg, #0a0a0a 0%, #1c1c1c 100%);
+            "
+          >
+            <svg
+              viewBox="0 0 180 100"
+              width="140"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 72 Q18 85 38 88L148 86Q162 86 160 76Q158 66 150 64L28 62Q22 62 20 72Z"
+                fill="#e8ff47"
+              />
+              <path
+                d="M24 56Q22 62 28 62L150 64Q156 62 154 55Q152 48 144 46L34 44Q28 44 24 56Z"
+                fill="#f5f2ed"
+              />
+              <path
+                d="M28 44L144 46Q148 36 136 26Q124 18 108 16L62 16Q48 16 40 24Q32 32 28 38Z"
+                fill="#1a1a1a"
+              />
+              <path
+                d="M50 18Q68 10 96 9Q120 8 138 18L132 26Q116 16 90 16Q64 16 56 26Z"
+                fill="#e8ff47"
+              />
+              <text
+                x="100"
+                y="38"
+                font-family="'Bebas Neue', sans-serif"
+                font-size="10"
+                fill="rgba(232,255,71,0.7)"
+                letter-spacing="2"
+              >
+                VLTX
+              </text>
+            </svg>
+          </div>
+          <div class="color-card-overlay">
+            <div class="color-name">Void Black</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-card-bg"
+            style="
+              background: linear-gradient(135deg, #1a1a3a 0%, #2d2d5e 100%);
+            "
+          >
+            <svg
+              viewBox="0 0 180 100"
+              width="140"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 72 Q18 85 38 88L148 86Q162 86 160 76Q158 66 150 64L28 62Q22 62 20 72Z"
+                fill="#7c7cff"
+              />
+              <path
+                d="M24 56Q22 62 28 62L150 64Q156 62 154 55Q152 48 144 46L34 44Q28 44 24 56Z"
+                fill="#f5f2ed"
+              />
+              <path
+                d="M28 44L144 46Q148 36 136 26Q124 18 108 16L62 16Q48 16 40 24Q32 32 28 38Z"
+                fill="#2d2d5e"
+              />
+              <path
+                d="M50 18Q68 10 96 9Q120 8 138 18L132 26Q116 16 90 16Q64 16 56 26Z"
+                fill="#7c7cff"
+              />
+              <text
+                x="100"
+                y="38"
+                font-family="'Bebas Neue', sans-serif"
+                font-size="10"
+                fill="rgba(124,124,255,0.7)"
+                letter-spacing="2"
+              >
+                VLTX
+              </text>
+            </svg>
+          </div>
+          <div class="color-card-overlay">
+            <div class="color-name">Night Plasma</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-card-bg"
+            style="
+              background: linear-gradient(135deg, #1a0a0a 0%, #3a1a1a 100%);
+            "
+          >
+            <svg
+              viewBox="0 0 180 100"
+              width="140"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 72 Q18 85 38 88L148 86Q162 86 160 76Q158 66 150 64L28 62Q22 62 20 72Z"
+                fill="#ff4747"
+              />
+              <path
+                d="M24 56Q22 62 28 62L150 64Q156 62 154 55Q152 48 144 46L34 44Q28 44 24 56Z"
+                fill="#f5f2ed"
+              />
+              <path
+                d="M28 44L144 46Q148 36 136 26Q124 18 108 16L62 16Q48 16 40 24Q32 32 28 38Z"
+                fill="#3a1a1a"
+              />
+              <path
+                d="M50 18Q68 10 96 9Q120 8 138 18L132 26Q116 16 90 16Q64 16 56 26Z"
+                fill="#ff4747"
+              />
+              <text
+                x="100"
+                y="38"
+                font-family="'Bebas Neue', sans-serif"
+                font-size="10"
+                fill="rgba(255,71,71,0.7)"
+                letter-spacing="2"
+              >
+                VLTX
+              </text>
+            </svg>
+          </div>
+          <div class="color-card-overlay">
+            <div class="color-name">Ember Red</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div
+            class="color-card-bg"
+            style="
+              background: linear-gradient(135deg, #0a1a0a 0%, #1a3a1a 100%);
+            "
+          >
+            <svg
+              viewBox="0 0 180 100"
+              width="140"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 72 Q18 85 38 88L148 86Q162 86 160 76Q158 66 150 64L28 62Q22 62 20 72Z"
+                fill="#47ff7c"
+              />
+              <path
+                d="M24 56Q22 62 28 62L150 64Q156 62 154 55Q152 48 144 46L34 44Q28 44 24 56Z"
+                fill="#f5f2ed"
+              />
+              <path
+                d="M28 44L144 46Q148 36 136 26Q124 18 108 16L62 16Q48 16 40 24Q32 32 28 38Z"
+                fill="#1a3a1a"
+              />
+              <path
+                d="M50 18Q68 10 96 9Q120 8 138 18L132 26Q116 16 90 16Q64 16 56 26Z"
+                fill="#47ff7c"
+              />
+              <text
+                x="100"
+                y="38"
+                font-family="'Bebas Neue', sans-serif"
+                font-size="10"
+                fill="rgba(71,255,124,0.7)"
+                letter-spacing="2"
+              >
+                VLTX
+              </text>
+            </svg>
+          </div>
+          <div class="color-card-overlay">
+            <div class="color-name">Forest Volt</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="reviews">
+      <div class="testimonials-inner">
+        <p class="section-label reveal">O que dizem os atletas</p>
+        <h2 class="section-title reveal">
+          4.9 de 5 estrelas.<br />Mais de 2.800 reviews.
+        </h2>
+        <div class="testimonials-grid reveal">
+          <div class="testimonial-card">
+            <div class="stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-text">
+              "Nunca usei nada tão leve na minha vida. Corri minha melhor
+              meia-maratona com o VLTX-01. A amortecimento é absurda."
+            </p>
+            <div class="testimonial-author">Rafael M.</div>
+            <div class="testimonial-role">Corredor amador — São Paulo, SP</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-text">
+              "O design é de outro nível. Uso tanto pra treinar quanto pra sair.
+              A malha respirável realmente faz diferença no calor do Rio."
+            </p>
+            <div class="testimonial-author">Camila S.</div>
+            <div class="testimonial-role">
+              Personal trainer — Rio de Janeiro, RJ
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="stars">
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+              <div class="star"></div>
+            </div>
+            <p class="testimonial-text">
+              "Comprei o Ember Red e todo mundo pergunta onde comprei.
+              Performance de altíssimo nível, vale cada centavo do
+              investimento."
+            </p>
+            <div class="testimonial-author">Lucas T.</div>
+            <div class="testimonial-role">
+              Jogador de basquete — Belo Horizonte, MG
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF STRIP -->
+    <div class="proof-strip">
+      <div class="proof-item reveal">
+        <div class="proof-num" data-target="2847">0</div>
+        <div class="proof-desc">Pares vendidos</div>
+      </div>
+      <div class="proof-item reveal">
+        <div class="proof-num" data-target="4.9">0</div>
+        <div class="proof-desc">Avaliação média</div>
+      </div>
+      <div class="proof-item reveal">
+        <div class="proof-num" data-target="98">0</div>
+        <div class="proof-desc">% recomendam</div>
+      </div>
+      <div class="proof-item reveal">
+        <div class="proof-num" data-target="30">0</div>
+        <div class="proof-desc">Dias de garantia</div>
+      </div>
+    </div>
+
+    <!-- GALLERY 360 -->
+    <section class="gallery-section" id="gallery">
+      <p class="section-label reveal">Vista 360°</p>
+      <h2 class="section-title reveal">Cada ângulo,<br />uma obra.</h2>
+      <div class="gallery-viewer reveal">
+        <div class="gallery-stage" id="gallery-stage">
+          <div class="gallery-shoe-frame" id="gallery-frame">
+            <svg
+              id="gallery-svg"
+              viewBox="0 0 560 320"
+              width="85%"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient id="gSole" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color: #e8ff47" />
+                  <stop offset="100%" style="stop-color: #b8cc20" />
+                </linearGradient>
+              </defs>
+              <ellipse
+                cx="280"
+                cy="300"
+                rx="200"
+                ry="15"
+                fill="rgba(0,0,0,0.35)"
+              />
+              <path
+                d="M 60 240 Q 50 270 100 280 L 480 275 Q 520 275 515 255 Q 510 235 490 230 L 80 228 Q 65 228 60 240 Z"
+                fill="url(#gSole)"
+              />
+              <path
+                d="M 75 210 Q 65 228 80 228 L 490 230 Q 505 228 500 215 Q 498 205 485 202 L 90 200 Q 78 200 75 210 Z"
+                fill="#f5f2ed"
+              />
+              <path
+                d="M 90 200 L 485 202 Q 490 180 470 160 Q 450 140 420 135 L 180 130 Q 150 130 130 145 Q 110 160 100 175 Z"
+                fill="#1a1a1a"
+              />
+              <path
+                d="M 150 140 Q 200 120 300 118 Q 380 116 430 138 L 415 155 Q 370 135 290 135 Q 210 135 165 155 Z"
+                fill="#e8ff47"
+                opacity="0.9"
+              />
+              <line
+                x1="200"
+                y1="140"
+                x2="190"
+                y2="198"
+                stroke="rgba(255,255,255,0.06)"
+                stroke-width="1"
+              />
+              <line
+                x1="240"
+                y1="136"
+                x2="232"
+                y2="199"
+                stroke="rgba(255,255,255,0.06)"
+                stroke-width="1"
+              />
+              <line
+                x1="280"
+                y1="134"
+                x2="274"
+                y2="200"
+                stroke="rgba(255,255,255,0.06)"
+                stroke-width="1"
+              />
+              <line
+                x1="320"
+                y1="134"
+                x2="316"
+                y2="200"
+                stroke="rgba(255,255,255,0.06)"
+                stroke-width="1"
+              />
+              <line
+                x1="360"
+                y1="136"
+                x2="358"
+                y2="200"
+                stroke="rgba(255,255,255,0.06)"
+                stroke-width="1"
+              />
+              <line
+                x1="400"
+                y1="140"
+                x2="400"
+                y2="200"
+                stroke="rgba(255,255,255,0.06)"
+                stroke-width="1"
+              />
+              <path
+                d="M 90 200 Q 100 175 130 145 Q 100 148 80 165 Q 65 180 70 200 Z"
+                fill="#2a2a2a"
+              />
+              <path
+                d="M 130 145 Q 145 125 165 115 L 185 118 Q 170 130 165 155 Z"
+                fill="#1c1c1c"
+              />
+              <line
+                x1="155"
+                y1="152"
+                x2="240"
+                y2="138"
+                stroke="rgba(245,242,237,0.55)"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <line
+                x1="155"
+                y1="163"
+                x2="248"
+                y2="149"
+                stroke="rgba(245,242,237,0.55)"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <line
+                x1="160"
+                y1="174"
+                x2="256"
+                y2="162"
+                stroke="rgba(245,242,237,0.55)"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <line
+                x1="166"
+                y1="184"
+                x2="262"
+                y2="174"
+                stroke="rgba(245,242,237,0.55)"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <line
+                x1="171"
+                y1="193"
+                x2="267"
+                y2="185"
+                stroke="rgba(245,242,237,0.55)"
+                stroke-width="2.5"
+                stroke-linecap="round"
+              />
+              <text
+                x="350"
+                y="178"
+                font-family="'Bebas Neue', sans-serif"
+                font-size="28"
+                fill="rgba(232,255,71,0.8)"
+                letter-spacing="4"
+              >
+                VLTX
+              </text>
+              <rect
+                x="462"
+                y="150"
+                width="25"
+                height="50"
+                rx="4"
+                fill="#e8ff47"
+              />
+              <text
+                x="467"
+                y="182"
+                font-family="'Bebas Neue', sans-serif"
+                font-size="11"
+                fill="#0a0a0a"
+                letter-spacing="1"
+              >
+                01
+              </text>
+              <rect
+                x="100"
+                y="260"
+                width="30"
+                height="12"
+                rx="2"
+                fill="rgba(0,0,0,0.28)"
+              />
+              <rect
+                x="145"
+                y="260"
+                width="30"
+                height="12"
+                rx="2"
+                fill="rgba(0,0,0,0.28)"
+              />
+              <rect
+                x="190"
+                y="260"
+                width="30"
+                height="12"
+                rx="2"
+                fill="rgba(0,0,0,0.28)"
+              />
+              <rect
+                x="235"
+                y="260"
+                width="30"
+                height="12"
+                rx="2"
+                fill="rgba(0,0,0,0.28)"
+              />
+              <rect
+                x="280"
+                y="260"
+                width="30"
+                height="12"
+                rx="2"
+                fill="rgba(0,0,0,0.28)"
+              />
+              <rect
+                x="325"
+                y="260"
+                width="30"
+                height="12"
+                rx="2"
+                fill="rgba(0,0,0,0.28)"
+              />
+              <rect
+                x="370"
+                y="260"
+                width="30"
+                height="12"
+                rx="2"
+                fill="rgba(0,0,0,0.28)"
+              />
+              <rect
+                x="415"
+                y="260"
+                width="30"
+                height="12"
+                rx="2"
+                fill="rgba(0,0,0,0.28)"
+              />
+              <rect
+                x="455"
+                y="260"
+                width="30"
+                height="12"
+                rx="2"
+                fill="rgba(0,0,0,0.28)"
+              />
+            </svg>
+          </div>
+          <div class="gallery-drag-hint" id="drag-hint">
+            ← arraste para girar →
+          </div>
+          <div class="gallery-label">VLTX-01 — Void Black</div>
+          <div class="gallery-angle-badge" id="angle-badge">0°</div>
+        </div>
+        <div class="gallery-thumbs">
+          <div class="gallery-thumb active" onclick="setAngle(0, this)">
+            Lateral
+          </div>
+          <div class="gallery-thumb" onclick="setAngle(1, this)">Frente</div>
+          <div class="gallery-thumb" onclick="setAngle(2, this)">Topo</div>
+          <div class="gallery-thumb" onclick="setAngle(3, this)">Traseira</div>
+          <div class="gallery-thumb" onclick="setAngle(4, this)">Sola</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARE -->
+    <section class="compare-section" id="compare">
+      <div class="compare-inner">
+        <p class="section-label reveal">Comparativo</p>
+        <h2 class="section-title reveal">
+          Por que o VLTX-01<br />é diferente?
+        </h2>
+        <table class="compare-table reveal">
+          <thead>
+            <tr>
+              <th>Recurso</th>
+              <th class="hi">VLTX-01 <span class="col-badge">Novo</span></th>
+              <th>Concorrente A</th>
+              <th>Concorrente B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Peso</td>
+              <td class="hi">248g</td>
+              <td>312g</td>
+              <td>298g</td>
+            </tr>
+            <tr>
+              <td>Amortecimento dupla camada</td>
+              <td class="hi"><span class="chk">✓</span></td>
+              <td><span class="crs">✗</span></td>
+              <td><span class="chk">✓</span></td>
+            </tr>
+            <tr>
+              <td>Malha termoregulada</td>
+              <td class="hi"><span class="chk">✓</span></td>
+              <td><span class="crs">✗</span></td>
+              <td><span class="crs">✗</span></td>
+            </tr>
+            <tr>
+              <td>Material reciclado</td>
+              <td class="hi">40%</td>
+              <td>12%</td>
+              <td>0%</td>
+            </tr>
+            <tr>
+              <td>Tração omnidirecional</td>
+              <td class="hi"><span class="chk">✓</span></td>
+              <td><span class="chk">✓</span></td>
+              <td><span class="crs">✗</span></td>
+            </tr>
+            <tr>
+              <td>Garantia</td>
+              <td class="hi">12 meses</td>
+              <td>6 meses</td>
+              <td>6 meses</td>
+            </tr>
+            <tr>
+              <td>Preço</td>
+              <td class="hi">R$ 649</td>
+              <td>R$ 899</td>
+              <td>R$ 749</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+      <p class="section-label reveal">Dúvidas frequentes</p>
+      <h2 class="section-title reveal">Temos respostas.</h2>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            O tênis serve para corrida e uso casual?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Sim. O VLTX-01 foi projetado para performance em treinos, corridas
+            leves e uso diário. O design versátil e o cabedal de malha 4D tornam
+            ele confortável durante longas horas de uso, seja na academia ou na
+            rua.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Qual a numeração correta? Devo pedir meu número usual?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            O VLTX-01 tem caimento fiel ao número. Recomendamos pedir seu número
+            habitual. Para pés mais largos, considere meio número a mais. Caso
+            tenha dúvida, nossa equipe pode ajudar via chat.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Qual é o prazo de entrega?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Entregas para capitais em até 24h úteis. Para demais regiões, de 2 a
+            5 dias úteis. O frete é gratuito para todo o Brasil. Você receberá o
+            código de rastreio por e-mail assim que o pedido for despachado.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Posso trocar se não servir?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Sim. Você tem 30 dias a partir da data de entrega para solicitar
+            troca ou devolução, sem custo adicional. O produto precisa estar sem
+            uso e com a embalagem original. Basta acionar nosso suporte pelo
+            site.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Como funciona a garantia de 12 meses?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            A garantia cobre defeitos de fabricação, como descolamento de sola,
+            falha na costura e problemas estruturais. Desgaste natural por uso
+            intenso não é coberto. Para acionar, entre em contato com fotos do
+            problema e o número do pedido.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            O tênis é vegano?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Sim! O VLTX-01 não utiliza nenhum material de origem animal em sua
+            composição. O cabedal é em malha sintética e a sola em borracha de
+            base sintética com 40% de material reciclado.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+      <div class="newsletter-inner">
+        <div class="reveal">
+          <h2 class="newsletter-title">Seja o primeiro<br />a saber.</h2>
+          <p class="newsletter-sub">
+            Novos lançamentos, drops exclusivos e ofertas para quem está na
+            lista. Sem spam, apenas o que importa.
+          </p>
+        </div>
+        <div class="reveal">
+          <div class="newsletter-form">
+            <input
+              class="newsletter-input"
+              type="email"
+              placeholder="seu@email.com"
+              id="nl-input"
+            />
+            <button class="newsletter-submit" onclick="submitNewsletter()">
+              Entrar na lista
+            </button>
+          </div>
+          <div class="newsletter-ok" id="nl-ok">
+            <span style="color: var(--accent); font-size: 1rem">✓</span> Você
+            está na lista. Bem-vindo ao clube.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-bg"></div>
+      <p class="section-label reveal">Edição limitada</p>
+      <h2 class="cta-title reveal">GARANTA<br />O SEU.</h2>
+      <p class="cta-sub reveal">Apenas 500 pares disponíveis. Não perca.</p>
+      <div class="cta-actions reveal">
+        <a href="#" class="btn-primary">Comprar — R$649</a>
+        <a href="#" class="btn-ghost">Ver todas as cores</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">VLTX</div>
+      <div class="footer-copy">
+        © 2025 VLTX Footwear. Todos os direitos reservados.
+      </div>
+    </footer>
+
+    <!-- CTRL+D TOAST -->
+    <div id="ctrlD-toast"></div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
