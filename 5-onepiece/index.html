@@ -5,195 +5,261 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>One Piece | Trilha Grand Line | ByteClass</title>
 
-    <link rel="stylesheet" href="style.css" />
+    <!-- SEO & Social (Fase 3) -->
+    <meta
+      name="description"
+      content="Interface multimídia imersiva da Trilha Grand Line. Controle dinâmico de vídeo, episódios e comentários da tripulação."
+    />
+    <meta
+      property="og:title"
+      content="One Piece | Trilha Grand Line | ByteClass"
+    />
+    <meta
+      property="og:description"
+      content="A aventura, a tripulação e o sonho do Rei dos Piratas."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1612178537253-bccd437b730e?w=1200"
+    />
+    <meta
+      property="og:url"
+      content="https://douglasabnovato.github.io/escola-de-programacao/5-onepiece/"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- Favicon (Fase 3) -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏴‍☠️</text></svg>"
+    />
+
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
       rel="stylesheet"
     />
 
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header id="main-header">
-      <div class="header-banner">
-        <img src="midia/imgCabecalho.jpg" alt="Cabeçalho One Piece Banner" />
-        <div class="banner-overlay"></div>
-      </div>
+    <!-- ══ NAV ══ -->
+    <header id="main-nav">
+      <a href="#hero" class="nav-logo">
+        <span class="skull">☠</span>
+        Grand Line
+      </a>
       <nav>
         <ul>
           <li>
-            <a href="#home"><i class="fas fa-home"></i> Home</a>
+            <a href="#home"><i class="fas fa-film"></i> Trilha</a>
           </li>
           <li>
             <a href="#episodios"><i class="fas fa-tv"></i> Episódios</a>
           </li>
           <li>
-            <a href="#comentarios"
-              ><i class="fas fa-comments"></i> Comentários</a
-            >
+            <a href="#comentarios"><i class="fas fa-anchor"></i> Tripulação</a>
           </li>
           <li>
-            <a href="#sobre"><i class="fas fa-info-circle"></i> Sobre</a>
+            <a href="#sobre"><i class="fas fa-skull-crossbones"></i> Sobre</a>
           </li>
         </ul>
       </nav>
     </header>
 
+    <!-- ══ HERO FULLSCREEN ══ -->
+    <section id="hero">
+      <video id="hero-video" autoplay muted loop playsinline>
+        <source src="midia/Zoro.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-rule"></div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">ByteClass · Trilha Grand Line</p>
+        <h1 class="hero-title">
+          One Piece
+          <span>O sonho do Rei dos Piratas</span>
+        </h1>
+        <p class="hero-sub">
+          A aventura, a tripulação e a lenda que atravessa o Grande Mar.
+        </p>
+        <a href="#home" class="hero-cta">
+          <i class="fas fa-play"></i>
+          Começar a Trilha
+        </a>
+      </div>
+
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ══ MAIN ══ -->
     <main>
-      <section id="home" class="carrossel-hero container">
-        <div class="section-header">
-          <h1>One Piece</h1>
-          <p>A aventura, a tripulação e o sonho do Rei dos Piratas.</p>
+      <!-- ── Carrossel ── -->
+      <section id="home" class="section-wrap">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Trilha de Vídeos</span>
+            <h2>A Tripulação</h2>
+            <div class="section-ornament">☠</div>
+          </div>
+
+          <div class="carrossel-master">
+            <button class="botao anterior" aria-label="Vídeo Anterior">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="carrossel-view">
+              <div class="midia-track" id="carrossel">
+                <video loop muted controls playsinline>
+                  <source src="midia/Zoro.mp4" type="video/mp4" />
+                </video>
+                <video loop muted controls playsinline>
+                  <source src="midia/Luffy.mp4" type="video/mp4" />
+                </video>
+                <video loop muted controls playsinline>
+                  <source src="midia/Sanji.mp4" type="video/mp4" />
+                </video>
+                <video loop muted controls playsinline>
+                  <source src="midia/Buggy.mp4" type="video/mp4" />
+                </video>
+              </div>
+
+              <!-- Label do personagem atual -->
+              <div class="carrossel-label" id="carrossel-label">
+                <span class="char-name" id="char-name">Roronoa Zoro</span>
+                <span class="char-role" id="char-role"
+                  >O Caçador de Recompensas</span
+                >
+              </div>
+            </div>
+
+            <button class="botao proximo" aria-label="Próximo Vídeo">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <div class="carrossel-dots" id="carrossel-dots"></div>
         </div>
+      </section>
 
-        <div class="carrossel-master">
-          <button class="botao anterior" aria-label="Vídeo Anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
+      <!-- ── Episódios ── -->
+      <section id="episodios" class="section-wrap">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Grand Line</span>
+            <h2>Episódios</h2>
+            <div class="section-ornament">⚓</div>
+          </div>
 
-          <div class="carrossel-view">
-            <div class="midia-track" id="carrossel">
-              <video loop muted controls poster="midia/liga.jpg">
-                <source src="midia/Zoro.mp4" type="video/mp4" />
-              </video>
+          <div class="episodios-grid" id="episodios-grid">
+            <!-- Injetado via JS -->
+          </div>
+        </div>
+      </section>
 
-              <video loop muted controls poster="midia/liga1.jpg">
-                <source src="midia/Luffy.mp4" type="video/mp4" />
-              </video>
+      <!-- ── Comentários ── -->
+      <section id="comentarios" class="section-wrap">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Nakama</span>
+            <h2>Tripulação</h2>
+            <div class="section-ornament">🏴‍☠️</div>
+          </div>
 
-              <video loop muted controls poster="midia/liga2.jpg">
-                <source src="midia/Sanji.mp4" type="video/mp4" />
-              </video>
+          <div class="comentarios-layout">
+            <!-- Formulário -->
+            <div class="form-card">
+              <h3>Deixe sua mensagem</h3>
+              <form id="form-comentario" novalidate>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    required
+                    autocomplete="off"
+                    aria-label="Seu nome de pirata"
+                  />
+                  <label for="nome">Seu Nome de Pirata</label>
+                </div>
 
-              <video loop muted controls poster="midia/liga3.jpg">
-                <source src="midia/Buggy.mp4" type="video/mp4" />
-              </video>
+                <div class="input-group">
+                  <textarea
+                    id="comentario"
+                    name="comentario"
+                    rows="5"
+                    required
+                    aria-label="Sua mensagem para a tripulação"
+                  ></textarea>
+                  <label for="comentario">Mensagem para a tripulação…</label>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                  Enviar <i class="fas fa-paper-plane"></i>
+                </button>
+              </form>
+            </div>
+
+            <!-- Feed -->
+            <div
+              class="comentarios-feed"
+              id="comentarios-lista"
+              role="log"
+              aria-live="polite"
+            >
+              <!-- Injetado via JS -->
             </div>
           </div>
-
-          <button class="botao proximo" aria-label="Próximo Vídeo">
-            <i class="fas fa-chevron-right"></i>
-          </button>
         </div>
-
-        <div class="carrossel-dots" id="carrossel-dots"></div>
-      </section>
-
-      <section id="episodios" class="container">
-        <div class="section-header">
-          <h2>Episódios</h2>
-        </div>
-        <div class="table-wrapper">
-          <table class="fl-table">
-            <thead>
-              <tr>
-                <th>Status</th>
-                <th>Código</th>
-                <th>Nome do Episódio</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><i class="fas fa-check-circle watched"></i></td>
-                <td>E01</td>
-                <td>O Amanhacer de uma Aventura</td>
-              </tr>
-              <tr>
-                <td><i class="fas fa-check-circle watched"></i></td>
-                <td>E02</td>
-                <td>O Homem do Chapéu de Palha</td>
-              </tr>
-              <tr>
-                <td><i class="far fa-circle"></i></td>
-                <td>E03</td>
-                <td>O Contador de Histórias</td>
-              </tr>
-              <tr>
-                <td><i class="far fa-circle"></i></td>
-                <td>E04</td>
-                <td>Os Piratas Estão Vindo</td>
-              </tr>
-              <tr>
-                <td><i class="far fa-circle"></i></td>
-                <td>E05</td>
-                <td>Venha Comer no Baratie!</td>
-              </tr>
-              <tr>
-                <td><i class="far fa-circle"></i></td>
-                <td>E06</td>
-                <td>O Chefe e o Faz-Tudo</td>
-              </tr>
-              <tr>
-                <td><i class="far fa-circle"></i></td>
-                <td>E07</td>
-                <td>A Garota com a Tautuagem de Peixe-Serra</td>
-              </tr>
-              <tr>
-                <td><i class="far fa-circle"></i></td>
-                <td>E08</td>
-                <td>O Mais Procurado de East Blue</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section id="comentarios" class="container form-section">
-        <div class="section-header">
-          <h2>Comentários</h2>
-        </div>
-
-        <form id="form-comentario">
-          <div class="input-group">
-            <input type="text" id="nome" name="nome" required />
-            <label for="nome">Seu Nome de Pirata</label>
-          </div>
-
-          <div class="input-group">
-            <textarea
-              id="comentario"
-              name="comentario"
-              rows="4"
-              required
-            ></textarea>
-            <label for="comentario">Sua mensagem para a tripulação...</label>
-          </div>
-
-          <button type="submit" class="btn-primary">
-            Enviar Mensagem <i class="fas fa-paper-plane"></i>
-          </button>
-        </form>
-
-        <div id="comentarios-lista" class="comentarios-feed"></div>
       </section>
     </main>
 
+    <!-- ══ FOOTER / SOBRE ══ -->
     <footer id="sobre">
-      <div class="footer-content container">
+      <div class="container">
         <img
           src="midia/imgOnePiece.jpg"
-          alt="Logo One Piece Oficial"
-          class="footer-logo"
+          alt="Logo One Piece"
+          class="footer-logo-img"
+          onerror="this.style.display = 'none'"
         />
-
-        <p>
-          One Piece é uma obra-prima de Eiichiro Oda. Este site é um projeto
-          educativo da <strong>ByteClass</strong>.
+        <p class="footer-brand">Grand Line · ByteClass</p>
+        <p class="footer-desc">
+          One Piece é uma obra-prima de Eiichiro Oda.<br />
+          Este site é um projeto educativo da <strong>ByteClass</strong>.
         </p>
-
         <div class="social-links">
           <a href="#" aria-label="Instagram"
             ><i class="fab fa-instagram"></i
           ></a>
           <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Github"><i class="fab fa-github"></i></a>
+          <a
+            href="https://github.com/douglasabnovato"
+            aria-label="Github"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fab fa-github"></i>
+          </a>
         </div>
+        <p class="footer-copy">
+          &copy; 2026 ByteClass ·
+          <a href="https://douglasabnovato.github.io/escola-de-programacao/"
+            >Hub de Projetos</a
+          >
+        </p>
       </div>
     </footer>
 
