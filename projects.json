@@ -337,5 +337,14 @@
     "icon": "fas fa-shoe-prints",
     "featured": true,
     "image": "./assets/thumbnails/calcados.jpg"
+  },
+  {
+    "id": 38,
+    "title": "Copo Coca-Cola",
+    "description": "Hotsite institucional focado em fidelidade visual (Pixel Perfect), posicionamento avançado de elementos e aplicação de design promocional voltado para campanhas de marketing de grande escala.",
+    "path": "./coca-cola/index.html",
+    "category": "Frontend",
+    "icon": "fas fa-beer",
+    "featured": false
   }
 ]

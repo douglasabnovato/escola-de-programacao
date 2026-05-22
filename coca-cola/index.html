@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Copo Coca-Cola</title>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <span class="header__logo">Copo Coca-Cola</span>
+    <span class="header__badge">Edição Gelada</span>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <p class="main__eyebrow">Oferta limitada 🔥</p>
+
+    <h1 class="main__title">Copo Coca-Cola Gelado</h1>
+
+    <p class="main__subtitle">
+      O clássico de sempre, agora no formato que você merece.
+      Garanta o seu e receba o aviso direto no WhatsApp.
+    </p>
+
+    <div class="main__img-wrap">
+      <img
+        class="main__img"
+        src="https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600"
+        alt="Copo de Coca-Cola gelado"
+      />
+    </div>
+
+    <!-- FORM -->
+    <form class="form" id="leadForm" novalidate>
+
+      <div class="form__field">
+        <label for="nome">Seu nome</label>
+        <input id="nome" type="text" placeholder="Como te chamamos?" required />
+      </div>
+
+      <div class="form__field">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" placeholder="seu@email.com" required />
+      </div>
+
+      <div class="form__field">
+        <label for="whatsapp">WhatsApp</label>
+        <input id="whatsapp" type="tel" placeholder="(11) 9 0000-0000" required />
+      </div>
+
+      <button class="form__btn" type="submit">Quero meu copo 🥤</button>
+
+    </form>
+
+    <!-- SUCCESS CARD -->
+    <div class="card-sucesso" id="cardSucesso">
+      <div class="card-sucesso__icon">🥤</div>
+      <p class="card-sucesso__msg" id="cardMsg"></p>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2026 Coca Vibes — Todos os direitos reservados
+  </footer>
+
+  <!-- JS -->
+   <script src="./script.js"></script>
+  
+
+</body>
+</html>
