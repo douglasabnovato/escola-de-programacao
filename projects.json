@@ -346,5 +346,13 @@
     "category": "Frontend",
     "icon": "fas fa-beer",
     "featured": false
+  },
+  {
+    "id": 39,
+    "title": "Formação Fullstack LP",
+    "description": "LP de produto educacional focada em arquitetura de informação para grades curriculares.",
+    "path": "./formacao-fullstack/index.html",
+    "category": "Frontend",
+    "icon": "fas fa-graduation-cap" 
   }
 ]

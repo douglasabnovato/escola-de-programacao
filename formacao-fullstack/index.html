@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ByteClass | Formação Fullstack de Alto Impacto</title>
+
+    <meta
+      name="description"
+      content="Aprenda desenvolvimento Fullstack com uma trilha baseada nos padrões globais da indústria. De HTML a React e Node.js."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- =============================================================
+       HEADER & NAVEGAÇÃO
+       ============================================================= -->
+    <header>
+      <div class="logo">Byte<span>Class</span></div>
+      <nav aria-label="Navegação Principal">
+        <a href="#hero">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#jornada">Minha Jornada</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- =============================================================
+           SEÇÃO 1: HERO
+           ============================================================= -->
+      <section id="hero" class="hero">
+        <div class="hero-container">
+          <div class="hero-content">
+            <h1>Um <span>GRANDE</span> impacto no seu futuro dev.</h1>
+            <p>
+              Domine as tecnologias mais requisitadas pelo mercado. Nossa trilha
+              foi desenhada para levar você do zero ao primeiro emprego como
+              desenvolvedor Fullstack.
+            </p>
+            <div class="hero-btns">
+              <a href="#contato" class="btn btn-primary">Começar Agora</a>
+              <a href="#jornada" class="btn btn-secondary">Ver Trilhas</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="placeholder-box">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/mNPSEoqxhOk"
+                title="Apresentação da Metodologia ByteClass"
+                frameborder="0"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============================================================
+           SEÇÃO 2: SERVIÇOS
+           ============================================================= -->
+      <section id="servicos" class="services">
+        <div class="section-header">
+          <h2>Nossas Especialidades</h2>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Frontend</h3>
+            <p>
+              Domine a interface: de layouts modernos com HTML e CSS até
+              aplicações complexas em React.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Backend</h3>
+            <p>
+              Construa o motor: APIs escaláveis, segurança e bancos de dados com
+              Node.js e TypeScript.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- =============================================================
+           SEÇÃO 3: ROADMAP (CONTEÚDO DINÂMICO)
+           ============================================================= -->
+      <section id="jornada" class="roadmap-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Sua Trilha Fullstack</h2>
+            <p>
+              Siga o fluxo de aprendizado baseado nos padrões globais da
+              indústria.
+            </p>
+          </div>
+
+          <div id="roadmap-container" class="roadmap-wrapper"></div>
+
+          <div class="roadmap-footer">
+            <p>
+              <strong>Legenda:</strong>
+              <span
+                class="legend-key"
+                style="
+                  background: var(--color-key-topic);
+                  padding: 2px 8px;
+                  border-radius: 4px;
+                  border: 1px solid #000;
+                  font-size: 0.8rem;
+                  color: #000;
+                  margin-right: 10px;
+                "
+                >Tópico Chave</span
+              >
+              <span
+                class="legend-project"
+                style="
+                  background: var(--color-project);
+                  padding: 2px 8px;
+                  border-radius: 4px;
+                  color: #fff;
+                  font-size: 0.8rem;
+                "
+                >Checkpoint</span
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============================================================
+           SEÇÃO 4: CONTATO
+           ============================================================= -->
+      <section id="contato" class="contact">
+        <div class="section-header">
+          <h2>Vamos conversar?</h2>
+          <p>Tire suas dúvidas ou peça um orçamento personalizado.</p>
+        </div>
+
+        <form id="mainForm">
+          <div class="form-group">
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Seu nome completo"
+              required
+              aria-label="Nome completo"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Seu melhor e-mail"
+              required
+              aria-label="E-mail"
+            />
+          </div>
+
+          <div class="form-group">
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              rows="5"
+              placeholder="Como podemos te ajudar?"
+              required
+              aria-label="Mensagem"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- =============================================================
+     5. FOOTER (ESTILO DASHBOARD)
+     ============================================================= -->
+    <footer class="main-footer">
+      <div class="footer-container">
+        <!-- Coluna 1: Branding e CTAs -->
+        <div class="footer-col branding">
+          <div class="logo">Byte<span>Class</span></div>
+          <p>Elevando o padrão do ensino tech.</p>
+          <div class="footer-btns">
+            <a href="#" class="btn-footer-primary">PLANOS E CURSOS</a>
+            <a href="#" class="btn-footer-secondary">FALE CONOSCO</a>
+          </div>
+        </div>
+
+        <!-- Coluna 2: Links de Formação -->
+        <div class="footer-col">
+          <h4>FORMAÇÕES</h4>
+          <ul>
+            <li><a href="#">Frontend Foundations</a></li>
+            <li><a href="#">Backend Specialist</a></li>
+            <li><a href="#">Fullstack Pro</a></li>
+            <li><a href="#">UI/UX Design</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 3: Recursos -->
+        <div class="footer-col">
+          <h4>RECURSOS</h4>
+          <ul>
+            <li><a href="#">Blog da Byte</a></li>
+            <li><a href="#">Comunidade Discord</a></li>
+            <li><a href="#">Guia de Carreira</a></li>
+          </ul>
+        </div>
+
+        <!-- Coluna 4: Institucional -->
+        <div class="footer-col">
+          <h4>SOBRE</h4>
+          <ul>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Privacidade</a></li>
+            <li><a href="#">Trabalhe Conosco</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="bottom-container">
+          <p>&copy; 2026 ByteClass. Todos os direitos reservados.</p>
+          <div class="social-links">
+            <a href="#" aria-label="LinkedIn">LN</a>
+            <a href="#" aria-label="GitHub">GH</a>
+            <a href="#" aria-label="Instagram">IG</a>
+          </div>
+          <a href="#hero" class="back-to-top">VOLTAR AO TOPO ↑</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
