@@ -1,0 +1,51 @@
+<!-- Referência para wallace fazer os botões de redes sociais no seu footer do projeto freete -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Botão com Redirecionamento</title>
+  <style>
+    /* Estilo do Botão em CSS */
+    .meu-botao {
+      background-color: #0066cc;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Efeito ao passar o mouse */
+    .meu-botao:hover {
+      background-color: #004080;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Elemento do Botão em HTML -->
+  <button id="botao-redir1" class="meu-botao">Acessar Instagram Dev</button>
+  <button id="botao-redir2" class="meu-botao">Acessar Instagram Jogador</button>
+
+  <script>
+    /* Ação de Redirecionamento em JavaScript */
+    const botao1 = document.getElementById("botao-redir1");
+    const botao2 = document.getElementById("botao-redir2");
+
+    botao1.addEventListener("click", function() {
+      // Substitua pelo endereço do site desejado
+      window.location.href = "https://www.instagram.com/filipedeschamps/";
+    });
+
+    botao2.addEventListener("click", function() {
+      // Substitua pelo endereço do site desejado
+      window.location.href = "https://www.instagram.com/neymarjr/";
+    });
+  </script>
+
+</body>
+</html>
