@@ -353,7 +353,8 @@
     "description": "LP de produto educacional focada em arquitetura de informação para grades curriculares.",
     "path": "./formacao-fullstack/index.html",
     "category": "Frontend",
-    "icon": "fas fa-graduation-cap"
+    "icon": "fas fa-graduation-cap",
+    "featured": false
   },
   {
     "id": 40,
@@ -361,6 +362,7 @@
     "description": "Uma aplicação responsiva para expor pílulas de conteúdos de tecnologia.",
     "path": "./aprender-programar/index.html",
     "category": "Frontend",
-    "icon": "fas fa-graduation-cap"
+    "icon": "fas fa-graduation-cap",
+    "featured": false
   }
 ]
