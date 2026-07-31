@@ -49,7 +49,7 @@ Vamos começar só com a estrutura.
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>SlideShow ByteClass</title>
+  <title>SlideShow </title>
 </head>
 <body>
 
@@ -215,7 +215,7 @@ Isso roda no servidor?
 Não.
 Tudo isso roda no navegador.
 
-#### 🧠 Momento Mentalidade ByteClass
+#### 🧠 Momento Mentalidade  
 
 ##### 🎙 Explique claramente:
 
