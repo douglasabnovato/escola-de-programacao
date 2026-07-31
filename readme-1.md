@@ -275,7 +275,7 @@ Um plano prático com as atividades:
     - Desde o Zero? 
     - A formação: Presencial, Gravado, Online ao vivo
 
-#### "Ao final, o aluno é capaz de "
-#### "A transformação principal que a entrega é "
+#### "Ao final da ByteClass, o aluno é capaz de "
+#### "A transformação principal que a ByteClass entrega é "
 
-###### Feito e Conduzido por @douglasabnovato  
+###### Feito e Conduzido por @douglasabnovato em ByteClass

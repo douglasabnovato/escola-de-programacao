@@ -1,6 +1,6 @@
-# 🎙️ Guia de Metodologia e Roteiro de Aula
+# 🎙️ Guia de Metodologia e Roteiro de Aula | ByteClass
 
-Este guia define o padrão ouro para as aulas. Nosso objetivo não é apenas ensinar sintaxe, mas construir **didática consciente** através do alinhamento entre:
+Este guia define o padrão ouro para as aulas da **ByteClass**. Nosso objetivo não é apenas ensinar sintaxe, mas construir **didática consciente** através do alinhamento entre:
 **Intenção → Código → Resultado → Explicação.**
 
 ---
@@ -86,7 +86,7 @@ Faça 3 perguntas estratégicas para a turma:
 
 ---
 
-## 🧠 Estrutura Pedagógica  
+## 🧠 Estrutura Pedagógica ByteClass
 
 Toda aula, sem exceção, deve conter estes 6 pilares:
 
@@ -110,4 +110,4 @@ Toda aula, sem exceção, deve conter estes 6 pilares:
 ---
 
 **"O aluno não apenas executa — ele entende o que está acontecendo."**
-_– Metodologia 
+_– Metodologia ByteClass_
