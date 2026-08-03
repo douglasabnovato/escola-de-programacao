@@ -382,5 +382,14 @@
     "category": "Frontend",
     "icon": "fas fa-circle-play",
     "featured": false
+  },
+  {
+    "id": 43,
+    "title": "Dev em Dobro",
+    "description": "Conteúdos, mentorias, projetos e desafios da Semana do Zero ao Programador Contratado, da escola Dev em Dobro.",
+    "path": "./projects/dev-em-dobro/index.html",
+    "category": "Bootcamp",
+    "icon": "fas fa-calendar-week",
+    "featured": false
   }
 ]
