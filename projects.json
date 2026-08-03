@@ -373,5 +373,14 @@
     "category": "Frontend",
     "icon": "fas fa-building",
     "featured": false
+  },
+  {
+    "id": 42,
+    "title": "Computer Science in the World",
+    "description": "Uma experiência de player multimídia educativa com playlist dinâmica, design glassmorphism e controles de ordenação.",
+    "path": "./projects/computer-science-in-world/index.html",
+    "category": "Frontend",
+    "icon": "fas fa-circle-play",
+    "featured": false
   }
 ]
