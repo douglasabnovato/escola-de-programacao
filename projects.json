@@ -367,11 +367,11 @@
   },
   {
     "id": 41,
-    "title": "Livraria",
-    "description": "Catálogo de títulos de livros para apresentar para leitores.",
-    "path": "./projects/livraria/index.html",
+    "title": "Meu Predio",
+    "description": "Catálogo de lojas para apresentar aos clientes conhecerem o meu prédio.",
+    "path": "./projects/meu-predio/index.html",
     "category": "Frontend",
-    "icon": "fas fa-book",
+    "icon": "fas fa-building",
     "featured": false
   }
 ]
