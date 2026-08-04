@@ -2,88 +2,93 @@
 	🚧 Cadastrar CEP 🚀
 </h4>
 
-<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="versão 1 do projeto" title="#CadastrarCEP" src="./.github/tela-4.1.jpg">
-</p> 
- 
-Desenvolver uma aplicação utilizando javascript, css e html simulando a etapa de cadastro de endereço e escolha do mesmo para entregar de um produto.
- 
-#### PRÓXIMO PASSO
-
-- [ ] salvar os endereços em localstorage
-- [ ] uma segunda página ou aba dentro do mesmo formulário deve permitir ao usuário escolher entre os endereços previamente cadastrados como endereço para entrega, preenchendo assim os campos necessários
-- [ ] a página deve permitir a exclusão de um endereço já cadastrado
-
-#### APERFEIÇOAMENTO
-
-- [ ] acessibilidade
-
-#### REQUISITOS
-
-- [x] a página deve possuir um logo com endereço da empresa
-- [x] a página deve possuir um formulário com os campos nome do cliente e endereço
-- [x] os campos devem ser preenchidos automaticamente após informar o cep
-- [x] o formulário deve conter as validações necessárias
-
-#### EXTRAS
-
-- [x] favicon
-- [x] botão Enter vai para o próximo input com `enterkeyhint="next"`
-- [x] atributo autocomplete
-- [x] limpar o formulário para nova busca de cep
-- [x] botão para limpar o formulário
-- [x] validar as informações vindas da api cep
-- [x] responsividade
-
-#####  PONTOS DE DESTAQUE
-	 
-  - ARQUITETURA 
-  - INTERFACE E USABILIDADE
-  - CLEAN CODE
-  - RESPONSIVIDADE
-	  
-#####  SOFTWARES INSTALADOS
-	  
-  - NODE V10.16.0
-  - VSCODE
-  - SUBLIME TEXT 3
-  - GIT BASH
-
-#####  REFERÊNCIAS
-
-  - [Template Formulário em w3schools](https://www.w3schools.com/howto/howto_css_login_form.asp)
-  - [Formulários em web.dev/learn/forms](https://web.dev/learn/forms/)
-  - [Brasil API para cep](https://brasilapi.com.br/docs#tag/CEP)
-  - [Viacep API para cep](https://viacep.com.br/)
-  - [Consultar CEPs](https://cep.guiamais.com.br/)
-  - [Consultar CEPs](https://buscacepinter.correios.com.br/app/endereco/index.php)  
-  - [Autopreencher com API de CEP - 1](https://www.youtube.com/watch?v=nJtwKUQkAGo&t=1033s)    
-  - [Autopreencher com API de CEP - 2](https://www.youtube.com/watch?v=imk6Y0viabg)
-  - [Validar formulário - 2](https://www.youtube.com/watch?v=SazrvkE7t-g)
-  - Cep com undefined: 68160-000 
-  - Cep com completo: 02227-001
-  - [função ternária](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
-
-###  Evolução das soluções para versão 1 - v1.0-layout
-
-- etapa 3
-<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="versão 1 do projeto" title="#CadastrarCEP" src="./.github/tela-5.jpg" height="450px">
-  <img alt="versão 1 do projeto" title="#CadastrarCEP" src="./.github/tela-4.1.jpg">
-  <img alt="versão 1 do projeto" title="#CadastrarCEP" src="./.github/tela-3.jpg">
+<p align="center">
+  <img alt="Tela do projeto" title="#CadastrarCEP" src="./.github/tela-4.1.jpg">
 </p> 
 
-- etapa 2
-<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="versão 1 do projeto" title="#CadastrarCEP" src="./.github/tela-2.jpg">
+## 💻 Sobre o projeto
+
+Aplicação em JavaScript, CSS e HTML que simula a etapa de cadastro de endereço e escolha do mesmo para entrega de um produto, com autopreenchimento a partir do CEP informado.
+
+> 🎯 **Origem:** desafio técnico aplicado em processo seletivo para vaga de desenvolvedor.
+
+## ✅ Requisitos
+
+- [x] Logo com endereço da empresa
+- [x] Formulário com campos de nome do cliente e endereço
+- [x] Preenchimento automático dos campos após informar o CEP
+- [x] Validações necessárias no formulário
+
+## ⭐ Extras
+
+- [x] Favicon
+- [x] Navegação entre campos com Enter (`enterkeyhint="next"`)
+- [x] Atributo `autocomplete`
+- [x] Limpar formulário para nova busca de CEP
+- [x] Botão para limpar o formulário
+- [x] Validação das informações vindas da API de CEP
+- [x] Responsividade
+
+## 🎯 Pontos de destaque
+
+- Arquitetura
+- Interface e usabilidade
+- Clean code
+- Responsividade
+
+## 🛠️ Ambiente de desenvolvimento
+
+- Node v10.16.0
+- VS Code
+- Sublime Text 3
+- Git Bash
+
+## 🖥️ Evolução das soluções — v1.0-layout
+
+**Etapa 3:**
+<p align="center">
+  <img alt="Etapa 3 — tela 1" title="#CadastrarCEP" src="./.github/tela-5.jpg" height="450px">
+  <img alt="Etapa 3 — tela 2" title="#CadastrarCEP" src="./.github/tela-4.1.jpg">
+  <img alt="Etapa 3 — tela 3" title="#CadastrarCEP" src="./.github/tela-3.jpg">
 </p> 
 
-- etapa 1
-<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="versão 1 do projeto" title="#CadastrarCEP" src="./.github/tela-1.jpg">
+**Etapa 2:**
+<p align="center">
+  <img alt="Etapa 2" title="#CadastrarCEP" src="./.github/tela-2.jpg">
 </p> 
 
+**Etapa 1:**
+<p align="center">
+  <img alt="Etapa 1" title="#CadastrarCEP" src="./.github/tela-1.jpg">
+</p> 
 
-Feito com ❤️ por Douglas A B Novato 👋🏽 [Entre em contato!](https://www.linkedin.com/in/douglasabnovato/)
- 
-Fonte do projeto é um desafio para vaga de dev.
+## 📋 Próximo passo
+
+- [ ] Salvar os endereços em Local Storage
+- [ ] Segunda página/aba para escolher entre endereços previamente cadastrados como endereço de entrega, preenchendo os campos automaticamente
+- [ ] Permitir a exclusão de um endereço já cadastrado
+
+## 🔧 Aperfeiçoamento
+
+- [ ] Acessibilidade
+
+## 📚 Referências
+
+- [Template de formulário — W3Schools](https://www.w3schools.com/howto/howto_css_login_form.asp)
+- [Formulários — web.dev/learn/forms](https://web.dev/learn/forms/)
+- [Brasil API — CEP](https://brasilapi.com.br/docs#tag/CEP)
+- [ViaCEP](https://viacep.com.br/)
+- [Consulta de CEP — Guia Mais](https://cep.guiamais.com.br/)
+- [Busca CEP — Correios](https://buscacepinter.correios.com.br/app/endereco/index.php)
+- [Autopreencher com API de CEP — parte 1](https://www.youtube.com/watch?v=nJtwKUQkAGo&t=1033s)
+- [Autopreencher com API de CEP — parte 2](https://www.youtube.com/watch?v=imk6Y0viabg)
+- [Validação de formulário](https://www.youtube.com/watch?v=SazrvkE7t-g)
+- [Operador ternário — MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
+
+**Notas de teste (CEPs usados durante o desenvolvimento):**
+- CEP com campo indefinido: `68160-000`
+- CEP com resposta completa: `02227-001`
+
+---
+
+Feito com ❤️ por Douglas A. B. Novato 👋🏽 [Entre em contato!](https://www.linkedin.com/in/douglasabnovato/)
