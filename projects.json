@@ -490,5 +490,14 @@
     "category": "Código",
     "icon": "fas fa-layer-group",
     "featured": false
+  },
+  {
+    "id": 56,
+    "title": "Tutorial",
+    "description": "Site para reunir conteúdos de sites importantes de referências para desenvolver.",
+    "path": "./projects/tutorial/index.html",
+    "category": "Frontend",
+    "icon": "fas fa-blog",
+    "featured": false
   }
 ]
