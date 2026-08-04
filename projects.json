@@ -526,5 +526,14 @@
     "category": "Código",
     "icon": "fas fa-road",
     "featured": false
+  },
+  {
+    "id": 60,
+    "title": "Tecnologia",
+    "description": "Projeto para exibir projetos, experiência e apresentação profissional — Challenge 2 do Oracle One (Alura), sequência do Challenge 1 (Text Decoder).",
+    "path": "./projects/tecnologia/index.html",
+    "category": "Código",
+    "icon": "fas fa-id-card",
+    "featured": false
   }
 ]
