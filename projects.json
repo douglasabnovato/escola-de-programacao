@@ -460,8 +460,17 @@
     "title": "Cadastrar CEP",
     "description": "Simulação de cadastro com autopreenchimento via API de CEP.",
     "path": "./projects/cep-form-api/index.html",
-    "category": "Desafio Técnico",
+    "category": "Desafio",
     "icon": "fas fa-location-dot",
     "featured": false
-}
+  },
+  {
+    "id": 53,
+    "title": "Pokedex",
+    "description": "Consumo da PokeAPI com fetch, exibindo cards estilizados para cada Pokémon.",
+    "path": "./projects/pokedex/index.html",
+    "category": "Desafio",
+    "icon": "fas fa-dragon",
+    "featured": false
+  }
 ]
