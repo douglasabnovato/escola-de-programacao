@@ -454,5 +454,14 @@
     "category": "Frontend",
     "icon": "fas fa-plane",
     "featured": false
-  }
+  },
+  {
+    "id": 52,
+    "title": "Cadastrar CEP",
+    "description": "Simulação de cadastro com autopreenchimento via API de CEP.",
+    "path": "./projects/cep-form-api/index.html",
+    "category": "Desafio Técnico",
+    "icon": "fas fa-location-dot",
+    "featured": false
+}
 ]
