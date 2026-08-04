@@ -472,7 +472,8 @@
     "category": "Desafio",
     "icon": "fas fa-dragon",
     "featured": false
-  },{
+  },
+  {
     "id": 54,
     "title": "Dev Cast",
     "description": "Player personalizado com avanço automático para a próxima faixa e loop ao fim da playlist. Controles: Play/Pause, Volume, Mute, Seekbar",
@@ -480,5 +481,41 @@
     "category": "Player",
     "icon": "fas fa-headphones-simple",
     "featured": false
-}
+  },
+  {
+    "id": 55,
+    "title": "Developer",
+    "description": "Hub de links de conteúdo para aprender a programar — soft skill, frontend, backend e ferramentas. ",
+    "path": "./projects/developer/index.html",
+    "category": "Código",
+    "icon": "fas fa-layer-group",
+    "featured": false
+  },
+  {
+    "id": 56,
+    "title": "Tutorial",
+    "description": "Site para reunir conteúdos de sites importantes de referências para desenvolver.",
+    "path": "./projects/tutorial/index.html",
+    "category": "Frontend",
+    "icon": "fas fa-blog",
+    "featured": false
+  },
+  {
+    "id": 57,
+    "title": "Alurinha",
+    "description": "Estudo aprofundado de Flexbox, conteúdo estruturado progressivo e desafios avançados.",
+    "path": "./projects/alurinha/index.html",
+    "category": "Código",
+    "icon": "fas fa-code-branch",
+    "featured": false
+  },
+  {
+    "id": 58,
+    "title": "Text Decoder",
+    "description": "Decodificador e codificador de texto com cifra de substituição de vogais (e→enter, i→imes, a→ai, o→ober, u→ufat).",
+    "path": "./projects/text-decoder/index.html",
+    "category": "Código",
+    "icon": "fas fa-key",
+    "featured": false
+  }
 ]
