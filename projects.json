@@ -445,5 +445,13 @@
     "category": "Código",
     "icon": "fas fa-tags",
     "featured": false
-  }
+  },{
+    "id": 51,
+    "title": "Flex Turismos",
+    "description": "Site para agência de turismo, com paradigma mobile first e prática de unidades de medida flexíveis.",
+    "path": "./projects/flex-turismos/index.html",
+    "category": "Frontend",
+    "icon": "fas fa-plane",
+    "featured": false
+}
 ]
