@@ -472,5 +472,13 @@
     "category": "Desafio",
     "icon": "fas fa-dragon",
     "featured": false
-  }
+  },{
+    "id": 54,
+    "title": "Dev Cast",
+    "description": "Player personalizado com avanço automático para a próxima faixa e loop ao fim da playlist. Controles: Play/Pause, Volume, Mute, Seekbar",
+    "path": "./projects/devcast-player/index.html",
+    "category": "Player",
+    "icon": "fas fa-headphones-simple",
+    "featured": false
+}
 ]
