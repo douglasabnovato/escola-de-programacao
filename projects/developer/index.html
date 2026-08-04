@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/responsive.css" media="screen and (max-width: 768px)" />
+  <link rel="stylesheet" href="./styles/print.css" media="print" />
+  <link rel="shortcut icon" href="./files/icons8-dynamics-365-50.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="./files/icons8-dynamics-365-100.svg" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="./files/assets/icons8-dynamics-365-500.svg" alt="developer douglas" />
+        <b>Developer</b>
+      </div>
+      <div class="menu-section">
+        <div class="menu-toggle">
+          <div class="one"></div>
+          <div class="two"></div>
+          <div class="three"></div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="./pages/hard-skills.html">HardSkills</a></li>
+            <li><a href="./pages/tools.html">Tools</a></li>
+            <li><a href="./pages/host.html">Host</a></li>
+            <li><a href="./pages/colleges-tech.html">CollegesTech</a></li>
+            <li><a href="./pages/perfis-dev.html">PerfisDev</a></li>
+            <li><a href="./pages/good-companies.html">GoodCompanies</a></li>
+            <li><a href="./pages/jobs.html">Jobs</a></li>
+            <li><a href="./pages/soft-skills.html">SoftSkills</a></li>
+            <li><a href="./pages/speaker.html">Speaker</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="container">
+      <div>
+        <h2>
+          As melhores tecnologias em programação, direto ao ponto e do jeito
+          certo.
+        </h2>
+        <p>
+          No meio de tanta informação e da quantidade de ferramentas que
+          surgem todos os dias, você precisa ir na direção certa.
+        </p>
+        <p>
+          No meio de tanta informação e da quantidade de ferramentas que
+          surgem todos os dias, você precisa ir na direção certa.
+        </p>
+        <a href="#pilulas" class="button">Quero embarcar neste foguete!</a>
+      </div>
+      <img src="./files/images/melhores-tecnologias.svg" alt="" />
+    </div>
+  </section>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div>
+          <h3>
+            Pílulas de conteúdos
+          </h3>
+          <p>
+            Curtos vídeos para instruir como fazer as coisas e construir habilidades no universo de programação.
+          </p>
+          <p>
+            No meio de tanta informação e da quantidade de ferramentas que
+            surgem todos os dias, você precisa ir na direção certa.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="pilulas" class="cards">
+      <div class="card">
+        <div class="image">
+          <img src="./files/images/oops-404-error.jpg" />
+        </div>
+        <div class="content">
+          <p class="title text--medium">
+            Desculpe-me. Estamos com lentidão em nossos servidores.
+          </p>
+          <div class="info">
+            <p class="text--medium">Failed to load resource: </p>
+            <p class="price text--medium">the server responded with a status of</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <section id="form">
+    <form action="">
+      <h3>Quero Estudar na Rocket!</h3>
+      <div class="form-group">
+        <input class="input-control" placeholder="Nome" />
+        <input type="email" class="input-control" placeholder="Email" />
+      </div>
+      <div class="form-group">
+        <input class="input-control" placeholder="Empresa" />
+      </div>
+      <div class="form-group">
+        <input class="input-control" placeholder="Endereço" />
+      </div>
+      <div class="form-group">
+        <input class="input-control" placeholder="Cidade" style="flex: 3 1" />
+        <input class="input-control" placeholder="Estado" style="flex: 1" />
+        <input class="input-control" placeholder="CEP" style="flex: 1" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="button">Save</button>
+      </div>
+    </form>
+  </section>
+  <div class="modal-overlay">
+    <div class="modal">
+      <a class="close-modal">
+        <svg viewBox="0 0 20 20">
+          <path fill="#000000"
+            d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z">
+          </path>
+        </svg>
+      </a>
+      <div class="modal-content">
+        <div class="video-background">
+          <div class="video-foreground">
+            <iframe src="https://www.youtube.com/embed/GykTLqODQuU" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./scripts/menu.js"></script>
+  <script src="./scripts.js"></script>
+</body>
+
+</html>

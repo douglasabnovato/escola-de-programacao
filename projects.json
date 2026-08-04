@@ -472,7 +472,8 @@
     "category": "Desafio",
     "icon": "fas fa-dragon",
     "featured": false
-  },{
+  },
+  {
     "id": 54,
     "title": "Dev Cast",
     "description": "Player personalizado com avanço automático para a próxima faixa e loop ao fim da playlist. Controles: Play/Pause, Volume, Mute, Seekbar",
@@ -480,5 +481,14 @@
     "category": "Player",
     "icon": "fas fa-headphones-simple",
     "featured": false
-}
+  },
+  {
+    "id": 55,
+    "title": "Developer",
+    "description": "Hub de links de conteúdo para aprender a programar — soft skill, frontend, backend e ferramentas. ",
+    "path": "./projects/developer/index.html",
+    "category": "Código",
+    "icon": "fas fa-layer-group",
+    "featured": false
+  }
 ]
