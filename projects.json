@@ -424,8 +424,17 @@
     "title": "Countdown",
     "description": "Página 'coming soon' com countdown regressivo até o lançamento.",
     "path": "./projects/countdown/index.html",
-    "category": "Rocketseat",
+    "category": "Código",
     "icon": "fas fa-hourglass-half",
     "featured": false
-}
+  },
+  {
+    "id": 49,
+    "title": "Switcher",
+    "description": "Toggle para o tema dark e light com transições que mudam conforme o tema, e persistência da preferência no Local Storage.",
+    "path": "./projects/switcher/index.html",
+    "category": "Código",
+    "icon": "fas fa-circle-half-stroke",
+    "featured": false
+  }
 ]
