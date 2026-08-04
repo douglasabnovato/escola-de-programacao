@@ -517,5 +517,14 @@
     "category": "Código",
     "icon": "fas fa-key",
     "featured": false
+  },
+  {
+    "id": 59,
+    "title": "Fundamentos",
+    "description": "Registro e organização do conteúdo teórico da formação Rocketseat Discover, cobrindo as trilhas Conectar, Fundamentar e Especializar, além do Blog.",
+    "path": "./projects/fundamentos/index.html",
+    "category": "Código",
+    "icon": "fas fa-road",
+    "featured": false
   }
 ]
