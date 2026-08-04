@@ -499,5 +499,14 @@
     "category": "Frontend",
     "icon": "fas fa-blog",
     "featured": false
+  },
+  {
+    "id": 57,
+    "title": "Alurinha",
+    "description": "Estudo aprofundado de Flexbox, conteúdo estruturado progressivo: cabeçalho, footer, grid principal de cursos, adaptação mobile e desafios avançados (flex-grow/shrink/basis, proporcionalidade, ordenação de elementos)",
+    "path": "./projects/alurinha/index.html",
+    "category": "Código",
+    "icon": "fas fa-code-branch",
+    "featured": false
   }
 ]
