@@ -391,5 +391,14 @@
     "category": "Bootcamp",
     "icon": "fas fa-calendar-week",
     "featured": false
+  },
+  {
+    "id": 44,
+    "title": "Internet Periodic Table",
+    "description": "A estrutura da tabela periódica aplicada aos aplicativos mais populares da internet — cada 'elemento' representa um app.",
+    "path": "./projects/internet-periodic-table/index.html",
+    "category": "Desafio Css",
+    "icon": "fas fa-table-cells",
+    "featured": false
   }
 ]
