@@ -409,5 +409,23 @@
     "category": "Classic Sites",
     "icon": "fas fa-glasses",
     "featured": false
+  },
+  {
+    "id": 47,
+    "title": "Sidebar Green",
+    "description": "Desafio de sidebar responsiva: alterna entre estado aberto e fechado",
+    "path": "./projects/sidebar-green/index.html",
+    "category": "Rocketseat",
+    "icon": "fas fa-bars",
+    "featured": false
+  },
+  {
+    "id": 48,
+    "title": "Countdown",
+    "description": ".",
+    "path": "./projects/countdown/index.html",
+    "category": "Código",
+    "icon": "fas fa-glasses",
+    "featured": false
   }
 ]
