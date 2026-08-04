@@ -400,5 +400,14 @@
     "category": "Desafio Css",
     "icon": "fas fa-table-cells",
     "featured": false
+  },
+  {
+    "id": 46,
+    "title": "Google Glass",
+    "description": "Recriação de site institucional sobre o Google Glass, seguindo layout de referência com 5 telas.",
+    "path": "./projects/classic-sites/index.html",
+    "category": "Classic Sites",
+    "icon": "fas fa-glasses",
+    "featured": false
   }
 ]
