@@ -508,5 +508,14 @@
     "category": "Código",
     "icon": "fas fa-code-branch",
     "featured": false
+  },
+  {
+    "id": 58,
+    "title": "Text Decoder",
+    "description": "Decodificador e codificador de texto com cifra de substituição de vogais (e→enter, i→imes, a→ai, o→ober, u→ufat).",
+    "path": "./projects/text-decoder/index.html",
+    "category": "Código",
+    "icon": "fas fa-key",
+    "featured": false
   }
 ]
