@@ -436,5 +436,14 @@
     "category": "Código",
     "icon": "fas fa-circle-half-stroke",
     "featured": false
+  },
+  {
+    "id": 50,
+    "title": "Pricing Table",
+    "description": "Tabela de preços e planos seguindo layout de referência do Figma. ",
+    "path": "./projects/pricing-table/index.html",
+    "category": "Código",
+    "icon": "fas fa-tags",
+    "featured": false
   }
 ]
