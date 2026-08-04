@@ -391,5 +391,94 @@
     "category": "Bootcamp",
     "icon": "fas fa-calendar-week",
     "featured": false
-  }
+  },
+  {
+    "id": 44,
+    "title": "Internet Periodic Table",
+    "description": "A estrutura da tabela periódica aplicada aos aplicativos mais populares da internet — cada 'elemento' representa um app.",
+    "path": "./projects/internet-periodic-table/index.html",
+    "category": "Desafio Css",
+    "icon": "fas fa-table-cells",
+    "featured": false
+  },
+  {
+    "id": 46,
+    "title": "Google Glass",
+    "description": "Recriação de site institucional sobre o Google Glass, seguindo layout de referência com 5 telas.",
+    "path": "./projects/classic-sites/index.html",
+    "category": "Classic Sites",
+    "icon": "fas fa-glasses",
+    "featured": false
+  },
+  {
+    "id": 47,
+    "title": "Sidebar Green",
+    "description": "Desafio de sidebar responsiva: alterna entre estado aberto e fechado",
+    "path": "./projects/sidebar-green/index.html",
+    "category": "Código",
+    "icon": "fas fa-bars",
+    "featured": false
+  },
+  {
+    "id": 48,
+    "title": "Countdown",
+    "description": "Página 'coming soon' com countdown regressivo até o lançamento.",
+    "path": "./projects/countdown/index.html",
+    "category": "Código",
+    "icon": "fas fa-hourglass-half",
+    "featured": false
+  },
+  {
+    "id": 49,
+    "title": "Switcher",
+    "description": "Toggle para o tema dark e light com transições que mudam conforme o tema, e persistência da preferência no Local Storage.",
+    "path": "./projects/switcher/index.html",
+    "category": "Código",
+    "icon": "fas fa-circle-half-stroke",
+    "featured": false
+  },
+  {
+    "id": 50,
+    "title": "Pricing Table",
+    "description": "Tabela de preços e planos seguindo layout de referência do Figma. ",
+    "path": "./projects/pricing-table/index.html",
+    "category": "Código",
+    "icon": "fas fa-tags",
+    "featured": false
+  },
+  {
+    "id": 51,
+    "title": "Flex Turismos",
+    "description": "Site para agência de turismo, com paradigma mobile first e prática de unidades de medida flexíveis.",
+    "path": "./projects/flex-turismos/index.html",
+    "category": "Frontend",
+    "icon": "fas fa-plane",
+    "featured": false
+  },
+  {
+    "id": 52,
+    "title": "Cadastrar CEP",
+    "description": "Simulação de cadastro com autopreenchimento via API de CEP.",
+    "path": "./projects/cep-form-api/index.html",
+    "category": "Desafio",
+    "icon": "fas fa-location-dot",
+    "featured": false
+  },
+  {
+    "id": 53,
+    "title": "Pokedex",
+    "description": "Consumo da PokeAPI com fetch, exibindo cards estilizados para cada Pokémon.",
+    "path": "./projects/pokedex/index.html",
+    "category": "Desafio",
+    "icon": "fas fa-dragon",
+    "featured": false
+  },{
+    "id": 54,
+    "title": "Dev Cast",
+    "description": "Player personalizado com avanço automático para a próxima faixa e loop ao fim da playlist. Controles: Play/Pause, Volume, Mute, Seekbar",
+    "path": "./projects/devcast-player/index.html",
+    "category": "Player",
+    "icon": "fas fa-headphones-simple",
+    "featured": false
+}
 ]
