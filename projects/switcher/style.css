@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+    --dark: #292C35;
+    --light: #F1F1F1;
+    --label: #111;
+    --header-bg: #292C35;
+    --header-tx: #f39c12;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow: hidden;
+}
+
+
+body {
+    font-family: Poppins, sans-serif;
+    background: var(--light);
+    color: var(--label);
+    font-size: 32px;
+    transition: .7s;
+    display: flex;
+}
+
+.switcher {
+    width: 100vw;
+    margin: 0;
+}
+
+.header {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+    padding: 60px 10px;
+    text-align: center;
+    background: var(--header-bg);
+    color: var(--header-tx);
+    font-size: 30px;
+}
+
+.header .content-header {
+    display: flex;
+}
+
+.header h1 {
+    margin-right: 35px;
+}
+
+.header p {
+    width: 20px;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.dark-mode {
+    background: var(--dark);
+    color: var(--label);
+    transition: .7s;
+    --header-bg: #111;
+    --header-tx: rgb(238, 237, 237);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 142px;
+    height: 72px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    z-index: 5;
+}
+
+.switch span {
+    z-index: 1;
+    justify-content: space-between;
+}
+
+.switch span img {
+    z-index: 2;
+    height: 63px;
+    width: 63px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--label);
+    -webkit-transition: .7s;
+    transition: .7s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 63px;
+    width: 63px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgb(238, 237, 237);
+    -webkit-transition: .7s;
+    transition: .7s;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(68px);
+    -ms-transform: translateX(68px);
+    transform: translateX(68px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}

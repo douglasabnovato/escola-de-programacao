@@ -1,4 +1,4 @@
-# 🔍 Escola de Programação (ByteClass)
+# 🔍 Escola de Programação 
 
 > **Ecossistema de Formação Fullstack & Engenharia de Software** > **Liderança:** Douglas A B Novato | CTO & Senior Developer  
 > **Arquitetura:** NEXUS Engine v1.2  
@@ -96,4 +96,4 @@ _Senior Fullstack Developer | CTO learnTECH_
 
 ---
 
-_Documentação gerada para o ecossistema ByteClass @ 2026_
+_Documentação gerada para o ecossistema @ 2026_

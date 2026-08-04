@@ -1,0 +1,474 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+    background: #E5E5E5;
+}
+
+.header {
+    position: absolute;
+    width: 100vw;
+    height: 450px;
+    left: 0px;
+    top: 0px;
+    background: #1D539E;
+}
+
+.header .title {
+    position: absolute;
+    width: 553px;
+    height: 65px;
+    left: 444px;
+    top: 30px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 65px;
+    color: #FFFFFF;
+}
+
+.header .texts {
+    position: absolute;
+    width: 483px;
+    height: 50px;
+    left: 434px;
+    top: 105px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.container {
+    position: absolute;
+    top: -95px;
+}
+
+.pricefree {
+    position: absolute;
+    width: 355px;
+    height: 470px;
+    left: 167px;
+    top: 310px;
+}
+
+.pricefree-conteiner {
+    position: absolute;
+    width: 355px;
+    height: 470px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(142, 150, 185, 0.25);
+    border-radius: 8px;
+}
+
+.pricefree-conteiner header {
+    position: absolute;
+    width: 355px;
+    height: 176px;
+    box-shadow: 0px 1px 2px rgba(142, 150, 185, 0.25);
+    border-radius: 8px 8px 0px 0px;
+}
+
+.pricefree-conteiner header .pricefreetitle {
+    position: absolute;
+    width: 51px;
+    height: 25px;
+    left: 22px;
+    top: 22px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #1E2338;
+}
+
+.pricefree-conteiner .price {
+    position: absolute;
+    width: 101px;
+    height: 49px;
+    left: 22px;
+    top: 56px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 49px;
+    color: #1E2338;
+}
+
+.pricefree-conteiner .price span {
+    position: absolute;
+    width: 42px;
+    height: 25px;
+    left: 112px;
+    top: 16px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #828799;
+}
+
+.pricefree-conteiner .intro {
+    position: absolute;
+    width: 291px;
+    height: 38px;
+    left: 22px;
+    top: 116px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #828799;
+}
+
+.pricefree-conteiner ul {
+    position: absolute;
+    width: 294px;
+    height: 58px;
+    left: 42px;
+    top: 193px;
+}
+
+.pricefree-conteiner ul li {
+    margin-top: 10px;
+}
+
+.pricefree-conteiner button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 10px;
+    position: absolute;
+    width: 296px;
+    height: 49px;
+    left: 22px;
+    bottom: 25px;
+    border: 1px solid #1D539E;
+    border-radius: 10px;
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1D539E;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.pricebasic {
+    position: absolute;
+    width: 355px;
+    height: 490px;
+    left: 542px;
+    top: 300px;
+}
+
+.pricebasic-conteiner {
+    position: absolute;
+    width: 355px;
+    height: 490px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(142, 150, 185, 0.25);
+    border-radius: 8px;
+}
+
+
+.pricebasic-conteiner header {
+    position: absolute;
+    width: 355px;
+    height: 176px;
+    box-shadow: 0px 1px 2px rgba(142, 150, 185, 0.25);
+    border-radius: 8px 8px 0px 0px;
+}
+
+.pricebasic-conteiner header .pricebasictitle {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #1E2338;
+    width: 355px;
+    height: 76px;
+    background: #FFCC29;
+    box-shadow: 0px 1px 2px rgba(142, 150, 185, 0.25);
+    border-radius: 8px 8px 0px 0px;
+}
+
+
+.pricebasic-conteiner header .pricebasictitle div {
+    position: absolute;
+    left: 22px;
+    top: 22px;
+}
+
+.pricebasic-conteiner header .pricebasictitle div span {
+    padding: 8px 24px;
+    height: 32px;
+    background: #1D539E;
+    border-radius: 40px;
+    left: 222px;
+    top: -2px;
+}
+
+.pricebasic-conteiner header span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 24px;
+    gap: 10px;
+    position: absolute;
+    width: 94px;
+    height: 32px;
+    border-radius: 40px;
+}
+
+.pricebasic .price {
+    position: absolute;
+    width: 101px;
+    height: 49px;
+    left: 32px;
+    top: 82px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 49px;
+    color: #1E2338;
+}
+
+.pricebasic .price span {
+    position: absolute;
+    width: 42px;
+    height: 25px;
+    left: 112px;
+    top: 16px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #828799;
+}
+
+.pricebasic .intro {
+    position: absolute;
+    width: 291px;
+    height: 38px;
+    left: 22px;
+    top: 136px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #828799;
+}
+
+.pricebasic ul {
+    position: absolute;
+    width: 294px;
+    height: 58px;
+    left: 42px;
+    top: 193px;
+}
+
+.pricebasic ul li {
+    margin-top: 10px;
+}
+
+.pricebasic button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 10px;
+    position: absolute;
+    width: 296px;
+    height: 51px;
+    left: 22px;
+    bottom: 25px;
+    border: 1px solid #1D539E;
+    border-radius: 10px;
+    background: #1D539E;
+
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+.priceprofissional {
+    position: absolute;
+    width: 355px;
+    height: 470px;
+    left: 917px;
+    top: 310px;
+}
+
+.priceprofissional-conteiner {
+    position: absolute;
+    width: 355px;
+    height: 470px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(142, 150, 185, 0.25);
+    border-radius: 8px;
+}
+
+.priceprofissional-conteiner header {
+    position: absolute;
+    width: 355px;
+    height: 176px;
+    box-shadow: 0px 1px 2px rgba(142, 150, 185, 0.25);
+    border-radius: 8px 8px 0px 0px;
+}
+
+
+.priceprofissional-conteiner header .priceprofissionaltitle {
+    position: absolute;
+    width: 51px;
+    height: 25px;
+    left: 22px;
+    top: 22px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #1E2338;
+}
+
+.priceprofissional-conteiner header span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 24px;
+    gap: 10px;
+    position: absolute;
+    width: 94px;
+    height: 32px;
+    border-radius: 40px;
+}
+
+.priceprofissional .price {
+    position: absolute;
+    width: 101px;
+    height: 49px;
+    left: 32px;
+    top: 56px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 49px;
+    color: #1E2338;
+}
+
+.priceprofissional .price span {
+    position: absolute;
+    width: 42px;
+    height: 25px;
+    left: 112px;
+    top: 16px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #828799;
+}
+
+.priceprofissional .intro {
+    position: absolute;
+    width: 291px;
+    height: 38px;
+    left: 22px;
+    top: 116px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #828799;
+}
+
+
+.priceprofissional ul {
+    position: absolute;
+    width: 294px;
+    height: 58px;
+    left: 42px;
+    top: 193px;
+}
+
+.priceprofissional ul li {
+    margin-top: 10px;
+}
+
+.priceprofissional button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 10px;
+    position: absolute;
+    width: 296px;
+    height: 49px;
+    left: 22px;
+    bottom: 25px;
+    border: 1px solid #1D539E;
+    border-radius: 10px;
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #1D539E;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+ul li {
+    list-style: none;
+    list-style-image: url('./assets/check.svg');
+    padding-left: 4px;
+}
